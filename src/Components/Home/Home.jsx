@@ -1,6 +1,14 @@
+import Sample from '../Reusable/Sample/Sample'
+import Container  from '../UI/container/Container'
+
 // import style from './Home.module.css'
 export default function Home() {
   return <>
-  <h1>Home</h1>
+  <Container>
+    <h1>
+    Components Trials
+    </h1>
+    <Sample/>
+  </Container>
   </>
 }

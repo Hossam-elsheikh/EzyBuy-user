@@ -6,7 +6,7 @@ nav{
     background-color: var(--main-color);
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem;
+    padding: 1rem;
     color: var(--text-color);
 }
 nav a {
@@ -27,6 +27,7 @@ nav img {
     cursor: pointer;
     padding: .5rem .8rem;
     border-radius:2rem;
+    justify-content: center;
     width: 140px;
 
 }

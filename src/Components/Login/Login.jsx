@@ -51,9 +51,11 @@ export default function Login() {
     
   })
 
-  return <>
+  return (
+
+ 
   <Container>
-    <div className='w-75 mx-auto py-5'>
+    
       {error ? <div className='alert alert-danger'>{error}</div>:""}
       <h3>Login Now</h3>
       <form onSubmit={formik.handleSubmit}>
@@ -89,7 +91,7 @@ export default function Login() {
        </button>}
     </form>
 <Toaster/>
-    </div>
+    
     </Container>
-  </>
+   )
 }
