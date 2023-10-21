@@ -23,7 +23,7 @@ let routers = createBrowserRouter([
   return (
     <>
     <RouterProvider router={routers}>
-      <App/>
+    
     </RouterProvider>
     </>
   )

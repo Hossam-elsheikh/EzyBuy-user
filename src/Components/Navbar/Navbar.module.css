@@ -1,1 +1,74 @@
-.Navbar {}
+nav{ 
+    display: flex;
+    gap: 1rem;
+    width: 100vw;
+    position: fixed;
+    background-color: var(--main-color);
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    color: var(--text-color);
+}
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+p{
+    margin: 0 !important;
+}
+nav img {
+    width: 120px;
+}
+
+.cat {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    cursor: pointer;
+    padding: .5rem .8rem;
+    border-radius:2rem;
+    width: 140px;
+
+}
+.cat:hover {
+    background-color: var(--hovered-nav);
+}
+
+input[type="search"] {
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: none;
+}
+input[type="search"]:focus {
+    border-radius: 0;
+}
+.wrap{
+    display: flex;
+    gap: 1rem;
+}
+.cart {
+    background-color: var(--text-color);
+    padding: .3rem .7rem;
+    border-radius: 25px;
+    display: flex;
+    gap: .2rem;
+    height: 45px;
+    min-width: 120px;
+    transition: all .3s ease-in-out;
+}
+.cart:hover {
+    transform: scale(1.1);
+
+}
+.cart div {
+    color: var(--main-color);
+    font-size: .8rem;
+    font-weight: bold;
+    align-items: center;
+    gap: 0;
+}
+
+.cart img {
+    width: auto;
+}

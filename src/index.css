@@ -2,3 +2,20 @@
   background-color: orangered;
   border-radius: 20px;
 }
+
+
+*,::after,::before{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.show{
+  display: none;
+}
+
+@media (max-width: 967px){
+  .show{
+      display: flex;
+  }
+}

@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { MagnifyingGlass } from 'react-loader-spinner'
 import instance from '../../axiosConfig/instance'
 import toast, { Toaster } from 'react-hot-toast'
+import { Container } from 'react-bootstrap'
 
 
 export default function Login() {
@@ -51,6 +52,7 @@ export default function Login() {
   })
 
   return <>
+  <Container>
     <div className='w-75 mx-auto py-5'>
       {error ? <div className='alert alert-danger'>{error}</div>:""}
       <h3>Login Now</h3>
@@ -88,6 +90,6 @@ export default function Login() {
     </form>
 <Toaster/>
     </div>
-    
+    </Container>
   </>
 }
