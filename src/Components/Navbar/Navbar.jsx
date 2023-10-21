@@ -1,13 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
 
 import classes from "./Navbar.module.css";
-import cart from '../../assets/fav-05.png'
+import cart from '../../assets/cart.svg'
 export default function Navbar() {
   return (
     <>
       <nav className={classes.nav}>
         <div className="d-flex align-items-center gap-2">
-      <i className="fa-solid fa-bars show" ></i>
+      <div className="show">
+        <i className="fa-solid fa-bars" ></i>
+        </div>
         <Link to="/">
           <img
             src="https://i.ibb.co/6X1M1bf/logo-04.png"
