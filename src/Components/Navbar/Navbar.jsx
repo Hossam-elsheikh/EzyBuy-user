@@ -6,6 +6,9 @@ export default function Navbar() {
   return (
     <>
       <nav className={classes.nav}>
+        <div className={classes.main_nav}>
+
+        
         <div className="d-flex align-items-center gap-2">
       <div className="show">
         <i className="fa-solid fa-bars" ></i>
@@ -46,7 +49,26 @@ export default function Navbar() {
             </div>
           </Link>
         </div>
+        </div>
+        <div className={classes.sec_nav}>
+          <div className="d-flex gap-2 align-items-center">
+          <i className="fa-solid fa-truck"></i>
+          <p>How do you want your items?</p>
+          <i className="fa-solid fa-chevron-down" style={{cursor:'pointer'}}></i> 
+          </div>
+          <div className="d-flex gap-3">
+
+          <Link>Deals</Link>
+          <Link>Deals</Link>
+          <Link>Deals</Link>
+          <Link>Deals</Link>
+          <Link>Deals</Link>
+          <Link>Deals</Link>
+          <Link>Deals</Link>
+          </div>
+        </div>
       </nav>
+      
     </>
   );
 }

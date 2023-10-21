@@ -8,6 +8,13 @@
   display: flex;
 }
 
+.content{
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
   @media (max-width: 967px){
     .show{
         display: flex;

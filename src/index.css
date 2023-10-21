@@ -1,9 +1,12 @@
+
 .active{
   background-color: orangered;
   border-radius: 20px;
 }
 
-
+html{
+  overflow: hidden;
+}
 *,::after,::before{
   margin: 0;
   padding: 0;

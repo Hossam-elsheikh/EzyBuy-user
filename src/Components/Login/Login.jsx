@@ -54,7 +54,7 @@ export default function Login() {
   return (
 
  
-  <Container>
+  <>
     
       {error ? <div className='alert alert-danger'>{error}</div>:""}
       <h3>Login Now</h3>
@@ -92,6 +92,6 @@ export default function Login() {
     </form>
 <Toaster/>
     
-    </Container>
+    </>
    )
 }

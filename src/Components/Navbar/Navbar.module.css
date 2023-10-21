@@ -1,13 +1,29 @@
 nav{ 
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
     width: 100vw;
     position: fixed;
     background-color: var(--main-color);
+    color: var(--text-color);
+}
+.main_nav{
+    display: flex;
+    padding: 1rem;
+    gap: 1rem;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--text-color);
+}
+.sec_nav {
+    display: flex;
+    padding:.4rem 1rem;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem;
-    color: var(--text-color);
+
+}
+.sec_nav a:hover{
+    color: var(--sec-color);
 }
 nav a {
     color: var(--text-color);
@@ -28,7 +44,7 @@ nav img {
     padding: .5rem .8rem;
     border-radius:2rem;
     justify-content: center;
-    width: 140px;
+    width: max-content;
 
 }
 .cat:hover {
@@ -67,7 +83,6 @@ input[type="search"]:focus {
     font-size: .8rem;
     font-weight: bold;
     align-items: center;
-    gap: 0;
 }
 
 .cart img {
