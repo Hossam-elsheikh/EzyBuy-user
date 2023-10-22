@@ -10,7 +10,7 @@
         "component": "templete/TemplateName.jsx"
        
       },
-      "path": "src/components",
+      "path": "src/components/Reusable",
       "withStyle": true,
       "withTest": false,
       "withStory": false,
