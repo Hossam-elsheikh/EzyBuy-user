@@ -3,6 +3,11 @@ import { Container } from 'react-bootstrap'
 
 const SingleProductPage = () => {
   return <>
+
+<Container>
+  <ProductImgs/>
+  <ProductDetails/>
+  </Container>
    {/*  ------------------ */}
    <Container>
     <ProdSpecs/>

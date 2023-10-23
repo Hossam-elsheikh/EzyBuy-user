@@ -15,10 +15,7 @@ export default function Layout() {
   <Outlet/>
   
   </Container>
-  <Container>
-  <ProductImgs/>
-  <ProductDetails/>
-  </Container>
+
 
 
 
