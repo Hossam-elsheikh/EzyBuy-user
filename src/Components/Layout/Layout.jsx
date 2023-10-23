@@ -6,6 +6,7 @@ import './Layout.css'
 import ProductImgs from "../Reusable/ProductImgs/ProductImgs";
 import ProductDetails from "../Reusable/ProductDetails/ProductDetails";
 import ProdSpecs from "../Reusable/ProdSpecs/ProdSpecs";
+import CustomerReview from "../Reusable/CustomerReview/CustomerReview";
 export default function Layout() {
   return <>
   <Navbar/>
@@ -20,10 +21,7 @@ export default function Layout() {
   </Container>
 
 
-   /* ------------------*/
-   <Container>
-    <ProdSpecs/>
-   </Container>
+
   <Footer/>
   </div>
   </>
