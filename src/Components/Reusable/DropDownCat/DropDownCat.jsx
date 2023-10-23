@@ -1,7 +1,7 @@
 // import style from './DropDownCat.module.css'
 import React ,  {useState} from 'react'
 import classes from './DropDownCat.module.css'
-export default function DropDownCat() {
+export default function DropDownCat(props) {
 const [isDropdownOpen , setisDropdownOpen]=useState(false);
 const [changeIcon , setChangeIcon] = useState('down')
 
@@ -23,7 +23,7 @@ const [changeIcon , setChangeIcon] = useState('down')
         >
           <div className>
             <img
-              src="https://i5.walmartimages.com/dfw/4ff9c6c9-877b/k2-_17060cce-fa02-455e-a0be-eda182b82de2.v1.jpg"
+              src={props && props.image?props.image:"https://i5.walmartimages.com/dfw/4ff9c6c9-877b/k2-_17060cce-fa02-455e-a0be-eda182b82de2.v1.jpg"}
               className="w-25 rounded-circle "
             />
             <span className="ms-1 me-3">Fresh Food</span>
