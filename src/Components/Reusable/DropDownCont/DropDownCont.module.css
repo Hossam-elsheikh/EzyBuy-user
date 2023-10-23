@@ -1,1 +1,10 @@
-.DropDownCont {}
+.c li {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin-left: 60px;
+}
+
+.c li:hover {
+    text-decoration: underline 1px;
+}

@@ -1,1 +1,8 @@
-.CircleCat {}
+.noDe {
+    text-decoration: none;
+    color: black;
+
+}
+.widthImg{
+    width:120px;
+}
