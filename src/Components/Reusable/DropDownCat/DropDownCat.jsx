@@ -12,7 +12,7 @@ const [changeIcon , setChangeIcon] = useState('down')
 
   return (
     <>
-    <div className='col-lg-4'>
+    <div className='col-lg-4 col-md-8 col-sm-8 '>
       <div className="dropdown">
         <button
           className=" btn border border-white"
@@ -26,7 +26,7 @@ const [changeIcon , setChangeIcon] = useState('down')
               src={props && props.image?props.image:"https://i5.walmartimages.com/dfw/4ff9c6c9-877b/k2-_17060cce-fa02-455e-a0be-eda182b82de2.v1.jpg"}
               className="w-25 rounded-circle "
             />
-            <span className="ms-1 me-3">Fresh Food</span>
+            <span className="ms-1">{props&&props.name?props.name:"Fresh food"}</span>
             <i className={`fa-solid fa-chevron-${changeIcon} ms-5 ${isDropdownOpen?'open':''}`}></i>
           </div>
         </button>
