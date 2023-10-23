@@ -1,5 +1,5 @@
-import Sample from "../Reusable/Sample/Sample";
-import TwoImages from "../Reusable/TwoImages/TwoImages";
+// import Sample from "../Reusable/Sample/Sample";
+// import TwoImages from "../Reusable/TwoImages/TwoImages";
 import CircleCat from "../Reusable/CircleCat/CircleCat";
 import DropDownCat from "../Reusable/DropDownCat/DropDownCat";
 import DropDownCont from "../Reusable/DropDownCont/DropDownCont";
@@ -8,6 +8,9 @@ import CarouselCont from "../Reusable/CarouselCont/CarouselCont";
 import CarouselElem from "../Reusable/CarouselElem/CarouselElem";
 import CardElem from "../Reusable/CardElem/CardElem";
 import CardCont from "../Reusable/CardCont/CardCont";
+// import Sample from "../Reusable/Sample/Sample";
+// import TwoImages from "../Reusable/TwoImages/TwoImages";
+
 // import style from './Home.module.css'
 export default function Home() {
   return (
