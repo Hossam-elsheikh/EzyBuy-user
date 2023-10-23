@@ -57,15 +57,14 @@ export default function Navbar() {
           <i className="fa-solid fa-chevron-down" style={{cursor:'pointer'}}></i> 
           </div>
           <div className="d-flex gap-3">
-
-          <Link>Groceries & Essentials </Link>
-          <Link>Halloween</Link>
-          <Link>Beauty</Link>
-          <Link>Kids</Link>
-          <Link>Toy Shop</Link>
-          <Link>Fashion</Link>
-          <Link>Home</Link>
-          <Link>Electronics</Link>
+          <Link to='/grocery'>Groceries & Essentials </Link>
+          <Link to='/beauty'>Beauty</Link>
+          <Link to='/kids'>Kids</Link>
+          <Link to='/fashion'>Fashion</Link>
+          <Link to='/electronics'>Electronics</Link>
+          <Link to='/login'>log in</Link>
+          <Link to='/register'>Register</Link>
+          <Link to='/product'>Product</Link>
           </div>
         </div>
       </nav>

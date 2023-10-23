@@ -2,19 +2,30 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './App.css'
 import Layout from './Components/Layout/Layout'
-import Home from './Components/Home/Home'
-import Login from './Components/Login/Login'
-import Register from './Components/Register/Register'
 import NotFound from './Components/NotFound/NotFound'
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute'
-
+import HomePage from './Pages/HomePage'
+import LoginPage from './Pages/LoginPage'
+import RegisterPage from './Pages/RegisterPage'
+import GroceryPage from './Pages/GroceryPage'
+import BeautyPage from './Pages/BeautyPage'
+import KidsPage from './Pages/KidsPage'
+import FashionPage from './Pages/FashionPage'
+import ElectronicsPage from './Pages/ElectronicsPage'
+import SingleProductPage from './Pages/SingleProductPage'
 function App() {
 let routers = createBrowserRouter([
   {path:'/',element:<Layout/>,children:[
-    {index:true , element:<Home/> },
-    {path:'login',element:<Login/>},
-    {path:'register',element:<Register/>},
-
+    {index:true , element:<HomePage/> },
+    {path:'login',element:<LoginPage />},
+    {path:'register',element:<RegisterPage/>},
+    {path:'grocery',element:<GroceryPage/>},
+    {path:'beauty',element:<BeautyPage/>},
+    {path:'kids',element:<KidsPage/>},
+    {path:'fashion',element:<FashionPage/>},
+    {path:'electronics',element:<ElectronicsPage/>},
+    {path:'product',element:<SingleProductPage/>},
+    
   ]},
   {path:'*',element:<NotFound/>}
 ])
