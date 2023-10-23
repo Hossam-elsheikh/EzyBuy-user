@@ -1,5 +1,5 @@
 import classes from "./CircleCat.module.css";
-export default function CircleCat() {
+export default function CircleCat(props) {
   return (
     <>
       <div
@@ -8,10 +8,10 @@ export default function CircleCat() {
       >
         <a href="#" className={classes.noDe}>
           <img
-            src="https://i5.walmartimages.com/dfw/4ff9c6c9-6a9c/k2-_752a86d4-3dad-4536-a126-575ff0fdc50b.v1.jpg"
-            className=" rounded-circle w-100"
+            src={props&&props.image?props.image:"https://i5.walmartimages.com/dfw/4ff9c6c9-6a9c/k2-_752a86d4-3dad-4536-a126-575ff0fdc50b.v1.jpg"}
+            className={`rounded-circle ${classes.widthImg}`} 
           />
-          <span className="ms-1">Fresh food</span>
+          <span className="ms-1">{props&&props.name?props.name:"Fresh food"}</span>
         </a>
       </div>
     </>
