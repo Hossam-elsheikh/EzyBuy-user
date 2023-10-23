@@ -5,6 +5,7 @@ nav{
     position: fixed;
     background-color: var(--main-color);
     color: var(--text-color);
+    z-index:99;
 }
 .main_nav{
     display: flex;

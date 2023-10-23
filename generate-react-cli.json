@@ -7,10 +7,10 @@
   "component": {
     "default": {
       "customTemplates": {
-        "component": "templete/TemplateName.jsx"
-       
+        "component": "templete/TemplateName.jsx",
+        "reusComp":"templete/TemplateName.jsx"
       },
-      "path": "src/components/Reusable",
+      "path": "src/components",
       "withStyle": true,
       "withTest": false,
       "withStory": false,
