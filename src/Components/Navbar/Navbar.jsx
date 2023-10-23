@@ -56,7 +56,7 @@ export default function Navbar() {
           <p>How do you want your items?</p>
           <i className="fa-solid fa-chevron-down" style={{cursor:'pointer'}}></i> 
           </div>
-          <div className="d-flex gap-3">
+          <div className="d-none gap-3 d-lg-flex d-xl-flex">
           <Link to='/grocery'>Groceries & Essentials </Link>
           <Link to='/beauty'>Beauty</Link>
           <Link to='/kids'>Kids</Link>
