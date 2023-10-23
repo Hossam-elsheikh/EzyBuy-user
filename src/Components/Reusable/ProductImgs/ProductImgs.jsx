@@ -16,10 +16,10 @@ export default function ProductImgs() {
 return <>
  <div className="card">
             <div className="mb-3">
-                <Button icon="pi pi-minus" onClick={prev} />
-                <Button icon="pi pi-plus" onClick={next} className="p-button-secondary ml-2" />
+                {/* <Button icon="pi pi-minus" onClick={prev} />
+                <Button icon="pi pi-plus" onClick={next} className="p-button-secondary ml-2" /> */}
             </div>
-          <Galleria
+          {/* <Galleria
                 value={images}
                 activeIndex={activeIndex}
                 onItemChange={(e) => setActiveIndex(e.index)}
@@ -28,7 +28,7 @@ return <>
                 item={itemTemplate}
                 thumbnail={thumbnailTemplate}
                 style={{ maxWidth: '640px' }}
-            />
+            /> */}
 </div>
 <div className='bg-dark w-25'>
   

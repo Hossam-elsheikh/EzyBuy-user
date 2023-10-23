@@ -58,13 +58,14 @@ export default function Navbar() {
           </div>
           <div className="d-flex gap-3">
 
-          <Link>Deals</Link>
-          <Link>Deals</Link>
-          <Link>Deals</Link>
-          <Link>Deals</Link>
-          <Link>Deals</Link>
-          <Link>Deals</Link>
-          <Link>Deals</Link>
+          <Link>Groceries & Essentials </Link>
+          <Link>Halloween</Link>
+          <Link>Beauty</Link>
+          <Link>Kids</Link>
+          <Link>Toy Shop</Link>
+          <Link>Fashion</Link>
+          <Link>Home</Link>
+          <Link>Electronics</Link>
           </div>
         </div>
       </nav>
