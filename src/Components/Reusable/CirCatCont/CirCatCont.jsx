@@ -1,8 +1,9 @@
 import CircleCat from "../CircleCat/CircleCat";
-export default function CirCatCont() {
+export default function CirCatCont(props) {
   return <>
   <div className="container">
-    <div className="row col-lg-9">
+  <h5 className="ms-3">{props.name}</h5>
+    <div className="row">
       <CircleCat image="https://i5.walmartimages.com/dfw/4ff9c6c9-6a9c/k2-_752a86d4-3dad-4536-a126-575ff0fdc50b.v1.jpg" name="Fresh food"/>
       <CircleCat image="https://i5.walmartimages.com/dfw/4ff9c6c9-1f62/k2-_14026032-82a9-4a17-9002-c4f978bcdd55.v1.jpg" name="Meat & seafood"/>
       <CircleCat image="https://i5.walmartimages.com/dfw/4ff9c6c9-5e8e/k2-_877cd1de-03d3-44c0-b4ba-08f2d445ca1a.v1.jpg" name="Pantry staples"/>

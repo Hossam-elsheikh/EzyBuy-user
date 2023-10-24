@@ -3,7 +3,7 @@ export default function CircleCat(props) {
   return (
     <>
       <div
-        className="col-lg-2 col-md- col-sm-4 mb-3"
+        className="col-lg-2 col-md-6 col-sm-4 mb-3" 
         style={{textAlign: "center"}}
       >
         <a href="#" className={classes.noDe}>

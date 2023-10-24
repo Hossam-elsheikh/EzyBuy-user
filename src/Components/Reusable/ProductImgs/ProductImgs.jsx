@@ -66,7 +66,7 @@ return <>
             <div className="mb-3 d-flex justify-content-center">
               
             <Galleria
-                value={...images}
+                value={images}
                 activeIndex={activeIndex}
                 onItemChange={(e) => setActiveIndex(e.index)}
                 responsiveOptions={responsiveOptions}
