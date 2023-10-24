@@ -6,7 +6,7 @@ import CardCont from "../Components/Reusable/CardCont/CardCont";
 const GroceryPage = () => {
   return (
     <>
-      <div className="container">
+      <div className="">
         <div className="row">
           <div className="col-lg-3">
             <DropDownCont />
