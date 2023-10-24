@@ -89,3 +89,39 @@ input[type="search"]:focus {
 .cart img {
     width: auto;
 }
+
+.bkdrop{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.523);
+}
+.mobNav{
+    background-color: var(--main-color);
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    max-width: 300px;
+    flex-direction: column;
+    padding: 1rem .2rem;
+    margin-left: -600px;
+    justify-content: center;
+    animation: slide .4s ease-in-out forwards;
+}
+
+.mobNav a:hover {
+    color: var(--sec-color);
+}
+@keyframes slide {
+    0%{
+        margin-left: -600px;
+    }
+    100%{
+        margin-left: 0;
+    }
+}

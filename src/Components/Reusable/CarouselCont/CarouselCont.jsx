@@ -85,7 +85,7 @@ export default function CarouselCont(props) {
   ];
   return (
     <>
-      <div>
+      <div className="d-flex flex-column w-100">
         <div className="d-flex justify-content-between align-items-center">
           <h5>{props.headline}</h5>
           <Link style={{ color: "black" }}>View all</Link>

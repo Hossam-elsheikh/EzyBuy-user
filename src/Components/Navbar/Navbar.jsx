@@ -2,17 +2,25 @@ import { Link, NavLink } from "react-router-dom";
 
 import classes from "./Navbar.module.css";
 import cart from '../../assets/cart.svg'
+import MobNav from "./MobNav";
+import { useState } from "react";
 export default function Navbar() {
+  const [display, setDisplay]=useState(false)
+
+  function displayHandler(){
+    setDisplay(!display)
+  }
   return (
     <>
       <nav className={classes.nav}>
         <div className={classes.main_nav}>
 
-        
+        <div className={classes.bkdrop} style={{display:display?'block':'none'}} onClick={()=>displayHandler()}></div>
         <div className="d-flex align-items-center gap-2">
       <div className="show">
-        <i className="fa-solid fa-bars" ></i>
+        <i className="fa-solid fa-bars" style={{cursor:'pointer'}} onClick={()=>displayHandler()}></i>
         </div>
+        <MobNav onclick={()=>displayHandler()} display={display ? 'flex' : 'none'}/>
         <Link to="/">
           <img
             src="https://i.ibb.co/6X1M1bf/logo-04.png"
