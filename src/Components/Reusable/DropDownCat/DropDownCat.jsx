@@ -12,25 +12,25 @@ const [changeIcon , setChangeIcon] = useState('down')
 
   return (
     <>
-    <div className='col-lg-4 col-md-8 col-sm-8 '>
+    <div className='w-100'>
       <div className="dropdown">
         <button
-          className=" btn border border-white"
+          className=" btn border border-white w-100"
           type="button"
           onClick={toggleDropdown}
-          data-bs-toggle="dropdown"
           aria-expanded={isDropdownOpen}
+
         >
-          <div className>
+          <div className='d-flex justify-content-between'>
             <img
               src={props && props.image?props.image:"https://i5.walmartimages.com/dfw/4ff9c6c9-877b/k2-_17060cce-fa02-455e-a0be-eda182b82de2.v1.jpg"}
-              className="w-25 rounded-circle "
+              className={`rounded-circle ${classes.widhtimageCat}`}
             />
-            <span className="ms-1">{props&&props.name?props.name:"Fresh food"}</span>
-            <i className={`fa-solid fa-chevron-${changeIcon} ms-5 ${isDropdownOpen?'open':''}`}></i>
+            <span className='mt-3'>{props&&props.name?props.name:"Fresh food"}</span>
+            <i className={`fa-solid fa-chevron-${changeIcon} mt-3  ${isDropdownOpen?'open':''}`}></i>
           </div>
         </button>
-        <ul className={` ${classes.c} ms-3 border border-white ${isDropdownOpen?'hied':'show'}`}>
+        <ul className={` ${classes.c} border border-white  ${isDropdownOpen?'hied':'show'}`}>
           <li>
             <a className="dropdown-item " href="#">
               Shop All

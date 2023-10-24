@@ -2,9 +2,16 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    margin-left: 60px;
+    margin-bottom: 10px;
+    font-size: 12px;
 }
 
 .c li:hover {
     text-decoration: underline 1px;
+}
+.widhtimageCat{
+    width:50px;
+}
+.fachevron{
+    margin-left: 40px;
 }

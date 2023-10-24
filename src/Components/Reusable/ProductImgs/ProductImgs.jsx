@@ -68,7 +68,7 @@ return <>
             </div>
 
             <Galleria
-                value={...images}
+                value={images}
                 activeIndex={activeIndex}
                 onItemChange={(e) => setActiveIndex(e.index)}
                 responsiveOptions={responsiveOptions}
