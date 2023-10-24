@@ -64,11 +64,10 @@ setImages(data);
 return <>
       <div className="card w-50">
             <div className="mb-3 d-flex justify-content-between">
-                {/* <Button icon="bg-danger fa fa-minus fs-3" onClick={prev} /> 
-                <Button icon="fa fa-plus bg-danger fs-3 " onClick={next} className="p-button-secondary ml-2" /> */}
+              
             </div>
 
-            {/* <Galleria
+            <Galleria
                 value={...images}
                 activeIndex={activeIndex}
                 onItemChange={(e) => setActiveIndex(e.index)}
@@ -77,7 +76,7 @@ return <>
                 item={itemTemplate}
                 thumbnail={thumbnailTemplate}
                 style={{ maxWidth: '600px'  }}
-            /> */}
+            />
         </div>
 
 <div className='bg-dark w-25'>
