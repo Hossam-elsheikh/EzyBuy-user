@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import style from './ProductDetails.module.css'
 export default function ProductDetails() {
   return <>
-    <div>
+    <div className={`${style.ps}  `}>
       <Link to={'#'}>Apple</Link>
 
       <h4>
@@ -47,7 +47,7 @@ export default function ProductDetails() {
               <img alt="intent image for Shipping" src="https://i5.walmartimages.com/dfwrs/76316474-f13c/k2-_d4e8ebb4-9d70-46b4-8f2b-ecc4ac774e07.v1.png" width="32" height="32" aria-hidden="true" />
             </div>
             <div >Shipping</div>
-            <div className="">Arrives Oct 26</div><div className="mt1 h1">
+            <div className="">Arrives Oct 26</div><div className="mt-1 h1">
               <div className="h2" >Free</div>
             </div>
           </label>

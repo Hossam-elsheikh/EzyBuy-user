@@ -242,24 +242,24 @@ export default function CustomerReview() {
                 <div className=" d-flex mb-2 flex-nowrap" role="list">
                   <div role="listitem">
                     <button aria-pressed="false" className={`${style.list}`} type="button">
-                      <div className="">Storage (20)</div>
+                      <div className="">Storage(20)</div>
                       
                     </button>
                   </div>
                   <div role="listitem">
                     <button aria-pressed="false"className={`${style.list}`} type="button">
-                      <div className="">Kids (18)</div>
+                      <div className="">Kids(18)</div>
                       
                     </button></div>
                   <div role="listitem">
                     <button aria-pressed="false" className={`${style.list}`} type="button">
-                      <div className="">Charging (17)</div>
+                      <div className="">Charging(17)</div>
   
                     </button>
                   </div>
                   <div role="listitem">
                     <button aria-pressed="false" className={`${style.list}`} type="button">
-                      <div className="">Quality (17)</div>
+                      <div className="">Quality(17)</div>
   
                     </button>
                   </div>
