@@ -549,9 +549,9 @@ export default function CustomerReview() {
                   </div>
             </div>
           </div>
-          <div className="mb-4">
-            <Link className="     items-center "  to="#">See all reviews</Link>
-          </div>
+          
+            <button className={`btn  ${style.btn5}` }  to="#">See all reviews</button>
+          
         </div>
         </section>
       </main>
