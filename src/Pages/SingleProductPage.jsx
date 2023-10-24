@@ -8,20 +8,20 @@ import ProductDetails from '../Components/Reusable/ProductDetails/ProductDetails
 const SingleProductPage = () => {
   return <>
 
-<Container>
+<div className="container-fluid">
+<div className='row'>
+  <div className="col-md-8 ">
   <ProductImgs/>
-  <ProductDetails/>
-  </Container>
-   {/*  ------------------ */}
-   <Container>
-    <ProdSpecs/>
-   </Container>
-
-   {/* ---------------------- */}
-
-<Container>
+  <ProdSpecs />
   <CustomerReview/>
-</Container>
+  </div>
+  <div className="col-md-4">
+  <ProductDetails/>
+  </div>
+</div>
+</div>
+
+
 </>
 }
 

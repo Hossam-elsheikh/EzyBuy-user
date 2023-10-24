@@ -58,25 +58,24 @@ setImages(data);
     }
 
     const thumbnailTemplate = (item) => {
-        return <img src={item} alt="details" style={{ display: 'block' ,width:"100%" , height:"100%"}} />;
+        return <img src={item} alt="details"  style={{ display: 'block' ,width:"100%" , height:"100%"}} />;
     }
 
 return <>
-      <div className="card w-50">
-            <div className="mb-3 d-flex justify-content-between">
+      <div className="card ">
+            <div className="mb-3 d-flex justify-content-center">
               
-            </div>
-
             <Galleria
                 value={...images}
                 activeIndex={activeIndex}
                 onItemChange={(e) => setActiveIndex(e.index)}
                 responsiveOptions={responsiveOptions}
-                numVisible={4}
+                numVisible={0}
                 item={itemTemplate}
                 thumbnail={thumbnailTemplate}
                 style={{ maxWidth: '600px'  }}
             />
+            </div>
         </div>
 
 <div className='bg-dark w-25'>

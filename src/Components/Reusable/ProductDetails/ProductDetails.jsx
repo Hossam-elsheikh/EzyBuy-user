@@ -6,13 +6,14 @@ export default function ProductDetails() {
     <div>
       <Link to={'#'}>Apple</Link>
 
-      <h2>
+      <h4>
         Open Box | Apple iPad | 9.7-inch Retina | 128GB | Latest OS | Wi-Fi Only | Bundle: Case, Pre-Installed Tempered Glass,
         Rapid Charger,
         Bluetooth/Wireless Airbuds By Certified 2 Day Express
-      </h2>
+      </h4>
 
-      <li className="list-unstyled"><i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i>
+      <li className="list-unstyled mt-3">
+        <i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i>
         <i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i>
         <i className="fa fa-star-half" aria-hidden="true"></i> (4.7) <a href=""> 1406 revewis</a>
       </li>
@@ -21,13 +22,13 @@ export default function ProductDetails() {
         <h5 className="text-success fw-bolder">You save $31.00</h5>
       </div>
 
-      <div>
+      <div className="mt-5">
         <button className="btn btn-light border border-2 border-black rounded-4 me-3 " style={{ width: "48%" }}>Buy Now</button>
         <button className="btn btn-primary border border-2 border-black rounded-4 " style={{ width: "48%" }}>Add To Cart</button>
       </div>
 
       <span className="d-flex fw-bolder h5 mt-3">Actual Color :
-        <div className=" bg-black br-100 ml1  h1 w1 rounded-circle"
+        <div className=" bg-black  h1  rounded-circle ms-3 me-2"
           style={{
             backgroundImage: "url('https://i5.walmartimages.com/asr/f6436cc4-e137-449c-8873-00e41924287d_1.6d05503a2d18b114b37183557ed9ccf5.png?odnHeight=50&odnWidth=50&odnBg=FFFFFF')",
             backgroundRepeat: "no-repeat", height: "30px", width: "30px"
@@ -38,11 +39,11 @@ export default function ProductDetails() {
 
 
       <div className="mt-3">
-        <h1>How do you want your item?</h1>
+        <h3>How do you want your item?</h3>
         <button aria-pressed="false" className=" bg-white  pointer   " type="button" style={{ width: "calc(33.333333333333336%)", height: "auto", boxShadow: "none", backgroundColor: "#FFFFFF" }}>
           <label for="fulfillment-Shipping" data-testid="shipping-tile">
             <input type="radio" aria-checked="false" className="" id="fulfillment-Shipping" name="fulfillment-option" tabindex="-1" readonly="" />
-            <div>
+            <div >
               <img alt="intent image for Shipping" src="https://i5.walmartimages.com/dfwrs/76316474-f13c/k2-_d4e8ebb4-9d70-46b4-8f2b-ecc4ac774e07.v1.png" width="32" height="32" aria-hidden="true" />
             </div>
             <div >Shipping</div>
@@ -98,24 +99,24 @@ export default function ProductDetails() {
                 1611 seller reviews
               </span>
             </div>
-            <div ><Link to="#">View seller information</Link>
+            <div className="mt-2" ><Link to="#">View seller information</Link>
             </div>
           </div>
           </div>
         </div>
 
 
-        <div className="mt3">
+        <div className="mt-3">
           <div className="d-flex " >
             <img  src="https://i5.walmartimages.com/dfw/63fd9f59-e685/7e6c8c3a-3ba7-437a-a066-de3ad3a6a15a/v1/roundReturn.svg" width="20" height="20" alt="" className="mt-1 me-2"/>
             <div className="return-label-container">
               <div className="" style={{display:"flex", alignItems: "center"}}>
-              <span className="">Extended holiday returns</span>
-              <button className="" type="button" aria-label="Details of Return policy" style={{lineHeight: "inherit"}}>Details
+              <span className="h5">Extended holiday returns</span>
+              <button className="border-0 ms-3 text-decoration-underline " type="button" aria-label="Details of Return policy" style={{lineHeight: "inherit"}}>Details
               </button>
               </div>
-              <span className="f7">Free Holiday returns until 
-              <strong>Jan 31</strong>
+              <span className="">Free Holiday returns until 
+              <strong> Jan 31</strong>
           </span>
           </div>
           </div>
@@ -123,11 +124,6 @@ export default function ProductDetails() {
 
 
       </div>
-
-
-
-
-
     </div>
   </>
 }
