@@ -18,11 +18,11 @@ export default function Home() {
     {
       imgURL:
         "https://i5.walmartimages.com/dfw/4ff9c6c9-e5d3/k2-_78b09564-e996-47ed-abc4-acd5f980158c.v1.jpg?odnHeight=256&odnWidth=385&odnBg=&odnDynImageQuality=70",
-      title: "Host and Haunted \nNights",
+      title: "Host and Haunted \n Nights",
     },
     {
       imgURL: "https://i5.walmartimages.com/dfw/4ff9c6c9-a7f6/k2-_60daf5f8-6385-4594-b209-4faec78010cc.v1.jpg?odnHeight=578",
-      title: "Conjure Up \n Your Look",
+      title: 'Conjure\n Up \n Your Look',
     },
     {
       imgURL:'https://i5.walmartimages.com/dfw/4ff9c6c9-de54/k2-_160cc920-b447-4adb-947e-6b22db3f5859.v1.jpg?odnHeight=216&odnWidth=385&odnBg=&odnDynImageQuality=70',
@@ -60,7 +60,7 @@ export default function Home() {
   ];
   return (
     <>
-      <div className="d-flex flex-column gap-4">
+      <div className="d-flex flex-column gap-4 align-items-center w-100">
         {/* Grid */}
         <div className="row d-flex w-100 justify-content-center ">
           <div className="d-flex align-items-center flex-column gap-4 col-6 col-md-6 col-xl-3 col-lg-3 mb-4">

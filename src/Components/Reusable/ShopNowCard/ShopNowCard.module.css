@@ -1,13 +1,13 @@
 .card{
     display: flex;
- border-radius: 15px;
+ border-radius: 5px;
  width: fit-content;
  position: relative
 }
 
 .card img {
     display: flex;
-    border-radius: 15px;
+    border-radius: 5px;
 }
 
 .card h3 {
