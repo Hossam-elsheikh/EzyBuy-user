@@ -1,2 +1,6 @@
 .ProductDetails {}
 
+.ps{
+    position: fixed;
+    /* position:sticky; */
+}

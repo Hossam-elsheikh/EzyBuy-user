@@ -1,8 +1,8 @@
 // import style from './ProdSpecs.module.css'
 export default function ProdSpecs() {
   return <>
-    <section data-testid="product-description"><div>
-      <h2 className="mt-4 mb-4 ">About this item</h2>
+    <section data-testid="product-description" className="mt-5"><div>
+      <h2 className="mt-5 mb-4 ">About this item</h2>
     </div>
       <hr aria-hidden="true" />
       <section className="expand-collapse-section" aria-describedby="delivery-instructions">
@@ -10,8 +10,8 @@ export default function ProdSpecs() {
         <div className="expand-collapse-header d-flex justify-between items-center w-100">
           <h3 className="w-100 ">Product details</h3>
           <div className="">
-            <button className="bg-transparent sans-serif  pointer  bw0 bg-white pt-3" type="button" aria-expanded="true" aria-label="Product details">
-              <i className="" style={{ fontSize: "1.5rem", verticalAlign: "-0.25em", width: "1.5rem", height: "1.5rem", boxSizing: "content-box" }}></i>
+            <button className="bg-transparent sans-serif  pointer  border-0 bg-white pt-3" type="button" aria-expanded="true" aria-label="Product details">
+              <i className="fa fa-chevron-up" style={{ fontSize: "1.5rem", verticalAlign: "-0.25em", width: "1.5rem", height: "1.5rem", boxSizing: "content-box" }}></i>
             </button>
           </div>
         </div>
@@ -130,7 +130,7 @@ export default function ProdSpecs() {
                 <div>
                   <span className="">We aim to show you accurate product information.
                   </span>Manufacturers, suppliers and others provide what you see here, and we have not verified it.&nbsp;&nbsp;
-                  <button type="button" className=" pointer b--none bg-transparent sans-serif dark-gray ph0" aria-label="See our disclaimer">See our disclaimer
+                  <button type="button" className=" pointer border-0 bg-transparent sans-serif text-decoration-underline" aria-label="See our disclaimer">See our disclaimer
                   </button>
                 </div>
               </div>
@@ -143,11 +143,11 @@ export default function ProdSpecs() {
 
     <section className="expand-collapse-section " aria-describedby="delivery-instructions">
       <hr aria-hidden="true" className="" />
-      <div className="expand-collapse-header flex justify-between items-center w-100" >
+      <div className="expand-collapse-header d-flex justify-content-between align-items-center w-100" >
         <h2 className="w-100 ">Specifications</h2>
         <div className="">
-          <button className="bg-transparent   sans-serif  pointer  bg-white pt-3" type="button" aria-expanded="true" aria-label="Specifications">
-            <i className="" style={{ fontSize: "1.5rem", verticalAlign: "-0.25em", width: "1.5rem", height: "1.5rem", boxSizing: "content-box" }}></i>
+          <button className="bg-transparent   sans-serif  pointer border-0 pt-3" type="button" aria-expanded="true" aria-label="Specifications">
+            <i className=" fas fa-chevron-up" style={{ fontSize: "1.5rem", verticalAlign: "-0.25em", width: "1.5rem", height: "1.5rem", boxSizing: "content-box" }}></i>
           </button>
         </div>
       </div>
@@ -285,12 +285,12 @@ export default function ProdSpecs() {
       <div className="expand-collapse-header d-flex justify-content-between align-items-center w-100">
         <h2 className="w-100">Warranty</h2>
         <div className="">
-          <button className="bg-transparent sans-serif  pointer  bg-white pt-3" type="button" aria-expanded="true" aria-label="Warranty">
-            <i className="" style={{fontSize: "1.5rem", verticalAlign: "-0.25em", width: "1.5rem", height: "1.5rem", boxSizing: "content-box"}}></i>
+          <button className="bg-transparent sans-serif  pointer  border-0 pt-3" type="button" aria-expanded="true" aria-label="Warranty">
+            <i className="fa fa-chevron-up" style={{ fontSize: "1.5rem", verticalAlign: "-0.25em", width: "1.5rem", height: "1.5rem", boxSizing: "content-box" }}></i>
           </button>
         </div>
       </div>
-      <div className=" expand-collapse-content" data-testid="ui-collapse-panel" style={{height: "auto"}}>
+      <div className=" expand-collapse-content" data-testid="ui-collapse-panel" style={{ height: "auto" }}>
         <div className=" pb-4 pt-1">
           <div className="">
             <div className="pb-2">

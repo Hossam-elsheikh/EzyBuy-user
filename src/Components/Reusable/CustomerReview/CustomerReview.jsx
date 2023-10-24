@@ -242,24 +242,24 @@ export default function CustomerReview() {
                 <div className=" d-flex mb-2 flex-nowrap" role="list">
                   <div role="listitem">
                     <button aria-pressed="false" className={`${style.list}`} type="button">
-                      <div className="">Storage (20)</div>
+                      <div className="">Storage(20)</div>
                       
                     </button>
                   </div>
                   <div role="listitem">
                     <button aria-pressed="false"className={`${style.list}`} type="button">
-                      <div className="">Kids (18)</div>
+                      <div className="">Kids(18)</div>
                       
                     </button></div>
                   <div role="listitem">
                     <button aria-pressed="false" className={`${style.list}`} type="button">
-                      <div className="">Charging (17)</div>
+                      <div className="">Charging(17)</div>
   
                     </button>
                   </div>
                   <div role="listitem">
                     <button aria-pressed="false" className={`${style.list}`} type="button">
-                      <div className="">Quality (17)</div>
+                      <div className="">Quality(17)</div>
   
                     </button>
                   </div>
@@ -284,11 +284,12 @@ export default function CustomerReview() {
             <hr aria-hidden="true" className="" />
           </div>
           <div className=" ">
-            <div className="row  bg-info   overflow-visible ">
+            <div className="row d-flex  ">
               
-                  <div className="col-sm-6 shadow-lg"><div>
-                    <div className="overflow-visible h-100">
-                      <div className=" border border-1 border-black p-3  ">
+                  
+                    
+                    <div className="overflow-visible h-100 col-sm-5 shadow-lg border border-1 border-black   border-opacity-25 ms-3">
+                      <div className="   p-2 ">
                         <div className="d-flex flex-wrap  justify-content-center mb-3 ">
                           <div className="d-flex flex-grow-1"><div>
                             <span className="">
@@ -305,7 +306,7 @@ export default function CustomerReview() {
                               <span className="">
                                 <button className="bg-transparent border-0   pointer " type="button" aria-expanded="false" aria-label="Seller Verified Purchase information" aria-controls="">
                                   <i className=" fa fa-info-circle " style={{fontSize: "1rem", verticalAlign:" -0.175em", width: "1rem", height: "1rem", boxSizing: "content-box"}}></i>
-                                </button><div id=""></div>
+                                </button>
                               </span>
                             </div>
                           </div>
@@ -342,9 +343,9 @@ export default function CustomerReview() {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  </div>
-                  <div className=" border border-1 border-black p-3 col-sm-6  shadow-lg "><div>
+                  
+                  
+                  <div className=" border border-1 border-black p-3 border-opacity-25 col-sm-5  shadow-lg ms-4 "><div>
                     <div className=" overflow-visible h-100">
                       <div className="">
                         <div className="d-flex flex-wrap  justify-content-center mb-3">
@@ -390,7 +391,7 @@ export default function CustomerReview() {
                   </div>
                   </div>
                 
-                  <div className=" border border-1 border-black p-3 col-sm-6  shadow-lg mt-3  ">
+                  <div className=" border border-1 border-black p-3 border-opacity-25 col-sm-5  shadow-lg mt-3 ms-3  ">
                     <div>
                       <div className=" overflow-visible h-100">
                         <div className=""><div className="d-flex flex-wrap  justify-content-center mb-3">
@@ -439,8 +440,8 @@ export default function CustomerReview() {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className=" border border-1 border-black p-3   col-sm-6  shadow-lg mt-3"><div>
+                  </div> 
+                  <div className=" border border-1 border-black p-3  border-opacity-25 col-sm-5  shadow-lg mt-3 ms-4"><div>
                     <div className=" overflow-visible h-100">
                       <div className="">
                         <div className="d-flex flex-wrap  justify-content-center mb-3">
@@ -489,7 +490,7 @@ export default function CustomerReview() {
                     </div>
                   </div>
                   </div>
-                  <div className=" border border-1 border-black p-3 col-sm-6  shadow-lg mt-3 "><div>
+                  <div className=" border border-1 border-black p-3 border-opacity-25 col-sm-5  shadow-lg mt-3 ms-3 "><div>
                     <div className=" overflow-visible h-100">
                       <div className="">
                         <div className="d-flex flex-wrap  justify-content-center mb-3">
@@ -548,9 +549,9 @@ export default function CustomerReview() {
                   </div>
             </div>
           </div>
-          <div className="mb-4 tc">
-            <Link className="     items-center "  to="#">See all reviews</Link>
-          </div>
+          
+            <button className={`btn  ${style.btn5}` }  to="#">See all reviews</button>
+          
         </div>
         </section>
       </main>
