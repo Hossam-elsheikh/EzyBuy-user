@@ -1,6 +1,10 @@
 .noDe {
     text-decoration: none;
     color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 }
 .widthImg{
