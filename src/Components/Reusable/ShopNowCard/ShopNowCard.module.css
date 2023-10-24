@@ -1,1 +1,25 @@
-.ShopNowCard {}
+.card{
+    display: flex;
+ border-radius: 15px;
+ width: fit-content;
+ position: relative
+}
+
+.card img {
+    display: flex;
+    border-radius: 15px;
+}
+
+.card h3 {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+.card a {
+    position: absolute;
+    font-size: .7rem;
+    top: 5rem;
+    left: 1rem;
+    color: black;
+}
