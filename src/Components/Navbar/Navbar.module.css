@@ -110,7 +110,6 @@ input[type="search"]:focus {
     flex-direction: column;
     padding: 1rem .2rem;
     margin-left: -600px;
-    justify-content: center;
     animation: slide .4s ease-in-out forwards;
 }
 
