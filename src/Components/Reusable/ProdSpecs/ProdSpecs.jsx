@@ -2,9 +2,9 @@
 export default function ProdSpecs() {
   return <>
     <section data-testid="product-description" className="mt-5"><div>
-      <h5 className="mt-5 mb-4 ">About this item</h5>
+      <h5 className=" mb-4 ">About this item</h5>
     </div>
-      <hr aria-hidden="true" />
+      <hr  />
       <section className="expand-collapse-section" aria-describedby="delivery-instructions">
         <hr aria-hidden="true" />
         <div className="expand-collapse-header d-flex justify-between items-center w-100">

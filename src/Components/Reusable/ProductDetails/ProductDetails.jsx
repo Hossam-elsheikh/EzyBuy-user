@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import style from './ProductDetails.module.css'
 export default function ProductDetails() {
   return <>
-    <div className={`border border-1 p-3`}>
+    <div className={`border border-1 p-3 ${style.ps}`}>
       <Link to={'#'}>Apple</Link>
 
       <h5>

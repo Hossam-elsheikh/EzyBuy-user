@@ -62,9 +62,12 @@ setImages(data);
     }
 
 return <>
-      <div className="card ">
-            <div className="mb-3 d-flex justify-content-center">
-              
+      <div className="card mb-5 ">
+            <div className=" ">
+                <div className='text-end fs-4'>
+                <i class="fa-regular fa-heart" aria-hidden="true"></i>
+                </div>
+                
             <Galleria
                 value={images}
                 activeIndex={activeIndex}
@@ -73,12 +76,12 @@ return <>
                 numVisible={0}
                 item={itemTemplate}
                 thumbnail={thumbnailTemplate}
-                style={{ maxWidth: '600px'  }}
+                style={{ maxWidth: '800px'  }}
             />
             </div>
         </div>
 
-<div className='bg-dark w-25'>
+{/* <div className='bg-dark w-25'> */}
   
 {/* <Slider {...settings} className='w-100  '>
             
@@ -99,7 +102,7 @@ return <>
             </div>
   
   </Slider> */}
-</div>
+{/* </div> */}
   
   </>
 }

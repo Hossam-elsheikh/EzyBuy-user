@@ -10,7 +10,7 @@ const SingleProductPage = () => {
 
 
 <div className='row 'style={{width:"93%"}}>
-  <div className="col-md-8  " >
+  <div className="col-md-8 " >
   <ProductImgs/>
   </div>
   <div className="col-md-4">
@@ -21,7 +21,6 @@ const SingleProductPage = () => {
   <CustomerReview/>
   </div>
 </div>
-
 
 </>
 }
