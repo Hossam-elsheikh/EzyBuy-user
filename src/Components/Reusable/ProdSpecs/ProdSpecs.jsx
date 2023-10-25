@@ -2,29 +2,29 @@
 export default function ProdSpecs() {
   return <>
     <section data-testid="product-description" className="mt-5"><div>
-      <h2 className="mt-5 mb-4 ">About this item</h2>
+      <h5 className="mt-5 mb-4 ">About this item</h5>
     </div>
       <hr aria-hidden="true" />
       <section className="expand-collapse-section" aria-describedby="delivery-instructions">
         <hr aria-hidden="true" />
         <div className="expand-collapse-header d-flex justify-between items-center w-100">
-          <h3 className="w-100 ">Product details</h3>
+          <h6 className="w-100 ">Product details</h6>
           <div className="">
             <button className="bg-transparent sans-serif  pointer  border-0 bg-white pt-3" type="button" aria-expanded="true" aria-label="Product details">
               <i className="fa fa-chevron-up" style={{ fontSize: "1.5rem", verticalAlign: "-0.25em", width: "1.5rem", height: "1.5rem", boxSizing: "content-box" }}></i>
             </button>
           </div>
         </div>
-        <div className=" expand-collapse-content" data-testid="ui-collapse-panel" style={{ height: "auto" }}>
+        <div className=" expand-collapse-content " data-testid="ui-collapse-panel" style={{ height: "auto" }}>
           <div className=" pb-4 pt-1"><div className="nb3" data-testid="product-description-content">
             <div className="mb-3">
-              <span className="     overflow-visible " style={{ paddingBottom: "0em", marginBottom: "0em" }}>
-                <div className="dangerous-html mb3">iPad Wi-Fi 128GB - An immersive 9.7-inch Multi-Touch Retina display. 8MP camera. FaceTime HD camera. Screen Resolution:2048 x 1536. Processor Model:A10 Fusion chip with 64-bit architecture, Embedded M10 coprocessor.</div>
+              <span className="   overflow-visible " style={{ paddingBottom: "0em", marginBottom: "0em" }}>
+                <div className="fw-bold mb-3">iPad Wi-Fi 128GB - An immersive 9.7-inch Multi-Touch Retina display. 8MP camera. FaceTime HD camera. Screen Resolution:2048 x 1536. Processor Model:A10 Fusion chip with 64-bit architecture, Embedded M10 coprocessor.</div>
               </span>
             </div>
-            <div className="mb3">
+            <div className="mb-3">
               <span className="   overflow-visible " style={{ paddingBottom: "0em", marginBottom: "0em" }}>
-                <div className="dangerous-html mb3">
+                <div className="dangerous-html mb-3">
                   <ul>
                     <li>
                       Size and Weight
@@ -144,7 +144,7 @@ export default function ProdSpecs() {
     <section className="expand-collapse-section " aria-describedby="delivery-instructions">
       <hr aria-hidden="true" className="" />
       <div className="expand-collapse-header d-flex justify-content-between align-items-center w-100" >
-        <h2 className="w-100 ">Specifications</h2>
+        <h5 className="w-100 ">Specifications</h5>
         <div className="">
           <button className="bg-transparent   sans-serif  pointer border-0 pt-3" type="button" aria-expanded="true" aria-label="Specifications">
             <i className=" fas fa-chevron-up" style={{ fontSize: "1.5rem", verticalAlign: "-0.25em", width: "1.5rem", height: "1.5rem", boxSizing: "content-box" }}></i>
@@ -155,70 +155,70 @@ export default function ProdSpecs() {
         <div className=" pb-4 pt-1">
           <div className="">
             <div className="pb-2">
-              <h3 className="d-flex align-items-center pb-1 ">Processor Brand</h3>
+              <h6 className="d-flex align-items-center pb-1 ">Processor Brand</h6>
               <div className="">
                 <span>Apple</span>
               </div>
             </div>
             <div className="pb-2">
-              <h3 className="d-flex align-items-center pb-1 ">Processor Type</h3>
+              <h5 className="d-flex align-items-center pb-1 ">Processor Type</h5>
               <div className="">
                 <span>Apple A9</span>
               </div>
             </div>
             <div className="pb-2">
-              <h3 className="d-flex align-items-center pb-1 ">Front-Facing Camera Megapixels</h3>
+              <h5 className="d-flex align-items-center pb-1 ">Front-Facing Camera Megapixels</h5>
               <div className="">
                 <span>1.2 MP</span>
               </div>
             </div>
             <div className="pb-2">
-              <h3 className="d-flex align-items-center pb-1 ">Processor Speed</h3>
+              <h5 className="d-flex align-items-center pb-1 ">Processor Speed</h5>
               <div className="">
                 <span>1.84 GHz</span>
               </div></div>
             <div className="pb-2">
-              <h3 className="d-flex align-items-center pb-1 ">Virtual Assistant</h3>
+              <h5 className="d-flex align-items-center pb-1 ">Virtual Assistant</h5>
               <div className="">
                 <span>Siri</span>
               </div>
             </div>
             <div className="pb-2">
-              <h3 className="d-flex align-items-center pb-1 ">Battery Life</h3>
+              <h5 className="d-flex align-items-center pb-1 ">Battery Life</h5>
               <div className="">
                 <span>10 h</span>
               </div>
             </div>
             <div className="pb-2">
-              <h3 className="d-flex align-items-center pb-1 ">Screen Size</h3>
+              <h5 className="d-flex align-items-center pb-1 ">Screen Size</h5>
               <div className="">
                 <span>9.7"</span>
               </div></div>
             <div className="pb-2">
-              <h3 className="d-flex align-items-center pb-1 ">Data Storage</h3>
+              <h5 className="d-flex align-items-center pb-1 ">Data Storage</h5>
               <div className="">
                 <span>128 GB</span>
               </div>
             </div>
             <div className="pb-2">
-              <h3 className="d-flex align-items-center  pb-1 ">Native Resolution</h3>
+              <h5 className="d-flex align-items-center  pb-1 ">Native Resolution</h5>
               <div className="">
                 <span>2048 x 1536</span>
               </div>
             </div>
             <div className="pb--2">
-              <h3 className="d-flex align-items-center  pb-1 ">Wireless Technology</h3>
+              <h5 className="d-flex align-items-center  pb-1 ">Wireless Technology</h5>
               <div className="">
                 <span>802.11n, Bluetooth, Wi-Fi, 802.11b, 802.11a, 802.11ac, 802.11g</span>
               </div>
             </div>
             <div className="pb-2">
-              <h3 className="d-flex align-items-center  pb-1 ">RAM Memory</h3>
+              <h5 className="d-flex align-items-center  pb-1 ">RAM Memory</h5>
               <div className=""><span>2 undefined</span>
               </div>
             </div>
             <div className="pb-2">
-              <h3 className="d-flex align-items-center  pb-1 ">Accessories Included</h3>
+              <h5 className="d-flex align-items-center  pb-1 ">Accessories Included</h5>
               <div className="">
                 <span>
                   <ul><li>Apple 9.7-inch iPad Wi-Fi</li>
@@ -228,48 +228,48 @@ export default function ProdSpecs() {
               </div>
             </div>
             <div className="pb-2">
-              <h3 className="d-flex align-items-center  pb-1 ">Rear-Facing Camera Megapixels</h3>
+              <h5 className="d-flex align-items-center  pb-1 ">Rear-Facing Camera Megapixels</h5>
               <div className="">
                 <span>8 MP</span>
               </div>
             </div>
             <div className="pb-2">
-              <h3 className="d-flex align-items-center  pb-1 ">Features</h3>
+              <h5 className="d-flex align-items-center  pb-1 ">Features</h5>
               <div className=""><span>Touch ID, Three-axis gyro, Accelerometer, Barometer, Ambient light sensor</span>
               </div>
             </div>
             <div className="pb-2">
-              <h3 className="d-flex align-items-center  pb-1 ">Brand</h3>
+              <h5 className="d-flex align-items-center  pb-1 ">Brand</h5>
               <div className="">
                 <span>Apple</span>
               </div>
             </div>
             <div className="pb-2">
-              <h3 className="d-flex align-items-center  pb-1 ">Manufacturer Part Number</h3>
+              <h5 className="d-flex align-items-center  pb-1 ">Manufacturer Part Number</h5>
               <div className="">
                 <span>iPad Air 128GB</span>
               </div>
             </div>
             <div className="pb-2">
-              <h3 className="a-flex align-items-center  pb-1 ">Operating System</h3>
+              <h5 className="a-flex align-items-center  pb-1 ">Operating System</h5>
               <div className="">
                 <span>Apple iOS</span>
               </div>
             </div>
             <div className="pb-2">
-              <h3 className="d-flex align-items-center  pb-1 ">Color</h3>
+              <h5 className="d-flex align-items-center  pb-1 ">Color</h5>
               <div className="">
                 <span>Silver</span>
               </div>
             </div>
             <div className="pb2">
-              <h3 className="d-flex align-items-center  pb-1 ">Assembled Product Weight</h3>
+              <h5 className="d-flex align-items-center  pb-1 ">Assembled Product Weight</h5>
               <div className="">
                 <span>1.05 lb</span>
               </div>
             </div>
             <div className="pb-2">
-              <h3 className="d-flex align-items-center  pb-1 ">Manufacturer</h3>
+              <h5 className="d-flex align-items-center  pb-1 ">Manufacturer</h5>
               <div className="">
                 <span>Apple</span>
               </div>
@@ -283,7 +283,7 @@ export default function ProdSpecs() {
     <section className="expand-collapse-section " aria-describedby="delivery-instructions">
       <hr aria-hidden="true" className="" />
       <div className="expand-collapse-header d-flex justify-content-between align-items-center w-100">
-        <h2 className="w-100">Warranty</h2>
+        <h5 className="w-100">Warranty</h5>
         <div className="">
           <button className="bg-transparent sans-serif  pointer  border-0 pt-3" type="button" aria-expanded="true" aria-label="Warranty">
             <i className="fa fa-chevron-up" style={{ fontSize: "1.5rem", verticalAlign: "-0.25em", width: "1.5rem", height: "1.5rem", boxSizing: "content-box" }}></i>
@@ -294,13 +294,13 @@ export default function ProdSpecs() {
         <div className=" pb-4 pt-1">
           <div className="">
             <div className="pb-2">
-              <h3 className="d-flex align-items-center    pb-1 ">Warranty length</h3>
+              <h6 className="d-flex align-items-center pb-1 ">Warranty length</h6>
               <div className="">
                 <span>1-year warranty</span>
               </div>
             </div>
             <div className="">
-              <h3 className="d-flex align-items-center    pb-1 ">Warranty information</h3>
+              <h6 className="d-flex align-items-center pb-1 ">Warranty information</h6>
               <div className="">
                 <span>Please be aware that the warranty terms on items offered for sale by third party Marketplace sellers may differ from those displayed in this section (if any). To confirm warranty terms on an item offered for sale by a third party Marketplace seller, please use the 'Contact seller' feature on the third party Marketplace seller's information page and request the item's warranty terms prior to purchase.</span>
               </div>

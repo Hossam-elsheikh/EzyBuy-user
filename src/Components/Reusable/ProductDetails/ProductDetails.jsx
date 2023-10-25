@@ -3,28 +3,28 @@ import { Link } from "react-router-dom";
 import style from './ProductDetails.module.css'
 export default function ProductDetails() {
   return <>
-    <div className={`${style.ps}  `}>
+    <div className={`border border-1 p-3`}>
       <Link to={'#'}>Apple</Link>
 
-      <h4>
+      <h5>
         Open Box | Apple iPad | 9.7-inch Retina | 128GB | Latest OS | Wi-Fi Only | Bundle: Case, Pre-Installed Tempered Glass,
         Rapid Charger,
         Bluetooth/Wireless Airbuds By Certified 2 Day Express
-      </h4>
+      </h5>
 
-      <li className="list-unstyled mt-3">
+      <li className=" d-flex list-unstyled mt-3">
         <i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i>
         <i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i>
         <i className="fa fa-star-half" aria-hidden="true"></i> (4.7) <a href=""> 1406 revewis</a>
       </li>
       <div className="mt-3">
-        <h2 className="text-success fw-bolder">Now $218.00 <a className={`text-decoration-line-through h5 text-dark-emphasis`}>$249.00</a>    </h2>
-        <h5 className="text-success fw-bolder">You save $31.00</h5>
+        <h2 className="text-success fw-bold">Now $218.00 <a className={`text-decoration-line-through h5 text-dark-emphasis`}>$249.00</a>    </h2>
+        <h5 className="text-success fw-bold">You save $31.00</h5>
       </div>
 
       <div className="mt-5">
-        <button className="btn btn-light border border-2 border-black rounded-4 me-3 " style={{ width: "48%" }}>Buy Now</button>
-        <button className="btn btn-primary border border-2 border-black rounded-4 " style={{ width: "48%" }}>Add To Cart</button>
+        <button className="btn btn-light border border-1 border-black rounded-4 me-3 " style={{ width: "45%" }}>Buy Now</button>
+        <button className="btn btn-primary border border-1 border-black rounded-4 " style={{ width: "45%" }}>Add To Cart</button>
       </div>
 
       <span className="d-flex fw-bolder h5 mt-3">Actual Color :
