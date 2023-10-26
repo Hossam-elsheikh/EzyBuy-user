@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import style from './ProductDetails.module.css'
 export default function ProductDetails() {
   return <>
-    <div className={`border border-1 p-3 ${style.ps}`}>
+    <div className={`border border-1 p-3 ${style.ps} `}>
       <Link to={'#'}>Apple</Link>
 
       <h5>
@@ -39,7 +39,7 @@ export default function ProductDetails() {
 
 
       <div className="mt-3">
-        <h3>How do you want your item?</h3>
+        <h5>How do you want your item?</h5>
         <button aria-pressed="false" className=" bg-white  pointer   " type="button" style={{ width: "calc(33.333333333333336%)", height: "auto", boxShadow: "none", backgroundColor: "#FFFFFF" }}>
           <label for="fulfillment-Shipping" data-testid="shipping-tile">
             <input type="radio" aria-checked="false" className="" id="fulfillment-Shipping" name="fulfillment-option" tabindex="-1" readonly="" />
@@ -60,7 +60,8 @@ export default function ProductDetails() {
               <img alt="intent image for Pickup" src="https://i5.walmartimages.com/dfwrs/76316474-8720/k2-_d747b89f-5900-404d-a101-1a3452480882.v1.png" width="32" height="32" aria-hidden="true" />
             </div>
             <div >Pickup</div>
-            <div >Not available</div></label></button>
+            <div >Not available</div></label>
+        </button>
 
         <button aria-pressed="false" className=" bg-white  pointer  " type="button" style={{ width: "calc(33.333333333333336%)", height: "auto", boxShadow: "none", backgroundColor: "#FFFFFF" }}>
           <label for="fulfillment-Delivery" data-testid="delivery-tile">

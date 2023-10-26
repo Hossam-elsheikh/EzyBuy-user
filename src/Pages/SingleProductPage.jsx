@@ -14,7 +14,9 @@ const SingleProductPage = () => {
   <ProductImgs/>
   </div>
   <div className="col-md-4">
+  <div >
   <ProductDetails/>
+  </div>
   </div>
   <div className="col-md-8">
   <ProdSpecs />

@@ -65,7 +65,9 @@ return <>
       <div className="card mb-5 ">
             <div className=" ">
                 <div className='text-end fs-4'>
-                <i class="fa-regular fa-heart" aria-hidden="true"></i>
+                <button className='border-0'>
+                <i class="fa-regular fa-heart  pointer"></i>
+                </button>
                 </div>
                 
             <Galleria
