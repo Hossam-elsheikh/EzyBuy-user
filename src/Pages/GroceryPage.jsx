@@ -9,7 +9,7 @@ const GroceryPage = () => {
       <div className="">
         <div className="row">
           <div className="col-lg-3">
-          <DropDownCont/>
+          <DropDownCont image="https://i5.walmartimages.com/dfw/4ff9c6c9-f754/k2-_ae5145df-fcf4-4bd2-9512-3e6078153722.v1.jpg?" name="Fresh Food"/>
           </div>
           <div className="col-lg-9">
           <CirCatCont name="Shop groceries" image="https://i5.walmartimages.com/dfw/4ff9c6c9-b07e/k2-_a32048d4-a2ce-479a-84ec-bdee70018dee.v1.jpg"/>
