@@ -8,7 +8,9 @@
 .hide{
   display: flex;
 }
-
+.hide_cat{
+  display: block;
+}
 .content{
   display: flex;
   flex-direction: column;
@@ -22,6 +24,9 @@
     }
     .hide {
         display: none;
+    }
+    .hide_cat{
+      display: none;
     }
   }
 
