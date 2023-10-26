@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import classes from "./Navbar.module.css";
 import cart from '../../assets/cart.svg'
 import MobNav from "./MobNav";
+import logo from '../../assets/fav-05.svg'
 import { useState } from "react";
 export default function Navbar() {
   const [display, setDisplay]=useState(false)
@@ -18,13 +19,25 @@ export default function Navbar() {
         <div className={classes.bkdrop} style={{display:display?'block':'none'}} onClick={()=>displayHandler()}></div>
         <div className="d-flex align-items-center gap-2">
       <div className="show">
-        <i className="fa-solid fa-bars" style={{cursor:'pointer'}} onClick={()=>displayHandler()}></i>
+        <i  className="fa-solid fa-bars" style={{cursor:'pointer',fontSize:'1.6rem'}} onClick={()=>displayHandler()}></i>
         </div>
         <MobNav onclick={()=>displayHandler()} display={display ? 'flex' : 'none'}/>
+
         <Link to="/">
           <img
+          className="show"
+            src={logo}
+            alt="logo"
+            border="0"
+            style={{width:'35px',marginLeft:'1rem'}}
+            />
+        </Link>
+
+        <Link to="/">
+          <img
+          className="hide"
             src="https://i.ibb.co/6X1M1bf/logo-04.png"
-            alt="logo-04"
+            alt="logo"
             border="0"
             />
         </Link>
@@ -39,7 +52,7 @@ export default function Navbar() {
             <p>Services</p>
           </div>
         </div>
-        <input className="hide" type="search" placeholder="Search any item .." />
+        <input type="search" placeholder="Search any item .." />
         <div className={classes.wrap}>
           <Link className={`hide_sm ${classes.cat}`}>
             <i className="fa-regular fa-heart"></i>

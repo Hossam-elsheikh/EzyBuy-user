@@ -4,8 +4,10 @@ export default function ShopNowCard(props) {
   return <>
   <div className={style.card}>
     <img className='img img-fluid' src={props.src} />
+    <div>
     <h3 style={{color:props.txtColor}}>{props.title}</h3>
     <Link style={{color:props.txtColor}}>Shop now</Link>
+    </div>
   </div>
   </>
 }
