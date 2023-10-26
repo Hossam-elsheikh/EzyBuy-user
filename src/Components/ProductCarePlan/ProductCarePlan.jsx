@@ -153,7 +153,7 @@ export default function ProductCarePlan() {
         
        <div className='text-center'>
           <img 
-           src="https://www.squaretrade.com/img/walmart/walmart-iframe/Standard%20Plan%20Items_RGB.png"
+           src="https://www.squaretrade.com/img/walmart/walmart-iframe/Accident%20Plan%20Items_RGB.png"
            alt="left image" 
            className="w-75 rounded-3"
            />
