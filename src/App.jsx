@@ -13,6 +13,7 @@ import KidsPage from './Pages/KidsPage'
 import FashionPage from './Pages/FashionPage'
 import ElectronicsPage from './Pages/ElectronicsPage'
 import SingleProductPage from './Pages/SingleProductPage'
+import ProductCarePlan from './Components/ProductCarePlan/ProductCarePlan'
 function App() {
 let routers = createBrowserRouter([
   {path:'/',element:<Layout/>,children:[
@@ -25,6 +26,8 @@ let routers = createBrowserRouter([
     {path:'fashion',element:<FashionPage/>},
     {path:'electronics',element:<ElectronicsPage/>},
     {path:'product',element:<SingleProductPage/>},
+    {path:'productPlan',element:<ProductCarePlan/>},
+
     
   ]},
   {path:'*',element:<NotFound/>}
