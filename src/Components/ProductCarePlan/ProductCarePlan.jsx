@@ -31,10 +31,37 @@ export default function ProductCarePlan() {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 7,
-    slidesToScroll:1,
-    autoplay:false,
+    slidesToShow: 7 ,
+    slidesToScroll:7,
+    autoplay:true,
     autoplaySpeed:1900,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+         
+          
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
   return <>
@@ -151,15 +178,15 @@ export default function ProductCarePlan() {
         <p>Available for most products like TVs, home appliances, lawn & garden, power tools & more</p>
         </div>
         
-       <div className='text-center'>
+       <div className='text-center '>
           <img 
            src="https://www.squaretrade.com/img/walmart/walmart-iframe/Accident%20Plan%20Items_RGB.png"
            alt="left image" 
            className="w-75 rounded-3"
            />
         </div>
-        <hr />
-        <div className="mt-3 ms-3">
+        <hr className='mt-5' />
+        <div className="mt-3 ms-3 ">
         <p className="fw-bold " style={{fontSize:"20px"}}>What does my Standard Plan cover?</p>
         <p className="mt-2 text-body-secondary" style={{fontSize:"18px"}}>
           <i class="fa fa-check text-primary me-1" style={{fontSize:"24px"}} aria-hidden="true"></i>
