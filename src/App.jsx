@@ -14,6 +14,7 @@ import FashionPage from './Pages/FashionPage'
 import ElectronicsPage from './Pages/ElectronicsPage'
 import SingleProductPage from './Pages/SingleProductPage'
 import ProductCarePlan from './Components/ProductCarePlan/ProductCarePlan'
+import HealthWellness from './Pages/Health & Wellness'
 function App() {
 let routers = createBrowserRouter([
   {path:'/',element:<Layout/>,children:[
@@ -27,8 +28,8 @@ let routers = createBrowserRouter([
     {path:'electronics',element:<ElectronicsPage/>},
     {path:'product',element:<SingleProductPage/>},
     {path:'productPlan',element:<ProductCarePlan/>},
+    {path:'Health',element:<HealthWellness/>}
 
-    
   ]},
   {path:'*',element:<NotFound/>}
 ])
