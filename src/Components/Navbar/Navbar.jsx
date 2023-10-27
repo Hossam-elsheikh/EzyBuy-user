@@ -86,6 +86,8 @@ export default function Navbar() {
           <Link to='/login'>log in</Link>
           <Link to='/register'>Register</Link>
           <Link to='/product'>Product</Link>
+          <Link to='/Health'>Health</Link>
+
           </div>
         </div>
       </nav>
