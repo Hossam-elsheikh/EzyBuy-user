@@ -8,6 +8,15 @@
 }
 
 .btun:hover{
-    color:blue;
+    color:blue !important;
     text-decoration: none !important;
 }
+
+
+/* @media screen and (min-width: 700px) {
+    .col_4{
+        position:fixed !important;
+        right:10%;
+        top:130%;
+    }
+  } */

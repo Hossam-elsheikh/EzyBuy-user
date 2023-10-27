@@ -185,19 +185,19 @@ export default function Cart() {
           </div>
           </div>
 
-          <div className="col-sm-3 bg-black  ">
-            <h5 className="bg-info text-end">$248.77</h5>
+          <div className="col-sm-2 offset-md-1  ">
+            <h5 className=" text-end me-3 ">$248.77</h5>
 
-            <div className=" bg-danger d-flex align-items-end  " style={{height:"90%"}}>
+            <div className="  d-flex align-items-end me-3  " style={{height:"90%"}}>
             
-            <div  className="d-flex bg-info justify-content-between border border-1 border-black rounded-5 p-1 w-100" style={{width: "120px"}}>
+            <div  className="d-flex justify-content-between border border-1 border-black rounded-5 w-100 " >
 
-                <button type="button" className="btn btn-light rounded-5 " onClick={()=>decreaseCounter()} >
-                  <i className=" fa fa-minus"></i>
+                <button type="button" className="btn btn-light p-0 ms-1 w-25 rounded-circle" onClick={()=>decreaseCounter()} >
+                  <i className=" fa fa-minus" ></i>
                   </button>
-                  <span className="d-flex align-items-center  "> {counter}  </span>
-                  <button type="button" className="btn btn-light rounded-5  " onClick={()=>increaseCounter()} >
-                    <i className="fa fa-plus" ></i>
+                  <p className="d-flex align-items-center justify-content-center "> {counter}  </p>
+                  <button type="button" className="btn btn-light me-1 w-25 rounded-circle p-0"  onClick={()=>increaseCounter()} >
+                    <i className="fa fa-plus text-center "  ></i>
                     </button>
             </div>
             </div>
@@ -211,6 +211,54 @@ export default function Cart() {
 
 
         </div>
+
+      <div className={`col-md-4 shadow  border border-1 rounded-4 mt-5   ${style.col_4}`} >
+        <div className="text-center mt-2">
+        <button className="btn btn-primary rounded-4   " style={{width:"95%"}}>
+          Continue to checkout
+        </button>
+        </div>
+
+        <hr className="text-body-secondary " />
+        
+        <div className="ms-2 mt-5">
+          <div className="d-flex justify-content-between">
+          <h6>Subtotal 
+            <span className="text-body-secondary ms-1">(1 item)</span>
+          </h6>
+          <p>$249.90</p>
+          </div>
+
+          <div className="d-flex justify-content-between">
+            <p className="text-body-secondary" style={{fontSize:13}}>Shipping</p>
+            <span className="text-success">Free</span>
+          </div>
+
+
+          <div className="mt-4 d-flex justify-content-between ">
+            <h6>Taxes</h6>
+            <p>Calculated at checkout</p>
+          </div>
+
+          <hr className="text-body-secondary " />
+
+          <div className="mt-5 d-flex justify-content-between">
+            <h6>Estimated total</h6>
+            <h6>$249.90</h6>
+          </div>
+
+          <div className="text-end mt-5">
+            <img className="" width={40}
+            src="https://cdn-assets.affirm.com/images/black_logo-white_bg.jpg"
+             alt="" />
+             <p className=" mt-2" style={{fontSize:13}}>Monthly payments available for eligible items.</p>
+             <button  className={ `border-0 mt-2  text-decoration-underline  ${style.btun}`}>Continue with Affirm</button>
+          </div>
+        </div>
+        
+        </div>  
+
+  
       </div>
 
     </section>
