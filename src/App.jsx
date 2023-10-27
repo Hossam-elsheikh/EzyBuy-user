@@ -1,4 +1,3 @@
-
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './App.css'
 import Layout from './Components/Layout/Layout'
@@ -36,7 +35,6 @@ let routers = createBrowserRouter([
   return (
     <>
     <RouterProvider router={routers}>
-    
     </RouterProvider>
     </>
   )
