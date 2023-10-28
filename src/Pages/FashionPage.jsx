@@ -18,7 +18,7 @@ const FashionPage = () => {
        <div className='col-lg-9'>
        <ImgsTextCard/>
        <ImgsTextCard/>
-       <div className='d-flex justify-content-evenly'>
+       <div className='d-flex flex-column flex-md-row  justify-content-evenly'>
        <div className='col-lg-4 mt-5'>
         <CardElem/>
        </div>
