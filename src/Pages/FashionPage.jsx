@@ -20,10 +20,10 @@ const FashionPage = () => {
        <ImgsTextCard/>
        <div className='d-flex flex-column flex-md-row  justify-content-evenly'>
        <div className='col-lg-4 mt-5'>
-        <CardElem/>
+        <CardElem image="https://i5.walmartimages.com/dfw/4ff9c6c9-b4eb/k2-_15bec48b-7d03-4932-8970-b7901626b2a0.v1.jpg" h="Gifts under $15" p="Holiday pro tip: one for them, one for you."/>
        </div>
        <div className='col-lg-4 mt-5'>
-        <CardElem/>
+        <CardElem image="https://i5.walmartimages.com/dfw/4ff9c6c9-f786/k2-_3327339d-111f-4b98-b6cc-c16dc1f169f3.v1.jpg" h="Gifts under $25" p="Get what they really want, for way less."/>
        </div>
        </div>
        <ImgsTextCard/>

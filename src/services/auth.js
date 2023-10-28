@@ -1,4 +1,5 @@
 import instance from "../axiosConfig/instance"
+import {  } from "react-icons/fa";
 
 export const register = ( data )=>{
    return instance.post('/customer/signup',data)
