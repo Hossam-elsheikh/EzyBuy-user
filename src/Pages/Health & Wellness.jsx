@@ -4,6 +4,7 @@ import DropDownList from "../Components/Reusable/DropDownList/DropDownList";
 import HelpfulLinks from "../Components/Reusable/HelpfulLinks/HelpfulLinks";
 import CardElem from "../Components/Reusable/CardElem/CardElem";
 import CircleCat from "../Components/Reusable/CircleCat/CircleCat";
+import CarouseForglasses from "../Components/Reusable/CarouseForglasses/CarouseForglasses";
 const HealthWellness = () => {
   return (
     <>
@@ -80,6 +81,82 @@ const HealthWellness = () => {
               </div>
               <hr className="ms-5" />
             </div>
+            <div className="ms-3">
+              <p className="fs-5 mb-2">New arrivals</p>
+              <p className="mb-5 text-muted">Prive Revaux now available at Walmart.</p>
+              <CarouseForglasses className="mt-5"
+                lgCount={6}
+                mdCount={6}
+                smCount={3}
+                count={12}
+                slideCount={3}
+                products={[
+                  {
+                    src: "https://i5.walmartimages.com/seo/Prive-Revaux-The-Heat-Silver-Grey-Sunglasses_da61e146-4367-4184-8576-2ad2ed6c5b69.60deab3b1f82301213f282b3565843f9.jpeg",
+                    price: "$39.00",
+                    title: "Prive Revaux The Heat, Silver Grey, Sunglasses",
+                  },
+                  {
+                    src: "https://i5.walmartimages.com/seo/Prive-Revaux-Lifestyle-Blue-Havana-Sunglasses_70438623-9e66-4260-bab8-bdea5885eb74.47a2570cecd8da0cbc407bdb509221bb.jpeg",
+                    price: "$39.00",
+                    title: "Prive Revaux Lifestyle, Blue Havana, Sunglasses",
+                  },
+                  {
+                    src: "https://i5.walmartimages.com/seo/Prive-Revaux-The-Floridian-Gold-Sunglasses_bb451516-98ed-4e6b-9f24-600e3086d660.a9b95ec9eff7b5e2777d9ed7c0d7aadb.jpeg",
+                    price: "$39.00",
+                    title: "Prive Revaux The Floridian, Gold, Sunglasses",
+                  },
+                  {
+                    src: "https://i5.walmartimages.com/seo/Prive-Revaux-Neptune-Blue-Havana-Sunglasses_a2a00cae-632b-42fc-a153-474ee3ac42f0.1d2df01322d7a4cee38b5360ee40014c.jpeg",
+                    price: "$39.00",
+                    title: "Prive Revaux Neptune, Blue Havana, Sunglasses",
+                  },
+                  {
+                    src: "https://i5.walmartimages.com/seo/Prive-Revaux-The-Bruce-2-0-Men-s-Navigator-Havana-Sunglasses_552c336d-1481-4cf0-ad35-3efc2bd56d55.757ed73e11520a3c28c3ebc12b928d38.jpeg",
+                    price: "$39.00",
+                    title:
+                      "Prive Revaux The Bruce 2.0, Men's, Navigator, Havana, Sunglasses",
+                  },
+                  {
+                    src: "https://i5.walmartimages.com/seo/Prive-Revaux-To-Collins-Red-Sunglasses_06552097-acff-465b-94eb-67dcd3db5c82.e878864148677f7772659ccb7381cbb9.jpeg",
+                    price: "$39.00",
+                    title: "Prive Revaux To Collins, Red, Sunglasses",
+                  },
+                  {
+                    src: "https://i5.walmartimages.com/seo/Prive-Revaux-Victoria-Women-s-Cateye-Havana-Sunglasses_4b27ed8d-d6b0-49c8-927b-31c2937b7d9f.c7ffe11214a1b7b189af9a4dd83d760f.jpeg",
+                    price: "$39.00",
+                    title:
+                      "Prive Revaux Victoria, Women’s, Cateye, Havana Sunglasses",
+                  },
+                  {
+                    src: "https://i5.walmartimages.com/seo/Prive-Revaux-Casino-Nights-Silver-Sunglasses_4a73ec52-0972-44aa-b4eb-ed1d0c4f9e51.dba8e037afcbc6fae31ecf12464751b3.jpeg",
+                    price: "$39.00",
+                    title: "rive Revaux Casino Nights, Silver, Sunglasses",
+                  },
+                  {
+                    src: "https://i5.walmartimages.com/seo/Prive-Revaux-The-Cuervo-Gold-Sunglasses_f6a90871-a094-425b-bcac-235a4932f093.cfd1b9b3bd9415375be5df5a9829d367.jpeg",
+                    price: "$39.00",
+                    title: "Prive Revaux The Cuervo, Gold, Sunglasses",
+                  },
+                  {
+                    src: "https://i5.walmartimages.com/seo/Prive-Revaux-Harmony-Black-Sunglasses_b4255e42-86f1-40d3-91e1-f4e2be74639c.cc75264b34ab092a2cd611d1dc0e6313.jpeg",
+                    price: "$39.00",
+                    title: "Prive Revaux Harmony, Black, Sunglasses",
+                  },
+                  {
+                    src: "https://i5.walmartimages.com/seo/Prive-Revaux-The-Ollie-Havana-Sunglasses_11bf78f4-5116-4802-8663-b4e9ee9f6b17.2c4fa04c539c10076e7691197f0892ff.jpeg",
+                    price: "$39.00",
+                    title: "Prive Revaux The Ollie, Havana Sunglasses",
+                  },
+                  {
+                    src: "https://i5.walmartimages.com/seo/Prive-Revaux-The-Bobby-Unisex-Aviator-Black-Sunglasses_f70f9fdc-d6c5-4b6c-95cf-a4041787dd0c.b0fccc264b9510dca79a012fc724fc9f.jpeg",
+                    price: "$39.00",
+                    title:
+                      "Prive Revaux The Bobby, Unisex, Aviator, Black Sunglasses",
+                  },
+                ]}
+              />
+            </div>
             <div className="mt-4">
               <h5 className="font-weight-bold mb-3">Find your frames</h5>
               <div className="d-flex flex-wrap flex-md-nowrap gap-3 align-items-center  justify-content-around ">
@@ -99,6 +176,83 @@ const HealthWellness = () => {
                   p="Names you know & you'll love."
                 />
               </div>
+            </div>
+            <div className="ms-3">
+              <p className="fs-5 mb-2">New arrivals</p>
+              <p className="mb-5 text-muted">Have them sent straight to your home, or try them on at your local Vision Center.</p>
+              <CarouseForglasses className="mt-5"
+                lgCount={6}
+                mdCount={6}
+                smCount={3}
+                count={12}
+                slideCount={3}
+                products={[
+                  {
+                    src: "https://i5.walmartimages.com/seo/M-Plano-Blue-Light-Lens-Injection-Mens-Frames-Alex-Black-52-5-16-5-138-with-Case_c79928fb-af71-4ba7-9bd4-99a2b4ac3112.72bb1bddc0d7f848165853cf9465084f.jpeg",
+                    price: "$16.68",
+                    title:
+                      "M+ Plano Blue Light Lens Injection Mens Frames, Alex, Black, 52.5 - 16.5 - 138, with Case",
+                  },
+                  {
+                    src: "https://i5.walmartimages.com/seo/M-Plano-Blue-Light-Lens-Injection-Unisex-Frames-Micah-Black-Crystal-Gradient-50-0-20-5-140-with-Case_14345bc2-211e-44f1-97f2-0ea990377486.18a88e9166dae2108e433750fb01a136.jpeg",
+                    price: "$16.68",
+                    title:
+                      "M+ Plano Blue Light Lens Injection Unisex Frames, Micah, Black Crystal Gradient, 50.0 - 20.5 - 140, with Case",
+                  },
+                  {
+                    src: "https://i5.walmartimages.com/seo/Harper-Roe-Eyewear-Hr1004wm-200_e83571fb-d5c8-4adc-ac9f-0adb0ff37ec3.6dd6586df43384b25d38a47f0cf23f73.jpeg",
+                    price: "$28.00",
+                    title: "Harper & Roe Eyewear Hr1004wm 200",
+                  },
+                  {
+                    src: "https://i5.walmartimages.com/seo/Harper-Roe-Eyewear-Hr3002wm-001_cf917081-b078-4daf-b6c6-cbb0930e8ee8.26ac24ec7c009de1bb1652ccaaa5663c.jpeg",
+                    price: "$28.00",
+                    title: "Harper & Roe Eyewear Hr3002wm 001",
+                  },
+                  {
+                    src: "https://i5.walmartimages.com/seo/Harper-Roe-Eyewear-Hr3004wm-200_dddd73d1-b3bf-4c35-b7a1-af0988a3b813.f120912699b6e758614ccdad27082fd0.jpeg",
+                    price: "$28.00",
+                    title: "Harper & Roe Eyewear Hr3004wm 200",
+                  },
+                  {
+                    src: "https://i5.walmartimages.com/seo/M-Plano-Blue-Light-Lens-Injection-Womens-Frames-Ellie-Grey-Tortoise-53-0-15-0-132-with-Case_4a7dd973-0d15-45bf-9126-3889e979bb47.174b02d9cc25036e5b06db224714ba3b.jpeg",
+                    price: "$16.68",
+                    title:
+                      "M+ Plano Blue Light Lens Injection Womens Frames, Ellie, Grey Tortoise, 53.0 - 15.0 - 132, with Case",
+                  },
+                  {
+                    src: "https://i5.walmartimages.com/seo/Prive-Revaux-Victoria-Women-s-Cateye-Havana-Sunglasses_4b27ed8d-d6b0-49c8-927b-31c2937b7d9f.c7ffe11214a1b7b189af9a4dd83d760f.jpeg",
+                    price: "$48.00",
+                    title: "Oscar Eyewear O1309wm 215",
+                  },
+                  {
+                    src: "https://i5.walmartimages.com/seo/Solara-Jasper-Gmtl-1-5-Sunreader-Modular-2017_3fcaf04f-a6ad-4e3b-b2a8-6ffe447d8029.b68640a250e339561f0bc1867a62f4ff.jpeg",
+                    price: "$14.88",
+                    title: "Solara Jasper Gmtl 1.5 Sunreader Modular 2017",
+                  },
+                  {
+                    src: "https://i5.walmartimages.com/seo/M-Plano-Blue-Light-Lens-Injection-Unisex-Frames-Parker-Grey-Crystal-51-0-21-0-141-with-Case_3b6f115f-9257-4b86-9714-5b9a7bc67945.f8f11c289ec373036edf9fb9cc4b28fb.jpeg",
+                    price: "$16.68",
+                    title:
+                      "M+ Plano Blue Light Lens Injection Unisex Frames, Parker, Grey Crystal, 51.0 - 21.0 - 141, with Case",
+                  },
+                  {
+                    src: "https://i5.walmartimages.com/seo/Mix-Tort-2-0-Sunreader-Modular-2017_b6a40aac-6114-4da4-8361-40647a974680.18118512b58481905333d669273d18df.jpeg",
+                    price: "$14.88",
+                    title: "Mix Tort 2.0 Sunreader Modular 2017",
+                  },
+                  {
+                    src: "https://i5.walmartimages.com/seo/M-Plano-Blue-Light-Lens-Injection-Unisex-Frames-Lee-Tortoise-52-0-17-0-138-with-Case_da9a1145-51a5-486f-9d9f-82694cd7ccba.d596229e1ad9b5c5dd983efed7c21955.jpeg",
+                    price: "$15.67",
+                    title: "Solar Shield Dioptics Rectangle Black Sunglasses",
+                  },
+                  {
+                    src: "https://i5.walmartimages.com/seo/Solara-Baseline-Gmtl-1-5-Sunreader-Modular-2017_8791473a-7ee8-4d5e-ad57-875df1c0d574.37658512003579030263b1afda96571d.jpeg",
+                    price: "$15.67",
+                    title: "Solar Shield Dioptics Rectangle Blue Clip Ons",
+                  },
+                ]}
+              />
             </div>
             <hr />
             <div className="">
@@ -129,11 +283,8 @@ const HealthWellness = () => {
                   name="FSA/HSA Shop"
                 />
               </div>
-              <hr className="ms-5" />
+              <hr className="ms-1" />
             </div>
-            {/* <div>
-            <HelpfulLinks/>
-          </div> */}
             <div className="ms-5">
               <p className="fs-5">FAQ</p>
               <hr />
@@ -301,7 +452,6 @@ const HealthWellness = () => {
                 ordering your new glasses."
               />
               <hr />
-
             </div>
           </div>
         </div>
