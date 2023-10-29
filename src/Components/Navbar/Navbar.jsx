@@ -7,9 +7,63 @@ import logo from '../../assets/fav-05.svg'
 import { useState } from "react";
 export default function Navbar() {
   const [display, setDisplay]=useState(false)
+  const [displayBck, setDisplayBck]=useState(false)
+  const [displaySec, setDisplaySec] = useState('none')
+  const Departments = [
+    { title: "Groceries & Essentials", link: "/grocery" },
+    { title: "Electronics", link: "/electronics" },
+    { title: "Fashion", link: "/fashion" },
+    { title: "Kids & Toys", link: "/kids" },
+    { title: "Beauty", link: "/beauty" },
+    { title: "Home & Furniture", link: "/home" },
+    { title: "Halloween", link: "/halloween" },
+    { title: "Baby", link: "/baby" },
+    { title: "Gifts", link: "/gifts" },
+    { title: "Patio & Gardens", link: "/gardens" },
+  ];
+  const Services = [
+    { title: "Health & Wellness", link: "/health" },
+    { title: "Auto Care Center", link: "/auto" },
+    { title: "Protection, Home & Tech", link: "/protection" },
+    { title: "EzyBuy Pay", link: "/ezybuypay" },
+    { title: "Custom Cakes", link: "/cakes" },
+    { title: "Photo Services", link: "/photo" },
+    { title: "Money Services", link: "/money" },
+    { title: "Community & Giving", link: "/community" },
+  ];
+  const DepartmentsDiv = ()=> {
+
+    return (
+      <>
+      <div className={classes.dep}>
+        <Link className={classes.dep_link} to='#'>All Departments</Link>
+          <ul>
+            {Departments.map((dep,index)=> <li key={index}><Link onClick={()=>displaySecHandler()} to={dep.link}>{dep.title}</Link></li>)}
+          </ul>
+      </div>
+    </>
+  )
+} 
+  const ServicesDiv = ()=> {
+
+    return (
+      <>
+      <div style={{left:'20rem'}} className={classes.dep}>
+        <Link className={classes.dep_link} to='#'>All Services</Link>
+        <ul>
+            {Services.map((dep,index)=> <li key={index}><Link onClick={()=>displaySecHandler()} to={dep.link}>{dep.title}</Link></li>)}
+          </ul>
+      </div>
+    </>
+  )
+} 
 
   function displayHandler(){
     setDisplay(!display)
+  }
+  function displaySecHandler(){
+    setDisplaySec('none')
+    setDisplayBck(false)
   }
   return (
     <>
@@ -17,12 +71,14 @@ export default function Navbar() {
         <div className={classes.main_nav}>
 
         <div className={classes.bkdrop} style={{display:display?'block':'none'}} onClick={()=>displayHandler()}></div>
+        <div className={classes.bkdrop} style={{display:displayBck?'block':'none'}} onClick={()=>displaySecHandler()}></div>
         <div className="d-flex align-items-center gap-2">
       <div className="show">
         <i  className="fa-solid fa-bars" style={{cursor:'pointer',fontSize:'1.6rem'}} onClick={()=>displayHandler()}></i>
         </div>
         <MobNav onclick={()=>displayHandler()} display={display ? 'flex' : 'none'}/>
-
+{displaySec === 'none' ? <></> : 
+displaySec === 'dep' ? <DepartmentsDiv /> : <ServicesDiv /> }
         <Link to="/">
           <img
           className="show"
@@ -42,19 +98,22 @@ export default function Navbar() {
             />
         </Link>
             </div>
+            {}
         <div className="hide  gap-3">
-          <div className={classes.cat}>
+          <div className={classes.cat} onClick={()=> {setDisplaySec('dep')
+        setDisplayBck(true)}}>
             <i className="fa-solid fa-industry"></i>
             <p>Departments</p>
           </div>
-          <div className={classes.cat}>
+          <div className={classes.cat} onClick={()=> {setDisplaySec('serv')
+        setDisplayBck(true)}}>
             <i className="fa-solid fa-hand-holding-medical"></i>
             <p>Services</p>
           </div>
         </div>
         <input type="search" placeholder="Search any item .." />
         <div className={classes.wrap}>
-          <Link className={`hide_sm ${classes.cat}`}>
+          <Link to='myitems' className={`hide_sm ${classes.cat}`}>
             <i className="fa-regular fa-heart"></i>
             <p >My items</p>
           </Link>

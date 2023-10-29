@@ -15,6 +15,10 @@ import SingleProductPage from './Pages/SingleProductPage'
 import ProductCarePlan from './Components/ProductCarePlan/ProductCarePlan'
 import HealthWellness from './Pages/Health & Wellness'
 import Cart from './Components/Cart/Cart'
+import MyItems from './Components/MyItems/MyItems'
+import Reorder from './Components/MyItems/Reorder'
+import Lists from './Components/MyItems/Lists'
+import Registers from './Components/MyItems/Registers'
 function App() {
 let routers = createBrowserRouter([
   {path:'/',element:<Layout/>,children:[
@@ -30,6 +34,11 @@ let routers = createBrowserRouter([
     {path:'productPlan',element:<ProductCarePlan/>},
     {path:'health',element:<HealthWellness/>},
     {path:'cart',element:<Cart/>},
+    {path:'myitems',element:<MyItems/>,children:[
+      {index:true, element:<Reorder/>},
+      {path:'lists', element:<Lists/>},
+      {path:'registers', element:<Registers/>},
+    ]},
 
 
   ]},

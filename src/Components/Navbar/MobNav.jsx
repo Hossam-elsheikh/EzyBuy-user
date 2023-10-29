@@ -64,7 +64,7 @@ const MobNav = (props) => {
           </Link>
           <Link
             onClick={props.onclick}
-            href="#"
+            to='myitems'
             className="d-flex gap-3 align-items-center mb-2"
           >
             <i className="fa-solid fa-box"></i>
