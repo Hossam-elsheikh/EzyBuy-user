@@ -219,7 +219,7 @@ export default function ProductCarePlan() {
 
     <Slider {...settings} className='col-md-12  '>
            <div className='me-2  ' >
-              <div className=' w-75 m-auto  p-4  rounded-3 bg-body-secondary'  style={{height:"135px",boxShadow:"0px 3px 4px 1px rgb(0,0,0,.3)"}}>
+              <div className=' w-75 m-auto d-flex justify-content-center align-content-center p-4  rounded-3 bg-body-secondary'  style={{height:"135px",boxShadow:"0px 3px 4px 1px rgb(0,0,0,.3)"}}>
               <img  style={{objectFit:'cover'}}  src={"https://www.squaretrade.com/img/walmart/walmart-iframe/tvs.png"} 
               alt="image slider" className='img-fluid m-auto  '/>
               </div>
@@ -227,7 +227,7 @@ export default function ProductCarePlan() {
               </div>
 
               <div className='me-2' >
-              <div className='w-75 m-auto  p-4  rounded-3 bg-body-secondary'  style={{height:"135px",boxShadow:"0px 3px 4px 1px rgb(0,0,0,.3)"}}>
+              <div className='w-75 m-auto d-flex justify-content-center align-content-center  p-4  rounded-3 bg-body-secondary'  style={{height:"135px",boxShadow:"0px 3px 4px 1px rgb(0,0,0,.3)"}}>
               <img  style={{objectFit:'cover'}}  src={"https://www.squaretrade.com/img/walmart/walmart-iframe/laptops.png"} 
               alt="image slider" className='img-fluid m-auto '/>
               </div>
@@ -235,7 +235,7 @@ export default function ProductCarePlan() {
               </div>
 
               <div className='me-2' >
-              <div className=' w-75 m-auto  p-4  rounded-3 bg-body-secondary '  style={{height:"135px",boxShadow:"0px 3px 4px 1px rgb(0,0,0,.3)"}}>
+              <div className=' w-75 m-auto  p-4 d-flex justify-content-center align-content-center rounded-3 bg-body-secondary '  style={{height:"135px",boxShadow:"0px 3px 4px 1px rgb(0,0,0,.3)"}}>
               <img  style={{objectFit:'cover'}}  src={"https://www.squaretrade.com/img/walmart/walmart-iframe/phones.png"} 
               alt="image slider" className='img-fluid m-auto'/>
               </div>
@@ -243,7 +243,7 @@ export default function ProductCarePlan() {
               </div>
 
               <div className='me-2'>
-              <div className=' w-75 m-auto   p-4  rounded-3 bg-body-secondary' style={{height:"135px",boxShadow:"0px 3px 4px 1px rgb(0,0,0,.3)"}}>
+              <div className=' w-75 m-auto d-flex justify-content-center align-content-center  p-4  rounded-3 bg-body-secondary' style={{height:"135px",boxShadow:"0px 3px 4px 1px rgb(0,0,0,.3)"}}>
               <img  style={{objectFit:'cover'}}  src={"https://www.squaretrade.com/img/walmart/walmart-iframe/tablets.png"} 
               alt="image slider" className='img-fluid m-auto '/>
               </div>
@@ -251,7 +251,7 @@ export default function ProductCarePlan() {
               </div>
 
               <div className='me-2'>
-              <div className='w-75 m-auto  p-4  rounded-3 bg-body-secondary'  style={{height:"135px",boxShadow:"0px 3px 4px 1px rgb(0,0,0,.3)"}}>
+              <div className='w-75 m-auto  p-4 d-flex justify-content-center align-content-center  rounded-3 bg-body-secondary'  style={{height:"135px",boxShadow:"0px 3px 4px 1px rgb(0,0,0,.3)"}}>
               <img  style={{objectFit:'cover'}}  src={"https://www.squaretrade.com/img/walmart/walmart-iframe/outdoor.png"} 
               alt="image slider" className='img-fluid m-auto '/>
               </div>
@@ -259,7 +259,7 @@ export default function ProductCarePlan() {
               </div>
 
               <div className='me-2'>
-              <div className=' w-75 m-auto  p-4  rounded-3 bg-body-secondary'  style={{height:"135px",boxShadow:"0px 3px 4px 1px rgb(0,0,0,.3)"}}>
+              <div className=' w-75 m-auto  p-4 d-flex justify-content-center align-content-center rounded-3 bg-body-secondary'  style={{height:"135px",boxShadow:"0px 3px 4px 1px rgb(0,0,0,.3)"}}>
               <img  style={{objectFit:'cover'}}  src={"https://www.squaretrade.com/img/walmart/walmart-iframe/general-merch.png"} 
               alt="image slider" className='img-fluid m-auto  '/>
               </div>
@@ -267,7 +267,7 @@ export default function ProductCarePlan() {
               </div>
 
               <div className='me-2'>
-              <div className=' w-75 m-auto  p-4  rounded-3 bg-body-secondary'  style={{height:"135px",boxShadow:"0px 3px 4px 1px rgb(0,0,0,.3)"}}>
+              <div className=' w-75 m-auto  p-4 d-flex justify-content-center align-content-center  rounded-3 bg-body-secondary'  style={{height:"135px",boxShadow:"0px 3px 4px 1px rgb(0,0,0,.3)"}}>
               <img  style={{objectFit:'cover'}}  src={"https://www.squaretrade.com/img/walmart/walmart-iframe/jewelry.png"} 
               alt="image slider" className='img-fluid m-auto  '/>
               </div>
