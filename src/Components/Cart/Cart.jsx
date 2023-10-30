@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import style from "./Cart.module.css";
-import { useEffect } from "react";
 export default function Cart() {
   const [isDropdownOpen, setisDropdownOpen] = useState("none");
   const [changeIcon, setChangeIcon] = useState("down");

@@ -323,7 +323,8 @@ export default function CustomerReview() {
                               <h5 className="">Perfect Size + Pencil High Performance/ Low Price</h5>
                             </span>
                           </div>
-                          <span className="mb-3"><b></b>Didn’t want the new iPads because they’re too big—take up too much desk and tote space. Wanted an Apple Pencil, didn’t need the latest model. Would’ve preferred 64 GB of storage, but this model goes from 32 GB (too little for my needs) to 128 (way more than I need). Runs a lot faster than my old 2015 iPad Air 2. Love the Retina display. Love the price in comparison with prices for the latest models. Also like still having a Lightning connector and headphone jack (though I generally use wireless headphones, still the jack has aged my bacon at least once when my wireless headphones needed to be charged). Great product overall,</span>
+                          <span className="mb-3 "style={{fontSize:"14px"}}>
+                            Didn’t want the new iPads because they’re too big—take up too much desk and tote space. Wanted an Apple Pencil, didn’t need the latest model. Would’ve preferred 64 GB of storage, but this model goes from 32 GB (too little for my needs) to 128 (way more than I need). Runs a lot faster than my old 2015 iPad Air 2. Love the Retina display. Love the price in comparison with prices for the latest models. Also like still having a Lightning connector and headphone jack (though I generally use wireless headphones, still the jack has aged my bacon at least once when my wireless headphones needed to be charged). Great product overall,</span>
                         </div>
                         <div className="d-flex  justify-content-center">
                           <div className="d-flex flex-wrap">
@@ -373,7 +374,8 @@ export default function CustomerReview() {
                               <h5 className="">9.7” iPad is the cat's pajamas!</h5>
                             </span>
                           </div>
-                          <span className="mb-3"><b></b>I bought this via Walmart's pre-black Friday discount sale and was able to get $150 off the retail price.  I like this 9.7” iPad as it's convenient, thin and beats lugging a laptop around.  Plenty of storage space and no more worrying about anti virus software.</span>
+                          <span className="mb-3" style={{fontSize:"14px"}}>
+                            I bought this via Walmart's pre-black Friday discount sale and was able to get $150 off the retail price.  I like this 9.7” iPad as it's convenient, thin and beats lugging a laptop around.  Plenty of storage space and no more worrying about anti virus software.</span>
                         </div>
                         <div className="d-flex  justify-content-center">
                           <div className="d-flex flex-wrap">
@@ -424,7 +426,8 @@ export default function CustomerReview() {
                         </div>
                           <div className="">
                             <div className=""></div>
-                            <span className="mb-3"><b></b>My iPad is great, love it, no problems!</span>
+                            <span className="mb-3" style={{fontSize:"14px"}}>
+                              My iPad is great, love it, no problems!</span>
                           </div><div className="d-flex  justify-content-center">
                             <div className="d-flex flex-wrap">
                               <div className="  mb-2">Verree</div>
@@ -473,7 +476,8 @@ export default function CustomerReview() {
                         </div>
                         <div className="">
                           <div className=""></div>
-                          <span className="mb-3"><b></b>To be open box everything look good but little nicks where they had to put charge in</span>
+                          <span className="mb-3" style={{fontSize:"14px"}}>
+                            To be open box everything look good but little nicks where they had to put charge in</span>
                         </div>
                         <div className="d-flex  justify-content-center">
                           <div className="d-flex flex-wrap">
@@ -527,7 +531,8 @@ export default function CustomerReview() {
                               <h5 className="">No bad.</h5>
                             </span>
                           </div>
-                          <span className="mb-3"><b></b>I expected the packaging to be better, it just came in a non-Apple box. The headphones and chargers are not original</span>
+                          <span className="mb-3" style={{fontSize:"14px"}}>
+                            I expected the packaging to be better, it just came in a non-Apple box. The headphones and chargers are not original</span>
                         </div>
                         <div className="d-flex  justify-content-center">
                           <div className="d-flex flex-wrap">

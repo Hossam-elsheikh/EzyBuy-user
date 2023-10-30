@@ -38,34 +38,35 @@ export default function ProductDetails() {
       </span>
 
 
-      <div className="mt-3">
-        <h5>How do you want your item?</h5>
-        <button aria-pressed="false" className=" bg-white  pointer   " type="button" style={{ width: "calc(33.333333333333336%)", height: "auto", boxShadow: "none", backgroundColor: "#FFFFFF" }}>
+      <div className="mt-3    ">
+        <h5 className='mb-3 d-block'>How do you want your item?</h5>
+          <div className="d-flex ">
+
+        <button aria-pressed="false" className={` p-1  me-3 border border-3 border-black ${style.container} ` } type="button" style={{ width: "calc(30%)"  }}>
           <label for="fulfillment-Shipping" data-testid="shipping-tile">
-            <input type="radio" aria-checked="false" className="" id="fulfillment-Shipping" name="fulfillment-option" tabindex="-1" readonly="" />
+            <input type="radio"  aria-checked="false"  className={`${style.input}`} id="fulfillment-Shipping" name="fulfillment-option" />
             <div >
               <img alt="intent image for Shipping" src="https://i5.walmartimages.com/dfwrs/76316474-f13c/k2-_d4e8ebb4-9d70-46b4-8f2b-ecc4ac774e07.v1.png" width="32" height="32" aria-hidden="true" />
             </div>
             <div >Shipping</div>
-            <div className="">Arrives Oct 26</div><div className="mt-1 h1">
-              <div className="h2" >Free</div>
-            </div>
+            <div className="">Arrives Oct 26</div>
+          <div className="" style={{fontSize:"22px ", fontWeight:"500"}} >Free</div>
           </label>
         </button>
 
-        <button aria-pressed="false" className=" bg-white  pointer   " type="button" style={{ width: "calc(33.333333333333336%)", height: "auto", boxShadow: "none", backgroundColor: "#FFFFFF" }}>
+        <button aria-pressed="false" className={`p-1  me-3 border border-1 border-black ${style.container} `}   type="button" style={{ width: "calc(30%)"  }}>
           <label for="fulfillment-Pickup" data-testid="pickup-tile">
-            <input type="radio" aria-checked="false" id="fulfillment-Pickup" name="fulfillment-option" tabindex="-1" readonly="" />
-            <div  >
+            <input type="radio" aria-checked="false" id="fulfillment-Pickup" name="fulfillment-option" className={`${style.input}`} />
+            <div className=""  >
               <img alt="intent image for Pickup" src="https://i5.walmartimages.com/dfwrs/76316474-8720/k2-_d747b89f-5900-404d-a101-1a3452480882.v1.png" width="32" height="32" aria-hidden="true" />
             </div>
             <div >Pickup</div>
             <div >Not available</div></label>
         </button>
 
-        <button aria-pressed="false" className=" bg-white  pointer  " type="button" style={{ width: "calc(33.333333333333336%)", height: "auto", boxShadow: "none", backgroundColor: "#FFFFFF" }}>
+        <button aria-pressed="false" className={` p-1 border border-1 border-black ${style.container} `} type="button" style={{ width: "calc(30%)", height: "auto", boxShadow: "none", backgroundColor: "#FFFFFF" }}>
           <label for="fulfillment-Delivery" data-testid="delivery-tile">
-            <input type="radio" aria-checked="false" id="fulfillment-Delivery" name="fulfillment-option" tabindex="-1" readonly="" />
+            <input type="radio" aria-checked="false" id="fulfillment-Delivery" name="fulfillment-option" className={`${style.input}`} />
             <div >
               <img alt="intent image for Delivery" src="https://i5.walmartimages.com/dfwrs/76316474-39c2/k2-_8deea800-0d44-4984-b1ce-5a3f12b192b7.v1.png" width="32" height="32" aria-hidden="true" />
             </div>
@@ -73,6 +74,8 @@ export default function ProductDetails() {
             <div >Not available</div>
           </label>
         </button>
+          </div>
+
       </div>
 
 

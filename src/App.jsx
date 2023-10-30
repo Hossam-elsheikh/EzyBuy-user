@@ -31,13 +31,15 @@ let routers = createBrowserRouter([
     {path:'fashion',element:<FashionPage/>},
     {path:'electronics',element:<ElectronicsPage/>},
     {path:'product',element:<SingleProductPage/>},
-    {path:'productPlan',element:<ProductCarePlan/>},
+    {path:'protection',element:<ProductCarePlan/>},
     {path:'health',element:<HealthWellness/>},
     {path:'cart',element:<Cart/>},
     {path:'myitems',element:<MyItems/>,children:[
       {index:true, element:<Reorder/>},
       {path:'lists', element:<Lists/>},
       {path:'registers', element:<Registers/>},
+  
+
     ]},
 
 
