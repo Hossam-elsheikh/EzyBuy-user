@@ -21,3 +21,12 @@
     font-size: .7rem;
     color: black;
 }
+@media (max-width: 767px) {
+    .card h3 {
+        width: 100px;
+        font-size: 3vw;
+    }
+    .card {
+        overflow: hidden;
+    }
+}
