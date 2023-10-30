@@ -121,7 +121,7 @@ displaySec === 'dep' ? <DepartmentsDiv /> : <ServicesDiv /> }
             <i className="fa-regular fa-user"></i>
             <p>My Account</p>
           </Link>
-          <Link className={classes.cart}>
+          <Link className={classes.cart} to='/cart'>
             <img src={cart} />
             <div className="d-flex flex-column">
               <p>My Cart</p>

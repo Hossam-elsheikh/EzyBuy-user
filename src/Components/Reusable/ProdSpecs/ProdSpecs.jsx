@@ -1,5 +1,34 @@
+import { useState } from "react";
+
 // import style from './ProdSpecs.module.css'
 export default function ProdSpecs() {
+
+  const [isDropdownOpen , setisDropdownOpen]=useState('none');
+  const [changeIcon , setChangeIcon] = useState('down')
+  
+  const [isDropdownOpen1 , setisDropdownOpen1]=useState('none');
+  const [changeIcon1 , setChangeIcon1] = useState('down')
+
+
+  const [isDropdownOpen2 , setisDropdownOpen2]=useState('none');
+  const [changeIcon2 , setChangeIcon2] = useState('down')
+
+    const toggleDropdown =()=>{
+      setisDropdownOpen(isDropdownOpen==='none'?'inline':'none');
+      setChangeIcon(changeIcon==='down'?'up':'down');
+    }
+
+    const toggleDropdown1 =()=>{
+      setisDropdownOpen1(isDropdownOpen1==='none'?'inline':'none');
+      setChangeIcon1(changeIcon1==='down'?'up':'down');
+    }
+
+    const toggleDropdown2 =()=>{
+      setisDropdownOpen2(isDropdownOpen2==='none'?'inline':'none');
+      setChangeIcon2(changeIcon2==='down'?'up':'down');
+    }
+
+
   return <>
     <section data-testid="product-description" className="mt-5"><div>
       <h5 className=" mb-4 ">About this item</h5>
@@ -7,15 +36,20 @@ export default function ProdSpecs() {
       <hr  />
       <section className="expand-collapse-section" aria-describedby="delivery-instructions">
         <hr aria-hidden="true" />
+        <div>
         <div className="expand-collapse-header d-flex justify-between items-center w-100">
           <h6 className="w-100 ">Product details</h6>
           <div className="">
-            <button className="bg-transparent sans-serif  pointer  border-0 bg-white pt-3" type="button" aria-expanded="true" aria-label="Product details">
-              <i className="fa fa-chevron-up" style={{ fontSize: "1.5rem", verticalAlign: "-0.25em", width: "1.5rem", height: "1.5rem", boxSizing: "content-box" }}></i>
+            <button className="border-0 bg-white fs-5" type="button" aria-expanded="true" aria-label="Product details">
+            <i
+                    className={`fas fa-chevron-${changeIcon} mt-3 ms-3  `}
+                    onClick={toggleDropdown}
+                    aria-expanded={isDropdownOpen}
+                  ></i>
             </button>
           </div>
         </div>
-        <div className=" expand-collapse-content " data-testid="ui-collapse-panel" style={{ height: "auto" }}>
+        <div className=" expand-collapse-content "    style={{ display: `${isDropdownOpen}` }}>
           <div className=" pb-4 pt-1"><div className="nb3" data-testid="product-description-content">
             <div className="mb-3">
               <span className="   overflow-visible " style={{ paddingBottom: "0em", marginBottom: "0em" }}>
@@ -138,6 +172,8 @@ export default function ProdSpecs() {
           </div>
           </div>
         </div>
+        </div>
+       
       </section>
     </section>
 
@@ -145,13 +181,17 @@ export default function ProdSpecs() {
       <hr aria-hidden="true" className="" />
       <div className="expand-collapse-header d-flex justify-content-between align-items-center w-100" >
         <h5 className="w-100 ">Specifications</h5>
-        <div className="">
-          <button className="bg-transparent   sans-serif  pointer border-0 pt-3" type="button" aria-expanded="true" aria-label="Specifications">
-            <i className=" fas fa-chevron-up" style={{ fontSize: "1.5rem", verticalAlign: "-0.25em", width: "1.5rem", height: "1.5rem", boxSizing: "content-box" }}></i>
-          </button>
+        <div >
+        <button className="border-0 bg-white fs-5" type="button" aria-expanded="true" aria-label="Product details">
+            <i
+                    className={`fas fa-chevron-${changeIcon2} mt-3 ms-3  `}
+                    onClick={toggleDropdown1}
+                    aria-expanded={isDropdownOpen1}
+                  ></i>
+            </button>
         </div>
       </div>
-      <div className=" expand-collapse-content" data-testid="ui-collapse-panel" style={{ height: "auto" }}>
+      <div className=" expand-collapse-content" style={{ display: `${isDropdownOpen1}` }}>
         <div className=" pb-4 pt-1">
           <div className="">
             <div className="pb-2">
@@ -285,12 +325,16 @@ export default function ProdSpecs() {
       <div className="expand-collapse-header d-flex justify-content-between align-items-center w-100">
         <h5 className="w-100">Warranty</h5>
         <div className="">
-          <button className="bg-transparent sans-serif  pointer  border-0 pt-3" type="button" aria-expanded="true" aria-label="Warranty">
-            <i className="fa fa-chevron-up" style={{ fontSize: "1.5rem", verticalAlign: "-0.25em", width: "1.5rem", height: "1.5rem", boxSizing: "content-box" }}></i>
-          </button>
+        <button className="border-0 bg-white fs-5" type="button" aria-expanded="true" aria-label="Product details">
+            <i
+                    className={`fas fa-chevron-${changeIcon2} mt-3 ms-3  `}
+                    onClick={toggleDropdown2}
+                    aria-expanded={isDropdownOpen2}
+                  ></i>
+            </button>
         </div>
       </div>
-      <div className=" expand-collapse-content" data-testid="ui-collapse-panel" style={{ height: "auto" }}>
+      <div className=" expand-collapse-content" style={{ display: `${isDropdownOpen2}` }}>
         <div className=" pb-4 pt-1">
           <div className="">
             <div className="pb-2">

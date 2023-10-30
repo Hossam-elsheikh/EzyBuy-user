@@ -8,15 +8,19 @@
 }
 
 .btun:hover{
-    color:blue !important;
+    color:blue !important; 
     text-decoration: none !important;
 }
+.col_4{
 
-
-/* @media screen and (min-width: 700px) {
+}
+/* 
+@media (min-width: 700px) {
     .col_4{
-        position:fixed !important;
-        right:10%;
-        top:130%;
-    }
-  } */
+        position:sticky !important;
+        height: fit-content;
+        /* top:1%; */
+   /* }
+ /* }
+   */
+  
