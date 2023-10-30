@@ -117,7 +117,7 @@ displaySec === 'dep' ? <DepartmentsDiv /> : <ServicesDiv /> }
             <i className="fa-regular fa-heart"></i>
             <p >My items</p>
           </Link>
-          <Link className={`hide_sm ${classes.cat}`}>
+          <Link to='myaccount' className={`hide_sm ${classes.cat}`}>
             <i className="fa-regular fa-user"></i>
             <p>My Account</p>
           </Link>

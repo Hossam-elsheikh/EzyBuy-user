@@ -9,6 +9,7 @@ padding:1px 18px !important;
 .button:hover{
     color:lightcyan;
     background-color:black;
+    background-color:rgb(209, 209, 209);
 }
 
 .c li {
