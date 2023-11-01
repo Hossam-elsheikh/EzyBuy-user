@@ -1,11 +1,9 @@
 import React from 'react'
-import Register from '../Components/Register/Register'
 import Password from '../Components/Password/Password'
 import { Container } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
-const RegisterPage = () => {
-
+const PasswordPage = () => {
   let navigate = useNavigate();
   return <>
   <Container>
@@ -18,10 +16,10 @@ const RegisterPage = () => {
             alt="" />
       </div>
             
-       <h4 className='mt-4'>Create your Walmart account</h4>
+       <h4 className='mt-4'>Welcome back!</h4>
        <div className=''>
-       <p className='text-start text-body-secondary' style={{fontSize:16}} >Email address</p>
-       <p style={{fontSize:16}} className='text-start text-body-secondary' >{localStorage.getItem("customerEmail")}
+       <p className='text-start' style={{fontSize:16}} >Email address</p>
+       <p style={{fontSize:16}}>{localStorage.getItem("customerEmail")}
        <span className='ms-4'>
         <button className={`border-0 text-decoration-underline bg-light`} style={{fontSize:14}}  onClick={()=>navigate('/login')} >
           Change
@@ -35,8 +33,8 @@ const RegisterPage = () => {
       </div>
       
         <div className='mt-5  d-flex justify-content-center align-items-center '>
-          <div className='' style={{width:"40%"}}>
-          <Register/>
+          <div className='' style={{width:"35%"}}>
+          <Password/>
 
           </div>
       </div>
@@ -47,4 +45,4 @@ const RegisterPage = () => {
     </>
 }
 
-export default RegisterPage
+export default PasswordPage

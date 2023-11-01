@@ -5,6 +5,7 @@ import NotFound from './Components/NotFound/NotFound'
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute'
 import HomePage from './Pages/HomePage'
 import LoginPage from './Pages/LoginPage'
+import PasswordPage from './Pages/PasswordPage'
 import RegisterPage from './Pages/RegisterPage'
 import GroceryPage from './Pages/GroceryPage'
 import BeautyPage from './Pages/BeautyPage'
@@ -27,7 +28,7 @@ import PersonalInfo from './Components/Account/PersonalInfo'
 import Addresses from './Components/Account/Addresses'
 import Community from './Components/Account/Community'
 import Giving from './Components/Account/Giving'
-import PasswordPage from './Components/PasswordPage/PasswordPage'
+// import PasswordPage from './Components/PasswordPage/PasswordPage'
 function App() {
 let routers = createBrowserRouter([
   {path:'/',element:<Layout/>,children:[

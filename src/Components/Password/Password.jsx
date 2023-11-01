@@ -1,4 +1,4 @@
-// import style from './PasswordPage.module.css'
+import style from './Password.module.css'
 import  {  useState } from 'react'
 import {useFormik} from 'formik'
 import * as  Yup from 'yup' 
@@ -8,8 +8,21 @@ import toast, { Toaster } from 'react-hot-toast'
 import { login } from '../../services/auth'
 
 
-export default function PasswordPage() {
-  
+export default function Password() {
+  let [togglerType , setTogglerType] = useState('password')
+  let [toggler , setToggler] = useState('Show')
+  let toggle = () =>{
+    if(togglerType == 'password'){
+      setTogglerType('text')
+      setToggler('Hide')
+    }
+    else{
+      setTogglerType('password')
+      setToggler('Show')
+    }
+  }
+
+
   let navigate =useNavigate();
   let [error,setError] = useState(null)
   let [isLoading , setisLoading]  = useState(false)
@@ -57,9 +70,19 @@ export default function PasswordPage() {
       
       <form onSubmit={formik.handleSubmit}>
       
-      <label htmlFor="password" >Password</label>
-      <input onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.password} className='form-control mb-2' type="password"  name='password' id='password'/>
+      <label htmlFor="password" className='fw-bold text-start w-100' >Enter your password</label>
+      <div className='d-flex '>
+      <input onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.password} className={`form-control  h-100 mb-2 ${style.input}`} type={togglerType}  name='password' id='password'/>
+      
+      <i className=' border border-start-0 border-2  p-2  border-black d-flex align-items-center fw-bold  ms-0' style={{height:"60px",
+    borderRadius: "0px 10px 10px 0px"
+    }} onClick={()=>toggle()}>{toggler}</i>        
+      </div>   
       {formik.errors.password && formik.touched.password? <div className='alert alert-danger mt-2 p-2'>{formik.errors.password}</div>:""}
+     
+      <div className='w-100 text-start ms-3 mt-3'>
+      <input type="checkbox" id='keepMe' /><label htmlFor="keepMe" className=' ms-2 fw-bold text-black'>Keep me Signed In</label>
+      </div>
       
      {!isLoading?
       <div className=' border border-0 rounded text-light d-flex align-items-center '>
