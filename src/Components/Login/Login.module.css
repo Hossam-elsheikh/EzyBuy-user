@@ -1,1 +1,11 @@
 .Login {}
+
+.input{
+    border: 1px solid black !important;
+    height: 60px !important;
+    box-shadow:none !important;
+}
+
+.input:focus{
+    border: 3px solid black !important; 
+}

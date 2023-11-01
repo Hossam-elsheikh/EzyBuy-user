@@ -5,6 +5,10 @@ export const register = ( data )=>{
    return instance.post('/customer/signup',data)
 }
 
-export const login = ()=>{
-    return instance.post('/customer/login',)
+export const check = (data)=>{
+    return instance.post('/customer/check',data)
+}
+
+export const login = (data)=>{
+    return instance.post('/customer/login',data)
 }

@@ -19,6 +19,7 @@ import MyItems from './Components/MyItems/MyItems'
 import Reorder from './Components/MyItems/Reorder'
 import Lists from './Components/MyItems/Lists'
 import Registers from './Components/MyItems/Registers'
+import PasswordPage from './Components/PasswordPage/PasswordPage'
 function App() {
 let routers = createBrowserRouter([
   {path:'/',element:<Layout/>,children:[
@@ -34,10 +35,13 @@ let routers = createBrowserRouter([
     {path:'protection',element:<ProductCarePlan/>},
     {path:'health',element:<HealthWellness/>},
     {path:'cart',element:<Cart/>},
+    {path:'passwordPage', element:<PasswordPage/>},
+
     {path:'myitems',element:<MyItems/>,children:[
       {index:true, element:<Reorder/>},
       {path:'lists', element:<Lists/>},
       {path:'registers', element:<Registers/>},
+
   
 
     ]},
