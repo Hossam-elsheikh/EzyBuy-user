@@ -19,7 +19,6 @@ import MyItems from './Components/MyItems/MyItems'
 import Reorder from './Components/MyItems/Reorder'
 import Lists from './Components/MyItems/Lists'
 import Registers from './Components/MyItems/Registers'
-import PasswordPage from './Components/PasswordPage/PasswordPage'
 import AccountPage from './Pages/AccountPage'
 import PurchaseHistory from './Components/Account/PurchaseHistory'
 import MySavings from './Components/Account/MySavings'
@@ -28,6 +27,7 @@ import PersonalInfo from './Components/Account/PersonalInfo'
 import Addresses from './Components/Account/Addresses'
 import Community from './Components/Account/Community'
 import Giving from './Components/Account/Giving'
+import PasswordPage from './Components/PasswordPage/PasswordPage'
 function App() {
 let routers = createBrowserRouter([
   {path:'/',element:<Layout/>,children:[
@@ -43,6 +43,19 @@ let routers = createBrowserRouter([
     {path:'protection',element:<ProductCarePlan/>},
     {path:'health',element:<HealthWellness/>},
     {path:'cart',element:<Cart/>},
+    {path:'passwordPage', element:<PasswordPage/>},
+
+
+    {path:'myaccount',element:<AccountPage/>,children:[
+      {index:true, element:<PurchaseHistory/>}, //fix later
+      {path:'mysavings', element:<MySavings/>},
+      {path:'wallet', element:<Wallet/>},
+      {path:'personalinfo', element:<PersonalInfo/>},
+      {path:'addresses', element:<Addresses/>},
+      {path:'community', element:<Community/>},
+      {path:'giving', element:<Giving/>},
+
+    ]},
     {path:'myitems',element:<MyItems/>,children:[
       {index:true, element:<Reorder/>}, //fix later
       {path:'lists', element:<Lists/>},
