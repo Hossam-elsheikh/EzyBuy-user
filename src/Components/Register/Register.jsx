@@ -89,7 +89,7 @@ export default function Register() {
       <input type="checkbox" id='keepMe' /><label htmlFor="keepMe" className=' ms-2 fw-bold text-black'>Keep me Signed In</label>
       </div>
       <div className='w-100 text-start ms-3  '>
-      <input type="checkbox" id='sendMe' /><label htmlFor="sendMe" style={{fontSize:14}} className=' text-body-secondary'>Send me emails about new arrivals,</label>
+      <input type="checkbox" id='sendMe' /><label htmlFor="sendMe" style={{fontSize:14}} className='ms-2 text-body-secondary'>Send me emails about new arrivals,</label>
       <p className="text-body-secondary" style={{fontSize:14}}> hot items, daily savings, & more</p>
       <p className="text-body-secondary my-4" style={{fontSize:14}}>
       By clicking Create Account, you acknowledge you have read and agreed to our Terms of Use and Privacy Policy.
