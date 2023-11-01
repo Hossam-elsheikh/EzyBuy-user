@@ -9,9 +9,9 @@ const Reorder = () => {
       <p>Your essentials will show up here for quick and easy reordering</p>
     </div>
     <hr/>
-    <div className='hide'>
+    <div className='hide d-flex flex-column'>
       <h4>Build You Cart</h4>
-      <CarouselCont />
+      <CarouselCont  count={4} slideCount={2}/>
     </div>
     </div>
   )

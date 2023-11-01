@@ -20,6 +20,14 @@ import Reorder from './Components/MyItems/Reorder'
 import Lists from './Components/MyItems/Lists'
 import Registers from './Components/MyItems/Registers'
 import PasswordPage from './Components/PasswordPage/PasswordPage'
+import AccountPage from './Pages/AccountPage'
+import PurchaseHistory from './Components/Account/PurchaseHistory'
+import MySavings from './Components/Account/MySavings'
+import Wallet from './Components/Account/Wallet'
+import PersonalInfo from './Components/Account/PersonalInfo'
+import Addresses from './Components/Account/Addresses'
+import Community from './Components/Account/Community'
+import Giving from './Components/Account/Giving'
 function App() {
 let routers = createBrowserRouter([
   {path:'/',element:<Layout/>,children:[
@@ -35,10 +43,8 @@ let routers = createBrowserRouter([
     {path:'protection',element:<ProductCarePlan/>},
     {path:'health',element:<HealthWellness/>},
     {path:'cart',element:<Cart/>},
-    {path:'passwordPage', element:<PasswordPage/>},
-
     {path:'myitems',element:<MyItems/>,children:[
-      {index:true, element:<Reorder/>},
+      {index:true, element:<Reorder/>}, //fix later
       {path:'lists', element:<Lists/>},
       {path:'registers', element:<Registers/>},
 
