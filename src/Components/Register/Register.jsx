@@ -64,7 +64,7 @@ export default function Register() {
       {formik.errors.name && formik.touched.name? <div className='alert alert-danger mt-2 p-2'>{formik.errors.name}</div>:""}
 
       <label htmlFor="email" className="fw-bold text-start w-100" >E-mail</label>
-      <input onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.email}  className={`form-control  h-100 mb-2 ${style.input}`} type="email"  name='email' id='email'/>
+      <input onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.email}  className={`form-control   mb-2 ${style.input}`} type="email"  name='email' id='email'/>
       {formik.errors.email && formik.touched.email? <div className='alert alert-danger mt-2 p-2'>{formik.errors.email}</div>:""}
       
       <label htmlFor="phone" className="fw-bold text-start w-100" >Phone</label>
