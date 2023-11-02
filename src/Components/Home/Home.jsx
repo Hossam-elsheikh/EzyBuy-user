@@ -13,7 +13,15 @@ import ShopNowCard from "../Reusable/ShopNowCard/ShopNowCard";
 // import TwoImages from "../Reusable/TwoImages/TwoImages";
 
 import style from "./Home.module.css";
+import { useEffect, useState } from "react";
+import instance from "../../axiosConfig/instance";
 export default function Home() {
+
+  const [products,setProducts] = useState([])
+
+  useEffect(()=>{
+    instance.get('/product').then((data)=> console.log(data))
+  },[])
   const cards = [
     {
       imgURL:
@@ -83,10 +91,10 @@ export default function Home() {
           </div>
         </div>
         {/* Deals */}
-        <CarouselCont lgCount={7} mdCount={7} smCount={3} count={7} slideCount={3} headline='Top Deals' desc='Up to 65% off'/>
+        <CarouselCont products={products} lgCount={7} mdCount={7} smCount={3} count={7} slideCount={3} headline='Top Deals' desc='Up to 65% off'/>
         <div className="row d-flex align-items-center w-100">
           <div className="col-12 col-lg-6">
-        <CarouselCont lgCount={3} mdCount={3} smCount={3} count={3} slideCount={1} headline='Add to your collection' desc='Metallics, neutrals & more for all.'/>
+        <CarouselCont products={products} lgCount={3} mdCount={3} smCount={3} count={3} slideCount={1} headline='Add to your collection' desc='Metallics, neutrals & more for all.'/>
           </div>
           <div className="col-12 col-lg-6">
             <ShopNowCard src={cards[3].imgURL} title={cards[0].title}/>

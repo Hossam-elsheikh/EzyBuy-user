@@ -117,9 +117,10 @@ displaySec === 'dep' ? <DepartmentsDiv /> : <ServicesDiv /> }
             <i className="fa-regular fa-heart"></i>
             <p >My items</p>
           </Link>
-          <Link to='myaccount' className={`hide_sm ${classes.cat}`}>
+          <Link to={isLogged ? 'myaccount' : 'login'} className={`hide_sm ${classes.cat}`}>
             <i className="fa-regular fa-user"></i>
             <p>My Account</p>
+            <p>{isLogged ? 'myaccount' : 'login'}</p>
           </Link>
           <Link className={classes.cart} to='/cart'>
             <img src={cart} />
@@ -142,8 +143,6 @@ displaySec === 'dep' ? <DepartmentsDiv /> : <ServicesDiv /> }
           <Link to='/kids'>Kids</Link>
           <Link to='/fashion'>Fashion</Link>
           <Link to='/electronics'>Electronics</Link>
-          <Link to='/login'>log in</Link>
-          <Link to='/register'>Register</Link>
           <Link to='/product'>Product</Link>
           <Link to='/Health'>Health</Link>
 

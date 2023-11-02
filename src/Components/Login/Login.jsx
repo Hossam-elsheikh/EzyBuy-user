@@ -22,11 +22,12 @@ export default function Login() {
    
    if(data.data == true ){
     setisLoading(false);
-    localStorage.setItem('customerEmail',values.email);
     toast.success("Email Exist")
+    localStorage.setItem('customerEmail',values.email);
     navigate('/passwordPage');
   }else{
     setisLoading(false);
+    localStorage.setItem('customerEmail',values.email);
     toast.success("Email does not Exist")
     navigate('/register');
   }

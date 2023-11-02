@@ -44,7 +44,7 @@ export default function Register() {
     initialValues:{
       name:'',
       phone:'',
-      email:'',
+      email: localStorage.getItem('customerEmail'),
       password:'',
       address:'',
       city:''

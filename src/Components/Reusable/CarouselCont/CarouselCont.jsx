@@ -95,7 +95,7 @@ export default function CarouselCont(props) {
         </p>
         
           <Carousel
-            value={products}
+            value={props.products}
             numVisible={props.count}
             numScroll={props.slideCount}
             responsiveOptions={responsiveOptions}
