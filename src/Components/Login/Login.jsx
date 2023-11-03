@@ -1,4 +1,4 @@
-import  {  useState } from 'react'
+import  {   useState } from 'react'
 import style from './Login.module.css'
 import {useFormik} from 'formik'
 import * as  Yup from 'yup' 
@@ -9,7 +9,6 @@ import { check,  } from '../../services/auth'
 
 
 export default function Login() {
-  
   let navigate =useNavigate();
   let [error,setError] = useState(null)
   let [isLoading , setisLoading]  = useState(false)

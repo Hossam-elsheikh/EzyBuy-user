@@ -1,7 +1,15 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
 import style from './AccNav.module.css'
+import { LoginContext } from '../../context/LoginContext';
 const AccNav = () => {
+  let {customerToken , setCustomerToken} = useContext(LoginContext);
+  let navigate = useNavigate();
+  function logout(){
+    localStorage.removeItem('customerToken');
+    setCustomerToken(null);
+    navigate('/login');
+  }
   return (
     <div style={{borderRight:'1px solid rgb(209, 209, 209)'}} className={`d-flex flex-column ${style.links}`}>
       <div>
@@ -19,7 +27,7 @@ const AccNav = () => {
       <NavLink className={({isActive})=>isActive ? style.active : ''} to='community'><i class="fa-solid fa-envelope"></i> &nbsp;Communication & Privacy</NavLink>
       <NavLink className={({isActive})=>isActive ? style.active : ''} to='giving'><i class="fa-solid fa-hand-holding-dollar"></i> &nbsp;Giving & impact</NavLink>
       <hr />
-      <NavLink  to='signout'><i class="fa-solid fa-right-from-bracket"></i> &nbsp;sign out</NavLink>
+      <NavLink  to='/login' onClick={logout}><i class="fa-solid fa-right-from-bracket"></i> &nbsp;sign out</NavLink>
       
     </div>
   )

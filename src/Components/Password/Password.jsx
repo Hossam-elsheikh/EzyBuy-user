@@ -1,14 +1,16 @@
 import style from './Password.module.css'
-import  {  useState } from 'react'
+import  {  useContext, useState } from 'react'
 import {useFormik} from 'formik'
 import * as  Yup from 'yup' 
 import {  useNavigate } from 'react-router-dom'
 import { MagnifyingGlass } from 'react-loader-spinner'
 import toast, { Toaster } from 'react-hot-toast'
 import { login } from '../../services/auth'
+import { LoginContext } from '../../context/LoginContext'
 
 
 export default function Password() {
+  let { setCustomerToken} = useContext(LoginContext);
   let [togglerType , setTogglerType] = useState('password')
   let [toggler , setToggler] = useState('Show')
   let toggle = () =>{
@@ -37,6 +39,7 @@ export default function Password() {
    if(data.message === 'login successfull'){
     setisLoading(false);
     localStorage.setItem('customerToken',data.token);
+    setCustomerToken(data.token);
     toast.success("logged in successfully")
     navigate('/');
   }
