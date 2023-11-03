@@ -166,7 +166,7 @@ useEffect(()=>{
             <i className="fa-solid fa-chevron-down" style={{ cursor: 'pointer' }}></i>
           </div>
           <div className="d-none gap-3 d-lg-flex d-xl-flex">
-            <Link to='/grocery'>Groceries & Essentials </Link>
+            <Link to='/groceries'>Groceries & Essentials </Link>
             <Link to='/beauty'>Beauty</Link>
             <Link to='/kids'>Kids</Link>
             <Link to='/fashion'>Fashion</Link>

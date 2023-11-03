@@ -4,13 +4,15 @@ import CirCatCont from "../Components/Reusable/CirCatCont/CirCatCont";
 import CarouselCont from "../Components/Reusable/CarouselCont/CarouselCont";
 import CardCont from "../Components/Reusable/CardCont/CardCont";
 import instance from "../axiosConfig/instance";
+import { useLocation, useParams } from "react-router-dom";
 const GroceryPage = () => {
+  
   const [products,setProducts] = useState([])
-
   useEffect(()=>{
-    instance.get('/product/all').then((data)=> setProducts(data.data))
+    instance.get(`/product/groceries`).then((data)=> setProducts(data.data))
     
   },[])
+
   return (
     <>
       <div className="">

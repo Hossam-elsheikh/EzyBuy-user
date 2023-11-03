@@ -34,7 +34,7 @@ function App() {
     {
       path: '/', element: <Layout />, children: [
         { index: true, element: <HomePage /> },
-        { path: 'grocery', element: <GroceryPage /> },
+        { path: 'groceries', element: <GroceryPage /> },
         { path: 'beauty', element: <BeautyPage /> },
         { path: 'kids', element: <KidsPage /> },
         { path: 'fashion', element: <FashionPage /> },

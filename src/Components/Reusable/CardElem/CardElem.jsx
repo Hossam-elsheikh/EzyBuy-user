@@ -1,6 +1,5 @@
 import classNamees from './CardElem.module.css'
 export default function CardElem(props) {
-  console.log(props.image);
   return <>
 
   <div className={`card p-0 ${classNamees.cardE}`}>
