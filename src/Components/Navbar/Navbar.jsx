@@ -8,14 +8,12 @@ import { useContext, useEffect, useState } from "react";
 import { LoginContext } from "../../context/LoginContext";
 export default function Navbar() {
 
-  let { customerToken , setCustomerToken} = useContext(LoginContext);
-  let [path , setPath] = useState('login')
+  let [path , setPath] = useState('myaccount')
 
   function updateLogged (){
-    if(customerToken !==  null){
-
+    if(localStorage.getItem('customerToken')){
       setPath('myaccount')
-  }else{
+  }else if (localStorage.getItem('customerToken') == null){
     setPath('login')
   }
   }
@@ -26,7 +24,7 @@ export default function Navbar() {
 
 useEffect(()=>{
   updateLogged()
-},[customerToken])
+},[localStorage.getItem('customerToken')])
 
 
   const [display, setDisplay] = useState(false)
