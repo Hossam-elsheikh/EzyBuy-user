@@ -8,7 +8,7 @@ export default function CarouselElem(props) {
       <div className={classes.item}>
         <img src={props.src} />
         <h6>
-          {props.price} <span>each</span>
+          ${props.price} <span>each</span>
         </h6>
         <div className="d-flex gap-1">
 

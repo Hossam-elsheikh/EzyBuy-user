@@ -6,60 +6,11 @@ import CarouselElem from "../CarouselElem/CarouselElem";
 import { Link } from "react-router-dom";
 
 export default function CarouselCont(props) {
-  const products = [
-    {
-      src: "https://i5.walmartimages.com/seo/Marketside-Fresh-Vegetable-Medley-Blend-12-oz_e1b24447-13d1-400f-8c08-d028387af462.7bf1e62b403af40061a416cf56c9af22.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
-      title: "Marketside Fresh Vegetable Medley Blend, 12 oz  ",
-      price: "$2.57",
-      rating: 4,
-    },
-    {
-      src: "https://i5.walmartimages.com/seo/Marketside-Fresh-Vegetable-Medley-Blend-12-oz_e1b24447-13d1-400f-8c08-d028387af462.7bf1e62b403af40061a416cf56c9af22.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
-      title: "Marketside Fresh Vegetable Medley Blend, 12 oz  ",
-      price: "$2.57",
-      rating: 4,
-    },
-    {
-      src: "https://i5.walmartimages.com/seo/Marketside-Fresh-Vegetable-Medley-Blend-12-oz_e1b24447-13d1-400f-8c08-d028387af462.7bf1e62b403af40061a416cf56c9af22.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
-      title: "Marketside Fresh Vegetable Medley Blend, 12 oz  ",
-      price: "$2.57",
-      rating: 4,
-    },
-    {
-      src: "https://i5.walmartimages.com/seo/Marketside-Fresh-Vegetable-Medley-Blend-12-oz_e1b24447-13d1-400f-8c08-d028387af462.7bf1e62b403af40061a416cf56c9af22.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
-      title: "Marketside Fresh Vegetable Medley Blend, 12 oz  ",
-      price: "$2.57",
-      rating: 4,
-    },
-    {
-      src: "https://i5.walmartimages.com/seo/Marketside-Fresh-Vegetable-Medley-Blend-12-oz_e1b24447-13d1-400f-8c08-d028387af462.7bf1e62b403af40061a416cf56c9af22.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
-      title: "Marketside Fresh Vegetable Medley Blend, 12 oz  ",
-      price: "$2.57",
-      rating: 4,
-    },
-    {
-      src: "https://i5.walmartimages.com/seo/Marketside-Fresh-Vegetable-Medley-Blend-12-oz_e1b24447-13d1-400f-8c08-d028387af462.7bf1e62b403af40061a416cf56c9af22.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
-      title: "Marketside Fresh Vegetable Medley Blend, 12 oz  ",
-      price: "$2.57",
-      rating: 4,
-    },
-    {
-      src: "https://i5.walmartimages.com/seo/Marketside-Fresh-Vegetable-Medley-Blend-12-oz_e1b24447-13d1-400f-8c08-d028387af462.7bf1e62b403af40061a416cf56c9af22.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
-      title: "Marketside Fresh Vegetable Medley Blend, 12 oz  ",
-      price: "$2.57",
-      rating: 4,
-    },
-    {
-      src: "https://i5.walmartimages.com/seo/Marketside-Fresh-Vegetable-Medley-Blend-12-oz_e1b24447-13d1-400f-8c08-d028387af462.7bf1e62b403af40061a416cf56c9af22.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
-      title: "Marketside Fresh Vegetable Medley Blend, 12 oz  ",
-      price: "$2.57",
-      rating: 4,
-    },
-  ];
+  
   const productTemplate = (product) => {
     return (
       <CarouselElem
-        src={product.src}
+        src={product.images[0]}
         title={product.title}
         price={product.price}
         rating={product.rating}

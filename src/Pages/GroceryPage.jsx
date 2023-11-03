@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DropDownCont from "../Components/Reusable/DropDownCont/DropDownCont";
 import CirCatCont from "../Components/Reusable/CirCatCont/CirCatCont";
 import CarouselCont from "../Components/Reusable/CarouselCont/CarouselCont";
 import CardCont from "../Components/Reusable/CardCont/CardCont";
+import instance from "../axiosConfig/instance";
 const GroceryPage = () => {
+  const [products,setProducts] = useState([])
+
+  useEffect(()=>{
+    instance.get('/product/all').then((data)=> setProducts(data.data))
+    
+  },[])
   return (
     <>
       <div className="">
@@ -16,13 +23,13 @@ const GroceryPage = () => {
           <hr/>
           <CirCatCont name="Shop essentials" image="https://i5.walmartimages.com/dfw/4ff9c6c9-b2e6/k2-_c4f04095-331e-4941-8c8e-9395dd2d9e45.v1.jpg?odnHeight=290&odnWidth=290&odnBg=FFFFFF" />
           <hr/>
-          <CarouselCont lgCount={7} mdCount={7} smCount={3} count={7} slideCount={3} headline='Top Deals' desc='Up to 65% off'/>
+          <CarouselCont products={products} lgCount={7} mdCount={7} smCount={3} count={7} slideCount={3} headline='Top Deals' desc='Up to 65% off'/>
           <hr/>
           <CardCont/>
           <hr/>
-          <CarouselCont lgCount={7} mdCount={7} smCount={3} count={7} slideCount={3} headline='Top Deals' desc='Up to 65% off'/>
+          <CarouselCont products={products} lgCount={7} mdCount={7} smCount={3} count={7} slideCount={3} headline='Top Deals' desc='Up to 65% off'/>
           <hr/>
-          <CarouselCont lgCount={7} mdCount={7} smCount={3} count={7} slideCount={3} headline='Top Deals' desc='Up to 65% off'/>
+          <CarouselCont products={products} lgCount={7} mdCount={7} smCount={3} count={7} slideCount={3} headline='Top Deals' desc='Up to 65% off'/>
           <hr/>
           <CardCont/>
           </div>

@@ -20,7 +20,8 @@ export default function Home() {
   const [products,setProducts] = useState([])
 
   useEffect(()=>{
-    instance.get('/product').then((data)=> console.log(data))
+    instance.get('/product/all').then((data)=> setProducts(data.data))
+    
   },[])
   const cards = [
     {
