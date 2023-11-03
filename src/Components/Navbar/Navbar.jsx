@@ -10,12 +10,15 @@ export default function Navbar() {
 
   let { customerToken , setCustomerToken} = useContext(LoginContext);
   let [path , setPath] = useState('myaccount')
+  let [logState , setLogState] = useState('My Account')
 
   function updateLogged (){
     if(localStorage.getItem('customerToken')){
       setPath('myaccount')
-  }else if (localStorage.getItem('customerToken') == null){
-    setPath('login..')
+      setLogState('My Account')
+    }else if (localStorage.getItem('customerToken') == null){
+      setPath('login')
+      setLogState('Sign in')
   }
   }
 
@@ -145,8 +148,7 @@ useEffect(()=>{
             </Link>
             <Link to={path} className={`hide_sm ${classes.cat}`}>
               <i className="fa-regular fa-user"></i>
-              <p>My Account</p>
-              <p>{path}</p>
+              <p>{logState}</p>
             </Link>
             <Link className={classes.cart} to='/cart'>
               <img src={cart} />

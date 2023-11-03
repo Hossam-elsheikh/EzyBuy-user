@@ -9,19 +9,17 @@ const RegisterPage = () => {
   let navigate = useNavigate();
   return <>
   <Container>
-    <div className=' text-center ' >
-      <div className='d-inline-block '>
-      <div className='w-25 text-center  m-auto'>
+    <div className=' text-center py-5 ' >
+      <div className='d-flex flex-column align-items-center '>
       <img 
-            className='w-50'
-            src="https://i5.walmartimages.com/dfw/4ff9c6c9-d10e/k2-_ef2c8660-96ed-4f64-891d-329fa488c482.v1.png"
+      style={{maxWidth:'200px'}}
+      src="https://i.ibb.co/VptnFXg/blcklogo-04.png"
             alt="" />
-      </div>
             
-       <h4 className='mt-4'>Create your Walmart account</h4>
-       <div className=''>
-       <p className='text-start text-body-secondary' style={{fontSize:16}} >Email address</p>
-       <p style={{fontSize:16}} className='text-start text-body-secondary' >{localStorage.getItem("customerEmail")}
+       <h4 className='mt-2'>Create your Walmart account</h4>
+       <div className='d-flex '>
+       <p className='text-start text-body-secondary' style={{fontSize:16}} >Email address: &nbsp;  </p>
+       <p style={{fontSize:16}} className='text-start text-body-secondary' > {localStorage.getItem("customerEmail")}
        <span className='ms-4'>
         <button className={`border-0 text-decoration-underline bg-light`} style={{fontSize:14}}  onClick={()=>navigate('/login')} >
           Change
@@ -34,8 +32,8 @@ const RegisterPage = () => {
        
       </div>
       
-        <div className='mt-5  d-flex justify-content-center align-items-center '>
-          <div className='' style={{width:"40%"}}>
+        <div className='  d-flex justify-content-center align-items-center '>
+        <div className="w-100 d-flex flex-column " style={{maxWidth:'500px'}}>
           <Register/>
 
           </div>

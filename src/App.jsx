@@ -34,8 +34,6 @@ function App() {
     {
       path: '/', element: <Layout />, children: [
         { index: true, element: <HomePage /> },
-        { path: 'login', element: <LoginPage /> },
-        { path: 'register', element: <RegisterPage /> },
         { path: 'grocery', element: <GroceryPage /> },
         { path: 'beauty', element: <BeautyPage /> },
         { path: 'kids', element: <KidsPage /> },
@@ -45,7 +43,6 @@ function App() {
         { path: 'protection', element: <ProductCarePlan /> },
         { path: 'health', element: <HealthWellness /> },
         { path: 'cart', element: <Cart /> },
-        { path: 'passwordPage', element: <PasswordPage /> },
         { path: 'myaccount', element: <AccountPage />, children: [
             { index: true, element: <PurchaseHistory /> }, //fix later
             { path: 'mysavings', element: <MySavings /> },
@@ -64,6 +61,9 @@ function App() {
         },
       ]
     },
+    { path: 'login', element: <LoginPage /> },
+    { path: 'passwordPage', element: <PasswordPage /> },
+    { path: 'register', element: <RegisterPage /> },
     { path: '*', element: <NotFound /> }
   ])
   return (

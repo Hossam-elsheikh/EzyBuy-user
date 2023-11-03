@@ -56,41 +56,40 @@ export default function Register() {
   })
 
   return <>
-    <div className='w-75 mx-auto py-5'>
+    <div className='w-75 mx-auto py-2'>
       {error ? <div className='alert alert-danger'>{error}</div>:""}
       <form onSubmit={formik.handleSubmit}>
-      <label htmlFor="name" className="fw-bold text-start w-100" >Name</label>
+      <label htmlFor="name" className=" text-start w-100" >Name</label>
       <input onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.name} className={`form-control   mb-2 ${style.input}`} type="text"  name='name' id='name'/>
       {formik.errors.name && formik.touched.name? <div className='alert alert-danger mt-2 p-2'>{formik.errors.name}</div>:""}
 
-      <label htmlFor="email" className="fw-bold text-start w-100" >E-mail</label>
+      <label htmlFor="email" className=" text-start w-100" >E-mail</label>
       <input onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.email}  className={`form-control   mb-2 ${style.input}`} type="email"  name='email' id='email'/>
       {formik.errors.email && formik.touched.email? <div className='alert alert-danger mt-2 p-2'>{formik.errors.email}</div>:""}
       
-      <label htmlFor="phone" className="fw-bold text-start w-100" >Phone</label>
+      <label htmlFor="phone" className="text-start w-100" >Phone</label>
       <input onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.phone}  className={`form-control   mb-2 ${style.input}`} type="tel"  name='phone' id='phone'/>
       {formik.errors.phone && formik.touched.phone? <div className='alert alert-danger mt-2 p-2'>{formik.errors.phone}</div>:""}
       
-      <label htmlFor="password" className="fw-bold text-start w-100" >Password</label>
+      <label htmlFor="password" className=" text-start w-100" >Password</label>
       <input onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.password}  className={`form-control   mb-2 ${style.input}`} type="password"  name='password' id='password'/>
       {formik.errors.password && formik.touched.password? <div className='alert alert-danger mt-2 p-2'>{formik.errors.password}</div>:""}
       
-      <label htmlFor="address" className="fw-bold text-start w-100" >Address</label>
+      <label htmlFor="address" className=" text-start w-100" >Address</label>
       <input onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.address}  className={`form-control   mb-2 ${style.input}`} type="text"  name='address' id='address'/>
       {formik.errors.address && formik.touched.address? <div className='alert alert-danger mt-2 p-2'>{formik.errors.address}</div>:""}
       
       
-      <label htmlFor="city" className="fw-bold text-start w-100" >City</label>
+      <label htmlFor="city" className=" text-start w-100" >City</label>
       <input onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.city}  className={`form-control   mb-2 ${style.input}`} type="text"  name='city' id='city'/>
       {formik.errors.city && formik.touched.city? <div className='alert alert-danger mt-2 p-2'>{formik.errors.city}</div>:""}
       
 
-      <div className='w-100 text-start ms-3 mt-3'>
-      <input type="checkbox" id='keepMe' /><label htmlFor="keepMe" className=' ms-2 fw-bold text-black'>Keep me Signed In</label>
+      <div className='w-100 text-start mt-3'>
+      <input type="checkbox" id='keepMe' /><label htmlFor="keepMe" className=' ms-2  text-black'>Keep me Signed In</label>
       </div>
-      <div className='w-100 text-start ms-3  '>
-      <input type="checkbox" id='sendMe' /><label htmlFor="sendMe" style={{fontSize:14}} className='ms-2 text-body-secondary'>Send me emails about new arrivals,</label>
-      <p className="text-body-secondary" style={{fontSize:14}}> hot items, daily savings, & more</p>
+      <div className='w-100 text-start   '>
+     
       <p className="text-body-secondary my-4" style={{fontSize:14}}>
       By clicking Create Account, you acknowledge you have read and agreed to our Terms of Use and Privacy Policy.
       </p>

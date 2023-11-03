@@ -1,11 +1,11 @@
 .Register {}
 
 .input{
-    border-width: 1px 1px 1px 1px !important;
+    border-width: 1px !important;
     border-color:  rgb(158, 158, 158) !important;
-    height: 60px !important;
+    height: 40px !important;
     box-shadow:none !important;
-    border-radius: 10px 10px 10px 10px !important;
+    border-radius: 10px !important;
 }
 
 .input:focus{

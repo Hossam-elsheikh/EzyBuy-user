@@ -74,12 +74,10 @@ export default function Password() {
       <form onSubmit={formik.handleSubmit}>
       
       <label htmlFor="password" className='fw-bold text-start w-100' >Enter your password</label>
-      <div className='d-flex '>
-      <input onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.password} className={`form-control  mb-2 ${style.input}`} style={{height:"60px"}} type={togglerType}  name='password' id='password'/>
+      <div className='d-flex position-relative'>
+      <input onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.password} className={`form-control  mb-2 ${style.input}`}  type={togglerType}  name='password' id='password'/>
       
-      <i className=' border border-start-0 border-2  p-2  border-black d-flex align-items-center fw-bold  ms-0' style={{height:"60px",
-    borderRadius: "0px 10px 10px 0px"
-    }} onClick={()=>toggle()}>{toggler}</i>        
+      <i className={style.show}  onClick={()=>toggle()}>{toggler}</i>        
       </div>   
       {formik.errors.password && formik.touched.password? <div className='alert alert-danger mt-2 p-2'>{formik.errors.password}</div>:""}
      
@@ -93,7 +91,7 @@ export default function Password() {
      </div>
       
      
-      :<button  type='button' className='btn btn-primary rounded-5 w-100 text-white ms-2 mt-2'>  
+      :<button  type='button' className='btn btn-primary rounded-5 w-100 text-white  mt-2'>  
           <MagnifyingGlass
             visible={true}
             height="20"
