@@ -8,11 +8,12 @@ import "slick-carousel/slick/slick-theme.css";
 
 import '../node_modules/@fortawesome/fontawesome-free/css/all.min.css'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 
-
+let queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <QueryClientProvider client={queryClient}>
     <App />
-  </React.StrictMode>,
+  </QueryClientProvider>
 )
