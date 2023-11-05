@@ -59,4 +59,11 @@
 .item i {
     position: absolute;
     right: 1rem;
+    background-color: white;
+    padding: 5px 6px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.item i:hover {
+    transform: scale(1.1);
 }

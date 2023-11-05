@@ -12,7 +12,7 @@
     text-decoration: none !important;
 }
 .col_4{
-
+    max-height: 600px !important;
 }
 /* 
 @media (min-width: 700px) {
@@ -24,3 +24,31 @@
  /* }
    */
   
+
+.cartItem {
+    display: flex;
+    border: 1px solid gray;
+    padding: 15px;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 1rem;
+    align-items: center;
+    gap: 1rem;
+    
+}
+
+.cartItem img {
+    width: 100px;
+    height: 100px;
+}
+
+.quantity{
+    display: flex;
+    gap: 1rem;
+}
+
+.quantity input{
+    max-width: 100px;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
