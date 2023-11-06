@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 // import style from './ProdSpecs.module.css'
-export default function ProdSpecs() {
+export default function ProdSpecs({dis}) {
 
   const [isDropdownOpen , setisDropdownOpen]=useState('none');
   const [changeIcon , setChangeIcon] = useState('down')
@@ -53,7 +53,7 @@ export default function ProdSpecs() {
           <div className=" pb-4 pt-1"><div className="nb3" data-testid="product-description-content">
             <div className="mb-3">
               <span className="   overflow-visible " style={{ paddingBottom: "0em", marginBottom: "0em" }}>
-                <div className="fw-bold mb-3">iPad Wi-Fi 128GB - An immersive 9.7-inch Multi-Touch Retina display. 8MP camera. FaceTime HD camera. Screen Resolution:2048 x 1536. Processor Model:A10 Fusion chip with 64-bit architecture, Embedded M10 coprocessor.</div>
+                <div className="fw-bold mb-3">{dis}</div>
               </span>
             </div>
             <div className="mb-3">
@@ -184,7 +184,7 @@ export default function ProdSpecs() {
         <div >
         <button className="border-0 bg-white fs-5" type="button" aria-expanded="true" aria-label="Product details">
             <i
-                    className={`fas fa-chevron-${changeIcon2} mt-3 ms-3  `}
+                    className={`fas fa-chevron-${changeIcon1} mt-3 ms-3  `}
                     onClick={toggleDropdown1}
                     aria-expanded={isDropdownOpen1}
                   ></i>

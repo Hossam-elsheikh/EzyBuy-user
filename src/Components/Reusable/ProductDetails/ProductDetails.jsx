@@ -1,25 +1,45 @@
 import { Link } from "react-router-dom";
 
 import style from './ProductDetails.module.css'
-export default function ProductDetails() {
+import { useEffect, useState } from "react";
+import { ColorRing } from "react-loader-spinner";
+export default function ProductDetails({prd}) {
+  let [isLoading,setIsLoading] = useState(true)
+  useEffect(() => {
+    if(prd.price){
+        setIsLoading(false);
+    }else{
+        setIsLoading(true);
+    }
+}, [prd]);
   return <>
-    <div className={`border border-1 p-3 ${style.ps} `}>
-      <Link to={'#'}>Apple</Link>
+  {isLoading?
+  <div className=' w-100 py-5 fs-1 d-flex justify-content-center align-items-center' >
+  <ColorRing
+    visible={true}
+    height="80"
+    width="80"
+    ariaLabel="blocks-loading"
+    wrapperStyle={{}}
+    wrapperClass="blocks-wrapper"
+    colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+  />
+</div>:
+<div className={`border border-1 p-3 ${style.ps} `}>
+      <Link to={'#'}>{prd.brand}</Link>
 
-      <h5>
-        Open Box | Apple iPad | 9.7-inch Retina | 128GB | Latest OS | Wi-Fi Only | Bundle: Case, Pre-Installed Tempered Glass,
-        Rapid Charger,
-        Bluetooth/Wireless Airbuds By Certified 2 Day Express
-      </h5>
+      <h5>{prd.title}</h5>
 
       <li className=" d-flex list-unstyled mt-3">
         <i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i>
         <i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i>
-        <i className="fa fa-star-half" aria-hidden="true"></i> (4.7) <a href=""> 1406 revewis</a>
+        <i className="fa fa-star-half" aria-hidden="true"> ({prd.rating}) 
+        <a href="" className="ms-2">1406 revewis</a>
+        </i> 
       </li>
       <div className="mt-3">
-        <h2 className="text-success fw-bold">Now $218.00 <a className={`text-decoration-line-through h5 text-dark-emphasis`}>$249.00</a>    </h2>
-        <h5 className="text-success fw-bold">You save $31.00</h5>
+        <h2 className="text-success fw-bold">Now  {(Math.round(prd.discountPercentage * prd.price) - (prd.price))}<a className={`text-decoration-line-through h5 ms-2 text-dark-emphasis`}>{Math.round((prd.discountPercentage )* prd.price)}</a>    </h2>
+        <h5 className="text-success fw-bold">You save {prd.price} </h5>
       </div>
 
       <div className="mt-5">
@@ -129,5 +149,7 @@ export default function ProductDetails() {
 
       </div>
     </div>
+}
+    
   </>
 }

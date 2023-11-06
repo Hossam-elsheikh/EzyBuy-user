@@ -41,7 +41,7 @@ function App() {
         { path: 'kids', element: <KidsPage /> },
         { path: 'fashion', element: <FashionPage /> },
         { path: 'electronics', element: <ElectronicsPage /> },
-        { path: 'product', element: <SingleProductPage /> },
+        { path: 'product/:id', element: <SingleProductPage /> },
         { path: 'protection', element: <ProductCarePlan /> },
         { path: 'health', element: <HealthWellness /> },
         { path: 'cart', element: <Cart /> },

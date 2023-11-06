@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import style from './CustomerReview.module.css'
-export default function CustomerReview() {
+export default function CustomerReview({rate}) {
   return <>
     <section className="overflow-hidden">
       <main style={{ contentVisibility: "auto", containIntrinsicSize: "1000px" }}>
@@ -13,7 +13,7 @@ export default function CustomerReview() {
             <div className=" col-md-6">
               <div className="">
                 <div className="d-flex">
-            <span className=" fw-bolder " style={{ fontSize: "60px" }}>4.7</span>
+            <span className=" fw-bolder " style={{ fontSize: "60px" }}>{rate}</span>
             <span className="fw-bolde mt-5">out of </span>
             <span className=" fw-bolder" style={{ fontSize: "60px" }}>5</span>
             <span className=" mt-5 fw-bold">stars</span>
