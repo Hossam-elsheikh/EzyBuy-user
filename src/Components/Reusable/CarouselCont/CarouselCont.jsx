@@ -4,9 +4,20 @@ import { Carousel } from "primereact/carousel";
 
 import CarouselElem from "../CarouselElem/CarouselElem";
 import { Link } from "react-router-dom";
-
+import instance from "../../../axiosConfig/instance";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch } from "react-redux";
+import { loadCart } from "../../../store/slices/cartSlice";
 export default function CarouselCont(props) {
-  
+  const dispatch =useDispatch()
+  function addToCart(id){
+      instance.post(`/product/${id}`).then((res)=> toast.success(res.data.message))
+      instance.get(`/customer/cart/price`).then((res)=> console.log(res.data.totalPrice))
+      instance.get('/customer/cart').then((res)=> {console.log(res);
+        dispatch(loadCart(res.data.cart))})
+    
+  }
   const productTemplate = (product) => {
     return (
       <CarouselElem
@@ -14,6 +25,7 @@ export default function CarouselCont(props) {
         title={product.title}
         price={product.price}
         rating={product.rating}
+        onclick= {()=>addToCart(product._id)}
       />
     );
   };
@@ -36,6 +48,7 @@ export default function CarouselCont(props) {
   ];
   return (
     <>
+    <ToastContainer theme="colored" autoClose={3000}/>
       <div className="d-flex flex-column w-100">
         <div className="d-flex justify-content-between align-items-center">
           <h5>{props.headline}</h5>

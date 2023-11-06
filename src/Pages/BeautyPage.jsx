@@ -50,7 +50,7 @@ const BeautyPage = () => {
       </p>
 
       {isLoading ?
-        <div className=' w-100 bg-body-secondary py-5 fs-1 d-flex justify-content-center align-items-center' style={{  }}>
+        <div className=' w-100 py-5 fs-1 d-flex justify-content-center align-items-center' style={{  }}>
           <ColorRing
             visible={true}
             height="80"
@@ -76,7 +76,7 @@ const BeautyPage = () => {
                 alt="Perfume" className='img-fluid' />
             </div>
             <button className='btn btn-primary rounded-5 fw-bold mt-3'>+ Add</button>
-            <div className='mt-5'>
+            <div className='mt-1'>
               <span className='text-success  fs-5' style={{ fontWeight: "700" }}>Now</span>
               <span className='text-success fw-bold ms-1 me-1 position-relative' style={{ top: "-8px" }}>$</span>
               <span className='text-success  fs-4' style={{ fontWeight: "700" }}>{prd.price.toString().split('.').splice(0, 1)}</span>
@@ -86,6 +86,11 @@ const BeautyPage = () => {
             <div className='mt-2'>
               <span className='bg-body-secondary text-success me-1 p-1 rounded-3 ' style={{ fontWeight: "600" }}> You save</span>
               <span className='text-success' style={{ fontWeight: "700" }}>{((prd.discountPercentage * prd.price) - prd.price).toString().split('.').splice(0,2).join('.')}</span>
+              <span className='ms-2 fs-5 text-body-secondary text-decoration-line-through '>${Math.round(prd.discountPercentage * prd.price)}</span>
+            </div>
+            <div className='mt-2'>
+              <span className='bg-body-secondary text-success me-1 p-1 rounded-3 ' style={{ fontWeight: "600" }}> You save</span>
+              <span className='text-success' style={{ fontWeight: "700" }}>{Math.round((prd.discountPercentage * prd.price) - prd.price)}</span>
               <p className='mt-1' style={{fontSize:"14px" , fontWeight:"400"}}>{prd.title} </p>
             </div>
             <div className='mt-2'>

@@ -1,8 +1,11 @@
 import { useState } from "react";
 
 import style from "./Cart.module.css";
+import { useSelector } from "react-redux";
 export default function Cart() {
   const [isDropdownOpen, setisDropdownOpen] = useState("none");
+  const cart = useSelector((data)=> data.cart.items)
+  console.log(cart);
   const [changeIcon, setChangeIcon] = useState("down");
   let [counter, setCounter] = useState(0);
   const toggleDropdown = () => {
@@ -22,7 +25,7 @@ export default function Cart() {
     <>
       <h4>
         Cart
-        <span className="ms-1 text-body-secondary ">(1 item)</span>
+        <span className="ms-1 text-body-secondary ">({cart.length} item)</span>
       </h4>
       <section>
         <div className="row d-flex justify-content-between position-relative">
@@ -112,183 +115,25 @@ export default function Cart() {
               </div>
             </div>
 
-            <div
-              id="cart_product"
-              className="shadow pb-3  border border-1 rounded-4"
-            >
-              <div
-                className="header  py-2"
-                style={{ backgroundColor: "#ededf1" }}
-              >
-                <ul className={` ${style.c} border border-0`}>
-                  <h4>
-                    <span className=" me-3">
-                      <img
-                        src="https://i5.walmartimages.com/dfw/63fd9f59-1b5e/5452ae02-a31f-4ef1-9a45-62ac0b06c13b/v1/mci-shipping.svg"
-                        width={60}
-                        alt="icon image"
-                      />
-                    </span>
-                    Free shipping, arrivesTue, Oct 31
-                  </h4>
-                  <a href="#" className="ms-5 ps-4 text-black ">
-                    95829
-                  </a>
-                </ul>
-              </div>
-
-              <p className="mt-5">
-                Sold and shipped by{" "}
-                <a href="#" className="text-black">
-                  BREED
-                </a>
-              </p>
-
-              <div className="prd mt-3">
-                <span
-                  className="  text-primary border border-primary  p-1 px-2 rounded-1 bg-body-secondary"
-                  style={{ fontSize: "11px" }}
-                >
-                  Best seller
-                </span>
-
-                <div className="row mt-3 g-0">
-                  <div className="col-sm-2  text-center">
-                    <img
-                      className="img-fluid "
-                      src="https://i5.walmartimages.com/seo/Restored-Apple-iPhone-11-Carrier-Unlocked-64-GB-Black-Refurbished_c43556d4-0965-4ebe-a28b-b66102d36572.d012f13cc513f5dfc7eb66e845cd75a2.jpeg?odnHeight=96&odnWidth=96&odnBg=FFFFFF"
-                      alt=""
-                    />
-                  </div>
-                  <div className="col-sm-7">
-                    <p className=" " style={{ fontSize: 18 }}>
-                      Restored Apple iPhone 11 -Carrier Unlocked - 64 GB Black
-                      (Refurbished)
-                    </p>
-                    <p className="text-secondary">Hard Driv Capacity: 64</p>
-                    <p className="text-secondary">Actual Color: Black </p>
-                    <p style={{ fontSize: 14 }}>
-                      <span>
-                        <img
-                          src="https://i5.walmartimages.com/dfw/63fd9f59-e685/7e6c8c3a-3ba7-437a-a066-de3ad3a6a15a/v1/roundReturn.svg"
-                          alt="image icon"
-                          className="me-1"
-                        />
-                      </span>
-                      Free 90-day returns
-                    </p>
-
-                    <p className="" style={{ fontSize: 14 }}>
-                      <span>
-                        <i class="fa fa-recycle me-1" aria-hidden="true"></i>
-                      </span>
-                      Restored
-                    </p>
-
-                    <div className=" mt-3">
-                      <p
-                        className=" text-body-secondary fw-bold"
-                        style={{ fontSize: 14 }}
-                      >
-                        <span>
-                          <img
-                            className=" text-black"
-                            width={25}
-                            src="https://img.icons8.com/carbon-copy/100/walmart-app.png"
-                            alt="walmart-app"
-                          />
-                        </span>
-                        Add EzyBuy Protection Plan by Allstate
-                      </p>
-                      <a
-                        className="text-black ms-4"
-                        style={{ fontSize: 14 }}
-                        href="#"
-                      >
-                        View details
-                      </a>
-                      <p
-                        style={{ fontSize: 10 }}
-                        className="ms-4 text-body-secondary"
-                      >
-                        (Only one option can be selected at atime.)
-                      </p>
-                      <div>
-                        <label
-                          class="text-bg-body-secondary"
-                          for="ld_checkbox_14"
-                        >
-                          <input
-                            class="me-2 mb-2 ="
-                            id="ld_checkbox_14"
-                            name="CAREPLAN"
-                            type="checkbox"
-                            value="2-Year plan - $55.00"
-                          />
-                          2-Year plan - $55.00
-                        </label>
-                        <br />
-                        <label
-                          class="text-bg-body-secondary"
-                          for="ld_checkbox_15"
-                        >
-                          <input
-                            class="me-2"
-                            id="ld_checkbox_15"
-                            name="CAREPLAN"
-                            type="checkbox"
-                            value="3-Year plan - $79.00"
-                          />
-                          3-Year plan - $79.00
-                        </label>
-                      </div>
-
-                      <div className="mt-5 text-end">
-                        <button
-                          className={`border-0 text-decoration-underline me-5 ${style.btun}`}
-                        >
-                          Remove
-                        </button>
-                        <button
-                          className={`border-0 text-decoration-underline  ${style.btun}`}
-                        >
-                          Save for later
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="col-sm-2 offset-md-1  ">
-                    <h5 className=" text-end me-3 ">$248.77</h5>
-
-                    <div
-                      className="  d-flex align-items-end me-3  "
-                      style={{ height: "90%" }}
-                    >
-                      <div className="d-flex justify-content-between border border-1 border-black rounded-5 w-100 ">
-                        <button
-                          type="button"
-                          className="btn btn-light p-0 ms-1 w-25 rounded-circle"
-                          onClick={() => decreaseCounter()}
-                        >
-                          <i className=" fa fa-minus"></i>
-                        </button>
-                        <p className="d-flex align-items-center justify-content-center ">
-                          {" "}
-                          {counter}{" "}
-                        </p>
-                        <button
-                          type="button"
-                          className="btn btn-light me-1 w-25 rounded-circle p-0"
-                          onClick={() => increaseCounter()}
-                        >
-                          <i className="fa fa-plus text-center "></i>
-                        </button>
-                      </div>
-                    </div>
+            <div className="flex flex-column p-4 ">
+              {cart.map((product, index) => <div className={`row ${style.cartItem}`} key={index}>
+                <div className="d-flex align-items-center col-5">
+                  <img className="m-2" src={product.thumbnail}  />
+                  <div>
+                    <h6>{product.title}</h6>
                   </div>
                 </div>
-              </div>
+                  <div className="d-flex flex-column align-items-center col-3">
+                    <h4>Price</h4>
+                    <p>${product.price}</p>
+                  </div>
+                  <div className="d-flex flex-column align-items-center col-3">
+                    <h4>Quantity</h4>
+                    <div className={style.quantity}>
+                        <input type="number" defaultValue={product.quantity}/>
+                    </div>
+                  </div>
+              </div>)}
             </div>
           </div>
 

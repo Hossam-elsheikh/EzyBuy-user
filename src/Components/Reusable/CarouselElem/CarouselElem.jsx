@@ -3,6 +3,7 @@ import Rating from "react-rating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 export default function CarouselElem(props) {
+ 
   return (
     <>
       <div className={classes.item}>
@@ -25,7 +26,7 @@ export default function CarouselElem(props) {
           <p>Pickup</p>
           <p>Delivery</p>
         </div>
-        <button>Add +</button>
+        <button onClick={props.onclick}>Add +</button>
         <i className="fa-regular fa-heart"></i>
       </div>
     </>

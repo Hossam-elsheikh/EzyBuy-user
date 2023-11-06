@@ -6,8 +6,9 @@ import CardCont from "../Components/Reusable/CardCont/CardCont";
 import instance from "../axiosConfig/instance";
 import { useLocation, useParams } from "react-router-dom";
 const GroceryPage = () => {
-  
+
   const [products,setProducts] = useState([])
+  
   useEffect(()=>{
     instance.get(`/product/groceries`).then((data)=> setProducts(data.data))
     
