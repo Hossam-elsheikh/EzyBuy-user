@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react'
 import instance from '../axiosConfig/instance'
 import { useQuery } from 'react-query';
 import { ColorRing } from 'react-loader-spinner';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const BeautyPage = () => {
+  let navigate = useNavigate();
   const [products, setProducts] = useState([])
 
   async function getBeauty() {
@@ -70,7 +71,8 @@ const BeautyPage = () => {
             <div className='text-end'>
               <i class="fa-regular fa-heart fs-4" aria-hidden="true"></i>
             </div>
-            <Link to={`/product/${prd._id}`}>
+            <div onClick={()=>navigate(`/product/${prd._id}`)}>
+
             <div>
               <img
                 src={prd.images[0]}
@@ -102,7 +104,8 @@ const BeautyPage = () => {
                 <strong> in +3 day</strong>
               </p>
             </div>
-            </Link>
+            </div>
+
           </div>
           )}
         </div>
