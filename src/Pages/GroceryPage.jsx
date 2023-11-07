@@ -5,15 +5,15 @@ import CarouselCont from "../Components/Reusable/CarouselCont/CarouselCont";
 import CardCont from "../Components/Reusable/CardCont/CardCont";
 import instance from "../axiosConfig/instance";
 import { useLocation, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 const GroceryPage = () => {
-
+  const allProducts = useSelector((data)=> data.products.products)
   const [products,setProducts] = useState([])
   
   useEffect(()=>{
-    instance.get(`/product/groceries`).then((data)=> setProducts(data.data))
-    
+    setProducts(allProducts.filter((product)=> product.category === 'Grocery'))
   },[])
-
+  
   return (
     <>
       <div className="">

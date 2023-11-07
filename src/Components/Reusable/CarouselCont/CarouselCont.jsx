@@ -16,7 +16,6 @@ export default function CarouselCont(props) {
       instance.get(`/customer/cart/price`).then((res)=> console.log(res.data.totalPrice))
       instance.get('/customer/cart').then((res)=> {console.log(res);
         dispatch(loadCart(res.data.cart))})
-    
   }
   const productTemplate = (product) => {
     return (

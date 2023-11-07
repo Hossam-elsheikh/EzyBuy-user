@@ -11,12 +11,15 @@ import { useEffect } from "react";
 import instance from "../../axiosConfig/instance";
 import { useDispatch } from "react-redux";
 import { loadCart } from "../../store/slices/cartSlice";
+import { productsAction } from "../../store/slices/productsSlice";
 export default function Layout() {
   const dispatch =useDispatch()
   useEffect(()=>{
-    instance.get('/customer/cart').then((res)=> {console.log(res);
-    dispatch(loadCart(res.data.cart))
-    })
+    dispatch(productsAction())
+
+    // instance.get('/customer/cart').then((res)=> {console.log(res);
+    // dispatch(loadCart(res.data.cart))
+    // })
   },[]);
 
   return (

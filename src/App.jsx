@@ -29,9 +29,11 @@ import Addresses from './Components/Account/Addresses'
 import Community from './Components/Account/Community'
 import Giving from './Components/Account/Giving'
 import LoginContextProvider from './context/LoginContext'
-import { Provider } from 'react-redux'
+import { Provider, useDispatch } from 'react-redux'
 import {store} from './store/store'
+
 function App() {
+ 
   let routers = createBrowserRouter([
     {
       path: '/', element: <Layout />, children: [
