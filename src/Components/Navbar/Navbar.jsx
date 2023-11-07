@@ -171,7 +171,6 @@ useEffect(()=>{
             <Link to='/kids'>Kids</Link>
             <Link to='/fashion'>Fashion</Link>
             <Link to='/electronics'>Electronics</Link>
-            <Link to='/product'>Product</Link>
             <Link to='/Health'>Health</Link>
 
           </div>

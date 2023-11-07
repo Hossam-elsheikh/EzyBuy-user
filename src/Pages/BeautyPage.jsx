@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react'
 import instance from '../axiosConfig/instance'
 import { useQuery } from 'react-query';
 import { ColorRing } from 'react-loader-spinner';
+import { Link, useNavigate } from 'react-router-dom';
 
 const BeautyPage = () => {
+  let navigate = useNavigate();
   const [products, setProducts] = useState([])
 
   async function getBeauty() {
@@ -63,13 +65,14 @@ const BeautyPage = () => {
         </div> :
         <div className="row g-5 mt-3">
           {products?.map((prd) => <div key={prd.id} className="col-md-3" style={{ cursor: 'pointer' }}>
-
             <span className=' fw-bold text-primary p-1 rounded-2 bg-body-secondary' style={{ fontSize: "12px" }}>
               Best seller
             </span>
             <div className='text-end'>
               <i class="fa-regular fa-heart fs-4" aria-hidden="true"></i>
             </div>
+            <div onClick={()=>navigate(`/product/${prd._id}`)}>
+
             <div>
               <img
                 src={prd.images[0]}
@@ -81,11 +84,11 @@ const BeautyPage = () => {
               <span className='text-success fw-bold ms-1 me-1 position-relative' style={{ top: "-8px" }}>$</span>
               <span className='text-success  fs-4' style={{ fontWeight: "700" }}>{prd.price.toString().split('.').splice(0, 1)}</span>
               <span className='text-success fw-bolder position-relative' style={{ top: "-8px" }}>{prd.price.toString().split('.').splice(1)}</span>
-              <span className='ms-2 fs-5 text-body-secondary text-decoration-line-through '>${Math.round(prd.discountPercentage * prd.price)}</span>
+              <span className='ms-2 fs-5 text-body-secondary text-decoration-line-through '>${Math.round((prd.discountPercentage )* prd.price)}</span>
             </div>
             <div className='mt-2'>
               <span className='bg-body-secondary text-success me-1 p-1 rounded-3 ' style={{ fontWeight: "600" }}> You save</span>
-              <span className='text-success' style={{ fontWeight: "700" }}>{Math.round((prd.discountPercentage * prd.price) - prd.price)}</span>
+              <span className='text-success' style={{ fontWeight: "700" }}>{(Math.round(prd.discountPercentage * prd.price) - (prd.price))}</span>
               <p className='mt-1' style={{fontSize:"14px" , fontWeight:"400"}}>{prd.title} </p>
             </div>
             <div className='mt-2'>
@@ -101,6 +104,8 @@ const BeautyPage = () => {
                 <strong> in +3 day</strong>
               </p>
             </div>
+            </div>
+
           </div>
           )}
         </div>

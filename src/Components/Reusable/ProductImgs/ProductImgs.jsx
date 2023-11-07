@@ -5,11 +5,12 @@ import Slider from 'react-slick';
 import{ useState, useEffect } from 'react';
 import { Button } from 'primereact/button';
 import { Galleria } from 'primereact/galleria';
+import { ColorRing } from 'react-loader-spinner';
 
         
-export default function ProductImgs() {
-  
-  const [images, setImages] = useState(null);
+export default function ProductImgs({img}) {
+    console.log(img);
+    const [isLoading, setIsLoading] = useState(true);
     const [activeIndex, setActiveIndex] = useState(0)
 
     const responsiveOptions = [
@@ -26,19 +27,16 @@ export default function ProductImgs() {
             numVisible: 1
         }
     ];
-    let data = [
-        
-      "https://i5.walmartimages.com/asr/88d9f596-5a86-4f0d-8c3a-778861d54bbf.c5caeeb9383a0ed424042d3b5930d5e7.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
-      "https://i5.walmartimages.com/asr/ee8960be-ee04-408f-8dd8-3e5debef22c1.14b531c91d67426506502326a26567be.jpeg?odnHeight=117&odnWidth=117&odnBg=FFFFFF",
-      "https://i5.walmartimages.com/asr/cfa22890-ad6c-49a1-b32f-04c4ef7e8c2d.196d6138bc8e080a2a8fd5ea4fd15073.jpeg?odnHeight=117&odnWidth=117&odnBg=FFFFFF",
-      "https://i5.walmartimages.com/asr/efbdb25d-691d-4912-9efe-f47ad9e6e11e.9053d2ad44074ce4b4fbf218b2a4c00f.jpeg?odnHeight=117&odnWidth=117&odnBg=FFFFFF"
-    ]
     useEffect(() => {
-setImages(data);
-    }, []);
+        if(img){
+            setIsLoading(false);
+        }else{
+            setIsLoading(true);
+        }
+    }, [img]);
 
     const next = () => {
-        setActiveIndex(prevState => (prevState === images.length - 1) ? 0 : prevState + 1)
+        setActiveIndex(prevState => (prevState === img.length - 1) ? 0 : prevState + 1)
     }
 
     const prev = () => {
@@ -46,36 +44,48 @@ setImages(data);
     };
 
     const itemTemplate = (item) => {
-        return <img src={item} alt="details" style={{ width: '100%', display: 'block',height:"100%" }} />;
+        return <img src={item} alt="details" style={{ width: '70%', display: 'flex' }} />;
     }
 
     const thumbnailTemplate = (item) => {
-        return <img src={item} alt="details"  style={{ display: 'block' ,width:"100%" , height:"100%"}} />;
+        return <img src={item} alt="details" className='bg-danger ms-auto '  style={{ display: 'flex' ,width:"70%"}} />;
     }
 
 return <>
-      <div className="card mb-5 ">
-            <div className=" ">
-                <div className='text-end fs-4'>
-                <button className='border-0'>
-                <i class="fa-regular fa-heart  pointer"></i>
-                </button>
-                </div>
-                
-            <Galleria
-                value={images}
-                activeIndex={activeIndex}
-                onItemChange={(e) => setActiveIndex(e.index)}
-                responsiveOptions={responsiveOptions}
-                numVisible={0}
-                item={itemTemplate}
-                thumbnail={thumbnailTemplate}
-                style={{ maxWidth: '800px'  }}
-            />
-            </div>
-        </div>
-
-
-  
+{isLoading?
+  <div className=' w-100 py-5 fs-1 d-flex justify-content-center align-items-center' >
+  <ColorRing
+    visible={true}
+    height="80"
+    width="80"
+    ariaLabel="blocks-loading"
+    wrapperStyle={{}}
+    wrapperClass="blocks-wrapper"
+    colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+  />
+</div>
+:
+ <div className="card mb-5 ">
+ <div className=" ">
+     <div className='text-end fs-4'>
+     <button className='border-0'>
+     <i class="fa-regular fa-heart  pointer"></i>
+     </button>
+     </div>
+     
+ <Galleria
+     value={img}
+     activeIndex={activeIndex}
+     onItemChange={(e) => setActiveIndex(e.index)}
+     responsiveOptions={responsiveOptions}
+     numVisible={0}
+     item={itemTemplate}
+     thumbnail={thumbnailTemplate}
+     style={{ maxWidth: '800px'  }}
+ />
+ </div>
+</div>  
+}
+     
   </>
 }
