@@ -10,7 +10,6 @@ import CustomerReview from "../Reusable/CustomerReview/CustomerReview";
 import { useEffect } from "react";
 import instance from "../../axiosConfig/instance";
 import { useDispatch } from "react-redux";
-import { loadCart } from "../../store/slices/cartSlice";
 import { productsAction } from "../../store/slices/productsSlice";
 export default function Layout() {
   const dispatch =useDispatch()

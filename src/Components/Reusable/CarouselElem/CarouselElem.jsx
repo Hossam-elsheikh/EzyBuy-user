@@ -2,8 +2,13 @@ import classes from "./CarouselElem.module.css";
 import Rating from "react-rating";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../../store/slices/cartSlice";
 export default function CarouselElem(props) {
- 
+  const dispatch = useDispatch()
+  function addToCartHandler(id){
+      dispatch(addToCart({id,quantity: 1,price:props.price,img:props.src,title:props.title}));
+  }
   return (
     <>
       <div className={classes.item}>
@@ -26,7 +31,7 @@ export default function CarouselElem(props) {
           <p>Pickup</p>
           <p>Delivery</p>
         </div>
-        <button onClick={props.onclick}>Add +</button>
+        <button onClick={()=>addToCartHandler(props.id)}>Add +</button>
         <i className="fa-regular fa-heart"></i>
       </div>
     </>
