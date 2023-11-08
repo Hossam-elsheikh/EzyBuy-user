@@ -138,7 +138,7 @@ export default function Cart() {
                     <p>
                       total price :{" "}
                       <span className={style.price}>
-                        ${item.price * item.quantity}
+                        ${Math.round((item.price * item.quantity + Number.EPSILON) * 100)/100}
                       </span>
                     </p>
                   </div>
@@ -192,7 +192,10 @@ export default function Cart() {
                 <p>
                   $
                   {cart.reduce(
-                    (accumulator, currentValue) => accumulator + currentValue.price*currentValue.quantity,
+                    (accumulator, currentValue) => {
+                      let total = accumulator + currentValue.price*currentValue.quantity
+                      return Math.round((total + Number.EPSILON) * 100)/100
+                    },
                     0
                   )}
                 </p>

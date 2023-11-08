@@ -5,9 +5,17 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../../store/slices/cartSlice";
 export default function CarouselElem(props) {
-  const dispatch = useDispatch()
-  function addToCartHandler(id){
-      dispatch(addToCart({id,quantity: 1,price:props.price,img:props.src,title:props.title}));
+  const dispatch = useDispatch();
+  function addToCartHandler(id) {
+    dispatch(
+      addToCart({
+        id,
+        quantity: 1,
+        price: Math.round((props.price + Number.EPSILON) * 100),
+        img: props.src,
+        title: props.title,
+      })
+    );
   }
   return (
     <>
@@ -17,21 +25,20 @@ export default function CarouselElem(props) {
           ${props.price} <span>each</span>
         </h6>
         <div className="d-flex gap-1">
-
-        <Rating
-          readonly={true}
-          initialRating={props.rating}
-          fullSymbol={<FontAwesomeIcon icon={faStar} color="goldenRod" />}
-          emptySymbol={<FontAwesomeIcon icon={faStar} />}
+          <Rating
+            readonly={true}
+            initialRating={props.rating}
+            fullSymbol={<FontAwesomeIcon icon={faStar} color="goldenRod" />}
+            emptySymbol={<FontAwesomeIcon icon={faStar} />}
           />
-        <p style={{color:'gray',fontSize:'.7rem'}}>266</p>
-          </div>
+          <p style={{ color: "gray", fontSize: ".7rem" }}>266</p>
+        </div>
         <p className={classes.title}>{props.title}</p>
         <div className={classes.tags}>
           <p>Pickup</p>
           <p>Delivery</p>
         </div>
-        <button onClick={()=>addToCartHandler(props.id)}>Add +</button>
+        <button onClick={() => addToCartHandler(props.id)}>Add +</button>
         <i className="fa-regular fa-heart"></i>
       </div>
     </>

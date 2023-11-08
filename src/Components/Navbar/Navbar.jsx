@@ -6,8 +6,12 @@ import MobNav from "./MobNav";
 import logo from '../../assets/fav-05.svg'
 import { useContext, useEffect, useState } from "react";
 import { LoginContext } from "../../context/LoginContext";
+import { useSelector } from "react-redux";
 export default function Navbar() {
-
+  const totalPrice = useSelector((data)=> data.cart.items.reduce(
+    (accumulator, currentValue) => accumulator + currentValue.price*currentValue.quantity,
+    0
+  ))
   let { customerToken , setCustomerToken} = useContext(LoginContext);
   let [path , setPath] = useState('myaccount')
   let [logState , setLogState] = useState('My Account')
@@ -154,7 +158,7 @@ useEffect(()=>{
               <img src={cart} />
               <div className="d-flex flex-column">
                 <p>My Cart</p>
-                <p>$0.00</p>
+                <p>${totalPrice==0 ? '0.00' : Math.round((totalPrice + Number.EPSILON) * 100) / 100}</p>
               </div>
             </Link>
           </div>
