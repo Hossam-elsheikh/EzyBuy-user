@@ -31,6 +31,7 @@ import Giving from './Components/Account/Giving'
 import LoginContextProvider from './context/LoginContext'
 import { Provider } from 'react-redux'
 import {store} from './store/store'
+// import FavPrdContextProvider from './context/FavPrdContext'
 function App() {
   let routers = createBrowserRouter([
     {
@@ -71,7 +72,7 @@ function App() {
   return (
     <>
     <Provider store={store}>
-
+     {/* <FavPrdContextProvider> */}
         <LoginContextProvider>
        
           <RouterProvider router={routers}>
@@ -79,6 +80,7 @@ function App() {
          </RouterProvider>
       
       </LoginContextProvider>
+      {/* </FavPrdContextProvider> */}
     </Provider>
 
     </>

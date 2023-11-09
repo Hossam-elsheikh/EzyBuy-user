@@ -1,13 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import instance from '../axiosConfig/instance'
 import { useQuery } from 'react-query';
 import { ColorRing } from 'react-loader-spinner';
 import { Link, useNavigate } from 'react-router-dom';
+// import { FavPrdContext } from '../context/FavPrdContext';
+import toast, { Toaster } from 'react-hot-toast';
+import axios from 'axios';
 
 const BeautyPage = () => {
+  let [token, setToken] = useState('')
+  
   let navigate = useNavigate();
-  const [products, setProducts] = useState([])
-
+  const [products, setProducts] = useState([]);
+  let headers = {
+    authorization: token
+}
   async function getBeauty() {
     try {
       let { data } = await instance.get('/product/all').catch(err => err)
@@ -25,6 +32,36 @@ const BeautyPage = () => {
     refetchInterval: 10000,
     // enabled:=true
   });
+// let {addtoFavorite,getFav}=useContext(FavPrdContext);
+
+// async function addtoFavorite1(id){
+//  let {data} = await addtoFavorite(id)
+//  if(data.message == 'successfully'){
+//   console.log(data.data);
+//   setFavItem(data.data)
+//   toast.success("Added Successfully to wishList")
+//  }
+//  }
+
+//  async function getloggedFavorit(){
+//   let {data} = await getFav();
+//   console.log(data);
+//  }
+
+
+useEffect(()=>{
+setToken(JSON.parse(localStorage.getItem('customerToken')));
+},[])
+let favItem =[];
+async function addtoFavorite1(id){
+  if(localStorage.getItem('customerToken') == null){
+    navigate('/login');
+  }else if(localStorage.getItem('customerToken')){
+    
+      let {data} = await axios.post(`http://localhost:3333/customer/wishList/${id}`,{headers})
+      console.log(data);
+  } 
+}
 
   useEffect(() => {
     if (isLoading === false) {
@@ -68,8 +105,9 @@ const BeautyPage = () => {
             <span className=' fw-bold text-primary p-1 rounded-2 bg-body-secondary' style={{ fontSize: "12px" }}>
               Best seller
             </span>
-            <div className='text-end'>
-              <i class="fa-regular fa-heart fs-4" aria-hidden="true"></i>
+            <div className='text-end '>
+              <i class="fa-regular fa-heart fs-4" aria-hidden="true" onClick={()=>addtoFavorite1(prd._id)}></i>
+              
             </div>
             <div onClick={()=>navigate(`/product/${prd._id}`)}>
 
@@ -112,7 +150,7 @@ const BeautyPage = () => {
       }
     </div>
 
-
+    <Toaster/>
   </>
 }
 
