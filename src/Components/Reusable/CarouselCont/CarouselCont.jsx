@@ -8,16 +8,8 @@ import instance from "../../../axiosConfig/instance";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from "react-redux";
-import { loadCart } from "../../../store/slices/cartSlice";
 export default function CarouselCont(props) {
-  const dispatch =useDispatch()
-  function addToCart(id){
-      instance.post(`/product/${id}`).then((res)=> toast.success(res.data.message))
-      instance.get(`/customer/cart/price`).then((res)=> console.log(res.data.totalPrice))
-      instance.get('/customer/cart').then((res)=> {console.log(res);
-        dispatch(loadCart(res.data.cart))})
-    
-  }
+  
   const productTemplate = (product) => {
     return (
       <CarouselElem
@@ -25,7 +17,7 @@ export default function CarouselCont(props) {
         title={product.title}
         price={product.price}
         rating={product.rating}
-        onclick= {()=>addToCart(product._id)}
+        id={product._id}
       />
     );
   };

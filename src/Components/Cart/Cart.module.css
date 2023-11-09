@@ -25,30 +25,21 @@
    */
   
 
-.cartItem {
-    display: flex;
-    border: 1px solid gray;
-    padding: 15px;
-    border-radius: 10px;
-    width: 100%;
-    margin-bottom: 1rem;
-    align-items: center;
-    gap: 1rem;
-    
+.price {
+    font-weight: bold;
+    color: green;
+}
+.quantity {
+    transform: translateY(20px);
+    animation: slideUp .3s ease-in forwards;
+    background-color: white;
 }
 
-.cartItem img {
-    width: 100px;
-    height: 100px;
-}
-
-.quantity{
-    display: flex;
-    gap: 1rem;
-}
-
-.quantity input{
-    max-width: 100px;
-    padding: 5px 10px;
-    border-radius: 10px;
+@keyframes slideUp {
+    0%{
+        transform: translateY(20px);
+    }
+    100%{
+        transform: translateY(0);
+    }
 }

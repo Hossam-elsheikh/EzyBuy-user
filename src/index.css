@@ -27,3 +27,21 @@ html{
       display: flex;
   }
 }
+
+.fa-plus, .fa-minus{
+  color: white;
+  padding: 5px;
+  border-radius: 50%;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+.fa-plus:hover, .fa-minus:hover{
+  opacity: .7;
+}
+.fa-plus {
+  background-color: green;
+}
+.fa-minus {
+  background-color: orangered;
+}

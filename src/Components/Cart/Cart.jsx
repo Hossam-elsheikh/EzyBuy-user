@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import style from "./Cart.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeFromCart } from "../../store/slices/cartSlice";
 export default function Cart() {
   const [isDropdownOpen, setisDropdownOpen] = useState("none");
-  const cart = useSelector((data)=> data.cart.items)
-  console.log(cart);
+  const cart = useSelector((data) => data.cart.items);
+  const dispatch = useDispatch();
   const [changeIcon, setChangeIcon] = useState("down");
   let [counter, setCounter] = useState(0);
   const toggleDropdown = () => {
@@ -13,12 +14,12 @@ export default function Cart() {
     setChangeIcon(changeIcon === "down" ? "up" : "down");
   };
 
-  function increaseCounter() {
-    setCounter(counter + 1);
+  function increaseQuantityHandler(productID) {
+    dispatch(addToCart({ id: productID }));
   }
 
-  function decreaseCounter() {
-    setCounter(counter - 1);
+  function dereaseQuantityHandler(productID) {
+    dispatch(removeFromCart({ id: productID }));
   }
 
   return (
@@ -116,24 +117,47 @@ export default function Cart() {
             </div>
 
             <div className="flex flex-column p-4 ">
-              {cart.map((product, index) => <div className={`row ${style.cartItem}`} key={index}>
-                <div className="d-flex align-items-center col-5">
-                  <img className="m-2" src={product.thumbnail}  />
-                  <div>
-                    <h6>{product.title}</h6>
+              {cart.map((item) => (
+                <div
+                  className="row border py-3 mb-2 rounded d-flex align-items-center"
+                  style={{ maxHeight: "150px" }}
+                >
+                  <div className="col-6 d-flex align-items-center gap-3">
+                    <img
+                      src={item.img}
+                      className="img-fluid rounded-5"
+                      style={{ height: "100px", width: "100px" }}
+                    />
+                    <h6>{item.title}</h6>
                   </div>
-                </div>
-                  <div className="d-flex flex-column align-items-center col-3">
-                    <h4>Price</h4>
-                    <p>${product.price}</p>
+                  <div className="col-3 d-flex flex-column gap-2">
+                    <p>
+                      unit price :{" "}
+                      <span className={style.price}>${item.price}</span>
+                    </p>
+                    <p>
+                      total price :{" "}
+                      <span className={style.price}>
+                        ${Math.round((item.price * item.quantity + Number.EPSILON) * 100)/100}
+                      </span>
+                    </p>
                   </div>
-                  <div className="d-flex flex-column align-items-center col-3">
-                    <h4>Quantity</h4>
-                    <div className={style.quantity}>
-                        <input type="number" defaultValue={product.quantity}/>
+                  <div className="col-3 d-flex flex-column align-items-center">
+                    <h6 className="pb-2">Quantity</h6>
+                    <div className="d-flex overflow-hidden  justify-content-center align-items-center gap-4">
+                      <i
+                        onClick={() => increaseQuantityHandler(item.id)}
+                        class="fa-solid fa-plus"
+                      ></i>
+                      <p className={style.quantity}>{item.quantity}</p>
+                      <i
+                        onClick={() => dereaseQuantityHandler(item.id)}
+                        class="fa-solid fa-minus"
+                      ></i>
                     </div>
                   </div>
-              </div>)}
+                </div>
+              ))}
             </div>
           </div>
 
@@ -155,9 +179,26 @@ export default function Cart() {
               <div className="d-flex justify-content-between">
                 <h6>
                   Subtotal
-                  <span className="text-body-secondary ms-1">(1 item)</span>
+                  <span className="text-body-secondary ms-1">
+                    (
+                    {cart.reduce(
+                      (accumulator, currentValue) =>
+                        accumulator + currentValue.quantity,
+                      0
+                    )}{" "}
+                    item)
+                  </span>
                 </h6>
-                <p>$249.90</p>
+                <p>
+                  $
+                  {cart.reduce(
+                    (accumulator, currentValue) => {
+                      let total = accumulator + currentValue.price*currentValue.quantity
+                      return Math.round((total + Number.EPSILON) * 100)/100
+                    },
+                    0
+                  )}
+                </p>
               </div>
 
               <div className="d-flex justify-content-between">
