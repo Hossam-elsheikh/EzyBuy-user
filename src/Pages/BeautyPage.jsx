@@ -5,7 +5,7 @@ import { ColorRing } from 'react-loader-spinner';
 import { Link, useNavigate } from 'react-router-dom';
 // import { FavPrdContext } from '../context/FavPrdContext';
 import toast, { Toaster } from 'react-hot-toast';
-import axios from 'axios';
+import axios, { all } from 'axios';
 import { LoginContext } from '../context/LoginContext';
 import { useDispatch, useSelector } from 'react-redux';
 import { productsAction } from '../store/slices/productsSlice';
@@ -13,66 +13,52 @@ import { productsAction } from '../store/slices/productsSlice';
 const BeautyPage = () => {
   const dispatch = useDispatch()
   const {customerToken} = useContext(LoginContext)
+  console.log(customerToken);
   let navigate = useNavigate();
   const AllProducts = useSelector((data)=> data.products.products)
+  const isLoading = useSelector((state)=> state.products.isLoading);
   const [products, setProducts] = useState([]);
-
-  async function getBeauty() {
-    try {
-      let data  = AllProducts
-      console.log(data);
-      return data;
-    }catch (err) {
-      console.log(err);
-      return err.message;
+  
+  function getBeauty(){
+     dispatch(productsAction('Beauty'));
     }
-  }
-
-  let { isLoading, data ,error } = useQuery('BeautyProducts', getBeauty, {
-    cacheTime: 50000,
-    refetchOnMount: true,
-    staleTime: 30000,
-    refetchInterval: 10000,
-    // enabled:=true
-  });
-// let {addtoFavorite,getFav}=useContext(FavPrdContext);
-
-// async function addtoFavorite1(id){
-//  let {data} = await addtoFavorite(id)
-//  if(data.message == 'successfully'){
-//   console.log(data.data);
-//   setFavItem(data.data)
-//   toast.success("Added Successfully to wishList")
-//  }
-//  }
-
-//  async function getloggedFavorit(){
-//   let {data} = await getFav();
-//   console.log(data);
-//  }
-
-
+useEffect(()=>{
+getBeauty();
+},[])
+  useEffect(()=>{
+    if(AllProducts){
+      setProducts(AllProducts);
+    }
+  },[isLoading])
 
 async function addtoFavorite1(id){
-  if(customerToken === ''){
-    navigate('/login');
-  }else{
-      let {data} = await axios.post(`http://localhost:3333/customer/wishList/${id}`,{headers:{
+  if(customerToken){
+
+    let {data} = await axios.post(`http://localhost:3333/customer/wishList/${id}`,{headers:{
         'authorization': customerToken
       }})
       console.log(data);
+  }else{
+    navigate('/login');
+
   } 
 }
-useEffect(()=>{
-  dispatch(productsAction('Beauty'))
-},[])
-  useEffect(() => {
-    if (isLoading === true) {
-      setProducts(data)
-      console.log(data);
-    }
-  }, [isLoading])
 
+// async function getWishList(){
+//   if(customerToken){
+//     console.log(customerToken);
+//     let {data} = await axios.get(`http://localhost:3333/customer/wishList`,{headers:{
+//       'authorization': customerToken
+//     }})
+//     console.log(data);
+//   }else{
+//     navigate('/login');
+//   } 
+// }
+
+// useEffect(()=>{
+//  getWishList();
+// },[])
   return <>
 
     <div className='container-fluid'>
