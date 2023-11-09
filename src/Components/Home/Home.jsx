@@ -13,15 +13,20 @@ import ShopNowCard from "../Reusable/ShopNowCard/ShopNowCard";
 // import TwoImages from "../Reusable/TwoImages/TwoImages";
 
 import style from "./Home.module.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import instance from "../../axiosConfig/instance";
+import axios from "axios";
+import { LoginContext } from "../../context/LoginContext";
 export default function Home() {
-
+  const {customerToken} = useContext(LoginContext)
   const [products,setProducts] = useState([])
 
   useEffect(()=>{
     instance.get('/product/all').then((data)=> setProducts(data.data))
-    
+    if(localStorage.getItem('cart')){
+      instance.patch('/customer/cart',{localCart: JSON.parse(localStorage.getItem('cart'))})
+      instance.get('/customer/cart').then((res)=> console.log(res))
+    }
   },[])
   const cards = [
     {

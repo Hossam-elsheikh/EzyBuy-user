@@ -7,9 +7,10 @@ import { MagnifyingGlass } from "react-loader-spinner";
 import toast, { Toaster } from "react-hot-toast";
 import { login } from "../../services/auth";
 import { LoginContext } from "../../context/LoginContext";
+import axios from "axios";
 
 export default function Password() {
-  let { setCustomerToken } = useContext(LoginContext);
+  let {customerToken, setCustomerToken } = useContext(LoginContext);
   let [togglerType, setTogglerType] = useState("password");
   let [toggler, setToggler] = useState("Show");
   let toggle = () => {
@@ -38,6 +39,7 @@ export default function Password() {
         localStorage.setItem("customerToken", data.token);
         setCustomerToken(data.token);
         toast.success("logged in successfully");
+        
         navigate("/");
       }
     } catch (err) {
@@ -45,6 +47,7 @@ export default function Password() {
       setisLoading(false);
       toast.error("invalid or Password");
     }
+
   }
 
   let validateSchema = Yup.object({
