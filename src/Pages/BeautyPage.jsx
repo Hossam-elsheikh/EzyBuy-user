@@ -50,7 +50,7 @@ const BeautyPage = () => {
 
 
 useEffect(()=>{
-setToken(JSON.parse(localStorage.getItem('customerToken')));
+setToken(localStorage.getItem('customerToken'));
 },[])
 let favItem =[];
 async function addtoFavorite1(id){
