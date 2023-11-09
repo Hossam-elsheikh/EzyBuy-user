@@ -14,14 +14,7 @@ import { productsAction } from "../../store/slices/productsSlice";
 
 
 export default function Layout() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(productsAction());
 
-    // instance.get('/customer/cart').then((res)=> {console.log(res);
-    // dispatch(loadCart(res.data.cart))
-    // })
-  }, []);
 
   return (
     <>

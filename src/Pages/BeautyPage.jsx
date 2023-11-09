@@ -6,18 +6,21 @@ import { Link, useNavigate } from 'react-router-dom';
 // import { FavPrdContext } from '../context/FavPrdContext';
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
+import { LoginContext } from '../context/LoginContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { productsAction } from '../store/slices/productsSlice';
 
 const BeautyPage = () => {
-  let [token, setToken] = useState('')
-  
+  const dispatch = useDispatch()
+  const {customerToken} = useContext(LoginContext)
   let navigate = useNavigate();
+  const AllProducts = useSelector((data)=> data.products.products)
   const [products, setProducts] = useState([]);
-  let headers = {
-    authorization: token
-}
+
   async function getBeauty() {
     try {
-      let { data } = await instance.get('/product/all').catch(err => err)
+      let data  = AllProducts
+      console.log(data);
       return data;
     }catch (err) {
       console.log(err);
@@ -49,23 +52,24 @@ const BeautyPage = () => {
 //  }
 
 
-useEffect(()=>{
-setToken(localStorage.getItem('customerToken'));
-},[])
-let favItem =[];
+
 async function addtoFavorite1(id){
-  if(localStorage.getItem('customerToken') == null){
+  if(customerToken === ''){
     navigate('/login');
-  }else if(localStorage.getItem('customerToken')){
-    
-      let {data} = await axios.post(`http://localhost:3333/customer/wishList/${id}`,{headers})
+  }else{
+      let {data} = await axios.post(`http://localhost:3333/customer/wishList/${id}`,{headers:{
+        'authorization': customerToken
+      }})
       console.log(data);
   } 
 }
-
+useEffect(()=>{
+  dispatch(productsAction('Beauty'))
+},[])
   useEffect(() => {
-    if (isLoading === false) {
-      setProducts(data?.filter((prod) => prod.category === 'Beauty'))
+    if (isLoading === true) {
+      setProducts(data)
+      console.log(data);
     }
   }, [isLoading])
 
