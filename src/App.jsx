@@ -36,6 +36,7 @@ import LoginContextProvider from "./context/LoginContext";
 import { Provider, useDispatch } from "react-redux";
 import { store } from "./store/store";
 import Wrapper from "./Components/ScrollToTop";
+import Checkout from "./Components/Checkout/Checkout";
 function App() {
   let routers = createBrowserRouter([
     {
@@ -52,6 +53,7 @@ function App() {
         { path: "protection", element: <ProductCarePlan /> },
         { path: "health", element: <HealthWellness /> },
         { path: "cart", element: <Cart /> },
+        { path: "checkout", element: <Checkout /> },
         {
           path: "myaccount",
           element: <AccountPage />,

@@ -23,10 +23,7 @@ export default function Home() {
 
   useEffect(()=>{
     instance.get('/product/all').then((data)=> setProducts(data.data))
-    if(localStorage.getItem('cart')){
-      instance.patch('/customer/cart',{localCart: JSON.parse(localStorage.getItem('cart'))})
-      instance.get('/customer/cart').then((res)=> console.log(res))
-    }
+    
   },[])
   const cards = [
     {

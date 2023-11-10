@@ -8,11 +8,15 @@ import toast, { Toaster } from "react-hot-toast";
 import { login } from "../../services/auth";
 import { LoginContext } from "../../context/LoginContext";
 import axios from "axios";
+import instance from "../../axiosConfig/instance";
+import { useDispatch } from "react-redux";
+import { setCart } from "../../store/slices/cartSlice";
 
 export default function Password() {
-  let {customerToken, setCustomerToken } = useContext(LoginContext);
+  let { customerToken, setCustomerToken } = useContext(LoginContext);
   let [togglerType, setTogglerType] = useState("password");
   let [toggler, setToggler] = useState("Show");
+  const dispatch = useDispatch();
   let toggle = () => {
     if (togglerType == "password") {
       setTogglerType("text");
@@ -26,7 +30,6 @@ export default function Password() {
   let navigate = useNavigate();
   let [error, setError] = useState(null);
   let [isLoading, setisLoading] = useState(false);
-
   async function loginSubmit(values) {
     setisLoading(true);
 
@@ -39,7 +42,15 @@ export default function Password() {
         localStorage.setItem("customerToken", data.token);
         setCustomerToken(data.token);
         toast.success("logged in successfully");
-        
+        if (localStorage.getItem("cart")) {
+          instance
+            .patch("/customer/cart", {
+              localCart: JSON.parse(localStorage.getItem("cart")),
+            })
+            .then((res) => {
+              localStorage.removeItem("cart");
+            });
+        }
         navigate("/");
       }
     } catch (err) {
@@ -47,7 +58,6 @@ export default function Password() {
       setisLoading(false);
       toast.error("invalid or Password");
     }
-
   }
 
   let validateSchema = Yup.object({
