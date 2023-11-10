@@ -1,15 +1,13 @@
 import { useContext, useEffect, useState } from 'react'
 import instance from '../axiosConfig/instance'
-import { useQuery } from 'react-query';
 import { ColorRing } from 'react-loader-spinner';
-import { Link, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 // import { FavPrdContext } from '../context/FavPrdContext';
 import toast, { Toaster } from 'react-hot-toast';
 import axios, { all } from 'axios';
 import { LoginContext } from '../context/LoginContext';
 import { useDispatch, useSelector } from 'react-redux';
 import { productsAction } from '../store/slices/productsSlice';
-import jquery from 'jquery';
 
 const BeautyPage = () => {
   const dispatch = useDispatch()
@@ -21,41 +19,55 @@ const BeautyPage = () => {
   const [favItems, setFavItems] = useState([]);
   function getBeauty() {
     dispatch(productsAction('Beauty'));
+    
   }
   useEffect(() => {
     getBeauty();
-    getWishList();
   }, [])
-  let arr = favItems;
-  let initSelect;
 
   useEffect(() => {
-    if (AllProducts) {
+    if (AllProducts) { 
       setProducts(AllProducts);
     }
-  }, [isLoading,initSelect ])
+    if(isLoading==false){
+      getWishList();
+      }
+  }, [isLoading ])
 
   async function addtoFavorite1(id) {
-    
-    if (localStorage.getItem('customerToken')) {
+    try{
+      if (localStorage.getItem('customerToken')) {
 
-      let { data } = await instance.post(`http://localhost:3333/customer/wishList/${id}`, {
-        headers: {
-          'authorization': customerToken
-        }
-      })
-      getWishList();
-      console.log(data);
-    } else {
-      navigate('/login');
-
+        let { data } = await instance.post(`http://localhost:3333/customer/wishList/${id}`, {
+          headers: {
+            'authorization': customerToken
+          }
+        }).then(res=>{
+          getWishList();
+          toast.success('Successfully Added')
+        })
+      } else {
+        navigate('/login');
+      }
+    }catch(err){
+      console.log(err);
     }
+    
   }
 
   async function getWishList() {
     if (localStorage.getItem('customerToken')) {
-      let { data } = await instance.get(`/customer/wishList`).catch(err=>console.log(err.message))
-      console.log(data);
+      let {data}  = await instance.get(`/customer/wishList/`,{
+        headers: {
+          'authorization': customerToken
+        }}).catch(err=>{
+        console.log(err.response.data.data)
+        if(err.response.data.data = 'jwt expired'){
+          // toast.error("Your Sign in session Ended Please Sign in again..!")
+          // navigate('/login');
+          // localStorage.removeItem('customerToken');
+        }
+      })
       if (data.message == 'WishList successfully retrieved') {
         setFavItems(data?.wishList);
       }
@@ -64,38 +76,49 @@ const BeautyPage = () => {
     }
   }
 
-
-
-console.log(favItems);
-//    favItems.map((item) => ({
-//     ...item,
-//     isFavorite: false       
-// }));
-let data;
-      products?.map(prods => {
-    data =  arr?.map(prd => {
-      if (prd.id == prods.id) {
-        initSelect = favItems.map((item) => ({
-          ...item,
-          isFavorite: true   
-              
-        }));
-      }
-    })
-  })
-  console.log(data);
-  console.log(products);
-  console.log(arr);
-  console.log(initSelect);
-
-
+  let x =[];
+  let y =[];
   products?.map(prods=>{
-    initSelect?.map(prd=>{
+    y.push( JSON.parse(JSON.stringify(prods)))
+    favItems?.map(prd=>{
       if(prd.id == prods.id){
-      prods.isFavorite=true;    
+        x.push( JSON.parse(JSON.stringify(prods)))
+        x.isFavorite = true;
       }
     })
   })
+
+  y?.map(prod=>{
+    x?.map(prd=>{
+      if(prd.id == prod.id ){
+        prod.isFavorite =true;
+      }
+    })
+  })
+
+  async function removeFromWishList(id) {
+    if (localStorage.getItem('customerToken')) {
+      let {data}  = await instance.patch(`/customer/wishList/${id}`,{
+        headers: {
+          'authorization': customerToken
+        }}).catch(err=>{
+        console.log(err.response.data.data)
+        if(err.response.data.data = 'jwt expired'){
+          // toast.error("Your Sign in session Ended Please Sign in again..!")
+          // navigate('/login');
+          // localStorage.removeItem('customerToken');
+        }
+      })
+      if (data.message == 'product successfully deleted') {
+        toast.success('Successfully Removed');
+        getWishList();
+      }
+    } else {
+      navigate('/login');
+    }
+  }
+
+  
   return <>
 
     <div className='container-fluid'>
@@ -128,20 +151,17 @@ let data;
           />
         </div> :
         <div className="row g-5 mt-3">
-          {products?.map((prd) => <div key={prd.id} className="col-md-3" style={{ cursor: 'pointer' }}>
+          {y?.map((prd) => <div key={prd.id} className="col-md-3" style={{ cursor: 'pointer' }}>
             <span className=' fw-bold text-primary p-1 rounded-2 bg-body-secondary' style={{ fontSize: "12px" }}>
               Best seller
             </span>
             <div className='text-end '>
-            {/* <i class="fa-regular fa-heart fs-4" aria-hidden="true" onClick={() => addtoFavorite1(prd._id)}></i> */}
 
-              {initSelect?.map((prod)=>{
-                if(prod?._id == prd?._id){
-                  return <i key={prod.id} class="fas fa-heart fs-4 text-danger" aria-hidden="true" onClick={() => removeFromWishList(prd._id)}></i>
-                }else{
-                   return <i key={prod.id} class="fa-regular fa-heart fs-4  " aria-hidden="true" onClick={() => addtoFavorite1(prd._id)}></i>
-                }
-              })
+              {prd.isFavorite?
+                   <i key={prd.id} class="fas fa-heart fs-4 text-danger" aria-hidden="true" onClick={() => removeFromWishList(prd._id)}></i>
+                    :
+                   <i key={prd.id} class="fa-regular fa-heart fs-4  " aria-hidden="true" onClick={() => addtoFavorite1(prd._id)}></i>
+
               }
 
             </div>

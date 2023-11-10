@@ -3,12 +3,9 @@ import axios from "axios";
 export const productsAction = createAsyncThunk('products/all',async(category)=>{
     try{
         const res = await  axios.get(`http://localhost:3333/product/${category}`)
-        // for each category compare fav products 
-        let fav = ['ss','sss']
-            res.data.forEach(element => {
-                ///////////
-            });
-          return res.data
+            let arr = res.data?.map(prd=>JSON.parse(JSON.stringify(prd)))
+            
+          return arr
     }catch(err){
         console.log(err.message);
     }
