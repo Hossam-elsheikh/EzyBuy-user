@@ -5,18 +5,43 @@ import CarouselCont from "../Components/Reusable/CarouselCont/CarouselCont";
 import CardCont from "../Components/Reusable/CardCont/CardCont";
 import instance from "../axiosConfig/instance";
 import { useLocation, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { productsAction } from "../store/slices/productsSlice";
+import { ColorRing } from "react-loader-spinner";
 const GroceryPage = () => {
   const allProducts = useSelector((data)=> data.products.products)
   const [products,setProducts] = useState([])
-  
+  const isLoading = useSelector((state)=> state.products.isLoading);
+  const dispatch = useDispatch()
+  function getProducts(){
+    dispatch(productsAction('Grocery'))
+  }
   useEffect(()=>{
-    setProducts(allProducts.filter((product)=> product.category === 'Grocery'))
+    getProducts()
   },[])
+  useEffect(()=>{
+    if(allProducts){
+      setProducts(allProducts)
+    }
+  },[isLoading])
   
   return (
     <>
-      <div className="">
+      <div >
+        {
+          isLoading ?
+          <div className=" w-100 py-5 fs-1 d-flex justify-content-center align-items-center">
+            <ColorRing
+              visible={true}
+              height="80"
+              width="80"
+              ariaLabel="blocks-loading"
+              wrapperStyle={{}}
+              wrapperClass="blocks-wrapper"
+              colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+            />
+          </div>
+          :
         <div className="row">
           <div className="col-lg-3">
           <DropDownCont image="https://i5.walmartimages.com/dfw/4ff9c6c9-f754/k2-_ae5145df-fcf4-4bd2-9512-3e6078153722.v1.jpg?" name="Fresh Food"/>
@@ -37,6 +62,7 @@ const GroceryPage = () => {
           <CardCont/>
           </div>
         </div>
+        }
       </div>
     </>
   );

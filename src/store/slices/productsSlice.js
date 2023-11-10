@@ -28,7 +28,6 @@ const ProductsSlice = createSlice({
         }),
         builder.addCase(productsAction.rejected, (state,action)=>{
             state.error = action.payload
-
         })
     }
 })

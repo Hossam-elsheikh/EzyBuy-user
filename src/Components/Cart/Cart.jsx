@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import style from "./Cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../../store/slices/cartSlice";
+import { Link } from "react-router-dom";
 export default function Cart() {
   const [isDropdownOpen, setisDropdownOpen] = useState("none");
   const cart = useSelector((data) => data.cart.items);
@@ -128,7 +129,7 @@ export default function Cart() {
                       className="img-fluid rounded-5"
                       style={{ height: "100px", width: "100px" }}
                     />
-                    <h6>{item.title}</h6>
+                    <h6 className={style.title}>{item.title}</h6>
                   </div>
                   <div className="col-3 d-flex flex-column gap-2">
                     <p>
@@ -138,7 +139,7 @@ export default function Cart() {
                     <p>
                       total price :{" "}
                       <span className={style.price}>
-                        ${Math.round((item.price * item.quantity + Number.EPSILON) * 100)/100}
+                        ${(item.price * item.quantity).toFixed(2)}
                       </span>
                     </p>
                   </div>
@@ -160,21 +161,9 @@ export default function Cart() {
               ))}
             </div>
           </div>
-
           <div
-            className={`col-md-4 py-2 shadow  border border-1 rounded-4 mt-5   ${style.col_4}`}
+            className={`col-md-4 px-4 py-2 shadow  border border-1 rounded-4 mt-5   ${style.col_4}`}
           >
-            <div className="text-center mt-2">
-              <button
-                className="btn btn-primary rounded-4   "
-                style={{ width: "95%" }}
-              >
-                Continue to checkout
-              </button>
-            </div>
-
-            <hr className="text-body-secondary " />
-
             <div className="ms-2 mt-5">
               <div className="d-flex justify-content-between">
                 <h6>
@@ -191,13 +180,11 @@ export default function Cart() {
                 </h6>
                 <p>
                   $
-                  {cart.reduce(
-                    (accumulator, currentValue) => {
-                      let total = accumulator + currentValue.price*currentValue.quantity
-                      return Math.round((total + Number.EPSILON) * 100)/100
-                    },
-                    0
-                  )}
+                  {cart.reduce((accumulator, currentValue) => {
+                    let total =
+                      accumulator + currentValue.price * currentValue.quantity;
+                    return Math.round((total + Number.EPSILON) * 100) / 100;
+                  }, 0)}
                 </p>
               </div>
 
@@ -217,7 +204,14 @@ export default function Cart() {
 
               <div className="mt-5 d-flex justify-content-between">
                 <h6>Estimated total</h6>
-                <h6>$249.90</h6>
+                <h6>
+                  $
+                  {cart.reduce((accumulator, currentValue) => {
+                    let total =
+                      accumulator + currentValue.price * currentValue.quantity;
+                    return Math.round((total + Number.EPSILON) * 100) / 100;
+                  }, 0)}
+                </h6>
               </div>
 
               <div className="text-end mt-5">
@@ -236,6 +230,18 @@ export default function Cart() {
                   Continue with Affirm
                 </button>
               </div>
+            </div>
+            <hr className="text-body-secondary " />
+
+            <div className="text-center mt-2">
+              <Link to='/checkout'>
+              <button
+                className="btn btn-dark rounded-4   "
+                style={{ width: "100%" }}
+                >
+                Continue to checkout
+              </button>
+                </Link>
             </div>
           </div>
         </div>
