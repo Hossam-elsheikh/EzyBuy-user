@@ -38,10 +38,8 @@ const BeautyPage = () => {
     try{
       if (localStorage.getItem('customerToken')) {
 
-        let { data } = await instance.post(`http://localhost:3333/customer/wishList/${id}`, {
-          headers: {
-            'authorization': customerToken
-          }
+        let { data } = await axios.post(`http://localhost:3333/customer/wishList/${id}`, {
+          headers: { authorization: `${localStorage.getItem("customerToken")}`,}, 
         }).then(res=>{
           getWishList();
           toast.success('Successfully Added')

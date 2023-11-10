@@ -1,9 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import instance from "../../axiosConfig/instance";
+
 export const cartAction = createAsyncThunk("customer/cart", async () => {
   try {
-    const res = await instance.get(`/customer/cart`);
+    const res = await axios({
+      method: 'get',
+      url: 'http://localhost:3333/customer/cart',
+      headers: { authorization: `${localStorage.getItem("customerToken")}`,}, 
+    });
     return res.data.cart;
   } catch (err) {
     return JSON.parse(localStorage.getItem("cart")) || [];
@@ -33,14 +38,20 @@ const CartSlice = createSlice({
       if (indexOfItem == -1) {
         state.items = [...state.items, action.payload];
         if (localStorage.getItem("customerToken")) {
-          instance.patch("/customer/cart/replace", { newCart: state.items });
+          instance.patch("/customer/cart/replace", {
+            auth: `${localStorage.getItem("customerToken")}`,
+            newCart: state.items,
+          });
         } else {
           localStorage.setItem("cart", JSON.stringify(state.items));
         }
       } else {
         state.items[indexOfItem].quantity += 1;
         if (localStorage.getItem("customerToken")) {
-          instance.patch("/customer/cart/replace", { newCart: state.items });
+          instance.patch("/customer/cart/replace", {
+            auth: `${localStorage.getItem("customerToken")}`,
+            newCart: state.items,
+          });
         } else {
           localStorage.setItem("cart", JSON.stringify(state.items));
         }
@@ -53,7 +64,10 @@ const CartSlice = createSlice({
       if (state.items[indexOfItem].quantity > 1) {
         state.items[indexOfItem].quantity -= 1;
         if (localStorage.getItem("customerToken")) {
-          instance.patch("/customer/cart/replace", { newCart: state.items });
+          instance.patch("/customer/cart/replace", {
+            auth: `${localStorage.getItem("customerToken")}`,
+            newCart: state.items,
+          });
         } else {
           localStorage.setItem("cart", JSON.stringify(state.items));
         }
@@ -62,7 +76,11 @@ const CartSlice = createSlice({
           (item) => item.id !== action.payload.id
         );
         if (localStorage.getItem("customerToken")) {
-          instance.patch("/customer/cart/replace", { newCart: state.items });
+          instance.patch("/customer/cart/replace", {
+            auth: `${localStorage.getItem("customerToken")}`,
+
+            newCart: state.items,
+          });
         } else {
           localStorage.setItem("cart", JSON.stringify(state.items));
         }

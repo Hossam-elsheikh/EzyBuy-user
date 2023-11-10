@@ -45,6 +45,7 @@ export default function Password() {
         if (localStorage.getItem("cart")) {
           instance
             .patch("/customer/cart", {
+              auth:`${localStorage.getItem("customerToken")}`,
               localCart: JSON.parse(localStorage.getItem("cart")),
             })
             .then((res) => {
