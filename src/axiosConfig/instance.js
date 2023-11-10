@@ -5,9 +5,7 @@ let headers={
 // ? create instance 
  let instance = axios.create({
     baseURL:"http://localhost:3333",
-    headers: {
-        'authorization': `${localStorage.getItem("customerToken")}`
-      }
+    headers:headers
 });
 
 export default  instance;

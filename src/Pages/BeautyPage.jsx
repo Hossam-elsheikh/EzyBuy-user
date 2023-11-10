@@ -52,7 +52,6 @@ const BeautyPage = () => {
     }catch(err){
       console.log(err);
     }
-    
   }
 
   async function getWishList() {
