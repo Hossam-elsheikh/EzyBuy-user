@@ -12,7 +12,7 @@ import LoginPage from "./Pages/LoginPage";
 import PasswordPage from "./Pages/PasswordPage";
 import RegisterPage from "./Pages/RegisterPage";
 import GroceryPage from "./Pages/GroceryPage";
-import BeautyPage from "./Pages/BeautyPage";
+// import BeautyPage from "./Pages/BeautyPage";
 import KidsPage from "./Pages/KidsPage";
 import FashionPage from "./Pages/FashionPage";
 import ElectronicsPage from "./Pages/ElectronicsPage";
@@ -45,7 +45,7 @@ function App() {
       children: [
         { index: true, element: <HomePage /> },
         { path: "groceries", element: <GroceryPage /> },
-        { path: "beauty", element: <BeautyPage /> },
+        { path: "beauty", element: <GroceryPage /> },
         { path: "kids", element: <KidsPage /> },
         { path: "fashion", element: <FashionPage /> },
         { path: "electronics", element: <ElectronicsPage /> },
