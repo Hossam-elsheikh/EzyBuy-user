@@ -6,7 +6,7 @@ import {  useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import axios, { all } from 'axios';
 import { LoginContext } from '../context/LoginContext';
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import { productsAction } from '../store/slices/productsSlice';
 import { FavPrdContext } from '../context/FavPrdContext';
 
