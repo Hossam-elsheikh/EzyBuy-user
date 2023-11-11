@@ -105,12 +105,10 @@ export default function ProductImgs({img , id}) {
       }
     })
   })
-console.log(x);
   async function removeFromWishList(id) {
     removeFromWishList1(id);
   }
 
-  console.log(y);
 
 
 return <>
