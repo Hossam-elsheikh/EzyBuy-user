@@ -37,6 +37,7 @@ import { Provider, useDispatch } from "react-redux";
 import { store } from "./store/store";
 import Wrapper from "./Components/ScrollToTop";
 import Checkout from "./Components/Checkout/Checkout";
+import LangContextProvider from "./context/LangContext";
 function App() {
   let routers = createBrowserRouter([
     {
@@ -86,14 +87,15 @@ function App() {
   return (
     <>
       <Provider store={store}>
-        <LoginContextProvider>
-          <Wrapper>
-
-            <RouterProvider router={routers}>
-              <App />
-            </RouterProvider>
-          </Wrapper>
-        </LoginContextProvider>
+        <LangContextProvider>
+          <LoginContextProvider>
+            <Wrapper>
+              <RouterProvider router={routers}>
+                <App />
+              </RouterProvider>
+            </Wrapper>
+          </LoginContextProvider>
+        </LangContextProvider>
       </Provider>
     </>
   );

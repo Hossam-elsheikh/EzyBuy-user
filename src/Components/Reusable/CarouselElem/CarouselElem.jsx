@@ -11,7 +11,7 @@ export default function CarouselElem(props) {
       addToCart({
         id,
         quantity: 1,
-        price: Math.round((props.price + Number.EPSILON) * 100)/100,
+        price: Math.round((props.price + Number.EPSILON) * 100) / 100,
         img: props.src,
         title: props.title,
       })

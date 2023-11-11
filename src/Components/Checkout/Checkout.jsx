@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -7,7 +8,8 @@ const Checkout = () => {
   return (
     <div className="container-fluid row pt-5">
       <div className="col-12 col-md-6 container-fluid">
-        <h3>Payment Method</h3>
+        <h3>Payment</h3>
+        
       </div>
       <div className="col-12 col-md-4 container-fluid border px-3 py-2 border-1 ">
         <h3 className="text-center">Order Details</h3>
