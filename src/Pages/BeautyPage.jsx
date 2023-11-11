@@ -8,18 +8,16 @@ import axios, { all } from 'axios';
 import { LoginContext } from '../context/LoginContext';
 import { useDispatch, useSelector } from 'react-redux';
 import { productsAction } from '../store/slices/productsSlice';
+import { FavPrdContext } from '../context/FavPrdContext';
 
 const BeautyPage = () => {
-  const dispatch = useDispatch()
-  const { customerToken } = useContext(LoginContext)
+  let {addtoFavorite , getWishList1 , getBeauty1 , removeFromWishList1 ,favItems }=useContext(FavPrdContext);
   let navigate = useNavigate();
   const AllProducts = useSelector((data) => data.products.products)
   const isLoading = useSelector((state) => state.products.isLoading);
   const [products, setProducts] = useState([]);
-  const [favItems, setFavItems] = useState([]);
   function getBeauty() {
-    dispatch(productsAction('Beauty'));
-    
+    getBeauty1('Beauty');
   }
   useEffect(() => {
     getBeauty();
@@ -35,44 +33,11 @@ const BeautyPage = () => {
   }, [isLoading ])
 
   async function addtoFavorite1(id) {
-    try{
-      if (localStorage.getItem('customerToken')) {
-
-        let { data } = await instance.post(`http://localhost:3333/customer/wishList/${id}`, {
-          headers: {
-            'authorization': customerToken
-          }
-        }).then(res=>{
-          getWishList();
-          toast.success('Successfully Added')
-        })
-      } else {
-        navigate('/login');
-      }
-    }catch(err){
-      console.log(err);
-    }
+    addtoFavorite(id);
   }
 
   async function getWishList() {
-    if (localStorage.getItem('customerToken')) {
-      let {data}  = await instance.get(`/customer/wishList/`,{
-        headers: {
-          'authorization': customerToken
-        }}).catch(err=>{
-        console.log(err.response.data.data)
-        if(err.response.data.data = 'jwt expired'){
-          // toast.error("Your Sign in session Ended Please Sign in again..!")
-          // navigate('/login');
-          // localStorage.removeItem('customerToken');
-        }
-      })
-      if (data.message == 'WishList successfully retrieved') {
-        setFavItems(data?.wishList);
-      }
-    } else {
-      navigate('/login');
-    }
+    getWishList1();
   }
 
   let x =[];
@@ -96,25 +61,7 @@ const BeautyPage = () => {
   })
 
   async function removeFromWishList(id) {
-    if (localStorage.getItem('customerToken')) {
-      let {data}  = await instance.patch(`/customer/wishList/${id}`,{
-        headers: {
-          'authorization': customerToken
-        }}).catch(err=>{
-        console.log(err.response.data.data)
-        if(err.response.data.data = 'jwt expired'){
-          // toast.error("Your Sign in session Ended Please Sign in again..!")
-          // navigate('/login');
-          // localStorage.removeItem('customerToken');
-        }
-      })
-      if (data.message == 'product successfully deleted') {
-        toast.success('Successfully Removed');
-        getWishList();
-      }
-    } else {
-      navigate('/login');
-    }
+    removeFromWishList1(id);
   }
 
   

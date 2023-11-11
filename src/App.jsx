@@ -37,6 +37,7 @@ import { Provider, useDispatch } from "react-redux";
 import { store } from "./store/store";
 import Wrapper from "./Components/ScrollToTop";
 import Checkout from "./Components/Checkout/Checkout";
+import FavPrdContextProvider from "./context/FavPrdContext";
 function App() {
   let routers = createBrowserRouter([
     {
@@ -87,12 +88,14 @@ function App() {
     <>
       <Provider store={store}>
         <LoginContextProvider>
+          <FavPrdContextProvider>
           <Wrapper>
 
             <RouterProvider router={routers}>
               <App />
             </RouterProvider>
           </Wrapper>
+          </FavPrdContextProvider>
         </LoginContextProvider>
       </Provider>
     </>
