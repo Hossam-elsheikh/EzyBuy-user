@@ -1,35 +1,38 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import classes from "./Navbar.module.css";
 import { Link } from "react-router-dom";
 import logo from '../../assets/fav-05.svg'
+import { LangContext } from "../../context/LangContext";
+import { right } from "@popperjs/core";
 
 const MobNav = (props) => {
+  const {t,dir} = useContext(LangContext)
+
   const Departments = [
-    { title: "Groceries & Essentials", link: "/grocery" },
-    { title: "Electronics", link: "/electronics" },
-    { title: "Fashion", link: "/fashion" },
-    { title: "Kids & Toys", link: "/kids" },
-    { title: "Beauty", link: "/beauty" },
-    { title: "Home & Furniture", link: "/home" },
-    { title: "Halloween", link: "/halloween" },
-    { title: "Baby", link: "/baby" },
-    { title: "Gifts", link: "/gifts" },
-    { title: "Patio & Gardens", link: "/gardens" },
+    { title: t("departments.groceries"), link: "/grocery" },
+    { title: t("departments.electronics"), link: "/electronics" },
+    { title: t("departments.fashions"), link: "/fashion" },
+    { title: t("departments.kids"), link: "/kids" },
+    { title: t("departments.beauty"), link: "/beauty" },
+    { title: t("departments.home"), link: "/home" },
+    { title: t("departments.baby"), link: "/baby" },
+    { title: t("departments.Gifts"), link: "/gifts" },
+    { title: t("departments.patio"), link: "/gardens" },
   ];
   const Services = [
-    { title: "Health & Wellness", link: "/health" },
-    { title: "Auto Care Center", link: "/auto" },
-    { title: "Protection, Home & Tech", link: "/protection" },
-    { title: "EzyBuy Pay", link: "/ezybuypay" },
-    { title: "Custom Cakes", link: "/cakes" },
-    { title: "Photo Services", link: "/photo" },
-    { title: "Money Services", link: "/money" },
-    { title: "Community & Giving", link: "/community" },
+    { title: t("services.health"), link: "/health" },
+    { title: t("services.auto"), link: "/auto" },
+    { title: t("services.protection"), link: "/protection" },
+    { title: t("services.pay"), link: "/ezybuypay" },
+    { title: t("services.customCakes"), link: "/cakes" },
+    { title: t("services.photo"), link: "/photo" },
+    { title: t("services.money"), link: "/money" },
+    { title: t("services.community"), link: "/community" },
   ];
   const [section, setSection] = useState(Departments);
   const [subMenu, setSubMenu] = useState(false);
   return (
-    <div className={classes.mobNav} style={{ display: props.display }}>
+    <div className={classes.mobNav} style={dir ==="rtl"?{display: props.display,right:"0",marginRight: "-600px"}:{display: props.display,left:"0",marginLeft: "-600px"}}>
       <div className="d-flex gap-1 justify-content-center align-items-center">
       <Link to="/">
           <img
@@ -40,7 +43,7 @@ const MobNav = (props) => {
             style={{width:'35px'}}
             />
         </Link>
-        <h3 style={{margin:'0'}}>Hi, User</h3>
+        <h3 style={{margin:'0'}}>{t("mobNav.welcome")}</h3>
       </div>
       {/* Main menu */}
       {!subMenu ? (
@@ -60,7 +63,7 @@ const MobNav = (props) => {
             className="d-flex gap-3 align-items-center mb-2"
           >
             <i className="fa-solid fa-receipt"></i>
-            <p>Purchase History</p>
+            <p>{t("mobNav.purchaseHistory")}</p>
           </Link>
           <Link
             onClick={props.onclick}
@@ -68,7 +71,7 @@ const MobNav = (props) => {
             className="d-flex gap-3 align-items-center mb-2"
           >
             <i className="fa-solid fa-box"></i>
-            <p>My items</p>
+            <p>{t("mobNav.myItems")}</p>
           </Link>
           <Link
             onClick={props.onclick}
@@ -76,7 +79,7 @@ const MobNav = (props) => {
             className="d-flex gap-3 align-items-center mb-2"
           >
             <i className="fa-regular fa-user"></i>
-            <p>Account</p>
+            <p>{t("mobNav.account")}</p>
           </Link>
           <hr />
           <Link
@@ -85,7 +88,7 @@ const MobNav = (props) => {
             className="d-flex gap-3 align-items-center mb-2"
           >
             <i className="fa-regular fa-circle-question"></i>
-            <p>Help</p>
+            <p>{t("mobNav.help")}</p>
           </Link>
           <hr />
           <Link
@@ -94,7 +97,7 @@ const MobNav = (props) => {
             className="d-flex gap-3 align-items-center mb-2"
           >
             <i className="fa-regular fa-heart"></i>
-            <p>Lists</p>
+            <p>{t("mobNav.lists")}</p>
           </Link>
           <Link
             onClick={props.onclick}
@@ -102,7 +105,7 @@ const MobNav = (props) => {
             className="d-flex gap-3 align-items-center mb-2"
           >
             <i className="fa-solid fa-gift"></i>
-            <p>Registries</p>
+            <p>{t("mobNav.registries")}</p>
           </Link>
           <hr />
           <Link
@@ -114,9 +117,9 @@ const MobNav = (props) => {
           >
             <div href="#" className="d-flex gap-3 align-items-center mb-2">
               <i className="fa-solid fa-industry"></i>
-              <p>Departments</p>
+              <p>{t("mobNav.departments")}</p>
             </div>
-            <i className="fa-solid fa-chevron-right"></i>
+            <i className={`fa-solid ${dir === "ltr"?'fa-chevron-right':"fa-chevron-left"}`}></i>
           </Link>
           <Link
             className="d-flex justify-content-between align-items-center"
@@ -127,9 +130,9 @@ const MobNav = (props) => {
           >
             <div href="#" className="d-flex gap-3 align-items-center mb-2">
               <i className="fa-solid fa-hand-holding-medical"></i>
-              <p>Services</p>
+              <p>{t("mobNav.services")}</p>
             </div>
-            <i className="fa-solid fa-chevron-right"></i>
+            <i className={`fa-solid ${dir === "ltr"?'fa-chevron-right':"fa-chevron-left"}`}></i>
           </Link>
           <hr />
           <Link
@@ -138,7 +141,7 @@ const MobNav = (props) => {
             className="d-flex gap-3 align-items-center "
           >
             <i className="fa-regular fa-comment"></i>
-            <p>Give feedback</p>
+            <p>{t("mobNav.giveFeedback")}</p>
           </Link>
           <hr />
           <Link
@@ -147,7 +150,7 @@ const MobNav = (props) => {
             className="d-flex gap-3 align-items-center "
           >
             <i className="fa-solid fa-right-to-bracket"></i>
-            <p>Sign out</p>
+            <p>{t("mobNav.signout")}</p>
           </Link>
         </div>
       ) : (
@@ -157,7 +160,7 @@ const MobNav = (props) => {
               setSubMenu(false);
             }}
           >
-            Back to menu
+            {t("mobNav.backToMenu")}
           </Link>
           <hr />
           <div className="overflow-auto p-1 d-flex flex-column gap-2">
