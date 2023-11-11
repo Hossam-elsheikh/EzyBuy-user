@@ -50,7 +50,7 @@ const SingleProductPage = () => {
   </div> :
 <div className='row 'style={{width:"93%"}}>
   <div className="col-md-8 " >
-  <ProductImgs img = {product.images} />
+  <ProductImgs img = {product.images} id = {product._id} />
   </div>
   <div className="col-md-4">
   <div >
