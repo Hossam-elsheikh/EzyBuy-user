@@ -9,7 +9,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from "react-redux";
 export default function CarouselCont(props) {
-  
   const productTemplate = (product) => {
     return (
       <CarouselElem

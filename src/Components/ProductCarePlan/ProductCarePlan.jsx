@@ -273,11 +273,7 @@ export default function ProductCarePlan() {
               </div>
               <p className='text-center text-body-secondary mt-1'>Jewelry & watches</p>
               </div>
-
-
-
-             
-              
+  
     </Slider>
     </span>   
 

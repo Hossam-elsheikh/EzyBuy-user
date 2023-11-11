@@ -38,6 +38,7 @@ import { store } from "./store/store";
 import Wrapper from "./Components/ScrollToTop";
 import Checkout from "./Components/Checkout/Checkout";
 import LangContextProvider from "./context/LangContext";
+import FavPrdContextProvider from "./context/FavPrdContext";
 function App() {
   let routers = createBrowserRouter([
     {
@@ -89,11 +90,13 @@ function App() {
       <Provider store={store}>
         <LangContextProvider>
           <LoginContextProvider>
+          <FavPrdContextProvider>
             <Wrapper>
               <RouterProvider router={routers}>
                 <App />
               </RouterProvider>
             </Wrapper>
+            </FavPrdContextProvider>
           </LoginContextProvider>
         </LangContextProvider>
       </Provider>
