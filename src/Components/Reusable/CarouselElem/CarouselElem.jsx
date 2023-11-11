@@ -26,75 +26,74 @@ export default function CarouselElem(props) {
 
 
 
-  let {addtoFavorite , getWishList1 , getBeauty1 , removeFromWishList1 ,favItems }=useContext(FavPrdContext);
-  const [products, setProducts] = useState([]);
-  let {isLoading , setIsLoading}=useState(true);
+//   let {addtoFavorite , getWishList1 , getBeauty1 , removeFromWishList1 ,favItems }=useContext(FavPrdContext);
+//   const [products, setProducts] = useState([]);
+//   let {isLoading , setIsLoading}=useState(true);
   
-  // function getBeauty() {
-  //   getBeauty1();
-  // }   
+//   // function getBeauty() {
+//   //   getBeauty1();
+//   // }   
 
-  useEffect(()=>{
-  getWishList();
-},[props])
-  // useEffect(() => {
-  //   if (AllProducts) { 
-  //     setProducts(AllProducts);
-  //   }
-  //   if(isLoading==false){
-  //     getWishList();
-  //     }
-  // }, [isLoading ])
+//   useEffect(()=>{
+//   getWishList();
+// },[props])
+//   // useEffect(() => {
+//   //   if (AllProducts) { 
+//   //     setProducts(AllProducts);
+//   //   }
+//   //   if(isLoading==false){
+//   //     getWishList();
+//   //     }
+//   // }, [isLoading ])
 
-  async function addtoFavorite1(id) {
-    addtoFavorite(id);
-  }
+//   async function addtoFavorite1(id) {
+//     addtoFavorite(id);
+//   }
 
-  async function getWishList() {
-    getWishList1();
-    setIsLoading(false)
-  }
+//   async function getWishList() {
+//     getWishList1();
+//     setIsLoading(false)
+//   }
 
 
-  let x =[];
-  let y =[];
-    y.push( JSON.parse(JSON.stringify(props)))
-    y?.map(prods=>{
-      favItems?.map(prd=>{
-        if(prd._id == prods.id){
-          x.push( JSON.parse(JSON.stringify(prods)))
-        }
-      })
-    })
+//   let x =[];
+//   let y =[];
+//     y.push( JSON.parse(JSON.stringify(props)))
+//     y?.map(prods=>{
+//       favItems?.map(prd=>{
+//         if(prd._id == prods.id){
+//           x.push( JSON.parse(JSON.stringify(prods)))
+//         }
+//       })
+//     })
     
-console.log(y);
-  y?.map(prod=>{
-    x?.map(prd=>{
-      if(prd.id == prod.id ){
-        prod.isFavorite =true;
-      }
-    })
-  })
-  async function removeFromWishList(id) {
-    removeFromWishList1(id);
-  }
+// console.log(y);
+//   y?.map(prod=>{
+//     x?.map(prd=>{
+//       if(prd.id == prod.id ){
+//         prod.isFavorite =true;
+//       }
+//     })
+//   })
+//   async function removeFromWishList(id) {
+//     removeFromWishList1(id);
+//   }
   
 
   return (
-    <>{
-      isLoading?
-      <div className=' w-100 py-5 fs-1 d-flex justify-content-center align-items-center' style={{}}>
-      <ColorRing
-        visible={true}
-        height="80"
-        width="80"
-        ariaLabel="blocks-loading"
-        wrapperStyle={{}}
-        wrapperClass="blocks-wrapper"
-        colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
-      />
-    </div>
-    :
+    <>
+    {/* //   <div className=' w-100 py-5 fs-1 d-flex justify-content-center align-items-center' style={{}}>
+    //   <ColorRing
+    //     visible={true}
+    //     height="80"
+    //     width="80"
+    //     ariaLabel="blocks-loading"
+    //     wrapperStyle={{}}
+    //     wrapperClass="blocks-wrapper"
+    //     colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+    //   />
+    // </div> */}
+    
     <div className={classes.item}  >
     <img src={props.src} onClick={()=>navigate(`/product/${props.id}`)} />
     <h6>
@@ -115,7 +114,7 @@ console.log(y);
       <p>Delivery</p>
     </div>
     <button onClick={() => addToCartHandler(props.id)}>Add +</button>
-    {
+    {/* {
     favItems?.map(prd=>{
       console.log();
       if(props.id == prd._id){
@@ -125,9 +124,9 @@ console.log(y);
         return  <i className="fa-regular fa-heart "  onClick={() => addtoFavorite1(props.id)}></i>
       }
     })
-    }
+    } */}
   </div>
-    }
+    
      
     </>
   );
