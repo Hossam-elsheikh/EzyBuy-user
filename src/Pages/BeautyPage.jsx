@@ -21,7 +21,7 @@ const BeautyPage = () => {
   }
   useEffect(() => {
     getBeauty();
-  }, [])
+  },[])
 
   useEffect(() => {
     if (AllProducts) { 

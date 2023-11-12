@@ -39,6 +39,7 @@ import Wrapper from "./Components/ScrollToTop";
 import Checkout from "./Components/Checkout/Checkout";
 import LangContextProvider from "./context/LangContext";
 import FavPrdContextProvider from "./context/FavPrdContext";
+import ListItems from "./Components/ListItems/ListItems";
 function App() {
   let routers = createBrowserRouter([
     {
@@ -74,7 +75,9 @@ function App() {
           element: <MyItems />,
           children: [
             { index: true, element: <Reorder /> }, //fix later
-            { path: "lists", element: <Lists /> },
+            { path: "lists", element: <Lists />,children:[
+              {path: "lists/items", element:<ListItems/> }
+            ] },
             { path: "registers", element: <Registers /> },
           ],
         },

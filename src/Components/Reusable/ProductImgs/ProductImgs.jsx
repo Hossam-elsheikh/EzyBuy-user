@@ -13,7 +13,6 @@ import { Toaster } from 'react-hot-toast';
 
         
 export default function ProductImgs({img , id}) {
-    console.log(img);
     const [isLoading, setIsLoading] = useState(true);
     const [activeIndex, setActiveIndex] = useState(0)
 
@@ -57,7 +56,6 @@ export default function ProductImgs({img , id}) {
 
     // ?===> WishList <=====
     let {addtoFavorite , getWishList1 , getBeauty1 , removeFromWishList1 ,favItems }=useContext(FavPrdContext);
-  let navigate = useNavigate();
   const AllProducts = useSelector((data) => data.products.products)
 //   const isLoading = useSelector((state) => state.products.isLoading);
   const [products, setProducts] = useState([]);

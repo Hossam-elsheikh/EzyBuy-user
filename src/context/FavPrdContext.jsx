@@ -5,6 +5,7 @@ import { LoginContext } from './LoginContext';
 import { useDispatch } from 'react-redux';
 import { productsAction } from '../store/slices/productsSlice';
 import toast from 'react-hot-toast';
+import { Navigate } from 'react-router';
 
 
 export let FavPrdContext = createContext();
@@ -21,9 +22,9 @@ export default function FavPrdContextProvider(props) {
     if (localStorage.getItem('customerToken')) {
         let {data}  = await instance.get(`/customer/wishList/`,{
           headers: {
-            'authorization': customerToken
+            'authorization': localStorage.getItem('customerToken')
           }}).catch(err=>{
-          console.log(err.response.data.data)
+          console.log(err.response.data)
           if(err.response.data.data = 'jwt expired'){
             // toast.error("Your Sign in session Ended Please Sign in again..!")
             // navigate('/login');
@@ -32,9 +33,10 @@ export default function FavPrdContextProvider(props) {
         })
         if (data.message == 'WishList successfully retrieved') {
           setFavItems(data?.wishList);
+          return data
         }
       } else {
-        navigate('/login');
+        <Navigate to={'/login'} />
       }
 
     }
@@ -46,7 +48,7 @@ export default function FavPrdContextProvider(props) {
       
                 await instance.post(`http://localhost:3333/customer/wishList/${id}`, {
                 headers: {
-                  'authorization': customerToken
+                  'authorization': localStorage.getItem('customerToken')
                 }
               }).then(res=>{
                 console.log('hii');
@@ -56,7 +58,7 @@ export default function FavPrdContextProvider(props) {
                 console.log(err);
               })
             } else {
-              navigate('/login');
+              location.href = '/login'
             }
           }catch(err){
             console.log(err);
@@ -68,7 +70,7 @@ export default function FavPrdContextProvider(props) {
     if (localStorage.getItem('customerToken')) {
       let {data}  = await instance.patch(`/customer/wishList/${id}`,{
         headers: {
-          'authorization': customerToken
+          'authorization': localStorage.getItem('customerToken')
         }}).catch(err=>{
         console.log(err.response.data.data)
         if(err.response.data.data = 'jwt expired'){
@@ -82,7 +84,7 @@ export default function FavPrdContextProvider(props) {
         getWishList1();
       }
     } else {
-      navigate('/login');
+      location.href = '/login'
     }
   }
     return <FavPrdContext.Provider value={{ addtoFavorite , getWishList1 , getBeauty1, removeFromWishList1 , favItems , setFavItems}}>

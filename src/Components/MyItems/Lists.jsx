@@ -1,13 +1,45 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import style from './myitems.module.css'
+import { FavPrdContext } from '../../context/FavPrdContext'
+import { ColorRing } from 'react-loader-spinner';
+import { Outlet, useNavigate } from 'react-router';
 const Lists = () => {
-  return (
-    <div className='container d-flex flex-column gap-5 p-0 p-md-3 flex-wrap'>
+  let {getWishList1} = useContext(FavPrdContext);
+  let [isLoading , setIsLoading] = useState(true); 
+  let [name , setName ] = useState('');
+  let navigate = useNavigate();
+  async function getfavList(){
+  let data = await getWishList1();
+  setName(data?.name)
+  setIsLoading(false);
+  }
+
+  useEffect(()=>{
+    getfavList();
+  },[])
+
+  
+  return <>
+    {
+      isLoading?
+        <div className=' w-100 py-5 fs-1 d-flex justify-content-center align-items-center' style={{}}>
+          <ColorRing
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="blocks-loading"
+            wrapperStyle={{}}
+            wrapperClass="blocks-wrapper"
+            colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+          />
+        </div>:
+       
+        <div className='container d-flex flex-column gap-5 p-0 p-md-3 flex-wrap'>
         <button style={{width:'fit-content'}} className='btn btn-dark round-10'>Create New List</button>
         <div className='container d-flex  gap-3 flex-wrap'>
             <div className={style.list}>
-              <div >
-                <h5><i class="fa-solid fa-heart"></i> Hossam's List</h5>
+              <div onClick={()=>navigate('lists/items')} style={{cursor: 'pointer'}} >
+                <h5><i class="fa-solid fa-heart"></i> {name} List</h5>
                 <p>favorites, no items added yet</p>
               </div>
               <img src='https://i5.walmartimages.com/dfw/4ff9c6c9-a942/k2-_b7330de4-c256-4814-97d7-2bea89e38ac7.v1.jpg?odnHeight=80&odnWidth=80&odnBg=e6f1fc' />
@@ -21,7 +53,10 @@ const Lists = () => {
             </div>
         </div>
     </div>
-  )
+    }
+      {<Outlet/>}
+    
+    </>
 }
 
 export default Lists
