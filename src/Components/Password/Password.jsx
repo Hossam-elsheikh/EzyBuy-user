@@ -50,6 +50,7 @@ export default function Password() {
             })
             .then((res) => {
               localStorage.removeItem("cart");
+              location.reload()
             });
         }
         navigate("/");

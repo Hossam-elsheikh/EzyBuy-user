@@ -25,11 +25,16 @@ export default function Navbar() {
   let [path, setPath] = useState("myaccount");
 
   function setLanguage() {
-    lang === "en" ? setLang("ar") : setLang("en");
-    title === "Browse in English"
-      ? setTitle("تصفح بالعربية")
-      : setTitle("Browse in English");
-    dir === "ltr" ? setDir("rtl") : setDir("ltr");
+    JSON.parse(localStorage.getItem("lang")) === "en"
+      ? localStorage.setItem("lang", JSON.stringify("ar"))
+      : localStorage.setItem("lang", JSON.stringify("en"));
+    JSON.parse(localStorage.getItem("langtitle")) === "تصفح بالعربية"
+      ? localStorage.setItem("langtitle", JSON.stringify("Browse in English"))
+      : localStorage.setItem("langtitle", JSON.stringify("تصفح بالعربية"));
+    JSON.parse(localStorage.getItem("dir")) === "ltr"
+      ? localStorage.setItem("dir", JSON.stringify("rtl"))
+      : localStorage.setItem("dir", JSON.stringify("ltr"));
+    location.reload();
   }
   let [logState, setLogState] = useState(t("nav.myAccount"));
 
@@ -79,7 +84,10 @@ export default function Navbar() {
   const DepartmentsDiv = () => {
     return (
       <>
-        <div className={classes.dep} style={dir==="ltr" ? {left:"11rem"}:{right:"9rem"}}>
+        <div
+          className={classes.dep}
+          style={dir === "ltr" ? { left: "11rem" } : { right: "9rem" }}
+        >
           <Link className={classes.dep_link} to="#">
             {t("nav.departments")}{" "}
           </Link>
@@ -99,7 +107,10 @@ export default function Navbar() {
   const ServicesDiv = () => {
     return (
       <>
-        <div style={dir==="ltr" ? {left:"17rem"}:{right:"15rem"}} className={classes.dep}>
+        <div
+          style={dir === "ltr" ? { left: "17rem" } : { right: "15rem" }}
+          className={classes.dep}
+        >
           <Link className={classes.dep_link} to="#">
             {t("nav.services")}
           </Link>
@@ -126,7 +137,7 @@ export default function Navbar() {
   }
   return (
     <>
-      <nav className={classes.nav} dir={dir}>
+      <nav className={classes.nav} dir={JSON.parse(localStorage.getItem('dir')) || "ltr"}>
         <div className={classes.main_nav}>
           <div
             className={classes.bkdrop}
@@ -199,7 +210,7 @@ export default function Navbar() {
               <p>{t("nav.services")}</p>
             </div>
           </div>
-          <input type="search" placeholder={t("nav.search")}/>
+          <input type="search" placeholder={t("nav.search")} />
           <div className={classes.wrap}>
             <Link to="myitems" className={`hide_sm ${classes.cat}`}>
               <i className="fa-regular fa-heart"></i>
@@ -234,10 +245,14 @@ export default function Navbar() {
             <p>|</p>
             <div
               className="d-flex align-items-center gap-2 cursor-pointer"
+              style={{ cursor: "pointer" }}
               onClick={() => setLanguage()}
             >
               <i class="fa-solid fa-globe"></i>
-              <p>{title}</p>
+              <p>
+                {JSON.parse(localStorage.getItem("langtitle")) ||
+                  "تصفح بالعربية"}
+              </p>
             </div>
           </div>
           <div className="d-none gap-3 d-lg-flex d-xl-flex">
