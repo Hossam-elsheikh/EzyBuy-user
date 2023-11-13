@@ -248,7 +248,7 @@ export default function Navbar() {
               style={{ cursor: "pointer" }}
               onClick={() => setLanguage()}
             >
-              <i class="fa-solid fa-globe"></i>
+              <i className="fa-solid fa-globe"></i>
               <p>
                 {JSON.parse(localStorage.getItem("langtitle")) ||
                   "تصفح بالعربية"}

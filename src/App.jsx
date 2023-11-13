@@ -1,7 +1,6 @@
 import {
   RouterProvider,
   createBrowserRouter,
-  useLocation,
 } from "react-router-dom";
 import "./App.css";
 import Layout from "./Components/Layout/Layout";
@@ -40,6 +39,9 @@ import Checkout from "./Components/Checkout/Checkout";
 import LangContextProvider from "./context/LangContext";
 import FavPrdContextProvider from "./context/FavPrdContext";
 import ListItems from "./Components/ListItems/ListItems";
+import { Elements } from "@stripe/react-stripe-js";
+import {loadStripe} from '@stripe/stripe-js';
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_KEY);
 function App() {
   let routers = createBrowserRouter([
     {
@@ -56,7 +58,7 @@ function App() {
         { path: "protection", element: <ProductCarePlan /> },
         { path: "health", element: <HealthWellness /> },
         { path: "cart", element: <Cart /> },
-        { path: "checkout", element: <Checkout /> },
+        { path: "checkout", element: <Checkout/> },
         {
           path: "myaccount",
           element: <AccountPage />,
@@ -94,11 +96,14 @@ function App() {
         <LangContextProvider>
           <LoginContextProvider>
           <FavPrdContextProvider>
+          <Elements stripe={stripePromise}>
             <Wrapper>
               <RouterProvider router={routers}>
                 <App />
+                
               </RouterProvider>
             </Wrapper>
+            </Elements>
             </FavPrdContextProvider>
           </LoginContextProvider>
         </LangContextProvider>
