@@ -4,11 +4,12 @@ import { useFormik } from "formik/dist";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import instance from '../../axiosConfig/instance'
+import toast, { Toaster } from "react-hot-toast";
 const Checkout = () => {
+  let navigate = useNavigate();
   const cart = useSelector((data) => data.cart.items);
-  // const cartId = useSelector((data) => data);
   const stripe = useStripe();
   const element = useElements();
   const [isProcessing, setProcessing] = useState(false);
@@ -22,6 +23,17 @@ const Checkout = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('Pay');
 
+  async function emptyCart(){
+    try{
+      await axios.delete(`http://localhost:3333/customer/cart`,{
+        headers: {
+          'authorization': localStorage.getItem('customerToken'),
+        },
+      })
+    }catch(err){
+      toast.error(err.message);
+    }
+  }
   const handleChange = (e) => {
     const { value, name } = e.target;
     setCredentials({ ...credentials, [name]: value });
@@ -103,6 +115,8 @@ let totalPrice = cart.reduce((accumulator, currentValue) => {
         });
         cardElement.clear();
       }, 2000);
+      emptyCart();
+      navigate('/');
     } catch (error) {
       setError(error.message);
       setProcessing(false);
@@ -239,6 +253,7 @@ let totalPrice = cart.reduce((accumulator, currentValue) => {
           </Link>
         </div>
       </div>
+  <Toaster/>
     </div>
   );
 };

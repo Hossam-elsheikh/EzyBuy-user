@@ -51,7 +51,6 @@ export default function FavPrdContextProvider(props) {
                   'authorization': localStorage.getItem('customerToken')
                 }
               }).then(res=>{
-                console.log('hii');
                 getWishList1();
                 toast.success('Successfully Added')
               }).catch(err=>{

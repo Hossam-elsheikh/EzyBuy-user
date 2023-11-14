@@ -3,13 +3,15 @@ import { useEffect, useState } from "react";
 import style from "./Cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../../store/slices/cartSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export default function Cart() {
+  let navigate = useNavigate();
   const [isDropdownOpen, setisDropdownOpen] = useState("none");
   const cart = useSelector((data) => data.cart.items);
   const dispatch = useDispatch();
   const [changeIcon, setChangeIcon] = useState("down");
   let [counter, setCounter] = useState(0);
+  let [disabled , setDisabled] = useState(true);
   const toggleDropdown = () => {
     setisDropdownOpen(isDropdownOpen === "none" ? "inline" : "none");
     setChangeIcon(changeIcon === "down" ? "up" : "down");
@@ -22,7 +24,13 @@ export default function Cart() {
   function dereaseQuantityHandler(productID) {
     dispatch(removeFromCart({ id: productID }));
   }
-
+  useEffect(()=>{
+    if(cart.length == 0 || !cart ){
+      setDisabled(true);
+    }else{
+      setDisabled(false);
+    }
+  },[cart])
   return (
     <>
       <h4>
@@ -234,14 +242,14 @@ export default function Cart() {
             <hr className="text-body-secondary " />
 
             <div className="text-center mt-2">
-              <Link to='/checkout'>
               <button
                 className="btn btn-dark rounded-4   "
                 style={{ width: "100%" }}
+                disabled={disabled}
+                onClick={()=>navigate('/checkout')}
                 >
                 Continue to checkout
               </button>
-                </Link>
             </div>
           </div>
         </div>

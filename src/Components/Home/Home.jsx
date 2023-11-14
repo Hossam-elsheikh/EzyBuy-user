@@ -17,12 +17,17 @@ import { useContext, useEffect, useState } from "react";
 import instance from "../../axiosConfig/instance";
 import axios from "axios";
 import { LoginContext } from "../../context/LoginContext";
+import { useSelector } from "react-redux";
+import { ColorRing } from "react-loader-spinner";
 export default function Home() {
   const {customerToken} = useContext(LoginContext)
   const [products,setProducts] = useState([])
-
+  let [isLoading, setIsLoading ] = useState(true);
   useEffect(()=>{
-    instance.get('/product/all').then((data)=> setProducts(data.data))
+    instance.get('/product/all').then((data)=> {
+      setProducts(data.data)
+      setIsLoading(false);
+    })
     
   },[])
   const cards = [
@@ -71,6 +76,18 @@ export default function Home() {
   ];
   return (
     <>
+     {isLoading ?
+        <div className=' w-100 py-5 fs-1 d-flex justify-content-center align-items-center' style={{}}>
+          <ColorRing
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="blocks-loading"
+            wrapperStyle={{}}
+            wrapperClass="blocks-wrapper"
+            colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+          />
+        </div> :
       <div className="d-flex flex-column gap-4 align-items-center w-100">
         {/* Grid */}
         <div className="row d-flex w-100 justify-content-center ">
@@ -104,6 +121,7 @@ export default function Home() {
           </div>
       </div>
       </div>
+}
     </>
   );
 }

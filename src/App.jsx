@@ -77,7 +77,7 @@ function App() {
           element: <MyItems />,
           children: [
             { index: true, element: <Reorder /> }, //fix later
-            { path: "lists", element: <Lists />,children:[
+            { path: "lists", element:<ProtectedRoute><Lists/></ProtectedRoute> ,children:[
               {path: "lists/items", element:<ListItems/> }
             ] },
             { path: "registers", element: <Registers /> },
