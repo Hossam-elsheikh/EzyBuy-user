@@ -170,9 +170,9 @@ export default function Cart() {
             </div>
           </div>
           <div
-            className={`col-md-4 px-4 py-2 shadow  border border-1 rounded-4 mt-5   ${style.col_4}`}
+            className={`col-md-4 px-4  py-4 shadow  border border-1 rounded-4 mt-5   ${style.col_4}`}
           >
-            <div className="ms-2 mt-5">
+            <div className="ms-2 ">
               <div className="d-flex justify-content-between">
                 <h6>
                   Subtotal

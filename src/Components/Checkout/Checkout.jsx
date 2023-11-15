@@ -1,40 +1,39 @@
-import { CardElement, useElements, useStripe  } from "@stripe/react-stripe-js";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useFormik } from "formik/dist";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import instance from '../../axiosConfig/instance'
+import instance from "../../axiosConfig/instance";
 import toast, { Toaster } from "react-hot-toast";
 import { cartAction } from "../../store/slices/cartSlice";
 const Checkout = () => {
-  let dispatch= useDispatch()
+  let dispatch = useDispatch();
   let navigate = useNavigate();
   const cart = useSelector((data) => data.cart.items);
   const stripe = useStripe();
   const element = useElements();
+  const [visaPay, setVisaPay] = useState(false);
   const [isProcessing, setProcessing] = useState(false);
   const [credentials, setCredentials] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
+    name: "",
+    email: "",
+    phone: "",
   });
-  
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('Pay');
 
-  async function emptyCart(){
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("Pay");
 
-    try{
-      await axios.delete(`http://localhost:3333/customer/cart`,{
+  async function emptyCart() {
+    try {
+      await axios.delete(`http://localhost:3333/customer/cart`, {
         headers: {
-          'authorization': localStorage.getItem('customerToken'),
+          authorization: localStorage.getItem("customerToken"),
         },
-      })
-      dispatch(cartAction())
-    }catch(err){
+      });
+      dispatch(cartAction());
+    } catch (err) {
       toast.error(err.message);
     }
   }
@@ -45,43 +44,43 @@ const Checkout = () => {
 
   const handleCardChange = (e) => {
     if (e.error) return setError(e.error.message);
-    setError('');
+    setError("");
   };
 
-let totalPrice = cart.reduce((accumulator, currentValue) => {
-  let total = accumulator + currentValue.price * currentValue.quantity;
-  return Math.round((total + Number.EPSILON) * 100) / 100;
-}, 0);
+  let totalPrice = cart.reduce((accumulator, currentValue) => {
+    let total = accumulator + currentValue.price * currentValue.quantity;
+    return Math.round((total + Number.EPSILON) * 100) / 100;
+  }, 0);
 
   const handlePayment = async (e) => {
     e.preventDefault();
     setProcessing(true);
-    setSuccess('Processing...');
+    setSuccess("Processing...");
 
-    const cardElement = element.getElement('card');
-    const { name, phone, email, address } = credentials;
+    const cardElement = element.getElement("card");
+    const { name, phone, email } = credentials;
     const billingInfo = {
       name,
       phone,
       email,
-      address: {
-        line1: address,
-      },
     };
-
+    if (visaPay) {
     try {
-      const paymentIntent = await axios.post('http://localhost:3333/customer/order',{
-        headers: {
-          'authorization': localStorage.getItem('customerToken'),
+      const paymentIntent = await axios.post(
+        "http://localhost:3333/customer/order",
+        {
+          headers: {
+            authorization: localStorage.getItem("customerToken"),
+          },
+          amount: totalPrice * 100,
+          value: credentials,
+          cart: cart,
         },
-        amount: totalPrice * 100,
-        value: credentials,
-        cart:cart
-      }, {
-      });
+        {}
+      );
 
       const paymentMethodObj = await stripe.createPaymentMethod({
-        type: 'card',
+        type: "card",
         card: cardElement,
         billing_details: billingInfo,
       });
@@ -89,7 +88,7 @@ let totalPrice = cart.reduce((accumulator, currentValue) => {
       if (paymentMethodObj.error) {
         setError(paymentMethodObj.error.message);
         setProcessing(false);
-        setSuccess('Pay');
+        setSuccess("Pay");
         return;
       }
 
@@ -102,100 +101,132 @@ let totalPrice = cart.reduce((accumulator, currentValue) => {
       if (confirmedPayment.error) {
         setError(confirmedPayment.error.message);
         setProcessing(false);
-        setSuccess('Pay');
+        setSuccess("Pay");
         return;
       }
 
-      setSuccess('Success! Payment is Complete');
+      setSuccess("Success! Payment is Complete");
 
       setTimeout(() => {
-        setSuccess('Pay');
+        setSuccess("Pay");
         setProcessing(false);
         setCredentials({
-          name: '',
-          email: '',
-          phone: '',
-          address: '',
+          name: "",
+          email: "",
+          phone: "",
+          address: "",
         });
         cardElement.clear();
       }, 2000);
       emptyCart();
-      navigate('/thanks');
+      navigate("/thanks");
       // location.reload()
     } catch (error) {
       setError(error.message);
       setProcessing(false);
-      setSuccess('Pay');
+      setSuccess("Pay");
     }
+  }else {
+    try{
+      await axios.post(
+        "http://localhost:3333/customer/order",
+        {
+          headers: {
+            authorization: localStorage.getItem("customerToken"),
+          },
+          amount: totalPrice * 100,
+          value: credentials,
+          cart: cart,
+        },
+        {}
+      );
+      emptyCart();
+      setProcessing(false);
+      setSuccess("Pay");
+      navigate("/thanks");
+    }catch(error){
+        
+    }
+  }
+
   };
 
   return (
     <div className="container-fluid row pt-5">
       <div className="col-12 col-md-6 container-fluid">
         <h3>Payment</h3>
-        <div className="container">
-        <form className="form" onSubmit={handlePayment}>
-        <input
-          className="form-control mt-4"
-          type="text"
-          placeholder="Full Name"
-          name="name"
-          required
-          value={credentials.name}
-          onChange={handleChange}
-        />
-        <input
-          className="form-control mt-4"
-          type="text"
-          placeholder="Phone Number"
-          name="phone"
-          required
-          value={credentials.phone}
-          onChange={handleChange}
-        />
-        <input
-          className="form-control mt-4"
-          type="email"
-          placeholder="Email"
-          name="email"
-          required
-          value={credentials.email}
-          onChange={handleChange}
-        />
-        <input
-          className="form-control mt-4"
-          type="text"
-          placeholder="Address"
-          name="address"
-          required
-          value={credentials.address}
-          onChange={handleChange}
-        />
-        <p>{error}</p>
-        <CardElement
-          options={{
-            hidePostalCode: true,
-            style: {
-              base: {
-                fontSize: '18px',
-                color:'blue'
-              },
-              invalid: {
-                color: 'red',
-              },
-            },
-          }}
-          onChange={handleCardChange}
-        />
-        <button type="submit" className="btn btn-primary w-100 mt-4" disabled={isProcessing}>
-          {success}
-        </button>
-      </form>
-  </div>
-      
+        <div className="container-fluid p-4 border ">
+          <label htmlFor="delivery" className="d-flex gap-2 mb-3">
+            <input
+              id="delivery"
+              type="radio"
+              name="payment"
+              onChange={(e) => setVisaPay(false)}
+            />
+            Pay on Delivery
+          </label>
+          <label htmlFor="visa" className="d-flex gap-2">
+            <input
+              id="visa"
+              type="radio"
+              name="payment"
+              onChange={(e) => setVisaPay(e.target.value)}
+            />
+            Pay With your Card
+          </label>
+        </div>
+        {visaPay && (
+          <div className="container">
+            <form className="form border-bottom" onSubmit={handlePayment}>
+              <input
+                className="form-control mt-4"
+                type="text"
+                placeholder="Name on Card"
+                name="name"
+                required
+                value={credentials.name}
+                onChange={handleChange}
+              />
+              <input
+                className="form-control mt-4"
+                type="text"
+                placeholder="Phone Number"
+                name="phone"
+                required
+                value={credentials.phone}
+                onChange={handleChange}
+              />
+              <input
+                className="form-control my-4"
+                type="email"
+                placeholder="Email"
+                name="email"
+                required
+                value={credentials.email}
+                onChange={handleChange}
+              />
+              <p>{error}</p>
+              <CardElement
+                options={{
+                  hidePostalCode: true,
+                  style: {
+                    base: {
+                      fontSize: "18px",
+                      color: "blue",
+                    },
+                    invalid: {
+                      color: "red",
+                    },
+                  },
+                }}
+                onChange={handleCardChange}
+              />
+            </form>
+          </div>
+        )}
       </div>
-      <div className="col-12 col-md-4 container-fluid border px-3 py-2 border-1 ">
-        <h3 className="text-center">Order Details</h3>
+      <div className="col-12 col-md-4 container-fluid border px-3 py-4 border-1 ">
+        <h3 className="text-center ">Order Details</h3>
         <hr />
         <div className="d-flex justify-content-between px-3">
           <h6>
@@ -245,20 +276,24 @@ let totalPrice = cart.reduce((accumulator, currentValue) => {
           </h6>
         </div>
         <hr className="text-body-secondary " />
-        <span className="badge bg-success">Arrives by 3rd Oct at 07:30 pm to Address : customer address</span>
+        <span className="badge bg-success d-flex text-wrap">
+          Arrives by 3rd Oct at 07:30 pm to Address : customer address
+        </span>
 
         <div className="text-center mt-3">
           <Link to="/checkout">
             <button
+              onClick={handlePayment}
               className="btn btn-dark rounded-4   "
               style={{ width: "100%" }}
+              disabled={isProcessing}
             >
-              Process Your Payment
+              {success}
             </button>
           </Link>
         </div>
       </div>
-  <Toaster/>
+      <Toaster />
     </div>
   );
 };

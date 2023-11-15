@@ -28,7 +28,6 @@ const Reorder = () => {
             >
               <div className="d-flex justify-content-between">
                 <p>ID : {order._id}</p>
-                <p>ordered at : {order.createdAt}</p>
 
                 <p
                 className="text-light py-1 px-2 rounded"
@@ -43,6 +42,8 @@ const Reorder = () => {
                    {order.status}
                 </p>
               </div>
+              <p>ordered at : {order.createdAt}</p>
+
               <div>
                 <p>Items</p>
                 <div className="d-flex flex-column gap-3 mt-3">
