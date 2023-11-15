@@ -17,6 +17,8 @@ export default function CarouselCont(props) {
         price={product.price}
         rating={product.rating}
         id={product._id}
+        retailer_id={product.retailer_id}
+        status = 'pending'
       />
     );
   };

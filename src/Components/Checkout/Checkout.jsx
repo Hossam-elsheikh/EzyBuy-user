@@ -3,11 +3,13 @@ import axios from "axios";
 import { useFormik } from "formik/dist";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import instance from '../../axiosConfig/instance'
 import toast, { Toaster } from "react-hot-toast";
+import { cartAction } from "../../store/slices/cartSlice";
 const Checkout = () => {
+  let dispatch= useDispatch()
   let navigate = useNavigate();
   const cart = useSelector((data) => data.cart.items);
   const stripe = useStripe();
@@ -24,12 +26,14 @@ const Checkout = () => {
   const [success, setSuccess] = useState('Pay');
 
   async function emptyCart(){
+
     try{
       await axios.delete(`http://localhost:3333/customer/cart`,{
         headers: {
           'authorization': localStorage.getItem('customerToken'),
         },
       })
+      dispatch(cartAction())
     }catch(err){
       toast.error(err.message);
     }
@@ -66,7 +70,7 @@ let totalPrice = cart.reduce((accumulator, currentValue) => {
     };
 
     try {
-      const paymentIntent = await axios.post('http://localhost:3333/payment',{
+      const paymentIntent = await axios.post('http://localhost:3333/customer/order',{
         headers: {
           'authorization': localStorage.getItem('customerToken'),
         },
@@ -116,7 +120,8 @@ let totalPrice = cart.reduce((accumulator, currentValue) => {
         cardElement.clear();
       }, 2000);
       emptyCart();
-      navigate('/');
+      navigate('/thanks');
+      // location.reload()
     } catch (error) {
       setError(error.message);
       setProcessing(false);

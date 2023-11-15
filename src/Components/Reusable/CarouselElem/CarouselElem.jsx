@@ -16,6 +16,8 @@ export default function CarouselElem(props) {
         price: Math.round((props.price + Number.EPSILON) * 100) / 100,
         img: props.src,
         title: props.title,
+        retailer_id: props.retailer_id,
+        status: props.status
       })
     );
   }

@@ -41,6 +41,7 @@ import FavPrdContextProvider from "./context/FavPrdContext";
 import ListItems from "./Components/ListItems/ListItems";
 import { Elements } from "@stripe/react-stripe-js";
 import {loadStripe} from '@stripe/stripe-js';
+import Thanks from "./Components/Thanks/Thanks";
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_KEY);
 function App() {
   let routers = createBrowserRouter([
@@ -59,6 +60,7 @@ function App() {
         { path: "health", element: <HealthWellness /> },
         { path: "cart", element: <Cart /> },
         { path: "checkout", element: <Checkout/> },
+        { path: "thanks", element: <Thanks/> },
         {
           path: "myaccount",
           element: <AccountPage />,
