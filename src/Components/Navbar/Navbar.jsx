@@ -23,7 +23,7 @@ export default function Navbar() {
       console.log(err.message);
     }
   }
-  
+
   useEffect(() => {
     AllProducts();
   }, []);
@@ -121,20 +121,20 @@ export default function Navbar() {
     );
   };
   let i;
-  let [newInfo2,setNewInfo2]=useState('')
-let [newInfo,setNewInfo]=useState([])
-   function listProducts(e) {
-   
-      setNewInfo2(e.target.value)
-      i =products?.filter((prod)=>{
-      if(prod?.title.toLowerCase().includes(newInfo2)){
-       setNewInfo(prod);
-       setIsHidden(false)
+  let [newInfo2, setNewInfo2] = useState('')
+  let [newInfo, setNewInfo] = useState([])
+
+  function listProducts(e) {
+    setNewInfo2(e.target.value)
+    i = products?.filter((prod) => {
+      if (prod?.title.toLowerCase().includes(newInfo2)) {
+        setNewInfo(prod);
+        setIsHidden(false)
         return prod
-      }else{
+      } else {
         setIsHidden(true);
-      }      
-    })    
+      }
+    })
     setNewInfo(i)
   }
   const ServicesDiv = () => {
@@ -244,28 +244,28 @@ let [newInfo,setNewInfo]=useState([])
           </div>
 
           <div>
-          <input type="search" placeholder={t("nav.search")} onChange={(e)=>listProducts(e)} />
-          {
-       newInfo.length > 0 && newInfo2.length !== 0 
-       ?  
-       <div   className="w-50 bg-light text-black rounded-3  row  mt-1  position-absolute translate-middle-x p-2" style={{height:'200px',zIndex:99 , left:'50%',top:'140%', overflowY: "scroll" }}>  
-       {newInfo?.map((products) =>  <div key={products._id} className="shadow border border-1 text-center border-black mt-1 m-auto w-100 rounded-3 "  >
-       <div className='fw-bold product p-3 d-flex  cursor-pointer text-black justify-content-center'>
-       <Link to={`./product/${products._id}`}>
-         <img className='img-fluid ' src={products.images[0]} alt={products.title} />
-         
-         <p className=' text-black text-center' style={{fontSize:10}}>{products.title}</p>
-         <p style={{fontSize:14}} className="text-success text-center" > {products.price} $</p>
-         </Link> 
-           </div>
-           </div>
-       )}
-       </div>
-       :''
-         }
+            <input type="search" placeholder={t("nav.search")} onChange={(e) => listProducts(e)} />
+            {
+              newInfo.length > 0 && newInfo2.length !== 0
+                ?
+                <div className="w-50 bg-light text-black rounded-3  row  mt-1  position-absolute translate-middle-x p-2" style={{ height: '200px', zIndex: 99, left: '50%', top: '140%', overflowY: "scroll" }}>
+                  {newInfo?.map((products) => <div key={products._id} className="shadow border border-1 text-center border-black mt-1 m-auto w-100 rounded-3 "  >
+                    <div className='fw-bold product p-3 d-flex  cursor-pointer text-black justify-content-center'>
+                      <Link to={`./product/${products._id}`}>
+                        <img className='img-fluid ' src={products.images[0]} alt={products.title} />
+
+                        <p className=' text-black text-center' style={{ fontSize: 10 }}>{products.title}</p>
+                        <p style={{ fontSize: 14 }} className="text-success text-center" > {products.price} $</p>
+                      </Link>
+                    </div>
+                  </div>
+                  )}
+                </div>
+                : ''
+            }
           </div>
-         
-          
+
+
           <div className={classes.wrap}>
             <Link to="myitems" className={`hide_sm ${classes.cat}`}>
               <i className="fa-regular fa-heart"></i>
