@@ -127,7 +127,6 @@ let [newInfo,setNewInfo]=useState([])
    
       setNewInfo2(e.target.value)
       i =products?.filter((prod)=>{
-        
       if(prod?.title.toLowerCase().includes(newInfo2)){
        setNewInfo(prod);
        setIsHidden(false)
@@ -135,8 +134,7 @@ let [newInfo,setNewInfo]=useState([])
       }else{
         setIsHidden(true);
       }      
-    })
-    
+    })    
     setNewInfo(i)
   }
   const ServicesDiv = () => {
