@@ -1,19 +1,14 @@
 import { useContext, useEffect, useState } from 'react'
-import instance from '../axiosConfig/instance'
 import { ColorRing } from 'react-loader-spinner';
 import {  useNavigate } from 'react-router-dom';
-// import { FavPrdContext } from '../context/FavPrdContext';
-import toast, { Toaster } from 'react-hot-toast';
-import axios, { all } from 'axios';
-import { LoginContext } from '../context/LoginContext';
+import  { Toaster } from 'react-hot-toast';
 import {  useSelector } from 'react-redux';
-import { productsAction } from '../store/slices/productsSlice';
 import { FavPrdContext } from '../context/FavPrdContext';
 
 const BeautyPage = () => {
   let {addtoFavorite , getWishList1 , getBeauty1 , removeFromWishList1 ,favItems }=useContext(FavPrdContext);
   let navigate = useNavigate();
-  const AllProducts = useSelector((data) => data.products.products)
+  const AllProducts = useSelector((data) => data.products.products);
   const isLoading = useSelector((state) => state.products.isLoading);
   const [products, setProducts] = useState([]);
   function getBeauty() {
