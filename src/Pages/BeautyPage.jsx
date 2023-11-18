@@ -10,6 +10,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { productsAction } from "../store/slices/productsSlice";
 import { FavPrdContext } from "../context/FavPrdContext";
 import { addToCart } from "../store/slices/cartSlice";
+import { useContext, useEffect, useState } from 'react'
+import { ColorRing } from 'react-loader-spinner';
+import {  useNavigate } from 'react-router-dom';
+import  { Toaster } from 'react-hot-toast';
+import {  useSelector } from 'react-redux';
+import { FavPrdContext } from '../context/FavPrdContext';
 
 const BeautyPage = () => {
   let {
