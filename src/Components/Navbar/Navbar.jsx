@@ -243,7 +243,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          <div>
+          <div className="d-flex flex-grow-1">
             <input type="search" placeholder={t("nav.search")} onChange={(e) => listProducts(e)} />
             {
               newInfo.length > 0 && newInfo2.length !== 0

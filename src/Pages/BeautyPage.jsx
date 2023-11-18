@@ -1,14 +1,9 @@
-import { useContext, useEffect, useState } from "react";
 import instance from "../axiosConfig/instance";
-import { ColorRing } from "react-loader-spinner";
-import { useNavigate } from "react-router-dom";
 // import { FavPrdContext } from '../context/FavPrdContext';
-import toast, { Toaster } from "react-hot-toast";
 import axios, { all } from "axios";
 import { LoginContext } from "../context/LoginContext";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { productsAction } from "../store/slices/productsSlice";
-import { FavPrdContext } from "../context/FavPrdContext";
 import { addToCart } from "../store/slices/cartSlice";
 import { useContext, useEffect, useState } from 'react'
 import { ColorRing } from 'react-loader-spinner';
