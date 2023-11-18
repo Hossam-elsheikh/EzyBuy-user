@@ -4,6 +4,9 @@ import style from "./Cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../../store/slices/cartSlice";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Cart() {
   let navigate = useNavigate();
   const [isDropdownOpen, setisDropdownOpen] = useState("none");
@@ -11,7 +14,7 @@ export default function Cart() {
   const dispatch = useDispatch();
   const [changeIcon, setChangeIcon] = useState("down");
   let [counter, setCounter] = useState(0);
-  let [disabled , setDisabled] = useState(true);
+  let [disabled, setDisabled] = useState(true);
   const toggleDropdown = () => {
     setisDropdownOpen(isDropdownOpen === "none" ? "inline" : "none");
     setChangeIcon(changeIcon === "down" ? "up" : "down");
@@ -24,13 +27,25 @@ export default function Cart() {
   function dereaseQuantityHandler(productID) {
     dispatch(removeFromCart({ id: productID }));
   }
-  useEffect(()=>{
-    if(cart.length == 0 || !cart ){
+  function handleCheckout(){
+    
+      if (localStorage.getItem("customerToken")) {
+        navigate("/checkout");
+      } else {
+        toast.warn("you Have to login first!")
+        setTimeout(()=>{
+          navigate("/login");
+        },2500)
+      }
+    
+  }
+  useEffect(() => {
+    if (cart.length == 0 || !cart) {
       setDisabled(true);
-    }else{
+    } else {
       setDisabled(false);
     }
-  },[cart])
+  }, [cart]);
   return (
     <>
       <h4>
@@ -38,6 +53,7 @@ export default function Cart() {
         <span className="ms-1 text-body-secondary ">({cart.length} item)</span>
       </h4>
       <section>
+        <ToastContainer />
         <div className="row d-flex justify-content-between position-relative">
           <div className="col-md-8 ">
             <div className="mt-4">
@@ -246,8 +262,8 @@ export default function Cart() {
                 className="btn btn-dark rounded-4   "
                 style={{ width: "100%" }}
                 disabled={disabled}
-                onClick={()=>navigate('/checkout')}
-                >
+                onClick={() => handleCheckout()}
+              >
                 Continue to checkout
               </button>
             </div>
