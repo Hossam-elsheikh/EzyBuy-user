@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CarouselCont from "../Reusable/CarouselCont/CarouselCont";
 import instance from "../../axiosConfig/instance";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Reorder = () => {
   const [orders, setOrders] = useState([]);
@@ -48,7 +49,8 @@ const Reorder = () => {
                 <p>Items</p>
                 <div className="d-flex flex-column gap-3 mt-3">
                   {order.cart_Customer.map((order) => (
-                    <div className="d-flex gap-4 p-2 border rounded border-1">
+                    <div className="d-flex p-2 px-4 border rounded border-1 align-items-center justify-content-between">
+                        <div className="d-flex gap-4 ">
                       <img src={order.img} style={{ width: "100px" }} alt="" />
                       <div className="d-flex flex-column gap-1">
                         <p
@@ -60,6 +62,8 @@ const Reorder = () => {
                         <p>quantity: {order.quantity}</p>
                         <p>price: ${order.price}</p>
                       </div>
+                      </div>
+                      <Link to={`/product/${order.id}`} className="btn btn-dark text-light">Reorder</Link>
                     </div>
                   ))}
                 </div>

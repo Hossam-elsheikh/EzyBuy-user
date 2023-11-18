@@ -14,6 +14,7 @@ export default function CarouselCont(props) {
       <CarouselElem
         src={product.images[0]}
         title={product.title}
+        arTitle={product.ar_title}
         price={product.price}
         rating={product.rating}
         id={product._id}

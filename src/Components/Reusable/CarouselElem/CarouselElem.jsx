@@ -5,9 +5,12 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../../store/slices/cartSlice";
 import { useNavigate } from 'react-router-dom';
+import { useContext } from "react";
+import { LangContext } from "../../../context/LangContext";
 export default function CarouselElem(props) {
   let navigate = useNavigate();
   const dispatch = useDispatch();
+  const {lang,dir} = useContext(LangContext)
   function addToCartHandler(id) {
     dispatch(
       addToCart({
@@ -16,6 +19,7 @@ export default function CarouselElem(props) {
         price: Math.round((props.price + Number.EPSILON) * 100) / 100,
         img: props.src,
         title: props.title,
+        arTitle: props.arTitle,
         retailer_id: props.retailer_id,
         status: props.status
       })
@@ -24,10 +28,10 @@ export default function CarouselElem(props) {
 
   return (
     <>
-      <div className={classes.item}  >
+      <div className={classes.item}  dir={dir}>
         <img src={props.src} onClick={() => navigate(`/product/${props.id}`)} />
         <h6>
-          ${props.price} <span>each</span>
+          ${props.price} <span>{lang==='en'?'each':'لكل قطعة'}</span>
         </h6>
         <div className="d-flex gap-1">
           <Rating
@@ -38,12 +42,12 @@ export default function CarouselElem(props) {
           />
           <p style={{ color: "gray", fontSize: ".7rem" }}>266</p>
         </div>
-        <p className={classes.title}>{props.title}</p>
+        <p className={classes.title}>{lang ==='en'? props.title: props.arTitle}</p>
         <div className={classes.tags}>
-          <p>Pickup</p>
-          <p>Delivery</p>
+          <p>{lang==='en'?'Pickup':'استلم بنفسك'}</p>
+          <p>{lang==='en'?'Delivery':'متوفر الشحن'}</p>
         </div>
-        <button onClick={() => addToCartHandler(props.id)}>Add +</button>
+        <button onClick={() => addToCartHandler(props.id)}>{lang==='en'?'Add':' إضافة'} +</button>
       </div>
     </>
   );

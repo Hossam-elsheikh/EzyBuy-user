@@ -119,24 +119,23 @@ return <>
     ariaLabel="blocks-loading"
     wrapperStyle={{}}
     wrapperClass="blocks-wrapper"
-    colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+    colors={['black','black',"black",'black', 'black']}
+
   />
 </div>
 :
  <div className="card mb-5 ">
  <div className=" ">
      <div className='text-end fs-4'>
-     <button className='border-0'>
         {
                 y?.map(prod=>{
                     if( prod.isFavorite == true && prod._id == id ){
-                        return <i class="fas fa-heart  pointer  text-danger" onClick={()=>removeFromWishList(id)}></i>
+                        return <i  class="fas fa-heart  pointer  text-danger fav" onClick={()=>removeFromWishList(id)}></i>
                      }else if(prod._id == id){
-                        return <i class="fa-regular fa-heart  pointer" onClick={()=>addtoFavorite1(id)}></i>
+                        return <i  class="fa-regular fa-heart  pointer fav" onClick={()=>addtoFavorite1(id)}></i>
                      }
                 })
         }
-     </button>
      </div>
      
  <Galleria

@@ -68,3 +68,9 @@ html{
   }
 }
 
+.fav{
+  background-color: white;
+  border: none;
+  margin: 1rem;
+  cursor: pointer;
+}

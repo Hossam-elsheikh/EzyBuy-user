@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import style from './ProductDetails.module.css'
 import { useEffect, useState } from "react";
 import { ColorRing } from "react-loader-spinner";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../../store/slices/cartSlice";
 export default function ProductDetails({prd}) {
   let [isLoading,setIsLoading] = useState(true)
   useEffect(() => {
@@ -12,6 +14,24 @@ export default function ProductDetails({prd}) {
         setIsLoading(true);
     }
 }, [prd]);
+const dispatch = useDispatch()
+const navigate = useNavigate()
+function addToCartHandler(isBuy) {
+  dispatch(
+    addToCart({
+      id: prd._id,
+      quantity: 1,
+      price: prd.price,
+      img: prd.images[0],
+      title: prd.title,
+      retailer_id: prd.retailer_id,
+      status: 'Pending',
+    })
+  )
+  if(isBuy){
+    navigate('/cart')
+  }
+  ;}
   return <>
   {isLoading?
   <div className=' w-100 py-5 fs-1 d-flex justify-content-center align-items-center' >
@@ -22,7 +42,8 @@ export default function ProductDetails({prd}) {
     ariaLabel="blocks-loading"
     wrapperStyle={{}}
     wrapperClass="blocks-wrapper"
-    colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+    colors={['black','black',"black",'black', 'black']}
+
   />
 </div>:
 <div className={`border border-1 p-3 ${style.ps} `}>
@@ -43,8 +64,8 @@ export default function ProductDetails({prd}) {
       </div>
 
       <div className="mt-5">
-        <button className="btn btn-light border border-1 border-black rounded-4 me-3 " style={{ width: "45%" }}>Buy Now</button>
-        <button className="btn btn-primary border border-1 border-black rounded-4 " style={{ width: "45%" }}>Add To Cart</button>
+        <button className="btn btn-light border border-1 border-black rounded-4 me-3 " style={{ width: "45%" }} onClick={()=>addToCartHandler(true)}>Buy Now</button>
+        <button className="btn btn-primary border border-1 border-black rounded-4 " style={{ width: "45%" }} onClick={()=>addToCartHandler(false)}>Add To Cart</button>
       </div>
 
       <span className="d-flex fw-bolder h5 mt-3">Actual Color :

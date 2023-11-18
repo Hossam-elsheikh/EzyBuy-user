@@ -30,7 +30,8 @@ const Lists = () => {
             ariaLabel="blocks-loading"
             wrapperStyle={{}}
             wrapperClass="blocks-wrapper"
-            colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+            colors={['black','black',"black",'black', 'black']}
+
           />
         </div>:
        

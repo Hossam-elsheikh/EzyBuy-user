@@ -11,7 +11,7 @@ import { ColorRing } from 'react-loader-spinner'
 
 const SingleProductPage = () => {
   const [product, setProduct] = useState([])
-
+  
   let {id} = useParams()
   async function getProductDetails(id){
     try{
@@ -45,7 +45,8 @@ const SingleProductPage = () => {
       ariaLabel="blocks-loading"
       wrapperStyle={{}}
       wrapperClass="blocks-wrapper"
-      colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+      colors={['black','black',"black",'black', 'black']}
+
     />
   </div> :
 <div className='row 'style={{width:"93%"}}>
