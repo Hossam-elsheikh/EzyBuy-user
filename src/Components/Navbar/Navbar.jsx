@@ -23,7 +23,7 @@ export default function Navbar() {
       console.log(err.message);
     }
   }
-
+console.log(products)
   useEffect(() => {
     AllProducts();
   }, []);
@@ -129,10 +129,7 @@ export default function Navbar() {
     i = products?.filter((prod) => {
       if (prod?.title.toLowerCase().includes(newInfo2)) {
         setNewInfo(prod);
-        setIsHidden(false)
         return prod
-      } else {
-        setIsHidden(true);
       }
     })
     setNewInfo(i)
