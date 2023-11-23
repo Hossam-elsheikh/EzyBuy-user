@@ -40,7 +40,7 @@ import LangContextProvider from "./context/LangContext";
 import FavPrdContextProvider from "./context/FavPrdContext";
 import ListItems from "./Components/ListItems/ListItems";
 import { Elements } from "@stripe/react-stripe-js";
-import {loadStripe} from '@stripe/stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 import Thanks from "./Components/Thanks/Thanks";
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_KEY);
 function App() {
@@ -59,8 +59,8 @@ function App() {
         { path: "protection", element: <ProductCarePlan /> },
         { path: "health", element: <HealthWellness /> },
         { path: "cart", element: <Cart /> },
-        { path: "checkout", element: <Checkout/> },
-        { path: "thanks", element: <Thanks/> },
+        { path: "checkout", element: <Checkout /> },
+        { path: "thanks", element: <Thanks /> },
         {
           path: "myaccount",
           element: <AccountPage />,
@@ -79,9 +79,11 @@ function App() {
           element: <MyItems />,
           children: [
             { index: true, element: <Reorder /> }, //fix later
-            { path: "lists", element:<ProtectedRoute><Lists/></ProtectedRoute> ,children:[
-              {path: "lists/items", element:<ListItems/> }
-            ] },
+            {
+              path: "lists", element: <ProtectedRoute><Lists /></ProtectedRoute>, children: [
+                { path: "lists/items", element: <ListItems /> }
+              ]
+            },
             { path: "registers", element: <Registers /> },
           ],
         },
@@ -97,15 +99,14 @@ function App() {
       <Provider store={store}>
         <LangContextProvider>
           <LoginContextProvider>
-          <FavPrdContextProvider>
-          <Elements stripe={stripePromise}>
-            <Wrapper>
-              <RouterProvider router={routers}>
-                <App />
-                
-              </RouterProvider>
-            </Wrapper>
-            </Elements>
+            <FavPrdContextProvider>
+              <Elements stripe={stripePromise}>
+                <Wrapper>
+                  <RouterProvider router={routers}>
+                    <App />
+                  </RouterProvider>
+                </Wrapper>
+              </Elements>
             </FavPrdContextProvider>
           </LoginContextProvider>
         </LangContextProvider>

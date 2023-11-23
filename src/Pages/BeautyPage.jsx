@@ -7,9 +7,9 @@ import { productsAction } from "../store/slices/productsSlice";
 import { addToCart } from "../store/slices/cartSlice";
 import { useContext, useEffect, useState } from 'react'
 import { ColorRing } from 'react-loader-spinner';
-import {  useNavigate } from 'react-router-dom';
-import  { Toaster } from 'react-hot-toast';
-import {  useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+import { useSelector } from 'react-redux';
 import { FavPrdContext } from '../context/FavPrdContext';
 
 const BeautyPage = () => {
@@ -114,7 +114,7 @@ const BeautyPage = () => {
               ariaLabel="blocks-loading"
               wrapperStyle={{}}
               wrapperClass="blocks-wrapper"
-              colors={['black','black',"black",'black', 'black']}
+              colors={['black', 'black', "black", 'black', 'black']}
 
             />
           </div>

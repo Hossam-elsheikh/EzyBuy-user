@@ -10,8 +10,11 @@ import { useSelector } from "react-redux";
 import { Trans, useTranslation } from "react-i18next";
 import { LangContext } from "../../context/LangContext";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 export default function Navbar() {
   let [products, setProducts] = useState([])
+  let [isHidden, setIsHidden] = useState(false);
+  let navigate = useNavigate();
   async function AllProducts() {
     try {
       await axios.get(`http://localhost:3333/product/all`).then(res => {
@@ -127,6 +130,7 @@ export default function Navbar() {
     setNewInfo2(e.target.value)
     i = products?.filter((prod) => {
       if (prod?.title.toLowerCase().includes(newInfo2)) {
+        setIsHidden(false);
         setNewInfo(prod);
         return prod
       }
@@ -244,15 +248,19 @@ export default function Navbar() {
             {
               newInfo.length > 0 && newInfo2.length !== 0
                 ?
-                <div className="w-50 bg-light text-black rounded-3  row  mt-1  position-absolute translate-middle-x p-2" style={{ height: '200px', zIndex: 99, left: '50%', top: '140%', overflowY: "scroll" }}>
-                  {newInfo?.map((products) => <div key={products._id} className="shadow border border-1 text-center border-black mt-1 m-auto w-100 rounded-3 "  >
-                    <div className='fw-bold product p-3 d-flex  cursor-pointer text-black justify-content-center'>
-                      <Link to={`./product/${products._id}`}>
-                        <img className='img-fluid ' src={products.images[0]} alt={products.title} />
+                <div hidden={isHidden} className=" bg-light text-black rounded-3  row  mt-1  position-absolute translate-middle-x p-2" style={{width:'32%', height: '370px', zIndex: 99, left: '50%', top: '140%', overflowY: "scroll" }}>
+                  {newInfo?.map((products) => <div key={products._id}  className="shadow border border-1 text-center border-black mt-1 m-auto w-100 rounded-3 "  >
+                    <div className='fw-bold product p-3   cursor-pointer text-black '
+                      onClick={() => {
+                        setIsHidden(true)
+                        navigate(`./product/${products._id}`)
+                      }
+                      }>
+                      <img className='img-fluid ' src={products.images[0]} alt={products.title} />
 
-                        <p className=' text-black text-center' style={{ fontSize: 10 }}>{products.title}</p>
-                        <p style={{ fontSize: 14 }} className="text-success text-center" > {products.price} $</p>
-                      </Link>
+                      <p className=' text-black text-center' style={{ fontSize: 10 }}>{products.title}</p>
+                      <p style={{ fontSize: 14 }} className="text-success text-center" > {products.price} $</p>
+
                     </div>
                   </div>
                   )}
