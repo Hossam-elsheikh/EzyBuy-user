@@ -6,11 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 export default function CirCatCont(props) {
   return <>
   <div className="container">
+  <h5 className="ms-3">{props.name}</h5>
     <div className="row d-flex justify-content-evenly">
-<<<<<<< HEAD
-      <CircleCat image={props.image} />
-      <p className=" text-center">{props.name}</p>
-=======
       {/* {products.map((product)=>(
         <CirCatCont key={product._id} image={product.image} name={product.title
           }/>
@@ -21,7 +18,6 @@ export default function CirCatCont(props) {
       <CircleCat image={props.image} name="Fresh food"/>
       <CircleCat image={props.image} name="Fresh food"/>
       <CircleCat image={props.image} name="Fresh food"/> */}
->>>>>>> 657d61b707f15f184c24088e29975ae6df527988
     </div>
   </div>
   </>
