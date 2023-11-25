@@ -27,7 +27,7 @@ const {lang,dir} = useContext(LangContext)
               src={props && props.image?props.image:"https://i5.walmartimages.com/dfw/4ff9c6c9-877b/k2-_17060cce-fa02-455e-a0be-eda182b82de2.v1.jpg"}
               className={`rounded-circle ${classes.widhtimageCat}`}
             />
-            <span className=''>{props&&props.name?props.name:"Fresh food"}</span>
+            <span className=''>{props&&props.name?props.name:"popular product"}</span>
             <i className={`fa-solid fa-chevron-${changeIcon}`}></i>
           </div>
         </button>

@@ -7,18 +7,7 @@ export default function DropDownCont(props) {
         <h5 className="ms-3">Categories</h5>
         <hr className="ms-3" />
         <DropDownCat image={props.image} name={props.name} />
-        <hr />
-        <DropDownCat image={props.image} name={props.name} />
-        <hr />
-        <DropDownCat image={props.image} name={props.name} />
-        <hr />
-        <DropDownCat image={props.image} name={props.name} />
-        <hr />
-        <DropDownCat image={props.image} name={props.name} />
-        <hr />
-        <DropDownCat image={props.image} name={props.name} />
-        <hr />
-        <DropDownCat image={props.image} name={props.name} />
+        
       </div>
     </>
   );

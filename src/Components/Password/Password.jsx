@@ -7,16 +7,13 @@ import { MagnifyingGlass } from "react-loader-spinner";
 import toast, { Toaster } from "react-hot-toast";
 import { login } from "../../services/auth";
 import { LoginContext } from "../../context/LoginContext";
-import axios from "axios";
 import instance from "../../axiosConfig/instance";
 import { useDispatch } from "react-redux";
-import { setCart } from "../../store/slices/cartSlice";
 
 export default function Password() {
   let { customerToken, setCustomerToken } = useContext(LoginContext);
   let [togglerType, setTogglerType] = useState("password");
   let [toggler, setToggler] = useState("Show");
-  const dispatch = useDispatch();
   let toggle = () => {
     if (togglerType == "password") {
       setTogglerType("text");
