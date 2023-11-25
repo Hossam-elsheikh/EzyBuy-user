@@ -1,19 +1,16 @@
 import { useDispatch } from "react-redux";
 import { addToCart } from "../store/slices/cartSlice";
-import { useContext, useEffect, useState } from 'react'
-import { ColorRing } from 'react-loader-spinner';
-import { useNavigate } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
-import { useSelector } from 'react-redux';
-import { FavPrdContext } from '../context/FavPrdContext';
+import { useContext, useEffect, useState } from "react";
+import { ColorRing } from "react-loader-spinner";
+import { useNavigate } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+import { useSelector } from "react-redux";
+import { FavPrdContext } from "../context/FavPrdContext";
 import { LangContext } from "../context/LangContext";
 
 const BeautyPage = () => {
-  const [filter,setFilter]= useState('')
-  const {lang,dir} = useContext(LangContext)
-  function filterHandler(t){
-    setFilter(t)
-  }
+  const { lang, dir } = useContext(LangContext);
+  
   let {
     addtoFavorite,
     getWishList1,
@@ -58,7 +55,7 @@ const BeautyPage = () => {
         img: prd.images[0],
         title: prd.title,
         retailer_id: prd.retailer_id,
-        status: 'Pending',
+        status: "Pending",
       })
     );
   }
@@ -115,8 +112,7 @@ const BeautyPage = () => {
               ariaLabel="blocks-loading"
               wrapperStyle={{}}
               wrapperClass="blocks-wrapper"
-              colors={['black', 'black', "black", 'black', 'black']}
-
+              colors={["black", "black", "black", "black", "black"]}
             />
           </div>
         ) : (
@@ -150,7 +146,7 @@ const BeautyPage = () => {
                   <div>
                     <img
                       src={prd.images[0]}
-                      style={{ cursor: "pointer",height:"300px" }}
+                      style={{ cursor: "pointer", height: "300px" }}
                       onClick={() => navigate(`/product/${prd._id}`)}
                       alt="Perfume"
                       className="img-fluid "
@@ -160,7 +156,9 @@ const BeautyPage = () => {
                     onClick={() => addToCartHandler(prd)}
                     className="btn btn-primary rounded-5 fw-bold mt-3"
                   >
-                    + Add
+                    {
+                      lang === 'en' ? '+ Add': 'اضف +'
+                    }
                   </button>
                   <div className="mt-1">
                     <span
@@ -215,7 +213,7 @@ const BeautyPage = () => {
                         cursor: "pointer",
                       }}
                     >
-                      {prd.title}{" "}
+                      {lang == 'en'?prd.title:prd.ar_title}{" "}
                     </p>
                   </div>
                   <div className="mt-2">
@@ -253,8 +251,11 @@ const BeautyPage = () => {
                       {prd.rating}
                     </span>
                     <p className="mt-2" style={{ fontSize: "11px" }}>
-                      Free shipping, arrives
-                      <strong> in +3 day</strong>
+                      {lang === 'en'?'Free shipping, arrives':'شحن مجاني خلال '}
+                      <strong> 
+                      {lang === 'en'?'in +3 day':'3 ايام'}
+                        
+                        </strong>
                     </p>
                   </div>
                 </div>

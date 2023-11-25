@@ -24,7 +24,7 @@ const GroceryPage = () => {
   useEffect(() => {
     if (allProducts) {
       setProducts(allProducts);
-      console.log(allProducts[0].images[0]);
+      console.log(allProducts[0]?.images[0]);
     }
   }, [isLoading]);
 

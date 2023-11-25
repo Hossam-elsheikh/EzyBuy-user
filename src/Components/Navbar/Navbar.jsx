@@ -129,11 +129,20 @@ export default function Navbar() {
   function listProducts(e) {
     setNewInfo2(e.target.value)
     i = products?.filter((prod) => {
-      if (prod?.title.toLowerCase().includes(newInfo2)) {
-        setIsHidden(false);
-        setNewInfo(prod);
-        return prod
+      if(lang=== 'en'){
+        if (prod?.title.toLowerCase().includes(newInfo2)) {
+          setIsHidden(false);
+          setNewInfo(prod);
+          return prod
+        }
+      }else if(lang==='ar' && prod.ar_title){
+        if (prod?.ar_title.includes(newInfo2)) {
+          setIsHidden(false);
+          setNewInfo(prod);
+          return prod
+        }
       }
+      
     })
     setNewInfo(i)
   }
@@ -258,7 +267,7 @@ export default function Navbar() {
                       }>
                       <img className='img-fluid ' src={products.images[0]} alt={products.title} />
 
-                      <p className=' text-black text-center' style={{ fontSize: 10 }}>{products.title}</p>
+                      <p className=' text-black text-center' style={{ fontSize: 10 }}>{lang==='en'?products.title:products.ar_title}</p>
                       <p style={{ fontSize: 14 }} className="text-success text-center" > {products.price} $</p>
 
                     </div>

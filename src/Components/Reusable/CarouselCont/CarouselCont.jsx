@@ -2,10 +2,8 @@
 import { Carousel } from "primereact/carousel";
 import CarouselElem from "../CarouselElem/CarouselElem";
 import { Link } from "react-router-dom";
-import instance from "../../../axiosConfig/instance";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useDispatch } from "react-redux";
 export default function CarouselCont(props) {
   const productTemplate = (product) => {
     return (

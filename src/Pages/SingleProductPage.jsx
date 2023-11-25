@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
 import ProductImgs from '../Components/Reusable/ProductImgs/ProductImgs'
 import ProdSpecs from '../Components/Reusable/ProdSpecs/ProdSpecs'
@@ -8,8 +8,10 @@ import { useParams } from 'react-router-dom'
 import instance from '../axiosConfig/instance'
 import { useQuery } from 'react-query'
 import { ColorRing } from 'react-loader-spinner'
+import { LangContext } from '../context/LangContext'
 
 const SingleProductPage = () => {
+  const { lang, dir } = useContext(LangContext);
   const [product, setProduct] = useState([])
   
   let {id} = useParams()
@@ -59,7 +61,7 @@ const SingleProductPage = () => {
   </div>
   </div>
   <div className="col-md-8">
-  <ProdSpecs dis = {product.description} />
+  <ProdSpecs dis = {lang==='en'?product.description:product.ar_description} />
   <CustomerReview rate = {product.rating}/>
   </div>
 </div>

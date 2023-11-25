@@ -1,11 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 
 import style from './ProductDetails.module.css'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ColorRing } from "react-loader-spinner";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../../store/slices/cartSlice";
+import { LangContext } from "../../../context/LangContext";
 export default function ProductDetails({prd}) {
+  const { lang, dir } = useContext(LangContext);
   let [isLoading,setIsLoading] = useState(true)
   useEffect(() => {
     if(prd.price){
@@ -49,7 +51,7 @@ function addToCartHandler(isBuy) {
 <div className={`border border-1 p-3 ${style.ps} `}>
       <Link to={'#'}>{prd.brand}</Link>
 
-      <h5>{prd.title}</h5>
+      <h5>{lang === 'en'?prd.title:prd.ar_title}</h5>
 
       <li className=" d-flex list-unstyled mt-3">
         <i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i>
@@ -59,8 +61,8 @@ function addToCartHandler(isBuy) {
         </i> 
       </li>
       <div className="mt-3">
-        <h2 className="text-success fw-bold">Now  {(Math.round(prd.discountPercentage * prd.price) - (prd.price))}<a className={`text-decoration-line-through h5 ms-2 text-dark-emphasis`}>{Math.round((prd.discountPercentage )* prd.price)}</a>    </h2>
-        <h5 className="text-success fw-bold">You save {prd.price} </h5>
+        <h2 className="text-success fw-bold">Now  {(Math.round(prd.discountPercentage * prd.price) - (prd.price))} $ <a className={`text-decoration-line-through h5 ms-2 text-dark-emphasis`}>{Math.round((prd.discountPercentage )* prd.price)} $</a>    </h2>
+        <h5 className="text-success fw-bold">You save {prd.price} $</h5>
       </div>
 
       <div className="mt-5">
