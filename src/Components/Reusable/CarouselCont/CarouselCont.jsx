@@ -1,7 +1,5 @@
 // import style from './CarouselCont.module.css'
-
 import { Carousel } from "primereact/carousel";
-
 import CarouselElem from "../CarouselElem/CarouselElem";
 import { Link } from "react-router-dom";
 import instance from "../../../axiosConfig/instance";
