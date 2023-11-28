@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { cartAction } from "../../store/slices/cartSlice";
 import { Online , Offline } from 'react-detect-offline'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function Layout() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -21,8 +22,8 @@ export default function Layout() {
         </Container>
         <div>
           <Offline>
-            <div className='network shadow-lg bg-success p-3 '>
-              <i className='fas fa-wifi'></i> You are Offline
+            <div className='network bg-light p-3 fs-5 '>
+            <i class="fas fa-wifi text-danger me-1"></i> You are Offline
             </div>
           </Offline>
         </div>

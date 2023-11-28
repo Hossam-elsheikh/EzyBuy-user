@@ -248,7 +248,7 @@ const BeautyPage = () => {
                       style={{ fontSize: "11px" }}
                     >
                       {" "}
-                      {prd.rating}
+                      {prd.ratingQuantity > 1 ? prd.ratingQuantity : prd.rating}
                     </span>
                     <p className="mt-2" style={{ fontSize: "11px" }}>
                       {lang === 'en'?'Free shipping, arrives':'شحن مجاني خلال '}

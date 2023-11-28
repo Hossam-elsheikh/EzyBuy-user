@@ -12,7 +12,7 @@ export default function CarouselCont(props) {
         title={product.title}
         arTitle={product.ar_title}
         price={product.price}
-        rating={product.rating}
+        rating={product.ratingQuantity > 1 ? product.ratingQuantity : product.rating}
         id={product._id}
         retailer_id={product.retailer_id}
         status = 'pending'
