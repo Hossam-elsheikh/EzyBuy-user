@@ -1,4 +1,10 @@
-
+.network{
+  background-color: #fff;
+  position:fixed;
+  bottom:30px;
+  left: 30px;
+  z-index:999;
+}
 .active{
   background-color: orangered;
   border-radius: 20px;

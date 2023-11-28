@@ -1,18 +1,12 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import Container from "../UI/container/Container";
 import "./Layout.css";
-import ProductImgs from "../Reusable/ProductImgs/ProductImgs";
-import ProductDetails from "../Reusable/ProductDetails/ProductDetails";
-import ProdSpecs from "../Reusable/ProdSpecs/ProdSpecs";
-import CustomerReview from "../Reusable/CustomerReview/CustomerReview";
-import { useEffect, useLayoutEffect } from "react";
-import instance from "../../axiosConfig/instance";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { productsAction } from "../../store/slices/productsSlice";
 import { cartAction } from "../../store/slices/cartSlice";
-
+import { Online , Offline } from 'react-detect-offline'
 export default function Layout() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -25,6 +19,13 @@ export default function Layout() {
         <Container>
           <Outlet />
         </Container>
+        <div>
+          <Offline>
+            <div className='network shadow-lg bg-success p-3 '>
+              <i className='fas fa-wifi'></i> You are Offline
+            </div>
+          </Offline>
+        </div>
         <Footer />
       </div>
     </>
