@@ -257,18 +257,19 @@ export default function Navbar() {
             {
               newInfo.length > 0 && newInfo2.length !== 0
                 ?
-                <div hidden={isHidden} className=" bg-light text-black rounded-3  row  mt-1  position-absolute translate-middle-x p-2" style={{width:'32%', height: '370px', zIndex: 99, left: '50%', top: '140%', overflowY: "scroll" }}>
-                  {newInfo?.map((products) => <div key={products._id}  className="shadow border border-1 text-center border-black mt-1 m-auto w-100 rounded-3 "  >
-                    <div className='fw-bold product p-3   cursor-pointer text-black '
+                <div hidden={isHidden} className=" bg-light text-black rounded-3  row  mt-1  position-absolute translate-middle-x p-2" style={{width:'43%', height: '370px', zIndex: 99, left: '51%', top: '70%', overflowY: "scroll" }}>
+                  {newInfo?.map((products) => <div key={products._id}  className="  mt-1 m-auto w-100"  >
+                    <div className='fw-bold py-1   cursor-pointer text-black '
+                    style={{cursor:'pointer'}}
                       onClick={() => {
                         setIsHidden(true)
                         navigate(`./product/${products._id}`)
                       }
                       }>
-                      <img className='img-fluid ' src={products.images[0]} alt={products.title} />
+                      {/* <img className='img-fluid ' src={products.images[0]} alt={products.title} /> */}
 
-                      <p className=' text-black text-center' style={{ fontSize: 10 }}>{lang==='en'?products.title:products.ar_title}</p>
-                      <p style={{ fontSize: 14 }} className="text-success text-center" > {products.price} $</p>
+                      <p dir={dir} className=' text-black ' style={{ fontSize: 10 }}>{lang==='en'?products.title:products.ar_title}</p>
+                      {/* <p style={{ fontSize: 14 }} className="text-success text-center" > {products.price} $</p> */}
 
                     </div>
                   </div>

@@ -79,7 +79,7 @@ let [rating, setRating] = useState();
 
     />
   </div> :
-<div className='row 'style={{width:"93%"}}>
+<div className='row 'style={{width:"93%"}} dir={dir}>
   <div className="col-md-8 " >
   <ProductImgs img = {product.images} id = {product._id} />
   </div>

@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { LangContext } from "../../../context/LangContext";
+import { useContext } from "react";
 
 // import style from './ProdSpecs.module.css'
 export default function ProdSpecs({dis}) {
+  const { lang, dir } = useContext(LangContext);
 
   const [isDropdownOpen , setisDropdownOpen]=useState('none');
   const [changeIcon , setChangeIcon] = useState('down')
@@ -30,15 +33,15 @@ export default function ProdSpecs({dis}) {
 
 
   return <>
-    <section data-testid="product-description" className="mt-5"><div>
-      <h5 className=" mb-4 ">About this item</h5>
+    <section data-testid="product-description" className="mt-5" dir={dir}><div>
+      <h5 className=" mb-4 ">{lang =="en" ? 'About this item' : " عن هذا المنتج"}</h5>
     </div>
       <hr  />
       <section className="expand-collapse-section" aria-describedby="delivery-instructions">
         <hr aria-hidden="true" />
         <div>
         <div className="expand-collapse-header d-flex justify-between items-center w-100">
-          <h6 className="w-100 ">Product details</h6>
+          <h6 className="w-100 ">{lang =="en" ? 'Product details' : " المعلومات الاساسية"}</h6>
           <div className="">
             <button className="border-0 bg-white fs-5" type="button" aria-expanded="true" aria-label="Product details">
             <i
@@ -180,7 +183,7 @@ export default function ProdSpecs({dis}) {
     <section className="expand-collapse-section " aria-describedby="delivery-instructions">
       <hr aria-hidden="true" className="" />
       <div className="expand-collapse-header d-flex justify-content-between align-items-center w-100" >
-        <h5 className="w-100 ">Specifications</h5>
+      <h6 className="w-100 ">{lang =="en" ? 'Specs' : " الخصائص"}</h6>
         <div >
         <button className="border-0 bg-white fs-5" type="button" aria-expanded="true" aria-label="Product details">
             <i
@@ -323,7 +326,7 @@ export default function ProdSpecs({dis}) {
     <section className="expand-collapse-section " aria-describedby="delivery-instructions">
       <hr aria-hidden="true" className="" />
       <div className="expand-collapse-header d-flex justify-content-between align-items-center w-100">
-        <h5 className="w-100">Warranty</h5>
+      <h6 className="w-100 ">{lang =="en" ? 'Waranty ' : " الضمان "}</h6>
         <div className="">
         <button className="border-0 bg-white fs-5" type="button" aria-expanded="true" aria-label="Product details">
             <i
