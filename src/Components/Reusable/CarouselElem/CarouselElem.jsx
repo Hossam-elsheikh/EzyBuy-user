@@ -40,7 +40,7 @@ export default function CarouselElem(props) {
             fullSymbol={<FontAwesomeIcon icon={faStar} color="goldenRod" />}
             emptySymbol={<FontAwesomeIcon icon={faStar} />}
           />
-          <p style={{ color: "gray", fontSize: ".7rem" }}>266</p>
+          <p style={{ color: "gray", fontSize: ".7rem" }}>{props.rating}</p>
         </div>
         <p className={classes.title}>{lang ==='en'? props.title: props.arTitle}</p>
         <div className={classes.tags}>

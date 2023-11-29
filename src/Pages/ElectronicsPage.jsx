@@ -31,10 +31,10 @@ const ElectronicsPage = () => {
   return (
     <div className='container-fluid p-4' dir={dir}>
       <div className='row'>
-        <h3 onClick={()=>setFilter('')} style={{cursor:'pointer'}}>{lang ==='en'? (electronics.cat_title)?.toUpperCase(): electronics.ar_title}</h3>
+        <h3 onClick={()=>setFilter('')} style={{cursor:'pointer'}}>{lang ==='en'? (electronics?.cat_title)?.toUpperCase(): electronics?.ar_title}</h3>
           <div className='col-12 d-flex row' >
             <div style={dir =='rtl'?{borderLeft:'1px solid gray'}:{borderRight:'1px solid gray'}} className={`col-3 mt-4  border-${dir=='rtl'?'left':'right'}`}>
-              {electronics.sub_categories?.map((category) => <DropDownCat filter={filterHandler} sections={category.sections} image={category.icon} name={lang ==='en'? (category.title): category.ar_title}/>)}
+              {electronics?.sub_categories?.map((category) => <DropDownCat filter={filterHandler} sections={category.sections} image={category.icon} name={lang ==='en'? (category.title): category.ar_title}/>)}
             </div>
             {isLoading ?
           <div className=" col-9 d-flex flex-wrap gap-3 justify-content-center">

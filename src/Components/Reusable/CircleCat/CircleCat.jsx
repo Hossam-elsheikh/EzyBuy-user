@@ -9,10 +9,10 @@ export default function CircleCat(props) {
         <a href="#" className={classes.noDe}>
           <img
             src={props&&props.image?props.image:"https://i5.walmartimages.com/dfw/4ff9c6c9-6a9c/k2-_752a86d4-3dad-4536-a126-575ff0fdc50b.v1.jpg"}
-            className={`rounded-circle ${classes.widthImg}`} 
+            className={`rounded-circle  ${classes.widthImg}`}  
           />
-          <span>{props&&props.name?props.name:"Fresh food"}</span>
         </a>
+        <span >{props&&props.name}</span>
       </div>
     </>
   );

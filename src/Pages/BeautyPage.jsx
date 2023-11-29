@@ -1,18 +1,16 @@
-import instance from "../axiosConfig/instance";
-// import { FavPrdContext } from '../context/FavPrdContext';
-import axios, { all } from "axios";
-import { LoginContext } from "../context/LoginContext";
 import { useDispatch } from "react-redux";
-import { productsAction } from "../store/slices/productsSlice";
 import { addToCart } from "../store/slices/cartSlice";
-import { useContext, useEffect, useState } from 'react'
-import { ColorRing } from 'react-loader-spinner';
-import {  useNavigate } from 'react-router-dom';
-import  { Toaster } from 'react-hot-toast';
-import {  useSelector } from 'react-redux';
-import { FavPrdContext } from '../context/FavPrdContext';
+import { useContext, useEffect, useState } from "react";
+import { ColorRing } from "react-loader-spinner";
+import { useNavigate } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+import { useSelector } from "react-redux";
+import { FavPrdContext } from "../context/FavPrdContext";
+import { LangContext } from "../context/LangContext";
 
 const BeautyPage = () => {
+  const { lang, dir } = useContext(LangContext);
+  
   let {
     addtoFavorite,
     getWishList1,
@@ -57,7 +55,7 @@ const BeautyPage = () => {
         img: prd.images[0],
         title: prd.title,
         retailer_id: prd.retailer_id,
-        status: 'Pending',
+        status: "Pending",
       })
     );
   }
@@ -66,7 +64,7 @@ const BeautyPage = () => {
   products?.map((prods) => {
     y.push(JSON.parse(JSON.stringify(prods)));
     favItems?.map((prd) => {
-      if (prd.id == prods.id) {
+      if (prd._id == prods._id) {
         x.push(JSON.parse(JSON.stringify(prods)));
         x.isFavorite = true;
       }
@@ -75,7 +73,7 @@ const BeautyPage = () => {
 
   y?.map((prod) => {
     x?.map((prd) => {
-      if (prd.id == prod.id) {
+      if (prd._id == prod._id) {
         prod.isFavorite = true;
       }
     });
@@ -114,8 +112,7 @@ const BeautyPage = () => {
               ariaLabel="blocks-loading"
               wrapperStyle={{}}
               wrapperClass="blocks-wrapper"
-              colors={['black','black',"black",'black', 'black']}
-
+              colors={["black", "black", "black", "black", "black"]}
             />
           </div>
         ) : (
@@ -131,14 +128,14 @@ const BeautyPage = () => {
                 <div className="text-end ">
                   {prd.isFavorite ? (
                     <i
-                      key={prd.id}
+                      key={prd._id}
                       class="fas fa-heart fs-4 text-danger"
                       aria-hidden="true"
                       onClick={() => removeFromWishList(prd._id)}
                     ></i>
                   ) : (
                     <i
-                      key={prd.id}
+                      key={prd._id}
                       class="fa-regular fa-heart fs-4  "
                       aria-hidden="true"
                       onClick={() => addtoFavorite1(prd._id)}
@@ -149,17 +146,19 @@ const BeautyPage = () => {
                   <div>
                     <img
                       src={prd.images[0]}
-                      style={{ cursor: "pointer" }}
+                      style={{ cursor: "pointer", height: "300px" }}
                       onClick={() => navigate(`/product/${prd._id}`)}
                       alt="Perfume"
-                      className="img-fluid"
+                      className="img-fluid "
                     />
                   </div>
                   <button
                     onClick={() => addToCartHandler(prd)}
                     className="btn btn-primary rounded-5 fw-bold mt-3"
                   >
-                    + Add
+                    {
+                      lang === 'en' ? '+ Add': 'اضف +'
+                    }
                   </button>
                   <div className="mt-1">
                     <span
@@ -214,7 +213,7 @@ const BeautyPage = () => {
                         cursor: "pointer",
                       }}
                     >
-                      {prd.title}{" "}
+                      {lang == 'en'?prd.title:prd.ar_title}{" "}
                     </p>
                   </div>
                   <div className="mt-2">
@@ -249,11 +248,14 @@ const BeautyPage = () => {
                       style={{ fontSize: "11px" }}
                     >
                       {" "}
-                      {prd.rating}
+                      {prd.ratingQuantity > 1 ? prd.ratingQuantity : prd.rating}
                     </span>
                     <p className="mt-2" style={{ fontSize: "11px" }}>
-                      Free shipping, arrives
-                      <strong> in +3 day</strong>
+                      {lang === 'en'?'Free shipping, arrives':'شحن مجاني خلال '}
+                      <strong> 
+                      {lang === 'en'?'in +3 day':'3 ايام'}
+                        
+                        </strong>
                     </p>
                   </div>
                 </div>

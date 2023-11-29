@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
+import ReactStarRating from 'react-star-ratings-component'
 import ProductImgs from '../Components/Reusable/ProductImgs/ProductImgs'
 import ProdSpecs from '../Components/Reusable/ProdSpecs/ProdSpecs'
 import CustomerReview from '../Components/Reusable/CustomerReview/CustomerReview'
@@ -8,8 +9,12 @@ import { useParams } from 'react-router-dom'
 import instance from '../axiosConfig/instance'
 import { useQuery } from 'react-query'
 import { ColorRing } from 'react-loader-spinner'
+import { LangContext } from '../context/LangContext'
+import { Toaster , toast} from "react-hot-toast";
 
 const SingleProductPage = () => {
+let [rating, setRating] = useState();
+  const { lang, dir } = useContext(LangContext);
   const [product, setProduct] = useState([])
   
   let {id} = useParams()
@@ -21,7 +26,7 @@ const SingleProductPage = () => {
       return data;
     }catch(err){
       console.log(err);
-      return err.messag
+      return err.message
     }
 
   }
@@ -33,6 +38,31 @@ const SingleProductPage = () => {
     // enabled:=true
   });
 
+  const addReview = (e) => {
+    e.preventDefault();
+    if (localStorage.getItem('customerToken')) {
+      if (rating != undefined && rating != null) {
+        instance
+          .patch(
+            "product/rating/user",
+            { productId: product._id, newRating: rating },
+            {
+              headers: {
+                'authorization':
+                  localStorage.getItem("customerToken"),
+              },
+            }
+          )
+          .then((res) => {
+            if (res.data.message === 'success') {
+              toast.success(res.data.message);
+            } else {
+              setReloadData(!reloadData);
+            }
+          });
+      } 
+    }
+  };
   return <>
   {
   
@@ -56,12 +86,37 @@ const SingleProductPage = () => {
   <div className="col-md-4">
   <div >
   <ProductDetails prd = {product}/>
+  <form>
+          <ReactStarRating
+            numberOfStar={5}
+            numberOfSelectedStar={0}
+            colorFilledStar='#ff9900'
+            colorEmptyStar='#5e5c5c'
+            starSize='40px'
+            spaceBetweenStar='5px'
+            disableOnSelect={false}
+            onSelectStar={(val) => {
+              setRating(val);
+            }}
+          />
+
+          <button
+            className='btn bg-transparent '
+            type='submit'
+            onClick={(e) => {
+              addReview(e);
+            }}
+          >
+            <i class="fa-solid fa-circle-check text-black fs-3"></i>
+          </button>
+        </form>
   </div>
   </div>
   <div className="col-md-8">
-  <ProdSpecs dis = {product.description} />
+  <ProdSpecs dis = {lang==='en'?product.description:product.ar_description} />
   <CustomerReview rate = {product.rating}/>
   </div>
+  <Toaster />
 </div>
 
   }
