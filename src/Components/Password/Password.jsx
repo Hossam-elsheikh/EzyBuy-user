@@ -65,7 +65,7 @@ export default function Password() {
   let validateSchema = Yup.object({
     password: Yup.string()
       .matches(
-        /^[A-z][a-z0-9]{5,10}$/,
+        /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
         "password is invalid start with upper case and min is 5 char"
       )
       .required("password is required"),

@@ -125,7 +125,6 @@ return <>
 </div>
 :
  <div className="card mb-5 ">
- <div className=" ">
      <div className='text-end fs-4'>
         {
                 y?.map(prod=>{
@@ -146,9 +145,7 @@ return <>
      numVisible={0}
      item={itemTemplate}
      thumbnail={thumbnailTemplate}
-     style={{ maxWidth: '800px'  }}
  />
- </div>
 </div>  
 }
     <Toaster />

@@ -37,7 +37,7 @@ export default function Navbar() {
   );
 
   let { customerToken, setCustomerToken } = useContext(LoginContext);
-  let [path, setPath] = useState("myaccount");
+  let [path, setPath] = useState("myaccount/personalinfo");
 
   function setLanguage() {
     JSON.parse(localStorage.getItem("lang")) === "en"
@@ -55,7 +55,7 @@ export default function Navbar() {
 
   function updateLogged() {
     if (localStorage.getItem("customerToken")) {
-      setPath("myaccount");
+      setPath("myaccount/personalinfo");
       setLogState(t("nav.myAccount"));
     } else if (localStorage.getItem("customerToken") == null) {
       setPath("login");
