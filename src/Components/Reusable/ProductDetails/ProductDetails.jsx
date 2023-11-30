@@ -4,6 +4,9 @@ import { useContext, useEffect, useState } from "react";
 import { ColorRing } from "react-loader-spinner";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../../store/slices/cartSlice";
+import Rating from "react-rating";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { LangContext } from "../../../context/LangContext";
 export default function ProductDetails({ prd }) {
   const { lang, dir } = useContext(LangContext);
@@ -53,14 +56,19 @@ export default function ProductDetails({ prd }) {
           <Link to={"#"}>{prd.brand}</Link>
 
           <h5>{lang === "en" ? prd.title : prd.ar_title}</h5>
-
-          {/* <li className=" d-flex list-unstyled mt-3">
-          <i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i>
-          <i className="fa fa-star" aria-hidden="true"></i><i className="fa fa-star" aria-hidden="true"></i>
-          <i className="fa fa-star-half" aria-hidden="true"> ({prd.ratingQuantity > 1 ? prd.ratingQuantity : prd.rating})
-            <p href="" className="ms-2">{prd.rating.length || 1} {lang =="en" ? 'ratings' : " تقييم"}</p>
-          </i>
-        </li> */}
+          <div className="d-flex mt-3 gap-3">
+            <p href="" className="ms-2">
+              {prd.rating.length || 1} {lang == "en" ? "ratings" : " التقييمات"}
+            </p>
+            <Rating
+              readonly={true}
+              initialRating={
+                prd.ratingQuantity > 1 ? prd.ratingQuantity : prd.rating
+              }
+              fullSymbol={<FontAwesomeIcon icon={faStar} color="goldenRod" />}
+              emptySymbol={<FontAwesomeIcon icon={faStar} />}
+            />
+          </div>
           <div className="mt-3">
             <h2 className="text-success fw-bold">
               {lang == "en" ? "Now" : " الآن"}{" "}
@@ -100,10 +108,6 @@ export default function ProductDetails({ prd }) {
                 : " كيف تريد استلام منتجاتك؟"}
             </h5>
             <div className="d-flex gap-1">
-             
-
-              
-
               <div className="col-md-4 ">
                 <button
                   className=" w-100 btn border border-2 border-black py-3 "
@@ -117,53 +121,57 @@ export default function ProductDetails({ prd }) {
                       height="40"
                     />
                   </div>
-                  <div className="fw-bold fs-6">{lang =="en" ? 'Shipping' : " الشحن"}</div>
-                  <div className=" text-body-secondary">{lang =="en" ? 'Available' : " متاح"}</div>
+                  <div className="fw-bold fs-6">
+                    {lang == "en" ? "Shipping" : " الشحن"}
+                  </div>
+                  <div className=" text-body-secondary">
+                    {lang == "en" ? "Available" : " متاح"}
+                  </div>
                 </button>
               </div>
               <div className="col-md-4">
-                        <button
-                          disabled="true"
-                          className="w-100 btn border border-1 border-black  py-3  "
-                          type="button"
-                        >
-                          <div>
-                            <img
-                              alt="intent image for Pickup"
-                              src="https://i5.walmartimages.com/dfw/4ff9c6c9-d610/k2-_d157e508-3c5c-4c97-b344-51406648661e.v1.svg"
-                              width="40"
-                              height="40"
-                            />
-                          </div>
-                          <div>{lang =="en" ? 'Pickup' : "استلام"}</div>
-                          <div>{lang =="en" ? 'Not Available' : " غير متاح"}</div>
-                        </button>
-                      </div>
+                <button
+                  disabled="true"
+                  className="w-100 btn border border-1 border-black  py-3  "
+                  type="button"
+                >
+                  <div>
+                    <img
+                      alt="intent image for Pickup"
+                      src="https://i5.walmartimages.com/dfw/4ff9c6c9-d610/k2-_d157e508-3c5c-4c97-b344-51406648661e.v1.svg"
+                      width="40"
+                      height="40"
+                    />
+                  </div>
+                  <div>{lang == "en" ? "Pickup" : "استلام"}</div>
+                  <div>{lang == "en" ? "Not Available" : " غير متاح"}</div>
+                </button>
+              </div>
 
-                      <div className="col-md-4">
-                        <button
-                          disabled="true"
-                          className="w-100 btn border border-1 border-black  py-3"
-                          type="button"
-                        >
-                          <div>
-                            <img
-                              alt="intent image for Delivery"
-                              src="https://i5.walmartimages.com/dfw/4ff9c6c9-db63/k2-_08c72d67-7046-4b24-919e-7b5c945ba85d.v1.svg"
-                              width="40"
-                              height="40"
-                            />
-                          </div>
-                          <div className="">{lang =="en" ? 'Delivery' : " التوصيل للمنزل"}</div>
-                          <div>{lang =="en" ? 'Not Available' : " غير متاح"}</div>
-                        </button>
-                      </div>
+              <div className="col-md-4">
+                <button
+                  disabled="true"
+                  className="w-100 btn border border-1 border-black  py-3"
+                  type="button"
+                >
+                  <div>
+                    <img
+                      alt="intent image for Delivery"
+                      src="https://i5.walmartimages.com/dfw/4ff9c6c9-db63/k2-_08c72d67-7046-4b24-919e-7b5c945ba85d.v1.svg"
+                      width="40"
+                      height="40"
+                    />
+                  </div>
+                  <div className="">
+                    {lang == "en" ? "Delivery" : " التوصيل للمنزل"}
+                  </div>
+                  <div>{lang == "en" ? "Not Available" : " غير متاح"}</div>
+                </button>
+              </div>
             </div>
           </div>
 
           <div>
-           
-
             <div className="mt-3">
               <div className="d-flex ">
                 <img
@@ -178,12 +186,17 @@ export default function ProductDetails({ prd }) {
                     className=""
                     style={{ display: "flex", alignItems: "center" }}
                   >
-                    <span className="h5">{lang =="en" ? 'Extended holiday returns' : " إعادة المنتجات المجاني"}</span>
-                    
+                    <span className="h5">
+                      {lang == "en"
+                        ? "Extended holiday returns"
+                        : " إعادة المنتجات المجاني"}
+                    </span>
                   </div>
                   <span className="">
-                  {lang =="en" ? 'Free Holiday returns until' : " إعادة مجانية حتى"}
-                    <strong>{lang =="en" ? ' Jan 31' : " 31 يناير"}</strong>
+                    {lang == "en"
+                      ? "Free Holiday returns until"
+                      : " إعادة مجانية حتى"}
+                    <strong>{lang == "en" ? " Jan 31" : " 31 يناير"}</strong>
                   </span>
                 </div>
               </div>
