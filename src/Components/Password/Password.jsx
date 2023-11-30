@@ -63,7 +63,7 @@ export default function Password() {
     password: Yup.string()
       .matches(
         /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-        "password is invalid start with upper case and min is 5 char"
+        "password is invalid start with upper case and min is 8 char"
       )
       .required("password is required"),
   });
