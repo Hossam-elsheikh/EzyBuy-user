@@ -79,8 +79,8 @@ export default function FavPrdContextProvider(props) {
         }
       })
       if (data.message == 'product successfully deleted') {
-        toast.success('Successfully Removed');
         getWishList1();
+        toast.success('Successfully Removed');
       }
     } else {
       location.href = '/login'

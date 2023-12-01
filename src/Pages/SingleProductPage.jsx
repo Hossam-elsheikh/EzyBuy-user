@@ -29,7 +29,7 @@ const SingleProductPage = () => {
       return err.message;
     }
   }
-  let { isLoading, isError, data } = useQuery(
+  let { isLoading } = useQuery(
     "getProductDetails",
     () => getProductDetails(id),
     {
@@ -111,6 +111,7 @@ const SingleProductPage = () => {
                 >
                   submit{" "}
                 </button>
+              <Toaster />
               </form>
             </div>
           </div>
@@ -118,9 +119,8 @@ const SingleProductPage = () => {
             <ProdSpecs
               dis={lang === "en" ? product.description : product.ar_description}
             />
-            <CustomerReview rate={product.rating} />
+            {/* <CustomerReview rate={product.rating} /> */}
           </div>
-          <Toaster />
         </div>
       )}
     </>

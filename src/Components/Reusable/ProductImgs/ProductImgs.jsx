@@ -3,11 +3,9 @@ import Slider from 'react-slick';
 
 
 import{ useState, useEffect, useContext } from 'react';
-import { Button } from 'primereact/button';
 import { Galleria } from 'primereact/galleria';
 import { ColorRing } from 'react-loader-spinner';
 import { FavPrdContext } from '../../../context/FavPrdContext';
-import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
 import { Toaster } from 'react-hot-toast';
 
@@ -89,7 +87,7 @@ export default function ProductImgs({img , id}) {
   products?.map(prods=>{
     y.push( JSON.parse(JSON.stringify(prods)))
     favItems?.map(prd=>{
-      if(prd.id == prods.id){
+      if(prd._id == prods._id){
         x.push( JSON.parse(JSON.stringify(prods)))
         x.isFavorite = true;
       }
@@ -98,7 +96,7 @@ export default function ProductImgs({img , id}) {
 
   y?.map(prod=>{
     x?.map(prd=>{
-      if(prd.id == prod.id ){
+      if(prd._id == prod._id ){
         prod.isFavorite =true;
       }
     })

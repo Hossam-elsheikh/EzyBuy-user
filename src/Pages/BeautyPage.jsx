@@ -7,10 +7,12 @@ import { Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { FavPrdContext } from "../context/FavPrdContext";
 import { LangContext } from "../context/LangContext";
-
+import Rating from "react-rating";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 const BeautyPage = () => {
   const { lang, dir } = useContext(LangContext);
-  
+
   let {
     addtoFavorite,
     getWishList1,
@@ -157,7 +159,7 @@ const BeautyPage = () => {
                     className="btn btn-primary rounded-5 fw-bold mt-3"
                   >
                     {
-                      lang === 'en' ? '+ Add': 'اضف +'
+                      lang === 'en' ? '+ Add' : 'اضف +'
                     }
                   </button>
                   <div className="mt-1">
@@ -213,11 +215,19 @@ const BeautyPage = () => {
                         cursor: "pointer",
                       }}
                     >
-                      {lang == 'en'?prd.title:prd.ar_title}{" "}
+                      {lang == 'en' ? prd.title : prd.ar_title}{" "}
                     </p>
                   </div>
                   <div className="mt-2">
-                    <i
+                    <Rating
+                      readonly={true}
+                      initialRating={
+                        prd.ratingQuantity > 1 ? prd.ratingQuantity : prd.rating
+                      }
+                      fullSymbol={<FontAwesomeIcon icon={faStar} color="goldenRod" />}
+                      emptySymbol={<FontAwesomeIcon icon={faStar} />}
+                    />
+                    {/* <i
                       class="fa fa-star  "
                       style={{ fontSize: "11px" }}
                       aria-hidden="true"
@@ -241,7 +251,7 @@ const BeautyPage = () => {
                       class="fa fa-star-half-alt  "
                       style={{ fontSize: "11px" }}
                       aria-hidden="true"
-                    ></i>
+                    ></i> */}
 
                     <span
                       className="text-body-secondary"
@@ -251,11 +261,11 @@ const BeautyPage = () => {
                       {prd.ratingQuantity > 1 ? prd.ratingQuantity : prd.rating}
                     </span>
                     <p className="mt-2" style={{ fontSize: "11px" }}>
-                      {lang === 'en'?'Free shipping, arrives':'شحن مجاني خلال '}
-                      <strong> 
-                      {lang === 'en'?'in +3 day':'3 ايام'}
-                        
-                        </strong>
+                      {lang === 'en' ? 'Free shipping, arrives' : 'شحن مجاني خلال '}
+                      <strong>
+                        {lang === 'en' ? 'in +3 day' : '3 ايام'}
+
+                      </strong>
                     </p>
                   </div>
                 </div>
