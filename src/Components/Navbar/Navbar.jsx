@@ -78,15 +78,15 @@ export default function Navbar() {
   const [displayBck, setDisplayBck] = useState(false);
   const [displaySec, setDisplaySec] = useState("none");
   const Departments = [
-    { title: t("departments.groceries"), link: "/grocery" },
+    { title: t("departments.groceries"), link: "/groceries" },
     { title: t("departments.electronics"), link: "/electronics" },
     { title: t("departments.fashions"), link: "/fashion" },
     { title: t("departments.kids"), link: "/kids" },
     { title: t("departments.beauty"), link: "/beauty" },
-    { title: t("departments.home"), link: "/home" },
-    { title: t("departments.baby"), link: "/baby" },
-    { title: t("departments.Gifts"), link: "/gifts" },
-    { title: t("departments.patio"), link: "/gardens" },
+    { title: t("departments.home"), link: "/" },
+    // { title: t("departments.baby"), link: "/baby" },
+    // { title: t("departments.Gifts"), link: "/gifts" },
+    // { title: t("departments.patio"), link: "/gardens" },
   ];
   const Services = [
     { title: t("services.health"), link: "/health" },

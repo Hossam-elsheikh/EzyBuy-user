@@ -5,9 +5,14 @@ import { ColorRing } from "react-loader-spinner";
 import toast, { Toaster } from "react-hot-toast";
 import instance from "../../axiosConfig/instance";
 import { LangContext } from "../../context/LangContext";
+import Rating from "react-rating";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 // import style from './ListItems.module.css'
 export default function ListItems() {
+  const navigate = useNavigate();
   const { lang, dir } = useContext(LangContext);
   let { getWishList1 , removeFromWishList1} = useContext(FavPrdContext);
   let [isLoading, setIsLoading] = useState(true);
@@ -68,12 +73,14 @@ export default function ListItems() {
             </span>
             <div className='text-end '>
             </div>
-            <div onClick={() => navigate(`/product/${prd._id}`)}>
+            <div >
 
               <div className="" style={{height:180}}>
                 <img
                   src={prd.images[0]}
-                  alt="Perfume" className='img-fluid' />
+                  alt="Perfume" className='img-fluid' 
+                  onClick={() => navigate(`/product/${prd._id}`)}
+                  />
               </div>
               <button className='btn btn-primary rounded-5 fw-bold mt-3'>{lang==='en'?'+ Add':'+ اضف'}</button>
               <div className='mt-1'>
@@ -90,12 +97,14 @@ export default function ListItems() {
               </div>
               <div className='mt-2'>
 
-                <i class="fa fa-star  " style={{ fontSize: "11px" }} aria-hidden="true"></i>
-                <i class="fa fa-star  " style={{ fontSize: "11px" }} aria-hidden="true"></i>
-                <i class="fa fa-star  " style={{ fontSize: "11px" }} aria-hidden="true"></i>
-                <i class="fa fa-star  " style={{ fontSize: "11px" }} aria-hidden="true"></i>
-                <i class="fa fa-star-half-alt  " style={{ fontSize: "11px" }} aria-hidden="true"></i>
-
+              <Rating
+                      readonly={true}
+                      initialRating={
+                        prd?.ratingQuantity > 1 ? prd?.ratingQuantity : prd?.rating
+                      }
+                      fullSymbol={<FontAwesomeIcon icon={faStar} color="goldenRod" />}
+                      emptySymbol={<FontAwesomeIcon icon={faStar} />}
+                    />
                 <span className='text-body-secondary' style={{ fontSize: "11px" }}> {prd.rating}</span>
                 <p className="mt-2" style={{ fontSize: "11px" }}>
                       {lang === 'en'?'Free shipping, arrives':'شحن مجاني خلال '}

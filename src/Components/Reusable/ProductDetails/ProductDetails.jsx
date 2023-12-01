@@ -12,7 +12,7 @@ export default function ProductDetails({ prd }) {
   const { lang, dir } = useContext(LangContext);
   let [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    if (prd.price) {
+    if (prd?.price) {
       setIsLoading(false);
     } else {
       setIsLoading(true);
@@ -23,12 +23,12 @@ export default function ProductDetails({ prd }) {
   function addToCartHandler(isBuy) {
     dispatch(
       addToCart({
-        id: prd._id,
+        id: prd?._id,
         quantity: 1,
-        price: prd.price,
-        img: prd.images[0],
-        title: prd.title,
-        retailer_id: prd.retailer_id,
+        price: prd?.price,
+        img: prd?.images[0],
+        title: prd?.title,
+        retailer_id: prd?.retailer_id,
         status: "Pending",
       })
     );
@@ -53,17 +53,17 @@ export default function ProductDetails({ prd }) {
         </div>
       ) : (
         <div className={`border border-1 p-3 ${style.ps} `} dir={dir}>
-          <Link to={"#"}>{prd.brand}</Link>
+          <Link to={"#"}>{prd?.brand}</Link>
 
-          <h5>{lang === "en" ? prd.title : prd.ar_title}</h5>
+          <h5>{lang === "en" ? prd?.title : prd?.ar_title}</h5>
           <div className="d-flex mt-3 gap-3">
             <p href="" className="ms-2">
-              {prd.rating.length || 1} {lang == "en" ? "ratings" : " التقييمات"}
+              {prd?.rating.length || 1} {lang == "en" ? "ratings" : " التقييمات"}
             </p>
             <Rating
               readonly={true}
               initialRating={
-                prd.ratingQuantity > 1 ? prd.ratingQuantity : prd.rating
+                prd?.ratingQuantity > 1 ? prd?.ratingQuantity : prd?.rating
               }
               fullSymbol={<FontAwesomeIcon icon={faStar} color="goldenRod" />}
               emptySymbol={<FontAwesomeIcon icon={faStar} />}
@@ -72,15 +72,15 @@ export default function ProductDetails({ prd }) {
           <div className="mt-3">
             <h2 className="text-success fw-bold">
               {lang == "en" ? "Now" : " الآن"}{" "}
-              {Math.round(prd.discountPercentage * prd.price) - prd.price} ${" "}
+              {Math.round(prd?.discountPercentage * prd?.price) - prd?.price} ${" "}
               <a
                 className={`text-decoration-line-through h5 ms-2 text-dark-emphasis`}
               >
-                {Math.round(prd.discountPercentage * prd.price)} $
+                {Math.round(prd?.discountPercentage * prd?.price)} $
               </a>{" "}
             </h2>
             <h5 className="text-success fw-bold">
-              {lang == "en" ? "you save" : "ستوفر"} {prd.price} $
+              {lang == "en" ? "you save" : "ستوفر"} {prd?.price} $
             </h5>
           </div>
 

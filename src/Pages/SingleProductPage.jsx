@@ -82,7 +82,7 @@ const SingleProductPage = () => {
       ) : (
         <div className="row " style={{ width: "93%" }} dir={dir}>
           <div className="col-md-8 ">
-            <ProductImgs img={product.images} id={product._id} />
+            <ProductImgs img={product?.images} id={product?._id} />
           </div>
           <div className="col-md-4">
             <div>
@@ -117,7 +117,7 @@ const SingleProductPage = () => {
           </div>
           <div className="col-md-8">
             <ProdSpecs
-              dis={lang === "en" ? product.description : product.ar_description}
+              dis={lang === "en" ? product?.description : product?.ar_description}
             />
             {/* <CustomerReview rate={product.rating} /> */}
           </div>

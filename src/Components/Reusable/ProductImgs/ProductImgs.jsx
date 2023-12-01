@@ -61,7 +61,17 @@ export default function ProductImgs({img , id}) {
     getBeauty1('all');
   }
   useEffect(() => {
+    if(img){
+      setIsLoading(false);
+  }else{
+      setIsLoading(true);
+  }
     getBeauty();
+    if (AllProducts) { 
+      setProducts(AllProducts);
+    }if(isLoading==false){
+      getWishList();
+      }
   }, [])
 
   useEffect(() => {
@@ -87,7 +97,7 @@ export default function ProductImgs({img , id}) {
   products?.map(prods=>{
     y.push( JSON.parse(JSON.stringify(prods)))
     favItems?.map(prd=>{
-      if(prd._id == prods._id){
+      if(prd?._id == prods._id){
         x.push( JSON.parse(JSON.stringify(prods)))
         x.isFavorite = true;
       }
@@ -96,7 +106,7 @@ export default function ProductImgs({img , id}) {
 
   y?.map(prod=>{
     x?.map(prd=>{
-      if(prd._id == prod._id ){
+      if(prd?._id == prod._id ){
         prod.isFavorite =true;
       }
     })
