@@ -60,6 +60,7 @@ const KidsPage = () => {
                                 ? product.images[1]
                                 : ""
                             }
+                            id={product._id}
                           />
                         ))
                     ) : (
@@ -95,6 +96,8 @@ const KidsPage = () => {
                                 ? product.images[1]
                                 : ""
                             }
+                            id={product._id}
+
                           />
                         ))
                     ) : (
@@ -136,6 +139,8 @@ const KidsPage = () => {
                                 ? product.images[1]
                                 : ""
                             }
+                            id={product._id}
+
                           />
                         ))
                     ) : (

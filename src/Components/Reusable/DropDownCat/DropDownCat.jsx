@@ -2,8 +2,10 @@
 import React ,  {useContext, useState} from 'react'
 import classes from './DropDownCat.module.css'
 import { LangContext } from '../../../context/LangContext';
+
 export default function DropDownCat(props) {
 const [isDropdownOpen , setisDropdownOpen]=useState('none');
+
 const [changeIcon , setChangeIcon] = useState('down')
 
 const {lang,dir} = useContext(LangContext)

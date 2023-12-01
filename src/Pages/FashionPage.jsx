@@ -59,6 +59,8 @@ const FashionPage = () => {
                             ? product.images[1]
                             : ""
                         }
+                        id={product._id}
+
                       />
                     ))
                 ) : (
@@ -109,6 +111,8 @@ const FashionPage = () => {
                                 ? product.images[1]
                                 : ""
                             }
+                            id={product._id}
+
                           />
                         ))
                     ) : (
@@ -143,6 +147,8 @@ const FashionPage = () => {
                                 ? product.images[1]
                                 : ""
                             }
+                            id={product._id}
+
                           />
                         ))
                     ) : (
@@ -166,6 +172,8 @@ const FashionPage = () => {
                                 ? product.images[1]
                                 : ""
                             }
+                            id={product._id}
+
                           />
                         ))
                     ) : (
@@ -189,6 +197,8 @@ const FashionPage = () => {
                               ? product.images[1]
                               : ""
                           }
+                          id={product._id}
+
                         />
                       ))
                   ) : (

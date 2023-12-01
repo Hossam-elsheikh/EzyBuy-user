@@ -67,6 +67,7 @@ const GroceryPage = () => {
                               ? product.images[1]
                               : ""
                           }
+                          id={product._id}
                         />
                       ))
                   ) : (
@@ -80,7 +81,7 @@ const GroceryPage = () => {
                 <div className="row d-flex justify-content-evenly">
                   {products && products.length > 0 ? (
                     products
-                      .slice(6,12)
+                      .slice(5,12)
                       .map((product) => (
                         <CircleCat
                           key={product._id}
@@ -90,6 +91,8 @@ const GroceryPage = () => {
                               ? product.images[1]
                               : ""
                           }
+                          id={product._id}
+
                         />
                       ))
                   ) : (

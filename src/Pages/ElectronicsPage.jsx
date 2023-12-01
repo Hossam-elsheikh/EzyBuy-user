@@ -33,9 +33,10 @@ const ElectronicsPage = () => {
       <div className='row'>
         <h3 onClick={()=>setFilter('')} style={{cursor:'pointer'}}>{lang ==='en'? (electronics?.cat_title)?.toUpperCase(): electronics?.ar_title}</h3>
           <div className='col-12 d-flex row' >
-            <div style={dir =='rtl'?{borderLeft:'1px solid gray'}:{borderRight:'1px solid gray'}} className={`col-3 mt-4  border-${dir=='rtl'?'left':'right'}`}>
+            <div style={dir =='rtl'?{borderLeft:'1px solid gray'}:{borderRight:'1px solid gray'}} className={`col-md-3 col-sm-12 mb-5 mt-4  border-${dir=='rtl'?'left':'right'}`}>
               {electronics?.sub_categories?.map((category) => <DropDownCat filter={filterHandler} sections={category.sections} image={category.icon} name={lang ==='en'? (category.title): category.ar_title}/>)}
             </div>
+       
             {isLoading ?
           <div className=" col-9 d-flex flex-wrap gap-3 justify-content-center">
             <ColorRing
@@ -49,7 +50,7 @@ const ElectronicsPage = () => {
 
             />
           </div> : 
-            <div className='col-9 d-flex flex-wrap gap-3 justify-content-center'>
+            <div className='col-md-9 col-sm-12 row d-flex flex-wrap gap-3 justify-content-center'>
               {prds.length > 0 ?prds.map((product) => <CarouselElem 
               src={product.images[0]}
               title={product.title}
