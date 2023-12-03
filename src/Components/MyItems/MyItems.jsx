@@ -9,7 +9,7 @@ const MyItems = () => {
           <ul className='d-flex gap-4 list-unstyled'>
             <li><NavLink end to='' className={({isActive})=> isActive ? style.active : ''}>Reorder</NavLink></li>
             <li><NavLink to='lists' className={({isActive})=> isActive ? style.active : ''}>Lists</NavLink></li>
-            <li><NavLink to='registers' className={({isActive})=> isActive ? style.active : ''}>Registers</NavLink></li>
+            {/* <li><NavLink to='registers' className={({isActive})=> isActive ? style.active : ''}>Registers</NavLink></li> */}
           </ul>
      <div>
       <Outlet />

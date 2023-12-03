@@ -19,10 +19,12 @@ import axios from "axios";
 import { LoginContext } from "../../context/LoginContext";
 import { useSelector } from "react-redux";
 import { ColorRing } from "react-loader-spinner";
+import { LangContext } from "../../context/LangContext";
 export default function Home() {
   const {customerToken} = useContext(LoginContext)
   const [products,setProducts] = useState([])
   let [isLoading, setIsLoading ] = useState(true);
+  const {dir, lang} = useContext(LangContext)
   useEffect(()=>{
     instance.get('/product/all').then((data)=> {
       setProducts(data.data)
@@ -74,6 +76,55 @@ export default function Home() {
     },
 
   ];
+
+  let b1 = {
+    0: {
+      slidesPerView: 2,
+      spaceBetween: 10,
+    },
+   
+    768: {
+      slidesPerView: 4,
+      spaceBetween: 10,
+    },
+    1024: {
+      slidesPerView: 5,
+      spaceBetween: 5,
+    },
+    1200: {
+      slidesPerView: 6,
+      spaceBetween: 5,
+    },
+    1300: {
+      slidesPerView: 7,
+      spaceBetween: 5,
+    },
+    1400: {
+      slidesPerView: 7,
+      spaceBetween: 5,
+    },
+   
+    1700: {
+      slidesPerView: 8,
+      spaceBetween: 5,
+    },
+  }
+  let b2 = {
+    0: {
+      slidesPerView: 2,
+      spaceBetween: 10,
+    },
+   
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 10,
+    },
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 5,
+    }
+    
+  }
   return (
     <>
      {isLoading ?
@@ -86,10 +137,9 @@ export default function Home() {
             wrapperStyle={{}}
             wrapperClass="blocks-wrapper"
             colors={['black','black',"black",'black', 'black']}
-
           />
         </div> :
-      <div className="d-flex flex-column gap-4 align-items-center w-100">
+      <div className="d-flex flex-column gap-4 align-items-center w-100" >
         {/* Grid */}
         <div className="row d-flex w-100 justify-content-center ">
           <div className="d-flex align-items-center flex-column gap-4 col-6 col-md-6 col-xl-3 col-lg-3 mb-4">
@@ -112,10 +162,13 @@ export default function Home() {
           </div>
         </div>
         {/* Deals */}
-        <CarouselCont products={products} lgCount={7} mdCount={7} smCount={3} count={7} slideCount={3} headline='Top Deals' desc='Up to 65% off'/>
-        <div className="row d-flex align-items-center w-100">
-          <div className="col-12 col-lg-6">
-        <CarouselCont products={products} lgCount={3} mdCount={3} smCount={3} count={3} slideCount={1} headline='Add to your collection' desc='Metallics, neutrals & more for all.'/>
+        <div className="p-5" style={{maxWidth:'100vw'}} dir={dir}>
+
+        <CarouselCont breakpoints={b1} products={products}  headline={lang == 'en' ? 'Top Deals' : 'أفضل العروض'} desc={lang == 'en' ? 'Up to 65% off' : 'خصم يصل إلى 65%'}/>
+        </div>
+        <div  className="row d-flex align-items-center w-100 gap-4 justify-content-center">
+          <div dir={dir} className="col-12 col-lg-5">
+        <CarouselCont breakpoints={b2} products={products}  headline={lang == 'en'? 'Add to your collection' :'أضف لقائمتك'} desc={lang =='en' ? 'Metallics, neutrals & more for all.':'المعادن والألوان المحايدة والمزيد للجميع.'}/>
           </div>
           <div className="col-12 col-lg-6">
             <ShopNowCard src={cards[3].imgURL} title={cards[0].title}/>

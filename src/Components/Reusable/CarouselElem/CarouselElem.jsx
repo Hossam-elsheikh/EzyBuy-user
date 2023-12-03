@@ -28,8 +28,8 @@ export default function CarouselElem(props) {
 
   return (
     <>
-      <div className={`${classes.item} col-lg-2 col-md-4 col-sm-6`}  dir={dir}>
-        <img src={props.src} onClick={() => navigate(`/product/${props.id}`)} />
+      <div className={`${classes.item} col-6 col-md-2`}  dir={dir}>
+        <img className="img-fluid" src={props.src} style={{cursor:'pointer'}} onClick={() => navigate(`/product/${props.id}`)} />
         <h6>
           ${props.price} <span>{lang==='en'?'each':'لكل قطعة'}</span>
         </h6>

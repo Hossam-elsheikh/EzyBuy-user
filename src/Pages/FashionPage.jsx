@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import instance from "../axiosConfig/instance";
 import CirCatCont from "../Components/Reusable/CirCatCont/CirCatCont";
 import DropDownCont from "../Components/Reusable/DropDownCont/DropDownCont";
@@ -9,10 +9,13 @@ import CarouselCont from "../Components/Reusable/CarouselCont/CarouselCont";
 import { useDispatch, useSelector } from "react-redux";
 import { productsAction } from "../store/slices/productsSlice";
 import CircleCat from "../Components/Reusable/CircleCat/CircleCat";
+import { LangContext } from "../context/LangContext";
 const FashionPage = () => {
   const allProducts = useSelector((data) => data.products.products);
   const [products, setProducts] = useState([]);
   const isLoading = useSelector((state) => state.products.isLoading);
+  const {dir, lang} = useContext(LangContext)
+
   const dispatch = useDispatch();
   function getProducts() {
     dispatch(productsAction("fashion"));
@@ -26,6 +29,38 @@ const FashionPage = () => {
       console.log(allProducts);
     }
   }, [isLoading]);
+  let b1 = {
+    0: {
+      slidesPerView: 2,
+      spaceBetween: 10,
+    },
+   
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 10,
+    },
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 5,
+    },
+    1200: {
+      slidesPerView: 4,
+      spaceBetween: 5,
+    },
+    1300: {
+      slidesPerView: 5,
+      spaceBetween: 5,
+    },
+    1400: {
+      slidesPerView: 5,
+      spaceBetween: 5,
+    },
+   
+    1700: {
+      slidesPerView: 6,
+      spaceBetween: 5,
+    },
+  }
   return (
     <>
       <div>
@@ -122,11 +157,7 @@ const FashionPage = () => {
                 </div>
                 <CarouselCont
                   products={products}
-                  lgCount={7}
-                  mdCount={7}
-                  smCount={3}
-                  count={7}
-                  slideCount={3}
+                  breakpoints={b1}
                   headline="Top Deals"
                   desc="Up to 65% off"
                 />{" "}

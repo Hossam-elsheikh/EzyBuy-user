@@ -25,12 +25,9 @@ import Lists from "./Components/MyItems/Lists";
 import Registers from "./Components/MyItems/Registers";
 import AccountPage from "./Pages/AccountPage";
 import PurchaseHistory from "./Components/Account/PurchaseHistory";
-import MySavings from "./Components/Account/MySavings";
-import Wallet from "./Components/Account/Wallet";
 import PersonalInfo from "./Components/Account/PersonalInfo";
 import Addresses from "./Components/Account/Addresses";
 import Community from "./Components/Account/Community";
-import Giving from "./Components/Account/Giving";
 import LoginContextProvider from "./context/LoginContext";
 import { Provider, useDispatch } from "react-redux";
 import { store } from "./store/store";
@@ -42,6 +39,7 @@ import ListItems from "./Components/ListItems/ListItems";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from '@stripe/stripe-js';
 import Thanks from "./Components/Thanks/Thanks";
+import Offers from "./Components/MyItems/Offers";
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_KEY);
 function App() {
   let routers = createBrowserRouter([
@@ -64,15 +62,15 @@ function App() {
         {
           path: "myaccount",
           element: <AccountPage />,
-          children: [
-            { index: true, element: <PurchaseHistory /> }, //fix later
-            { path: "mysavings", element: <MySavings /> },
-            { path: "wallet", element: <Wallet /> },
-            { path: "personalinfo", element: <PersonalInfo /> },
-            { path: "addresses", element: <Addresses /> },
-            { path: "community", element: <Community /> },
-            { path: "giving", element: <Giving /> },
-          ],
+          // children: [
+          //   { index: true, element: <PurchaseHistory /> }, //fix later
+          //   { path: "mysavings", element: <MySavings /> },
+          //   { path: "wallet", element: <Wallet /> },
+          //   { path: "personalinfo", element: <PersonalInfo /> },
+          //   { path: "addresses", element: <Addresses /> },
+          //   { path: "community", element: <Community /> },
+          //   { path: "giving", element: <Giving /> },
+          // ],
         },
         {
           path: "myitems",
@@ -81,7 +79,8 @@ function App() {
             { index: true, element: <Reorder /> }, //fix later
             {
               path: "lists", element: <ProtectedRoute><Lists /></ProtectedRoute>, children: [
-                { path: "lists/items", element: <ListItems /> }
+                { path: "items", element: <ListItems /> },
+                { path: "offers", element: <Offers /> },
               ]
             },
             { path: "registers", element: <Registers /> },

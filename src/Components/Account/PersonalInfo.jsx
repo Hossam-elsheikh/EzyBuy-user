@@ -44,7 +44,8 @@ const PersonalInfo = () => {
     }
   }
   return (
-    <div className="px-2">
+    <div className="px-2" id="personalinfo">
+      <h3>Personal Info</h3>
       <form onSubmit={(e) => submitHandler(e)}>
         <div class="form-group mb-2">
           <label for="name">Name</label>
@@ -127,6 +128,7 @@ const PersonalInfo = () => {
         </button>
         <p>you'll always be able to change these information</p>
       </form>
+      <hr />
     </div>
   );
 };

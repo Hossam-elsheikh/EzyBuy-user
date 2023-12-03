@@ -16,6 +16,9 @@
   flex-direction: column;
   overflow-y: scroll;
   height: 100vh;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+
 }
 
   @media (max-width: 967px){

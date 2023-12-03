@@ -40,7 +40,7 @@ export default function Navbar() {
   );
 
   let { customerToken, setCustomerToken } = useContext(LoginContext);
-  let [path, setPath] = useState("myaccount/personalinfo");
+  let [path, setPath] = useState("myaccount");
 
   function setLanguage() {
     JSON.parse(localStorage.getItem("lang")) === "en"
@@ -58,7 +58,7 @@ export default function Navbar() {
 
   function updateLogged() {
     if (localStorage.getItem("customerToken")) {
-      setPath("myaccount/personalinfo");
+      setPath("myaccount");
       setLogState(t("nav.myAccount"));
     } else if (localStorage.getItem("customerToken") == null) {
       setPath("login");
@@ -306,11 +306,8 @@ export default function Navbar() {
         <div className={classes.sec_nav}>
           <div className="d-flex gap-2 align-items-center">
             <i className="fa-solid fa-truck"></i>
-            <p>{t("nav.howDo")}</p>
-            <i
-              className="fa-solid fa-chevron-down"
-              style={{ cursor: "pointer" }}
-            ></i>
+            <a href="/myaccount">{t("nav.howDo")}</a>
+           
             <p>|</p>
             <div
               className="d-flex align-items-center gap-2 cursor-pointer"
@@ -327,9 +324,9 @@ export default function Navbar() {
           <div className="d-none gap-3 d-lg-flex d-xl-flex">
             <Link to="/groceries">{t("departments.groceries")}</Link>
             <Link to="/beauty">{t("departments.beauty")}</Link>
+            <Link to="/electronics">{t("departments.electronics")}</Link>
             <Link to="/kids">{t("departments.kids")}</Link>
             <Link to="/fashion">{t("departments.fashions")}</Link>
-            <Link to="/electronics">{t("departments.electronics")}</Link>
           </div>
         </div>
       </nav>

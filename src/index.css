@@ -17,6 +17,11 @@ html{
   -moz-user-select: none;
   -ms-user-select: none;
   -khtml-user-select: none;
+
+}
+body{
+  scroll-behavior: smooth;
+
 }
 *,::after,::before{
   margin: 0;
@@ -79,4 +84,33 @@ html{
   border: none;
   margin: 1rem;
   cursor: pointer;
+}
+
+
+.swiper-wrapper {
+  padding: 0 0 40px ;
+}
+.swiper-pagination-bullet-active {
+  background-color: rgb(56, 44, 48) !important;
+}
+.swiper-button-prev,.swiper-button-next {
+  color: rgb(27, 22, 24); 
+  font-size: 20px !important;
+  border-radius: 50%;
+}
+
+
+.swiper-button-prev::after,.swiper-button-next::after {
+  font-size: 20px !important;
+  font-weight: bold !important;
+  background-color: white !important;
+  padding: 8px 13px;
+  border-radius: 50%;
+  box-shadow:  0 0 5px 0 rgb(205, 205, 205);
+}
+
+@media (max-width: 768px) {
+  .swiper-button-prev,.swiper-button-next {
+    display: none !important;
+  }
 }

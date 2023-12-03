@@ -2,7 +2,8 @@
     display: flex;
  border-radius: 5px;
  width: 100%;
- position: relative
+ position: relative;
+ overflow: hidden;
 }
 .card div {
     position: absolute;

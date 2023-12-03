@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DropDownCont from "../Components/Reusable/DropDownCont/DropDownCont";
 import CirCatCont from "../Components/Reusable/CirCatCont/CirCatCont";
 import CarouselCont from "../Components/Reusable/CarouselCont/CarouselCont";
@@ -9,9 +9,12 @@ import { ColorRing } from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { productsAction } from "../store/slices/productsSlice";
 import CircleCat from "../Components/Reusable/CircleCat/CircleCat";
+import { LangContext } from "../context/LangContext";
 const KidsPage = () => {
   const allProducts = useSelector((data) => data.products.products);
   const [products, setProducts] = useState([]);
+  const {dir, lang} = useContext(LangContext)
+
   const isLoading = useSelector((state) => state.products.isLoading);
   const dispatch = useDispatch();
   function getProducts() {
@@ -26,6 +29,38 @@ const KidsPage = () => {
       console.log(allProducts);
     }
   }, [isLoading]);
+  let b1 = {
+    0: {
+      slidesPerView: 2,
+      spaceBetween: 10,
+    },
+   
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 10,
+    },
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 5,
+    },
+    1200: {
+      slidesPerView: 4,
+      spaceBetween: 5,
+    },
+    1300: {
+      slidesPerView: 5,
+      spaceBetween: 5,
+    },
+    1400: {
+      slidesPerView: 5,
+      spaceBetween: 5,
+    },
+   
+    1700: {
+      slidesPerView: 6,
+      spaceBetween: 5,
+    },
+  }
   return (
     <>
       <div>
@@ -45,12 +80,12 @@ const KidsPage = () => {
           <div>
             <div className="row">
               <div className="col-lg-12">
-              <div className="container">
+                <div className="container">
                   <h5 className="ms-3">Shop</h5>
                   <div className="row d-flex justify-content-evenly">
                     {products && products.length > 0 ? (
                       products
-                        .slice(0,6)
+                        .slice(0, 6)
                         .map((product) => (
                           <CircleCat
                             key={product._id}
@@ -81,30 +116,29 @@ const KidsPage = () => {
               <div className="col-lg-9">
                 <ImgsTextCard />
                 <div className="row d-flex justify-content-evenly">
-                <div className="container">
-                  <h5 className="ms-3 mt-3">Shop</h5>
-                  <div className="row d-flex justify-content-evenly">
-                    {products && products.length > 0 ? (
-                      products
-                        .slice(0,6)
-                        .map((product) => (
-                          <CircleCat
-                            key={product._id}
-                            name={product.title.slice(0, 6)}
-                            image={
-                              product.images && product.images.length > 1
-                                ? product.images[1]
-                                : ""
-                            }
-                            id={product._id}
-
-                          />
-                        ))
-                    ) : (
-                      <p>No products available</p>
-                    )}
-                  </div>
-                </div>{" "}
+                  <div className="container">
+                    <h5 className="ms-3 mt-3">Shop</h5>
+                    <div className="row d-flex justify-content-evenly">
+                      {products && products.length > 0 ? (
+                        products
+                          .slice(0, 6)
+                          .map((product) => (
+                            <CircleCat
+                              key={product._id}
+                              name={product.title.slice(0, 6)}
+                              image={
+                                product.images && product.images.length > 1
+                                  ? product.images[1]
+                                  : ""
+                              }
+                              id={product._id}
+                            />
+                          ))
+                      ) : (
+                        <p>No products available</p>
+                      )}
+                    </div>
+                  </div>{" "}
                 </div>
                 <hr />
                 {/* <div className="mt-1"> */}
@@ -124,40 +158,35 @@ const KidsPage = () => {
                 </div>
 
                 <div className="row d-flex justify-content-evenly">
-                <div className="container">
-                  <h5 className="ms-3 mt-3">Shop</h5>
-                  <div className="row d-flex justify-content-evenly">
-                    {products && products.length > 0 ? (
-                      products
-                        .slice(0,6)
-                        .map((product) => (
-                          <CircleCat
-                            key={product._id}
-                            name={product.title.slice(0, 6)}
-                            image={
-                              product.images && product.images.length > 1
-                                ? product.images[1]
-                                : ""
-                            }
-                            id={product._id}
-
-                          />
-                        ))
-                    ) : (
-                      <p>No products available</p>
-                    )}
-                  </div>
-                </div>{" "}
+                  <div className="container">
+                    <h5 className="ms-3 mt-3">Shop</h5>
+                    <div className="row d-flex justify-content-evenly">
+                      {products && products.length > 0 ? (
+                        products
+                          .slice(0, 6)
+                          .map((product) => (
+                            <CircleCat
+                              key={product._id}
+                              name={product.title.slice(0, 6)}
+                              image={
+                                product.images && product.images.length > 1
+                                  ? product.images[1]
+                                  : ""
+                              }
+                              id={product._id}
+                            />
+                          ))
+                      ) : (
+                        <p>No products available</p>
+                      )}
+                    </div>
+                  </div>{" "}
                 </div>
                 <ImgsTextCard />
 
                 <CarouselCont
                   products={products}
-                  lgCount={7}
-                  mdCount={7}
-                  smCount={3}
-                  count={7}
-                  slideCount={3}
+                  breakpoints={b1}
                   headline="shop packbacks"
                   desc="Up to 65% off"
                 />

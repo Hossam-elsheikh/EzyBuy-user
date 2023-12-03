@@ -12,12 +12,7 @@ export default function Footer() {
     <>
       <footer className="mt-5">
         <div className="overflow-hidden ">
-          <div className={Classes.footerPart1}>
-            <p className="mb-4">We’d love to hear what you think!</p>
-            <button className="mb-3 rounded-pill" type="button">
-              Give feedback
-            </button>
-          </div>
+          
 
           <div
             className={`d-flex row justify-content-around ${Classes.footerPart2}`}>

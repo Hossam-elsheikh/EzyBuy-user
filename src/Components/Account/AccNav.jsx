@@ -39,51 +39,27 @@ const AccNav = () => {
         <h5>Hi, {info.name}</h5>
         <hr />
       </div>
-      <NavLink
-        end
-        className={({ isActive }) => (isActive ? style.active : "")}
-        to=""
+      <a
+        href="#purchase"
       >
         <i class="fa-regular fa-newspaper"></i> &nbsp; Purchase History
-      </NavLink>
-      <NavLink
-        className={({ isActive }) => (isActive ? style.active : "")}
-        to="mysavings"
-      >
-        <i class="fa-solid fa-piggy-bank"></i> &nbsp;My Savings
-      </NavLink>
-      <NavLink
-        className={({ isActive }) => (isActive ? style.active : "")}
-        to="wallet"
-      >
-        <i class="fa-solid fa-wallet"></i> &nbsp;Wallet
-      </NavLink>
+      </a>
+    
+      
       <hr />
       <h6>Manage Account</h6>
-      <NavLink
-        className={({ isActive }) => (isActive ? style.active : "")}
-        to="personalinfo"
+      <a
+        href="#personalinfo"
       >
         <i class="fa-solid fa-user"></i> &nbsp;Personal info
-      </NavLink>
-      <NavLink
-        className={({ isActive }) => (isActive ? style.active : "")}
-        to="addresses"
+      </a>
+      <a
+        href="#addresses"
       >
         <i class="fa-solid fa-location-crosshairs"></i> &nbsp;Addresses
-      </NavLink>
-      <NavLink
-        className={({ isActive }) => (isActive ? style.active : "")}
-        to="community"
-      >
-        <i class="fa-solid fa-envelope"></i> &nbsp;Communication & Privacy
-      </NavLink>
-      <NavLink
-        className={({ isActive }) => (isActive ? style.active : "")}
-        to="giving"
-      >
-        <i class="fa-solid fa-hand-holding-dollar"></i> &nbsp;Giving & impact
-      </NavLink>
+      </a>
+   
+     
       <hr />
       <NavLink to="/login" onClick={logout}>
         <i class="fa-solid fa-right-from-bracket"></i> &nbsp;sign out

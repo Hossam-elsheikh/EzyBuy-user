@@ -36,17 +36,16 @@ const Lists = () => {
         </div>:
        
         <div className='container d-flex flex-column gap-5 p-0 p-md-3 flex-wrap'>
-        <button style={{width:'fit-content'}} className='btn btn-dark round-10'>Create New List</button>
         <div className='container d-flex  gap-3 flex-wrap'>
             <div className={style.list}>
-              <div onClick={()=>navigate('lists/items')} style={{cursor: 'pointer'}} >
+              <div onClick={()=>navigate('items')} style={{cursor: 'pointer'}} >
                 <h5><i class="fa-solid fa-heart"></i> {name} List</h5>
                 <p>favorites, no items added yet</p>
               </div>
               <img src='https://i5.walmartimages.com/dfw/4ff9c6c9-a942/k2-_b7330de4-c256-4814-97d7-2bea89e38ac7.v1.jpg?odnHeight=80&odnWidth=80&odnBg=e6f1fc' />
             </div>
             <div className={style.list}>
-              <div >
+              <div onClick={()=>navigate('offers')} style={{cursor: 'pointer'}}>
                 <h5>Your Claimed Offers</h5>
                 <p>No Special Offers Claimed yet</p>
               </div>

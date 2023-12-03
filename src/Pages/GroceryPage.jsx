@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DropDownCont from "../Components/Reusable/DropDownCont/DropDownCont";
 import CirCatCont from "../Components/Reusable/CirCatCont/CirCatCont";
 import CarouselCont from "../Components/Reusable/CarouselCont/CarouselCont";
@@ -9,9 +9,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { productsAction } from "../store/slices/productsSlice";
 import { ColorRing } from "react-loader-spinner";
 import CircleCat from "../Components/Reusable/CircleCat/CircleCat";
+import { LangContext } from "../context/LangContext";
 const GroceryPage = () => {
   const allProducts = useSelector((data) => data.products.products);
   const [products, setProducts] = useState([]);
+  const {dir, lang} = useContext(LangContext)
+
   const isLoading = useSelector((state) => state.products.isLoading);
   const dispatch = useDispatch();
   function getProducts() {
@@ -28,9 +31,41 @@ const GroceryPage = () => {
     }
   }, [isLoading]);
 
+  let b1 = {
+    0: {
+      slidesPerView: 2,
+      spaceBetween: 10,
+    },
+   
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 10,
+    },
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 5,
+    },
+    1200: {
+      slidesPerView: 4,
+      spaceBetween: 5,
+    },
+    1300: {
+      slidesPerView: 5,
+      spaceBetween: 5,
+    },
+    1400: {
+      slidesPerView: 5,
+      spaceBetween: 5,
+    },
+   
+    1700: {
+      slidesPerView: 6,
+      spaceBetween: 5,
+    },
+  }
   return (
     <>
-      <div>
+      <div dir={dir}>
         {isLoading ? (
           <div className=" w-100 py-5 fs-1 d-flex justify-content-center align-items-center">
             <ColorRing
@@ -53,7 +88,7 @@ const GroceryPage = () => {
             </div>
             <div className="col-lg-9">
               <div className="container">
-                <h5 className="ms-3">Shop groceries</h5>
+                <h5 className="ms-3 mb-5">{lang=='en' ? 'Shop groceries' : 'تسوق البقالة'}</h5>
                 <div className="row d-flex justify-content-evenly">
                   {products && products.length > 0 ? (
                     products
@@ -77,7 +112,7 @@ const GroceryPage = () => {
               </div>
               <hr />
               <div className="container">
-                <h5 className="ms-3">Shop groceries</h5>
+              <h5 className="ms-3 mb-5">{lang=='en' ? 'Shop groceries' : 'تسوق البقالة'}</h5>
                 <div className="row d-flex justify-content-evenly">
                   {products && products.length > 0 ? (
                     products
@@ -96,44 +131,32 @@ const GroceryPage = () => {
                         />
                       ))
                   ) : (
-                    <p>No products available</p>
+                    <p>{lang == 'en' ? 'No products available' : 'لا يوجد منتجات'}</p>
                   )}
                 </div>
               </div>
               <hr />
               <CarouselCont
                 products={products}
-                lgCount={7}
-                mdCount={7}
-                smCount={3}
-                count={7}
-                slideCount={3}
-                headline="Top Deals"
-                desc="Up to 65% off"
+                breakpoints={b1}
+                headline={lang == 'en' ?  "Fresh Vegetables":'خضروات طازجة' }
+                desc={lang == 'en' ? 'up to 50% off' : 'خصم يصل إلى 50%'}
               />
               <hr />
               <CardCont />
               <hr />
               <CarouselCont
                 products={products}
-                lgCount={7}
-                mdCount={7}
-                smCount={3}
-                count={7}
-                slideCount={3}
-                headline="Top Deals"
-                desc="Up to 65% off"
+                breakpoints={b1}
+                headline={lang == 'en' ?  "Beans":'بقوليات' }
+                desc={lang == 'en' ? 'up to 50% off' : 'خصم يصل إلى 50%'}
               />
               <hr />
               <CarouselCont
                 products={products}
-                lgCount={7}
-                mdCount={7}
-                smCount={3}
-                count={7}
-                slideCount={3}
-                headline="Top Deals"
-                desc="Up to 65% off"
+               breakpoints={b1}
+               headline={lang == 'en' ?  " Cheese":'جبن' }
+               desc={lang == 'en' ? 'up to 50% off' : 'خصم يصل إلى 50%'}
               />
               <hr />
               <CardCont />
