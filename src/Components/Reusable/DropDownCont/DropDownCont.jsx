@@ -6,7 +6,7 @@ export default function DropDownCont(props) {
       <div className="hide_cat">
         <h5 className="ms-3">Categories</h5>
         <hr className="ms-3" />
-        <DropDownCat image={props.image} name={props.name} />
+        <DropDownCat image={props.image} name={props.name} sections={props.sections}/>
         
       </div>
     </>

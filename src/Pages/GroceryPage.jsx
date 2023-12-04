@@ -10,11 +10,19 @@ import { productsAction } from "../store/slices/productsSlice";
 import { ColorRing } from "react-loader-spinner";
 import CircleCat from "../Components/Reusable/CircleCat/CircleCat";
 import { LangContext } from "../context/LangContext";
+import DropDownCat from "../Components/Reusable/DropDownCat/DropDownCat";
 const GroceryPage = () => {
   const allProducts = useSelector((data) => data.products.products);
   const [products, setProducts] = useState([]);
-  const {dir, lang} = useContext(LangContext)
-
+  const { dir, lang } = useContext(LangContext);
+  const categories = [
+    {
+      title: "fresh food",
+      ar_title:"طعام طازج",
+      sections:[{title:'Dile',ar_title:'بقوليات'}],
+      img: "https://i5.walmartimages.com/dfw/4ff9c6c9-877b/k2-_17060cce-fa02-455e-a0be-eda182b82de2.v1.jpg?odnHeight=48&odnWidth=48&odnBg=FFFFFF",
+    },
+  ];
   const isLoading = useSelector((state) => state.products.isLoading);
   const dispatch = useDispatch();
   function getProducts() {
@@ -36,7 +44,7 @@ const GroceryPage = () => {
       slidesPerView: 2,
       spaceBetween: 10,
     },
-   
+
     768: {
       slidesPerView: 3,
       spaceBetween: 10,
@@ -57,12 +65,12 @@ const GroceryPage = () => {
       slidesPerView: 5,
       spaceBetween: 5,
     },
-   
+
     1700: {
       slidesPerView: 6,
       spaceBetween: 5,
     },
-  }
+  };
   return (
     <>
       <div dir={dir}>
@@ -81,14 +89,19 @@ const GroceryPage = () => {
         ) : (
           <div className="row">
             <div className="col-lg-3">
-              <DropDownCont
-                image="https://i5.walmartimages.com/dfw/4ff9c6c9-f754/k2-_ae5145df-fcf4-4bd2-9512-3e6078153722.v1.jpg?"
-                name="Fresh Food"
+              {categories.map((cat) => (
+                <DropDownCat
+                sections={cat.sections}
+                image={cat.img}
+                name={lang === "en" ? cat.title : cat.ar_title}
               />
+              ))}
             </div>
             <div className="col-lg-9">
               <div className="container">
-                <h5 className="ms-3 mb-5">{lang=='en' ? 'Shop groceries' : 'تسوق البقالة'}</h5>
+                <h5 className="ms-3 mb-5">
+                  {lang == "en" ? "Shop groceries" : "تسوق البقالة"}
+                </h5>
                 <div className="row d-flex justify-content-evenly">
                   {products && products.length > 0 ? (
                     products
@@ -112,11 +125,13 @@ const GroceryPage = () => {
               </div>
               <hr />
               <div className="container">
-              <h5 className="ms-3 mb-5">{lang=='en' ? 'Shop groceries' : 'تسوق البقالة'}</h5>
+                <h5 className="ms-3 mb-5">
+                  {lang == "en" ? "Shop groceries" : "تسوق البقالة"}
+                </h5>
                 <div className="row d-flex justify-content-evenly">
                   {products && products.length > 0 ? (
                     products
-                      .slice(5,12)
+                      .slice(5, 12)
                       .map((product) => (
                         <CircleCat
                           key={product._id}
@@ -127,11 +142,14 @@ const GroceryPage = () => {
                               : ""
                           }
                           id={product._id}
-
                         />
                       ))
                   ) : (
-                    <p>{lang == 'en' ? 'No products available' : 'لا يوجد منتجات'}</p>
+                    <p>
+                      {lang == "en"
+                        ? "No products available"
+                        : "لا يوجد منتجات"}
+                    </p>
                   )}
                 </div>
               </div>
@@ -139,8 +157,8 @@ const GroceryPage = () => {
               <CarouselCont
                 products={products}
                 breakpoints={b1}
-                headline={lang == 'en' ?  "Fresh Vegetables":'خضروات طازجة' }
-                desc={lang == 'en' ? 'up to 50% off' : 'خصم يصل إلى 50%'}
+                headline={lang == "en" ? "Fresh Vegetables" : "خضروات طازجة"}
+                desc={lang == "en" ? "up to 50% off" : "خصم يصل إلى 50%"}
               />
               <hr />
               <CardCont />
@@ -148,15 +166,15 @@ const GroceryPage = () => {
               <CarouselCont
                 products={products}
                 breakpoints={b1}
-                headline={lang == 'en' ?  "Beans":'بقوليات' }
-                desc={lang == 'en' ? 'up to 50% off' : 'خصم يصل إلى 50%'}
+                headline={lang == "en" ? "Beans" : "بقوليات"}
+                desc={lang == "en" ? "up to 50% off" : "خصم يصل إلى 50%"}
               />
               <hr />
               <CarouselCont
                 products={products}
-               breakpoints={b1}
-               headline={lang == 'en' ?  " Cheese":'جبن' }
-               desc={lang == 'en' ? 'up to 50% off' : 'خصم يصل إلى 50%'}
+                breakpoints={b1}
+                headline={lang == "en" ? " Cheese" : "جبن"}
+                desc={lang == "en" ? "up to 50% off" : "خصم يصل إلى 50%"}
               />
               <hr />
               <CardCont />

@@ -10,11 +10,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { productsAction } from "../store/slices/productsSlice";
 import CircleCat from "../Components/Reusable/CircleCat/CircleCat";
 import { LangContext } from "../context/LangContext";
+import DropDownCat from "../Components/Reusable/DropDownCat/DropDownCat";
 const KidsPage = () => {
   const allProducts = useSelector((data) => data.products.products);
   const [products, setProducts] = useState([]);
   const {dir, lang} = useContext(LangContext)
-
+  const categories = [
+    {
+      title: "fresh food",
+      ar_title:"طعام طازج",
+      sections:[{title:'Dile',ar_title:'بقوليات'}],
+      img: "https://i5.walmartimages.com/dfw/4ff9c6c9-877b/k2-_17060cce-fa02-455e-a0be-eda182b82de2.v1.jpg?odnHeight=48&odnWidth=48&odnBg=FFFFFF",
+    },
+  ];
   const isLoading = useSelector((state) => state.products.isLoading);
   const dispatch = useDispatch();
   function getProducts() {
@@ -107,10 +115,13 @@ const KidsPage = () => {
             </div>
             <div className="row">
               <div className="col-lg-3">
-                <DropDownCont
-                  image="https://i5.walmartimages.com/dfw/4ff9c6c9-b4be/k2-_9c1576a2-807d-410a-a27c-2900adb5eff3.v1.jpg?odnHeight=48&odnWidth=48&odnBg=FFFFFF"
-                  name="Fresh Food"
-                />
+              {categories.map((cat) => (
+                <DropDownCat
+                sections={cat.sections}
+                image={cat.img}
+                name={lang === "en" ? cat.title : cat.ar_title}
+              />
+              ))}
               </div>
 
               <div className="col-lg-9">
