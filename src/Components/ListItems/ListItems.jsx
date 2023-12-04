@@ -1,4 +1,5 @@
-import { data } from "jquery";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../store/slices/cartSlice";
 import { FavPrdContext } from "../../context/FavPrdContext";
 import { useContext, useEffect, useState } from "react";
 import { ColorRing } from "react-loader-spinner";
@@ -12,14 +13,28 @@ import { useNavigate } from "react-router-dom";
 
 // import style from './ListItems.module.css'
 export default function ListItems() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { lang, dir } = useContext(LangContext);
   let { getWishList1 , removeFromWishList1} = useContext(FavPrdContext);
   let [isLoading, setIsLoading] = useState(true);
   let [items, setItems] = useState('');
+
+  function addToCartHandler(prd) {
+    dispatch(
+      addToCart({
+        id: prd._id,
+        quantity: 1,
+        price: prd.price,
+        img: prd.images[0],
+        title: prd.title,
+        retailer_id: prd.retailer_id,
+        status: "Pending",
+      })
+    );
+  }
   async function getfavList() {
     let data = await getWishList1();
-    console.log(data);
     setItems(data.wishList);
     setIsLoading(false);
   }
@@ -82,7 +97,9 @@ export default function ListItems() {
                   onClick={() => navigate(`/product/${prd._id}`)}
                   />
               </div>
-              <button className='btn btn-primary rounded-5 fw-bold mt-3'>{lang==='en'?'+ Add':'+ اضف'}</button>
+              <button className='btn btn-primary rounded-5 fw-bold mt-3'
+              onClick={() => addToCartHandler(prd)}
+              >{lang==='en'?'+ Add':'+ اضف'}</button>
               <div className='mt-1'>
                 <span className='text-success  fs-5' style={{ fontWeight: "700" }}>Now</span>
                 <span className='text-success fw-bold ms-1 me-1 position-relative' style={{ top: "-8px" }}>$</span>
