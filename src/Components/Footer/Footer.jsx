@@ -16,7 +16,7 @@ export default function Footer() {
 
           <div
             className={`d-flex row justify-content-around ${Classes.footerPart2}`}>
-            <div className={`col-lg-2 mt-5 mb-5 col-md-4 col-sm-4 ms-2 mb-5`}>
+            {/* <div className={`col-lg-2 mt-5 mb-5 col-md-4 col-sm-4 ms-2 mb-5`}>
               <div className="">
                 <button
                   className={`btn w-75 border border-light ${Classes.h}`}
@@ -46,7 +46,7 @@ export default function Footer() {
                   </li>
                 </ul>
               </div>
-            </div>
+            </div> */}
             <div className={`col-lg-3 mt-5 mb-5 col-md-4 col-sm-4 ms-4` }>
               <a href="">All Departments</a>
               <br />
