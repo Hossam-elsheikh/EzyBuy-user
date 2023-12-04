@@ -8,7 +8,7 @@ const PersonalInfo = () => {
       try {
         const res = await axios({
           method: "get",
-          url: "http://localhost:3333/customer/info",
+          url: `${import.meta.env.VITE_URL}/customer/info`,
           headers: {
             authorization: `${localStorage.getItem("customerToken")}`,
           },
@@ -28,7 +28,7 @@ const PersonalInfo = () => {
     try {
       const res = await axios({
         method: "patch",
-        url: "http://localhost:3333/customer/update",
+        url: `${import.meta.env.VITE_URL}/customer/update`,
         headers: {
           authorization: `${localStorage.getItem("customerToken")}`,
         },

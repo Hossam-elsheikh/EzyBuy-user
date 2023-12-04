@@ -2,11 +2,13 @@ import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 export const productsAction = createAsyncThunk('products/all',async(category)=>{
     try{
-        const res = await  axios.get(`http://localhost:3333/product/${category}`)
+        const res = await  axios.get(`${import.meta.env.VITE_URL}/product/${category}`)
             let arr = res.data?.map(prd=>JSON.parse(JSON.stringify(prd)))
-            
-          return arr
-    }catch(err){
+            console.log('sd');
+            return arr
+        }catch(err){
+        console.log(import.meta.env.VITE_URL);
+        console.log(import.meta.env.VITE_STRIPE_KEY);
         console.log(err.message);
     }
 })

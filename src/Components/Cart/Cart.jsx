@@ -47,7 +47,7 @@ export default function Cart() {
     }
   }, [cart]);
   return (
-    <>
+    <div className="p-3">
       <h4>
         Cart
         <span className="ms-1 text-body-secondary ">({cart.length} item)</span>
@@ -145,9 +145,8 @@ export default function Cart() {
               {cart.map((item) => (
                 <div
                   className="row border py-3 mb-2 rounded d-flex align-items-center"
-                  style={{ maxHeight: "150px" }}
                 >
-                  <div className="col-6 d-flex align-items-center gap-3">
+                  <div className="col-12 col-md-6 d-flex align-items-center gap-3">
                     <img
                       src={item.img}
                       className="img-fluid rounded-5"
@@ -155,7 +154,7 @@ export default function Cart() {
                     />
                     <h6 className={style.title}>{item.title}</h6>
                   </div>
-                  <div className="col-3 d-flex flex-column gap-2">
+                  <div className="col-6 col-md-3 d-flex flex-column gap-2">
                     <p>
                       unit price :{" "}
                       <span className={style.price}>${item.price}</span>
@@ -167,7 +166,7 @@ export default function Cart() {
                       </span>
                     </p>
                   </div>
-                  <div className="col-3 d-flex flex-column align-items-center">
+                  <div className="col-6 col-md-3 d-flex flex-column align-items-center">
                     <h6 className="pb-2">Quantity</h6>
                     <div className="d-flex overflow-hidden  justify-content-center align-items-center gap-4">
                       <i
@@ -270,6 +269,6 @@ export default function Cart() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

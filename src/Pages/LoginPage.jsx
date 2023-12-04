@@ -1,7 +1,7 @@
 import React from 'react'
 import Login from '../Components/Login/Login'
 import { Container } from 'react-bootstrap'
-
+import logo from '../assets/blcklogo-04.png'
 const LoginPage = () => {
   return <>
   <Container>
@@ -10,7 +10,7 @@ const LoginPage = () => {
       <img 
       className='img-fluid mb-2'
       style={{maxWidth:'200px'}}
-      src='https://i.ibb.co/VptnFXg/blcklogo-04.png'
+      src={logo}
        alt="" />
        <h5 >Sign in or create your account</h5>
        <p style={{fontSize:14}}>Not sure if you have an account?</p>

@@ -162,7 +162,7 @@ export default function Home() {
           </div>
         </div>
         {/* Deals */}
-        <div className="p-5" style={{maxWidth:'100vw'}} dir={dir}>
+        <div className=" p-1 p-md-5" style={{maxWidth:'100vw'}} dir={dir}>
 
         <CarouselCont breakpoints={b1} products={products}  headline={lang == 'en' ? 'Top Deals' : 'أفضل العروض'} desc={lang == 'en' ? 'Up to 65% off' : 'خصم يصل إلى 65%'}/>
         </div>

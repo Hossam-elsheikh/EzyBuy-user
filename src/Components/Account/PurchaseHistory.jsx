@@ -7,7 +7,7 @@ const PurchaseHistory = () => {
     async function getOrder() {
       let res = await axios({
         method: "get",
-        url: "http://localhost:3333/customer/order",
+        url: `${import.meta.env.VITE_URL}/customer/order`,
         headers: { authorization: `${localStorage.getItem("customerToken")}` },
       });
       setOrders(res.data);

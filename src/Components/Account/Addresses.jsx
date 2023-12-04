@@ -8,7 +8,7 @@ const Addresses = () => {
       try {
         const res = await axios({
           method: "get",
-          url: "http://localhost:3333/customer/info",
+          url: `${import.meta.env.VITE_URL}/customer/info`,
           headers: {
             authorization: `${localStorage.getItem("customerToken")}`,
           },

@@ -10,7 +10,7 @@ const Reorder = () => {
     async function getOrder() {
       let res = await axios({
         method: "get",
-        url: "http://localhost:3333/customer/order",
+        url: `${import.meta.env.VITE_URL}/customer/order`,
         headers: { authorization: `${localStorage.getItem("customerToken")}` },
       });
       setOrders(res.data);
@@ -22,16 +22,14 @@ const Reorder = () => {
     <div className="container d-flex flex-column gap-5 p-0 p-md-5">
       {orders ? (
         <div className="container-fluid py-3  d-flex flex-column gap-5">
-          {orders.map((order) => (
+          {orders.reverse().map((order) => (
             <div
-              className="d-flex shadow p-4 rounded flex-column gap-2"
+              className="d-flex shadow p-2 p-md-4 rounded flex-column gap-2"
               key={order._id}
             >
               <div className="d-flex justify-content-between">
-                <p>ID : {order._id}</p>
-
                 <p
-                className="text-light py-1 px-2 rounded"
+                  className="text-light py-1 px-2 rounded"
                   style={
                     order.status == "Pending"
                       ? { backgroundColor: "orange" }
@@ -40,7 +38,7 @@ const Reorder = () => {
                       : { backgroundColor: "green" }
                   }
                 >
-                   {order.status}
+                  {order.status}
                 </p>
               </div>
               <p>ordered at : {order.createdAt}</p>
@@ -50,20 +48,29 @@ const Reorder = () => {
                 <div className="d-flex flex-column gap-3 mt-3">
                   {order.cart_Customer.map((order) => (
                     <div className="d-flex p-2 px-4 border rounded border-1 align-items-center justify-content-between">
-                        <div className="d-flex gap-4 ">
-                      <img src={order.img} style={{ width: "100px" }} alt="" />
-                      <div className="d-flex flex-column gap-1">
-                        <p
-                          style={{ maxWidth: "200px" }}
-                          className="text-truncate"
-                        >
-                          {order.title}
-                        </p>
-                        <p>quantity: {order.quantity}</p>
-                        <p>price: ${order.price}</p>
+                      <div className="d-flex gap-4 flex-wrap">
+                        <img
+                          src={order.img}
+                          style={{ width: "100px" }}
+                          alt=""
+                        />
+                        <div className="d-flex flex-column gap-1">
+                          <p
+                            style={{ maxWidth: "200px" }}
+                            className="text-truncate"
+                          >
+                            {order.title}
+                          </p>
+                          <p>quantity: {order.quantity}</p>
+                          <p>price: ${order.price}</p>
+                        </div>
                       </div>
-                      </div>
-                      <Link to={`/product/${order.id}`} className="btn btn-dark text-light">Reorder</Link>
+                      <Link
+                        to={`/product/${order.id}`}
+                        className="btn btn-dark text-light"
+                      >
+                        Reorder
+                      </Link>
                     </div>
                   ))}
                 </div>

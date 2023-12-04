@@ -17,7 +17,7 @@ export default function Navbar() {
   let navigate = useNavigate();
   async function AllProducts() {
     try {
-      await axios.get(`http://localhost:3333/product/all`).then(res => {
+      await axios.get(`${import.meta.env.VITE_URL}/product/all`).then(res => {
         setProducts(res.data)
       }).catch(err => {
         console.log(err.message);
@@ -305,16 +305,13 @@ export default function Navbar() {
         </div>
         <div className={classes.sec_nav}>
           <div className="d-flex gap-2 align-items-center">
-            <i className="fa-solid fa-truck"></i>
-            <a href="/myaccount">{t("nav.howDo")}</a>
-           
-            <p>|</p>
+          
             <div
+            dir={dir}
               className="d-flex align-items-center gap-2 cursor-pointer"
               style={{ cursor: "pointer" }}
               onClick={() => setLanguage()}
             >
-              <i className="fa-solid fa-globe"></i>
               <p>
                 {JSON.parse(localStorage.getItem("langtitle")) ||
                   "تصفح بالعربية"}
@@ -322,9 +319,9 @@ export default function Navbar() {
             </div>
           </div>
           <div className="d-none gap-3 d-lg-flex d-xl-flex">
-            <Link to="/groceries">{t("departments.groceries")}</Link>
-            <Link to="/beauty">{t("departments.beauty")}</Link>
             <Link to="/electronics">{t("departments.electronics")}</Link>
+            <Link to="/beauty">{t("departments.beauty")}</Link>
+            <Link to="/groceries">{t("departments.groceries")}</Link>
             <Link to="/kids">{t("departments.kids")}</Link>
             <Link to="/fashion">{t("departments.fashions")}</Link>
           </div>

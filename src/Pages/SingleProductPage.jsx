@@ -80,7 +80,7 @@ const SingleProductPage = () => {
           />
         </div>
       ) : (
-        <div className="row " style={{ width: "93%" }} dir={dir}>
+        <div className="row m-auto " style={{ width: "93%" }} dir={dir}>
           <div className="col-md-8 ">
             <ProductImgs img={product?.images} id={product?._id} />
           </div>
@@ -115,7 +115,7 @@ const SingleProductPage = () => {
               </form>
             </div>
           </div>
-          <div className="col-md-8">
+          <div className="col-md-8 px-2">
             <ProdSpecs
               dis={lang === "en" ? product?.description : product?.ar_description}
             />

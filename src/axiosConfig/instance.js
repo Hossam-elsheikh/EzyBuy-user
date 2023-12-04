@@ -2,7 +2,7 @@ import axios from "axios";
 
 // ? create instance 
  let instance = axios.create({
-    baseURL:"http://localhost:3333",
+    baseURL:`${import.meta.env.VITE_URL}`,
 });
 
 export default  instance;

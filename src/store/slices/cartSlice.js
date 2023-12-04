@@ -6,7 +6,7 @@ export const cartAction = createAsyncThunk("customer/cart", async () => {
   try {
     const res = await axios({
       method: 'get',
-      url: 'http://localhost:3333/customer/cart',
+      url: `${import.meta.env.VITE_URL}/customer/cart`,
       headers: { authorization: `${localStorage.getItem("customerToken")}`,}, 
     });
     return res.data.cart;

@@ -46,7 +46,7 @@ export default function FavPrdContextProvider(props) {
         try{
             if (localStorage.getItem('customerToken')) {
       
-                await instance.post(`http://localhost:3333/customer/wishList/${id}`, {
+                await instance.post(`${import.meta.env.VITE_URL}/customer/wishList/${id}`, {
                 headers: {
                   'authorization': localStorage.getItem('customerToken')
                 }

@@ -21,11 +21,11 @@ export default function ProductImgs({img , id}) {
         },
         {
             breakpoint: '767px',
-            numVisible: 3
+            numVisible: 4
         },
         {
             breakpoint: '575px',
-            numVisible: 1
+            numVisible: 4
         }
     ];
     useEffect(() => {
@@ -45,11 +45,11 @@ export default function ProductImgs({img , id}) {
     };
 
     const itemTemplate = (item) => {
-        return <img src={item} alt="details" style={{ width: '70%', display: 'flex' }} />;
+        return <img src={item} className='img-fluid mb-4' alt="details" style={{ width: '50%', display: 'flex' }} />;
     }
 
     const thumbnailTemplate = (item) => {
-        return <img src={item} alt="details" className='bg-danger ms-auto '  style={{ display: 'flex' ,width:"70%"}} />;
+        return <img  src={item} alt="details" className='bg-danger ms-auto mb-3'  style={{ display: 'flex' ,width:"40%"}} />;
     }
 
     // ?===> WishList <=====

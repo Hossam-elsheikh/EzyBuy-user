@@ -9,7 +9,7 @@ const MobNav = (props) => {
   const {t,dir} = useContext(LangContext)
 
   const Departments = [
-    { title: t("departments.groceries"), link: "/grocery" },
+    { title: t("departments.groceries"), link: "/groceries" },
     { title: t("departments.electronics"), link: "/electronics" },
     { title: t("departments.fashions"), link: "/fashion" },
     { title: t("departments.kids"), link: "/kids" },

@@ -2,7 +2,7 @@ import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 export const categoriesAction = createAsyncThunk('category',async(category)=>{
     try{
-        const res = await  axios.get(`http://localhost:3333/category/${category}`)
+        const res = await  axios.get(`${import.meta.env.VITE_URL}/category/${category}`)
           return res.data
     }catch(err){
         console.log(err.message);

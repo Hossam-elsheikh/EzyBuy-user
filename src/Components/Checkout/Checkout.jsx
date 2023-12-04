@@ -1,20 +1,23 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useFormik } from "formik/dist";
-import React, { useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import instance from "../../axiosConfig/instance";
 import toast, { Toaster } from "react-hot-toast";
 import { cartAction } from "../../store/slices/cartSlice";
+import { LangContext } from "../../context/LangContext";
 const Checkout = () => {
   let dispatch = useDispatch();
+  const {lang,dir}= useContext(LangContext)
+  let paypal = useRef()
   let navigate = useNavigate();
   const cart = useSelector((data) => data.cart.items);
   const stripe = useStripe();
   const element = useElements();
-  const [visaPay, setVisaPay] = useState(false);
+  const [paymentMethod, setPayment] = useState('on delivery');
   const [isProcessing, setProcessing] = useState(false);
   const [credentials, setCredentials] = useState({
     name: "",
@@ -27,7 +30,7 @@ const Checkout = () => {
 
   async function emptyCart() {
     try {
-      await axios.delete(`http://localhost:3333/customer/cart`, {
+      await axios.delete(`${import.meta.env.VITE_URL}/customer/cart`, {
         headers: {
           authorization: localStorage.getItem("customerToken"),
         },
@@ -64,10 +67,10 @@ const Checkout = () => {
       phone,
       email,
     };
-    if (visaPay) {
+    if (paymentMethod == 'card') {
     try {
       const paymentIntent = await axios.post(
-        "http://localhost:3333/customer/order",
+        `${import.meta.env.VITE_URL}/customer/order`,
         {
           headers: {
             authorization: localStorage.getItem("customerToken"),
@@ -126,10 +129,10 @@ const Checkout = () => {
       setProcessing(false);
       setSuccess("Pay");
     }
-  }else {
+  }else if (paymentMethod == 'on delivery') {
     try{
       await axios.post(
-        "http://localhost:3333/customer/order",
+        `${import.meta.env.VITE_URL}/customer/order`,
         {
           headers: {
             authorization: localStorage.getItem("customerToken"),
@@ -148,34 +151,86 @@ const Checkout = () => {
         
     }
   }
+  else if(paymentMethod == 'paypal'){
+    window.paypal
+    .Buttons({
+      createOrder: (data, actions, err) => {
+        return actions.order.create({
+          intent: "CAPTURE",
+          purchase_units: [
+            {
+              description: "Ezy Buy order",
+              amount: {
+                currency_code: "USD",
+                value: totalPrice,
+              },
+            },
+          ],
+        });
+      },
+      onApprove: async (data, actions) => {
+        const order = await actions.order.capture();
+        await axios.post(
+          `${import.meta.env.VITE_URL}/customer/order`,
+          {
+            headers: {
+              authorization: localStorage.getItem("customerToken"),
+            },
+            amount: totalPrice * 100,
+            value: credentials,
+            cart: cart,
+          },
+          {}
+        );
+        emptyCart();
+        setProcessing(false);
+        setSuccess("Pay");
+        navigate("/thanks");
+      },
+      onError: (err) => {
+        console.log(err);
+      },
+    })
+    .render(paypal.current);
+  }
 
   };
 
   return (
-    <div className="container-fluid row pt-5">
-      <div className="col-12 col-md-6 container-fluid">
-        <h3>Payment</h3>
+    <div className="container-fluid row pt-5 m-auto" dir={dir}>
+      <div className="col-12 col-md-6 container-fluid py-3">
+        <h3>{lang =='en' ? 'Payment':'وسائل الدفع'}</h3>
         <div className="container-fluid p-4 border ">
           <label htmlFor="delivery" className="d-flex gap-2 mb-3">
             <input
               id="delivery"
               type="radio"
               name="payment"
-              onChange={(e) => setVisaPay(false)}
+              
+              onChange={(e) => setPayment('on delivery')}
             />
-            Pay on Delivery
+            {lang == 'en'?'Pay on Delivery':'الدفع عند الاستلام'}
           </label>
           <label htmlFor="visa" className="d-flex gap-2">
             <input
               id="visa"
               type="radio"
               name="payment"
-              onChange={(e) => setVisaPay(e.target.value)}
+              onChange={(e) => setPayment('card')}
             />
-            Pay With your Card
+            {lang == 'en' ? 'Pay With your Card':'ادفع عن طريق البطاقة'}
+          </label>
+          <label htmlFor="paypal" className="d-flex gap-2 my-3">
+            <input
+              id="paypal"
+              type="radio"
+              name="payment"
+              onChange={(e) => setPayment('paypal')}
+            />
+            {lang == 'en' ? 'Pay With PayPal':'ادفع عن طريق باي بال'}
           </label>
         </div>
-        {visaPay && (
+        {paymentMethod == 'card' && (
           <div className="container">
             <form className="form border-bottom" onSubmit={handlePayment}>
               <input
@@ -224,13 +279,14 @@ const Checkout = () => {
             </form>
           </div>
         )}
+        <div ref={paypal}></div>
       </div>
       <div className="col-12 col-md-4 container-fluid border px-3 py-4 border-1 ">
-        <h3 className="text-center ">Order Details</h3>
+        <h3 className="text-center ">{lang =='en' ? 'Order Details':'بيانات الطلب'}</h3>
         <hr />
         <div className="d-flex justify-content-between px-3">
           <h6>
-            Subtotal
+            {lang =='en' ?'Subtotal':'الإجمالي'}
             <span className="text-body-secondary ms-1">
               (
               {cart.reduce(
@@ -238,7 +294,7 @@ const Checkout = () => {
                   accumulator + currentValue.quantity,
                 0
               )}{" "}
-              item)
+              {lang =='en' ?'item':'منتج'})
             </span>
           </h6>
           <p>
@@ -252,20 +308,20 @@ const Checkout = () => {
         </div>
         <div className="d-flex justify-content-between px-3">
           <p className="text-body-secondary" style={{ fontSize: 13 }}>
-            Shipping
+            {lang == 'en' ? 'Shipping':'مصاريف الشحن'}
           </p>
-          <span className="text-success">Free</span>
+          <span className="text-success">{lang == 'en'? 'Free':'مجاني'}</span>
         </div>
 
         <div className="mt-2 d-flex justify-content-between  px-3">
-          <h6>Taxes</h6>
+          <h6>{lang=='en'?'Taxes':'الضرائب'}</h6>
           <p>0.00</p>
         </div>
 
         <hr className="text-body-secondary " />
 
         <div className="mt-2 d-flex justify-content-between px-3">
-          <h6>Estimated total</h6>
+          <h6>{lang == 'en'?'Estimated total':'إجمالي الفاتورة'}</h6>
           <h6>
             $
             {cart.reduce((accumulator, currentValue) => {
@@ -276,9 +332,7 @@ const Checkout = () => {
           </h6>
         </div>
         <hr className="text-body-secondary " />
-        <span className="badge bg-success d-flex text-wrap">
-          Arrives by 3rd Oct at 07:30 pm to Address : customer address
-        </span>
+       
 
         <div className="text-center mt-3">
           <Link to="/checkout">

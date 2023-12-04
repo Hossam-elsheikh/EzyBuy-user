@@ -107,7 +107,7 @@ export default function ProductDetails({ prd }) {
                 ? "How do you want your item?"
                 : " كيف تريد استلام منتجاتك؟"}
             </h5>
-            <div className="d-flex gap-1">
+            <div className="row ">
               <div className="col-md-4 ">
                 <button
                   className=" w-100 btn border border-2 border-black py-3 "
@@ -163,7 +163,7 @@ export default function ProductDetails({ prd }) {
                     />
                   </div>
                   <div className="">
-                    {lang == "en" ? "Delivery" : " التوصيل للمنزل"}
+                    {lang == "en" ? "Delivery" : " التوصيل "}
                   </div>
                   <div>{lang == "en" ? "Not Available" : " غير متاح"}</div>
                 </button>

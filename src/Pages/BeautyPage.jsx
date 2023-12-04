@@ -120,12 +120,12 @@ const BeautyPage = () => {
         ) : (
           <div className="row g-5 mt-3">
             {y?.map((prd) => (
-              <div key={prd} className="col-md-3">
+              <div key={prd} className="col-md-3 " dir={dir}>
                 <span
                   className=" fw-bold text-primary p-1 rounded-2 bg-body-secondary"
                   style={{ fontSize: "12px" }}
                 >
-                  Best seller
+                  {lang=='en'?"Best seller":'الأفضل مبيعاً'}
                 </span>
                 <div className="text-end ">
                   {prd.isFavorite ? (
@@ -140,6 +140,7 @@ const BeautyPage = () => {
                       key={prd._id}
                       class="fa-regular fa-heart fs-4  "
                       aria-hidden="true"
+                      style={{cursor:'pointer'}}
                       onClick={() => addtoFavorite1(prd._id)}
                     ></i>
                   )}
@@ -167,7 +168,7 @@ const BeautyPage = () => {
                       className="text-success  fs-5"
                       style={{ fontWeight: "700" }}
                     >
-                      Now
+                      {lang=='en' ? 'Now':'الآن'}
                     </span>
                     <span
                       className="text-success fw-bold ms-1 me-1 position-relative"
@@ -197,7 +198,8 @@ const BeautyPage = () => {
                       style={{ fontWeight: "600" }}
                     >
                       {" "}
-                      You save
+                      {lang=='en' ? 'You save':'ستوفر'}
+
                     </span>
                     <span
                       className="text-success"
