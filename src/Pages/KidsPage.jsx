@@ -17,10 +17,34 @@ const KidsPage = () => {
   const {dir, lang} = useContext(LangContext)
   const categories = [
     {
-      title: "fresh food",
-      ar_title:"طعام طازج",
-      sections:[{title:'Dile',ar_title:'بقوليات'}],
-      img: "https://i5.walmartimages.com/dfw/4ff9c6c9-877b/k2-_17060cce-fa02-455e-a0be-eda182b82de2.v1.jpg?odnHeight=48&odnWidth=48&odnBg=FFFFFF",
+      title: "Kids Clothing",
+      ar_title:"ملابس الاطفال",
+      sections:[{title:'Shop All Kids Clothing',ar_title:'تسوق جميع ملابس الاطفال'},{title:"Boys Clothing" , ar_title:"ملابس الأولاد"},{title:"Kids Backpacks & Accessories" ,ar_title:"حقائب ظهر واكسسوارات للأطفال"} ,{title:"Kids Shoes" ,ar_title:"أحذية الأطفال"}],
+      img: "https://i5.walmartimages.com/dfw/4ff9c6c9-b4be/k2-_9c1576a2-807d-410a-a27c-2900adb5eff3.v1.jpg?odnHeight=48&odnWidth=48&odnBg=FFFFFF",
+    },
+    {
+      title: "Kids' Toys",
+      ar_title:"ألعاب الاطفال",
+      sections:[{title:'Shop All Toys',ar_title:'تسوق جميع الألعاب'},{title:"Toys For Ages 5-7 Years" , ar_title:"ألعاب للأعمار من 5 إلى 7 سنوات"},{title:"Preschool Toys" ,ar_title:"ألعاب ما قبل المدرسة"} ,{title:"Toy Deals" ,ar_title:"عروض الألعاب"}],
+      img: "https://i5.walmartimages.com/dfw/4ff9c6c9-29f7/k2-_12aa8b48-558e-4f14-b2cf-9de94b0ce14c.v1.jpg?odnHeight=48&odnWidth=48&odnBg=FFFFFF",
+    },
+    {
+      title: "Kids' Health",
+      ar_title:"صحة الاطفال",
+      sections:[{title:'Shop All Toys',ar_title:'تسوق جميع الألعاب'},{title:"Toys For Ages 5-7 Years" , ar_title:"ألعاب للأعمار من 5 إلى 7 سنوات"},{title:"Preschool Toys" ,ar_title:"ألعاب ما قبل المدرسة"} ,{title:"Toy Deals" ,ar_title:"عروض الألعاب"}],
+      img: "https://i5.walmartimages.com/dfw/4ff9c6c9-e47d/k2-_ecad1c12-6c64-4989-bd18-3014021873bd.v1.jpg?odnHeight=48&odnWidth=48&odnBg=FFFFFF",
+    },
+    {
+      title: "Video Games",
+      ar_title:"ألعاب الفيديو",
+      sections:[{title:'Shop All Toys',ar_title:'تسوق جميع الألعاب'},{title:"Toys For Ages 5-7 Years" , ar_title:"ألعاب للأعمار من 5 إلى 7 سنوات"},{title:"Preschool Toys" ,ar_title:"ألعاب ما قبل المدرسة"} ,{title:"Toy Deals" ,ar_title:"عروض الألعاب"}],
+      img: "https://i5.walmartimages.com/dfw/4ff9c6c9-12bc/k2-_e9c25279-b2e4-42f5-b71d-97004f7827d2.v1.jpg?odnHeight=48&odnWidth=48&odnBg=FFFFFF",
+    },
+    {
+      title: "Kids' Rooms",
+      ar_title:"ألعاب الفيديو",
+      sections:[{title:'Shop All Toys',ar_title:'تسوق جميع الألعاب'},{title:"Toys For Ages 5-7 Years" , ar_title:"ألعاب للأعمار من 5 إلى 7 سنوات"},{title:"Preschool Toys" ,ar_title:"ألعاب ما قبل المدرسة"} ,{title:"Toy Deals" ,ar_title:"عروض الألعاب"}],
+      img: "https://i5.walmartimages.com/dfw/4ff9c6c9-4c6b/k2-_c6caec22-c2a7-427f-a359-afc17c822737.v1.png?odnHeight=48&odnWidth=48&odnBg=FFFFFF",
     },
   ];
   const isLoading = useSelector((state) => state.products.isLoading);
