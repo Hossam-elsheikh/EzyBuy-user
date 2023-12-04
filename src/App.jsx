@@ -27,7 +27,6 @@ import AccountPage from "./Pages/AccountPage";
 import PurchaseHistory from "./Components/Account/PurchaseHistory";
 import PersonalInfo from "./Components/Account/PersonalInfo";
 import Addresses from "./Components/Account/Addresses";
-import Community from "./Components/Account/Community";
 import LoginContextProvider from "./context/LoginContext";
 import { Provider, useDispatch } from "react-redux";
 import { store } from "./store/store";

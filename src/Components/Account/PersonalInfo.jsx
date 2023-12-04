@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { LangContext } from "../../context/LangContext";
 const PersonalInfo = () => {
   const [info, setInfo] = useState({});
   const [updatedInfo, setUpdatedInfo] = useState({});
+  const {dir,lang} = useContext(LangContext)
   useEffect(() => {
     async function getPersonalInfo() {
       try {
@@ -44,8 +46,8 @@ const PersonalInfo = () => {
     }
   }
   return (
-    <div className="px-2" id="personalinfo">
-      <h3>Personal Info</h3>
+    <div dir={dir} className="px-2" id="personalinfo">
+      <h3>{lang =='en' ? 'Personal info':' المعلومات الشخصية'}</h3>
       <form onSubmit={(e) => submitHandler(e)}>
         <div class="form-group mb-2">
           <label for="name">Name</label>

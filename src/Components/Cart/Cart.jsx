@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import style from "./Cart.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../../store/slices/cartSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { LangContext } from "../../context/LangContext";
 
 export default function Cart() {
   let navigate = useNavigate();
@@ -15,6 +16,7 @@ export default function Cart() {
   const [changeIcon, setChangeIcon] = useState("down");
   let [counter, setCounter] = useState(0);
   let [disabled, setDisabled] = useState(true);
+  const { lang, dir } = useContext(LangContext);
   const toggleDropdown = () => {
     setisDropdownOpen(isDropdownOpen === "none" ? "inline" : "none");
     setChangeIcon(changeIcon === "down" ? "up" : "down");
@@ -27,17 +29,15 @@ export default function Cart() {
   function dereaseQuantityHandler(productID) {
     dispatch(removeFromCart({ id: productID }));
   }
-  function handleCheckout(){
-    
-      if (localStorage.getItem("customerToken")) {
-        navigate("/checkout");
-      } else {
-        toast.warn("you Have to login first!")
-        setTimeout(()=>{
-          navigate("/login");
-        },2500)
-      }
-    
+  function handleCheckout() {
+    if (localStorage.getItem("customerToken")) {
+      navigate("/checkout");
+    } else {
+      toast.warn("you Have to login first!");
+      setTimeout(() => {
+        navigate("/login");
+      }, 2500);
+    }
   }
   useEffect(() => {
     if (cart.length == 0 || !cart) {
@@ -47,10 +47,12 @@ export default function Cart() {
     }
   }, [cart]);
   return (
-    <div className="p-3">
+    <div className="p-3" dir={dir}>
       <h4>
-        Cart
-        <span className="ms-1 text-body-secondary ">({cart.length} item)</span>
+        {lang == "en" ? "Cart" : "السلة"}
+        <span className="ms-1 text-body-secondary ">
+          ({cart.length} {lang == "en" ? "item" : "عنصر"})
+        </span>
       </h4>
       <section>
         <ToastContainer />
@@ -66,7 +68,9 @@ export default function Cart() {
                         alt="icon image"
                       />
                     </span>
-                    Pickup and delivery option
+                    {lang == "en"
+                      ? "Pickup and delivery option"
+                      : "خيارات الشحن والاستلام"}
                   </p>
                   <i
                     className={`fas fa-chevron-${changeIcon} mt-3 ms-3 `}
@@ -93,8 +97,12 @@ export default function Cart() {
                               height="40"
                             />
                           </div>
-                          <div className="fw-bold fs-6">Shipping</div>
-                          <div className=" text-body-secondary">Available</div>
+                          <div className="fw-bold fs-6">
+                            {lang == "en" ? "Shipping" : " الشحن"}
+                          </div>
+                          <div className=" text-body-secondary">
+                            {lang == "en" ? "Available" : " متاح"}
+                          </div>
                         </button>
                       </div>
 
@@ -112,8 +120,10 @@ export default function Cart() {
                               height="40"
                             />
                           </div>
-                          <div>Pickup</div>
-                          <div>Not available</div>
+                          <div>{lang == "en" ? "Pickup" : "استلام"}</div>
+                          <div>
+                            {lang == "en" ? "Not Available" : " غير متاح"}
+                          </div>
                         </button>
                       </div>
 
@@ -131,8 +141,12 @@ export default function Cart() {
                               height="40"
                             />
                           </div>
-                          <div className="">Delivery</div>
-                          <div>Not available</div>
+                          <div className="">
+                            {lang == "en" ? "Delivery" : " التوصيل "}
+                          </div>
+                          <div>
+                            {lang == "en" ? "Not Available" : " غير متاح"}
+                          </div>
                         </button>
                       </div>
                     </div>
@@ -143,9 +157,7 @@ export default function Cart() {
 
             <div className="flex flex-column p-4 ">
               {cart.map((item) => (
-                <div
-                  className="row border py-3 mb-2 rounded d-flex align-items-center"
-                >
+                <div className="row border py-3 mb-2 rounded d-flex align-items-center">
                   <div className="col-12 col-md-6 d-flex align-items-center gap-3">
                     <img
                       src={item.img}
@@ -190,7 +202,8 @@ export default function Cart() {
             <div className="ms-2 ">
               <div className="d-flex justify-content-between">
                 <h6>
-                  Subtotal
+                  {lang == "en" ? "Subtotal" : "الإجمالي"}
+
                   <span className="text-body-secondary ms-1">
                     (
                     {cart.reduce(
@@ -198,7 +211,7 @@ export default function Cart() {
                         accumulator + currentValue.quantity,
                       0
                     )}{" "}
-                    item)
+                    {lang == "en" ? "item" : "منتج"}) 
                   </span>
                 </h6>
                 <p>
@@ -213,20 +226,21 @@ export default function Cart() {
 
               <div className="d-flex justify-content-between">
                 <p className="text-body-secondary" style={{ fontSize: 13 }}>
-                  Shipping
+                {lang == 'en' ? 'Shipping':'مصاريف الشحن'}
+
                 </p>
-                <span className="text-success">Free</span>
+                <span className="text-success">{lang == 'en'? 'Free':'مجاني'}</span>
               </div>
 
               <div className="mt-4 d-flex justify-content-between ">
-                <h6>Taxes</h6>
-                <p>Calculated at checkout</p>
+                <h6>{lang=='en'?'Taxes':'الضرائب'}</h6>
+                <p>0.00</p>
               </div>
 
               <hr className="text-body-secondary " />
 
               <div className="mt-5 d-flex justify-content-between">
-                <h6>Estimated total</h6>
+                <h6>{lang == 'en'?'Estimated total':'إجمالي الفاتورة'}</h6>
                 <h6>
                   $
                   {cart.reduce((accumulator, currentValue) => {
@@ -237,22 +251,7 @@ export default function Cart() {
                 </h6>
               </div>
 
-              <div className="text-end mt-5">
-                <img
-                  className=""
-                  width={40}
-                  src="https://cdn-assets.affirm.com/images/black_logo-white_bg.jpg"
-                  alt=""
-                />
-                <p className=" mt-2" style={{ fontSize: 13 }}>
-                  Monthly payments available for eligible items.
-                </p>
-                <button
-                  className={`border-0 mt-2  text-decoration-underline  ${style.btun}`}
-                >
-                  Continue with Affirm
-                </button>
-              </div>
+            
             </div>
             <hr className="text-body-secondary " />
 
@@ -263,7 +262,7 @@ export default function Cart() {
                 disabled={disabled}
                 onClick={() => handleCheckout()}
               >
-                Continue to checkout
+                {lang == 'en'?'Continue to checkout ':'انتقل إلى الدفع '}
               </button>
             </div>
           </div>

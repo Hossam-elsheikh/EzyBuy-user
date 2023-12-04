@@ -106,14 +106,6 @@ export default function Password() {
         ) : (
           ""
         )}
-
-        <div className="w-100 text-start ms-3 mt-3">
-          <input type="checkbox" id="keepMe" />
-          <label htmlFor="keepMe" className=" ms-2 fw-bold text-black">
-            Keep me Signed In
-          </label>
-        </div>
-
         {!isLoading ? (
           <div className=" border border-0 rounded text-light d-flex align-items-center ">
             <button

@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from "axios";
+import { LangContext } from '../../context/LangContext';
 
 const Addresses = () => {
   const [info, setInfo] = useState({});
+  const {lang,dir} = useContext(LangContext)
   useEffect(() => {
     async function getPersonalInfo() {
       try {
@@ -22,8 +24,8 @@ const Addresses = () => {
     getPersonalInfo();
   }, []);
   return (
-    <div id='addresses'>
-        <h5>Your current Address:</h5>
+    <div id='addresses' dir={dir}>
+        <h5>{lang =='en' ? 'Addresses ':' العناوين'}:</h5>
         <div className='p-3 border rounded'>
 
         <p>{info?.address} - {info?.city}</p>

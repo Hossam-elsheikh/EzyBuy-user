@@ -31,18 +31,17 @@ const Reorder = () => {
                 <p
                   className="text-light py-1 px-2 rounded"
                   style={
-                    order.status == "Pending"
+                    order.cart_Customer[0].status == "pending"
                       ? { backgroundColor: "orange" }
                       : order.status == "shipping"
                       ? { backgroundColor: "darkblue" }
                       : { backgroundColor: "green" }
                   }
                 >
-                  {order.status}
+                  {order.cart_Customer[0].status}
                 </p>
               </div>
               <p>ordered at : {order.createdAt}</p>
-
               <div>
                 <p>Items</p>
                 <div className="d-flex flex-column gap-3 mt-3">

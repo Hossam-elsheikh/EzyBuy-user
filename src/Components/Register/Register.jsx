@@ -14,10 +14,10 @@ export default function Register() {
 
   let phoneRegex= /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
   let validateSchema = Yup.object({
-    name:Yup.string().min(3 , 'name min length is 3').max(10 , 'name max length is 10 ').required('name is required'),
+    name:Yup.string().min(3 , 'name min length is 3').max(20 , 'name max length is 10 ').required('name is required'),
     email:Yup.string().email('is invalid name').required( 'email is required'),
     phone:Yup.string().matches(phoneRegex,'phone number is in valid').required('phone is required'),
-    password:Yup.string().matches(/^[A-z][a-z0-9]{5,10}$/, 'password is invalid start with upper case and min is 5 char').required('password is required'),
+    password:Yup.string().matches(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, 'password is invalid start with upper case and min is 5 char').required('password is required'),
     address:Yup.string().max(10 , 'address max length is 10 ').required('address is required'),
     city:Yup.string().max(10 , 'city max length is 10 ').required('city is required'),
 
@@ -85,9 +85,7 @@ export default function Register() {
       {formik.errors.city && formik.touched.city? <div className='alert alert-danger mt-2 p-2'>{formik.errors.city}</div>:""}
       
 
-      <div className='w-100 text-start mt-3'>
-      <input type="checkbox" id='keepMe' /><label htmlFor="keepMe" className=' ms-2  text-black'>Keep me Signed In</label>
-      </div>
+      
       <div className='w-100 text-start   '>
      
       <p className="text-body-secondary my-4" style={{fontSize:14}}>

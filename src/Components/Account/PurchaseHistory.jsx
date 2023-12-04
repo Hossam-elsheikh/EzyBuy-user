@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { LangContext } from "../../context/LangContext";
 
 const PurchaseHistory = () => {
   const [orders, setOrders] = useState([]);
+  const {lang,dir} = useContext(LangContext)
   useEffect(() => {
     async function getOrder() {
       let res = await axios({
@@ -16,8 +18,8 @@ const PurchaseHistory = () => {
     getOrder();
   }, []);
   return (
-    <div className="py-3" id="purchase">
-      <h3>Purchase History</h3>
+    <div className="py-3" id="purchase" dir={dir}>
+      <h3>{lang =='en' ? 'Purchase History':'سجل المدفوعات'}</h3>
       <div className="d-flex flex-column gap-3">
         {orders?.map((order) => (
           <div className="d-flex justify-content-between border p-2 w-100">
