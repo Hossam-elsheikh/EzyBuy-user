@@ -27,20 +27,7 @@ const Reorder = () => {
               className="d-flex shadow p-2 p-md-4 rounded flex-column gap-2"
               key={order._id}
             >
-              <div className="d-flex justify-content-between">
-                <p
-                  className="text-light py-1 px-2 rounded"
-                  style={
-                    order.cart_Customer[0].status == "pending"
-                      ? { backgroundColor: "orange" }
-                      : order.status == "shipping"
-                      ? { backgroundColor: "darkblue" }
-                      : { backgroundColor: "green" }
-                  }
-                >
-                  {order.cart_Customer[0].status}
-                </p>
-              </div>
+             
               <p>ordered at : {order.createdAt}</p>
               <div>
                 <p>Items</p>
@@ -64,12 +51,28 @@ const Reorder = () => {
                           <p>price: ${order.price}</p>
                         </div>
                       </div>
+                      <div className="d-flex flex-column gap-2 align-items-center">
+
+                     
+                      <p
+                        className="text-light py-1 px-2 rounded"
+                        style={
+                          order.status == "Pending"
+                            ? { backgroundColor: "orange" }
+                            : order.status == "shipping"
+                            ? { backgroundColor: "darkblue" }
+                            : { backgroundColor: "green" }
+                        }
+                      >
+                        {order.status}
+                      </p>
                       <Link
                         to={`/product/${order.id}`}
                         className="btn btn-dark text-light"
                       >
                         Reorder
                       </Link>
+                      </div> 
                     </div>
                   ))}
                 </div>

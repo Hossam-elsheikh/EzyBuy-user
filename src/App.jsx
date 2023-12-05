@@ -39,6 +39,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from '@stripe/stripe-js';
 import Thanks from "./Components/Thanks/Thanks";
 import Offers from "./Components/MyItems/Offers";
+import Paypal from "./Components/Checkout/Paypal";
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_KEY);
 function App() {
   let routers = createBrowserRouter([
@@ -90,6 +91,7 @@ function App() {
     { path: "login", element: <LoginPage /> },
     { path: "passwordPage", element: <PasswordPage /> },
     { path: "register", element: <RegisterPage /> },
+    { path: "paypal", element: <Paypal /> },
     { path: "*", element: <NotFound /> },
   ]);
   return (

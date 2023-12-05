@@ -1,4 +1,5 @@
 import classNamees from './CardElem.module.css'
+import {Link} from 'react-router-dom'
 export default function CardElem(props) {
   return <>
 
@@ -7,7 +8,7 @@ export default function CardElem(props) {
   <div className="card-body d-flex flex-column gap-1">
     <p className="card-title fs-5 ">{props.h}</p>
     <p className="card-text mb-5 text-muted">{props.p}</p>
-    <a href="/" className={classNamees.shop}>Shop now</a>
+    <Link to="/product/656b799bf1fd74b92ad5ee0b" className={classNamees.shop}>Shop now</Link>
   </div>
 </div>
   </>

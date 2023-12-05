@@ -9,6 +9,7 @@ import instance from "../../axiosConfig/instance";
 import toast, { Toaster } from "react-hot-toast";
 import { cartAction } from "../../store/slices/cartSlice";
 import { LangContext } from "../../context/LangContext";
+import Paypal from "./Paypal";
 const Checkout = () => {
   let dispatch = useDispatch();
   const {lang,dir}= useContext(LangContext)
@@ -152,6 +153,7 @@ const Checkout = () => {
     }
   }
   else if(paymentMethod == 'paypal'){
+    // navigate('/paypal')
     window.paypal
     .Buttons({
       createOrder: (data, actions, err) => {
@@ -280,6 +282,7 @@ const Checkout = () => {
           </div>
         )}
         <div  ref={paypal}></div>
+        {/* <Paypal totalPrice={totalPrice} credentials={credentials} cart={cart} emptyCart={()=>emptyCart()}/>  */}
       </div>
       <div className="col-12 col-md-4 container-fluid border px-3 py-4 border-1 ">
         <h3 className="text-center ">{lang =='en' ? 'Order Details':'بيانات الطلب'}</h3>
